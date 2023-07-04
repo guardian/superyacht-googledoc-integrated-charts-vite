@@ -1,0 +1,34 @@
+{
+    "sheets": {
+        "template": [
+            {
+                "title": "Creating a map",
+                "subtitle": "",
+                "source": "",
+                "margin-left": "70",
+                "margin-top": "30",
+                "margin-bottom": "20",
+                "margin-right": "10",
+                "tooltip" : ""
+            }
+        ],
+        "data": [],
+        "labels": [],
+        "userkey": [],
+        "lines": [],
+        "periods": [],
+        "chartId": [
+            {
+                "type": "map"
+            }
+        ],
+        "options": [
+            {
+                "enableShowMore": "FALSE",
+                "autoSort": "FALSE",
+                "aria":"FALSE"
+            }
+        ],
+        "dropdown": []
+    }
+}

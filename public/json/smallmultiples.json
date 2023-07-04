@@ -1,0 +1,52 @@
+{
+    "sheets": {
+        "template": [
+            {
+                "title": "",
+                "subtitle": "",
+                "footnote" : "",
+                "source": "",
+                "tooltip": ""
+            }
+        ],
+        "data": [],
+        "labels": [],
+        "trendline": [],
+        "userkey": [],
+        "periods": [],
+        "chartId": [
+            {
+                "type": "smallmultiples"
+            }
+        ],
+        "options": [
+            {
+                "numCols": 4,
+                "breaks" : "",
+                "chartType": "line",
+                "height": 150,
+                "scaleBy": "group",
+                "enableShowMore": "FALSE",
+                "aria": "FALSE",
+                "colorScheme": "guardian",
+                "smallmultiples" : "",
+                "parseTime" : "",
+                "dateFormat" : "",
+                "xAxisLabel": "",
+                "yAxisLabel": "",
+                "timeInterval": "",
+                "periodDateFormat": "",
+                "margin-left": "27",
+                "margin-top": "25",
+                "margin-bottom": "22",
+                "margin-right": "22",
+                "xAxisDateFormat": "",
+                "groupBy" : "",
+                "xColumn" : "",
+                "xFormat" : ""
+
+            }
+        ],
+        "dropdown": []
+    }
+}

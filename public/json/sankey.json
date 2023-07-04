@@ -1,0 +1,37 @@
+{
+    "sheets": {
+        "data": [],
+        "template": [
+            {
+                "title": "",
+                "subtitle": "",
+                "footnote" : "",
+                "source": "",
+                "tooltip": ""
+            }
+        ],
+        "options": [
+            {
+                "vertical": "",
+                "alignment": "left",
+                "enableShowMore": "FALSE",
+                "aria": "FALSE",
+                "colorScheme": "guardian",
+                "xAxisDateFormat" : "",
+                "margin-left": "2",
+                "margin-top": "25",
+                "margin-bottom": "0",
+                "margin-right": "2",
+                "min_height": "600"
+            }
+        ],
+        "userkey": [],
+        "labels": [],
+        "chartId": [
+            {
+                "type": "sankey"
+            }
+        ],
+        "dropdown": []
+    }
+}

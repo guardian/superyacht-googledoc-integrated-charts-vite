@@ -1,0 +1,455 @@
+{
+    "sheets": {
+        "template": [
+            {
+                "title": "Weekly deaths from Covid-19 in Australia",
+                "subtitle": "Showing the count on the friday of each week since June 2021, as reported by states and territories. Dates used are the date of death where known, or the date reported. Last updated 31 May 2023.",
+                "footnote": "",
+                "source": " | Source: Covidlive.com.au, Guardian Australia",
+                "dateFormat": "%Y-%m-%d",
+                "xAxisLabel": "",
+                "yAxisLabel": "Deaths",
+                "tooltip": "<strong>{{#formatDate}}REPORT_DATE{{/formatDate}}</strong><br><strong>Weekly deaths</strong>: {{Total}}",
+                "margin-left": "50",
+                "margin-top": "20",
+                "margin-bottom": "20",
+                "margin-right": "25",
+                "xAxisDateFormat": "%b %y"
+            }
+        ],
+        "data": [
+            {
+                "REPORT_DATE": "2021-06-11",
+                "Weekly deaths": ""
+            },
+            {
+                "REPORT_DATE": "2021-06-18",
+                "Weekly deaths": 0.0
+            },
+            {
+                "REPORT_DATE": "2021-06-25",
+                "Weekly deaths": 0.0
+            },
+            {
+                "REPORT_DATE": "2021-07-02",
+                "Weekly deaths": 0.0
+            },
+            {
+                "REPORT_DATE": "2021-07-09",
+                "Weekly deaths": 0.0
+            },
+            {
+                "REPORT_DATE": "2021-07-16",
+                "Weekly deaths": 2.0
+            },
+            {
+                "REPORT_DATE": "2021-07-23",
+                "Weekly deaths": 4.0
+            },
+            {
+                "REPORT_DATE": "2021-07-30",
+                "Weekly deaths": 7.0
+            },
+            {
+                "REPORT_DATE": "2021-08-06",
+                "Weekly deaths": 10.0
+            },
+            {
+                "REPORT_DATE": "2021-08-13",
+                "Weekly deaths": 16.0
+            },
+            {
+                "REPORT_DATE": "2021-08-20",
+                "Weekly deaths": 26.0
+            },
+            {
+                "REPORT_DATE": "2021-08-27",
+                "Weekly deaths": 16.0
+            },
+            {
+                "REPORT_DATE": "2021-09-03",
+                "Weekly deaths": 41.0
+            },
+            {
+                "REPORT_DATE": "2021-09-10",
+                "Weekly deaths": 44.0
+            },
+            {
+                "REPORT_DATE": "2021-09-17",
+                "Weekly deaths": 65.0
+            },
+            {
+                "REPORT_DATE": "2021-09-24",
+                "Weekly deaths": 67.0
+            },
+            {
+                "REPORT_DATE": "2021-10-01",
+                "Weekly deaths": 101.0
+            },
+            {
+                "REPORT_DATE": "2021-10-08",
+                "Weekly deaths": 96.0
+            },
+            {
+                "REPORT_DATE": "2021-10-15",
+                "Weekly deaths": 102.0
+            },
+            {
+                "REPORT_DATE": "2021-10-22",
+                "Weekly deaths": 104.0
+            },
+            {
+                "REPORT_DATE": "2021-10-29",
+                "Weekly deaths": 97.0
+            },
+            {
+                "REPORT_DATE": "2021-11-05",
+                "Weekly deaths": 87.0
+            },
+            {
+                "REPORT_DATE": "2021-11-12",
+                "Weekly deaths": 78.0
+            },
+            {
+                "REPORT_DATE": "2021-11-19",
+                "Weekly deaths": 60.0
+            },
+            {
+                "REPORT_DATE": "2021-11-26",
+                "Weekly deaths": 52.0
+            },
+            {
+                "REPORT_DATE": "2021-12-03",
+                "Weekly deaths": 47.0
+            },
+            {
+                "REPORT_DATE": "2021-12-10",
+                "Weekly deaths": 52.0
+            },
+            {
+                "REPORT_DATE": "2021-12-17",
+                "Weekly deaths": 50.0
+            },
+            {
+                "REPORT_DATE": "2021-12-24",
+                "Weekly deaths": 48.0
+            },
+            {
+                "REPORT_DATE": "2021-12-31",
+                "Weekly deaths": 57.0
+            },
+            {
+                "REPORT_DATE": "2022-01-07",
+                "Weekly deaths": 80.0
+            },
+            {
+                "REPORT_DATE": "2022-01-14",
+                "Weekly deaths": 259.0
+            },
+            {
+                "REPORT_DATE": "2022-01-21",
+                "Weekly deaths": 411.0
+            },
+            {
+                "REPORT_DATE": "2022-01-28",
+                "Weekly deaths": 547.0
+            },
+            {
+                "REPORT_DATE": "2022-02-04",
+                "Weekly deaths": 537.0
+            },
+            {
+                "REPORT_DATE": "2022-02-11",
+                "Weekly deaths": 406.0
+            },
+            {
+                "REPORT_DATE": "2022-02-18",
+                "Weekly deaths": 356.0
+            },
+            {
+                "REPORT_DATE": "2022-02-25",
+                "Weekly deaths": 262.0
+            },
+            {
+                "REPORT_DATE": "2022-03-04",
+                "Weekly deaths": 258.0
+            },
+            {
+                "REPORT_DATE": "2022-03-11",
+                "Weekly deaths": 194.0
+            },
+            {
+                "REPORT_DATE": "2022-03-18",
+                "Weekly deaths": 145.0
+            },
+            {
+                "REPORT_DATE": "2022-03-25",
+                "Weekly deaths": 158.0
+            },
+            {
+                "REPORT_DATE": "2022-04-01",
+                "Weekly deaths": 489.0
+            },
+            {
+                "REPORT_DATE": "2022-04-08",
+                "Weekly deaths": 185.0
+            },
+            {
+                "REPORT_DATE": "2022-04-15",
+                "Weekly deaths": 201.0
+            },
+            {
+                "REPORT_DATE": "2022-04-22",
+                "Weekly deaths": 212.0
+            },
+            {
+                "REPORT_DATE": "2022-04-29",
+                "Weekly deaths": 250.0
+            },
+            {
+                "REPORT_DATE": "2022-05-06",
+                "Weekly deaths": 265.0
+            },
+            {
+                "REPORT_DATE": "2022-05-13",
+                "Weekly deaths": 267.0
+            },
+            {
+                "REPORT_DATE": "2022-05-20",
+                "Weekly deaths": 306.0
+            },
+            {
+                "REPORT_DATE": "2022-05-27",
+                "Weekly deaths": 347.0
+            },
+            {
+                "REPORT_DATE": "2022-06-03",
+                "Weekly deaths": 288.0
+            },
+            {
+                "REPORT_DATE": "2022-06-10",
+                "Weekly deaths": 295.0
+            },
+            {
+                "REPORT_DATE": "2022-06-17",
+                "Weekly deaths": 311.0
+            },
+            {
+                "REPORT_DATE": "2022-06-24",
+                "Weekly deaths": 331.0
+            },
+            {
+                "REPORT_DATE": "2022-07-01",
+                "Weekly deaths": 331.0
+            },
+            {
+                "REPORT_DATE": "2022-07-08",
+                "Weekly deaths": 295.0
+            },
+            {
+                "REPORT_DATE": "2022-07-15",
+                "Weekly deaths": 357.0
+            },
+            {
+                "REPORT_DATE": "2022-07-22",
+                "Weekly deaths": 450.0
+            },
+            {
+                "REPORT_DATE": "2022-07-29",
+                "Weekly deaths": 637.0
+            },
+            {
+                "REPORT_DATE": "2022-08-05",
+                "Weekly deaths": 531.0
+            },
+            {
+                "REPORT_DATE": "2022-08-12",
+                "Weekly deaths": 539.0
+            },
+            {
+                "REPORT_DATE": "2022-08-19",
+                "Weekly deaths": 490.0
+            },
+            {
+                "REPORT_DATE": "2022-08-26",
+                "Weekly deaths": 419.0
+            },
+            {
+                "REPORT_DATE": "2022-09-02",
+                "Weekly deaths": 366.0
+            },
+            {
+                "REPORT_DATE": "2022-09-09",
+                "Weekly deaths": 407.0
+            },
+            {
+                "REPORT_DATE": "2022-09-16",
+                "Weekly deaths": 290.0
+            },
+            {
+                "REPORT_DATE": "2022-09-23",
+                "Weekly deaths": 178.0
+            },
+            {
+                "REPORT_DATE": "2022-09-30",
+                "Weekly deaths": 280.0
+            },
+            {
+                "REPORT_DATE": "2022-10-07",
+                "Weekly deaths": 189.0
+            },
+            {
+                "REPORT_DATE": "2022-10-14",
+                "Weekly deaths": 110.0
+            },
+            {
+                "REPORT_DATE": "2022-10-21",
+                "Weekly deaths": 85.0
+            },
+            {
+                "REPORT_DATE": "2022-10-28",
+                "Weekly deaths": 104.0
+            },
+            {
+                "REPORT_DATE": "2022-11-04",
+                "Weekly deaths": 119.0
+            },
+            {
+                "REPORT_DATE": "2022-11-11",
+                "Weekly deaths": 83.0
+            },
+            {
+                "REPORT_DATE": "2022-11-18",
+                "Weekly deaths": 108.0
+            },
+            {
+                "REPORT_DATE": "2022-11-25",
+                "Weekly deaths": 123.0
+            },
+            {
+                "REPORT_DATE": "2022-12-02",
+                "Weekly deaths": 134.0
+            },
+            {
+                "REPORT_DATE": "2022-12-09",
+                "Weekly deaths": 217.0
+            },
+            {
+                "REPORT_DATE": "2022-12-16",
+                "Weekly deaths": 232.0
+            },
+            {
+                "REPORT_DATE": "2022-12-23",
+                "Weekly deaths": 242.0
+            },
+            {
+                "REPORT_DATE": "2022-12-30",
+                "Weekly deaths": 118.0
+            },
+            {
+                "REPORT_DATE": "2023-01-06",
+                "Weekly deaths": 271.0
+            },
+            {
+                "REPORT_DATE": "2023-01-13",
+                "Weekly deaths": 408.0
+            },
+            {
+                "REPORT_DATE": "2023-01-20",
+                "Weekly deaths": 380.0
+            },
+            {
+                "REPORT_DATE": "2023-01-27",
+                "Weekly deaths": 523.0
+            },
+            {
+                "REPORT_DATE": "2023-02-03",
+                "Weekly deaths": 213.0
+            },
+            {
+                "REPORT_DATE": "2023-02-10",
+                "Weekly deaths": 242.0
+            },
+            {
+                "REPORT_DATE": "2023-02-17",
+                "Weekly deaths": 195.0
+            },
+            {
+                "REPORT_DATE": "2023-02-24",
+                "Weekly deaths": 108.0
+            },
+            {
+                "REPORT_DATE": "2023-03-03",
+                "Weekly deaths": 86.0
+            },
+            {
+                "REPORT_DATE": "2023-03-10",
+                "Weekly deaths": 132.0
+            },
+            {
+                "REPORT_DATE": "2023-03-17",
+                "Weekly deaths": 99.0
+            },
+            {
+                "REPORT_DATE": "2023-03-24",
+                "Weekly deaths": 70.0
+            },
+            {
+                "REPORT_DATE": "2023-03-31",
+                "Weekly deaths": 96.0
+            },
+            {
+                "REPORT_DATE": "2023-04-07",
+                "Weekly deaths": 77.0
+            },
+            {
+                "REPORT_DATE": "2023-04-14",
+                "Weekly deaths": 116.0
+            },
+            {
+                "REPORT_DATE": "2023-04-21",
+                "Weekly deaths": 110.0
+            },
+            {
+                "REPORT_DATE": "2023-04-28",
+                "Weekly deaths": 113.0
+            },
+            {
+                "REPORT_DATE": "2023-05-05",
+                "Weekly deaths": 138.0
+            },
+            {
+                "REPORT_DATE": "2023-05-12",
+                "Weekly deaths": 161.0
+            },
+            {
+                "REPORT_DATE": "2023-05-19",
+                "Weekly deaths": 124.0
+            },
+            {
+                "REPORT_DATE": "2023-05-26",
+                "Weekly deaths": 184.0
+            }
+        ],
+        "labels": [],
+        "trendline": [],
+        "userkey": [
+            {
+                "key": "Deaths",
+                "colour": "#cfa1d4"
+            }
+        ],
+        "periods": [],
+        "chartId": [
+            {
+                "type": "verticalbar"
+            }
+        ],
+        "options": [
+            {
+                "trendColors": "#751480"
+            }
+        ],
+        "dropdown": []
+    }
+}

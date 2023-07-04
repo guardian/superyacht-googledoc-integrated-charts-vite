@@ -1,0 +1,1312 @@
+{
+    "sheets": {
+        "template": [
+            {
+                "title": "Trend in recent daily vaccinations by state and territory",
+                "subtitle": "Showing the seven-day rolling average in Covid vaccination doses administered daily per 100 people in each state and territory, versus the national rate. Showing the last 30 days only. Last updated 17 January, 2022",
+                "source": "",
+                "xAxisLabel": "",
+                "yAxisLabel": "",
+                "timeInterval": "day",
+                "tooltip": "",
+                "periodDateFormat": "",
+                "margin-left": "35",
+                "margin-top": "25",
+                "margin-bottom": "22",
+                "margin-right": "22",
+                "xAxisDateFormat": "%b %d"
+            }
+        ],
+        "data": [
+            {
+                "Date": "2021-12-19",
+                "Code": "ACT",
+                "State or territory": 0.05,
+                "National": 0.22
+            },
+            {
+                "Date": "2021-12-19",
+                "Code": "SA",
+                "State or territory": 0.34,
+                "National": 0.22
+            },
+            {
+                "Date": "2021-12-19",
+                "Code": "VIC",
+                "State or territory": 0.07,
+                "National": 0.22
+            },
+            {
+                "Date": "2021-12-19",
+                "Code": "WA",
+                "State or territory": 0.4,
+                "National": 0.22
+            },
+            {
+                "Date": "2021-12-19",
+                "Code": "NT",
+                "State or territory": 0.27,
+                "National": 0.22
+            },
+            {
+                "Date": "2021-12-19",
+                "Code": "QLD",
+                "State or territory": 0.59,
+                "National": 0.22
+            },
+            {
+                "Date": "2021-12-19",
+                "Code": "NSW",
+                "State or territory": 0.04,
+                "National": 0.22
+            },
+            {
+                "Date": "2021-12-19",
+                "Code": "TAS",
+                "State or territory": 0.33,
+                "National": 0.22
+            },
+            {
+                "Date": "2021-12-20",
+                "Code": "NT",
+                "State or territory": 0.26,
+                "National": 0.21
+            },
+            {
+                "Date": "2021-12-20",
+                "Code": "TAS",
+                "State or territory": 0.32,
+                "National": 0.21
+            },
+            {
+                "Date": "2021-12-20",
+                "Code": "QLD",
+                "State or territory": 0.53,
+                "National": 0.21
+            },
+            {
+                "Date": "2021-12-20",
+                "Code": "NSW",
+                "State or territory": 0.04,
+                "National": 0.21
+            },
+            {
+                "Date": "2021-12-20",
+                "Code": "VIC",
+                "State or territory": 0.07,
+                "National": 0.21
+            },
+            {
+                "Date": "2021-12-20",
+                "Code": "WA",
+                "State or territory": 0.4,
+                "National": 0.21
+            },
+            {
+                "Date": "2021-12-20",
+                "Code": "SA",
+                "State or territory": 0.33,
+                "National": 0.21
+            },
+            {
+                "Date": "2021-12-20",
+                "Code": "ACT",
+                "State or territory": 0.05,
+                "National": 0.21
+            },
+            {
+                "Date": "2021-12-21",
+                "Code": "NSW",
+                "State or territory": 0.04,
+                "National": 0.2
+            },
+            {
+                "Date": "2021-12-21",
+                "Code": "WA",
+                "State or territory": 0.4,
+                "National": 0.2
+            },
+            {
+                "Date": "2021-12-21",
+                "Code": "SA",
+                "State or territory": 0.32,
+                "National": 0.2
+            },
+            {
+                "Date": "2021-12-21",
+                "Code": "QLD",
+                "State or territory": 0.5,
+                "National": 0.2
+            },
+            {
+                "Date": "2021-12-21",
+                "Code": "ACT",
+                "State or territory": 0.05,
+                "National": 0.2
+            },
+            {
+                "Date": "2021-12-21",
+                "Code": "VIC",
+                "State or territory": 0.07,
+                "National": 0.2
+            },
+            {
+                "Date": "2021-12-21",
+                "Code": "NT",
+                "State or territory": 0.25,
+                "National": 0.2
+            },
+            {
+                "Date": "2021-12-21",
+                "Code": "TAS",
+                "State or territory": 0.33,
+                "National": 0.2
+            },
+            {
+                "Date": "2021-12-22",
+                "Code": "QLD",
+                "State or territory": 0.47,
+                "National": 0.19
+            },
+            {
+                "Date": "2021-12-22",
+                "Code": "WA",
+                "State or territory": 0.4,
+                "National": 0.19
+            },
+            {
+                "Date": "2021-12-22",
+                "Code": "NSW",
+                "State or territory": 0.04,
+                "National": 0.19
+            },
+            {
+                "Date": "2021-12-22",
+                "Code": "NT",
+                "State or territory": 0.24,
+                "National": 0.19
+            },
+            {
+                "Date": "2021-12-22",
+                "Code": "VIC",
+                "State or territory": 0.06,
+                "National": 0.19
+            },
+            {
+                "Date": "2021-12-22",
+                "Code": "ACT",
+                "State or territory": 0.04,
+                "National": 0.19
+            },
+            {
+                "Date": "2021-12-22",
+                "Code": "SA",
+                "State or territory": 0.3,
+                "National": 0.19
+            },
+            {
+                "Date": "2021-12-22",
+                "Code": "TAS",
+                "State or territory": 0.3,
+                "National": 0.19
+            },
+            {
+                "Date": "2021-12-23",
+                "Code": "ACT",
+                "State or territory": 0.04,
+                "National": 0.18
+            },
+            {
+                "Date": "2021-12-23",
+                "Code": "VIC",
+                "State or territory": 0.06,
+                "National": 0.18
+            },
+            {
+                "Date": "2021-12-23",
+                "Code": "WA",
+                "State or territory": 0.39,
+                "National": 0.18
+            },
+            {
+                "Date": "2021-12-23",
+                "Code": "NSW",
+                "State or territory": 0.04,
+                "National": 0.18
+            },
+            {
+                "Date": "2021-12-23",
+                "Code": "NT",
+                "State or territory": 0.23,
+                "National": 0.18
+            },
+            {
+                "Date": "2021-12-23",
+                "Code": "TAS",
+                "State or territory": 0.28,
+                "National": 0.18
+            },
+            {
+                "Date": "2021-12-23",
+                "Code": "SA",
+                "State or territory": 0.27,
+                "National": 0.18
+            },
+            {
+                "Date": "2021-12-23",
+                "Code": "QLD",
+                "State or territory": 0.41,
+                "National": 0.18
+            },
+            {
+                "Date": "2021-12-26",
+                "Code": "NSW",
+                "State or territory": 0.03,
+                "National": 0.16
+            },
+            {
+                "Date": "2021-12-26",
+                "Code": "NT",
+                "State or territory": 0.2,
+                "National": 0.16
+            },
+            {
+                "Date": "2021-12-26",
+                "Code": "SA",
+                "State or territory": 0.24,
+                "National": 0.16
+            },
+            {
+                "Date": "2021-12-26",
+                "Code": "ACT",
+                "State or territory": 0.04,
+                "National": 0.16
+            },
+            {
+                "Date": "2021-12-26",
+                "Code": "QLD",
+                "State or territory": 0.35,
+                "National": 0.16
+            },
+            {
+                "Date": "2021-12-26",
+                "Code": "VIC",
+                "State or territory": 0.05,
+                "National": 0.16
+            },
+            {
+                "Date": "2021-12-26",
+                "Code": "TAS",
+                "State or territory": 0.26,
+                "National": 0.16
+            },
+            {
+                "Date": "2021-12-26",
+                "Code": "WA",
+                "State or territory": 0.37,
+                "National": 0.16
+            },
+            {
+                "Date": "2021-12-27",
+                "Code": "NT",
+                "State or territory": 0.19,
+                "National": 0.14
+            },
+            {
+                "Date": "2021-12-27",
+                "Code": "QLD",
+                "State or territory": 0.3,
+                "National": 0.14
+            },
+            {
+                "Date": "2021-12-27",
+                "Code": "NSW",
+                "State or territory": 0.03,
+                "National": 0.14
+            },
+            {
+                "Date": "2021-12-27",
+                "Code": "WA",
+                "State or territory": 0.35,
+                "National": 0.14
+            },
+            {
+                "Date": "2021-12-27",
+                "Code": "TAS",
+                "State or territory": 0.24,
+                "National": 0.14
+            },
+            {
+                "Date": "2021-12-27",
+                "Code": "VIC",
+                "State or territory": 0.05,
+                "National": 0.14
+            },
+            {
+                "Date": "2021-12-27",
+                "Code": "SA",
+                "State or territory": 0.22,
+                "National": 0.14
+            },
+            {
+                "Date": "2021-12-27",
+                "Code": "ACT",
+                "State or territory": 0.03,
+                "National": 0.14
+            },
+            {
+                "Date": "2021-12-28",
+                "Code": "WA",
+                "State or territory": 0.35,
+                "National": 0.14
+            },
+            {
+                "Date": "2021-12-28",
+                "Code": "NT",
+                "State or territory": 0.19,
+                "National": 0.14
+            },
+            {
+                "Date": "2021-12-28",
+                "Code": "NSW",
+                "State or territory": 0.03,
+                "National": 0.14
+            },
+            {
+                "Date": "2021-12-28",
+                "Code": "QLD",
+                "State or territory": 0.28,
+                "National": 0.14
+            },
+            {
+                "Date": "2021-12-28",
+                "Code": "ACT",
+                "State or territory": 0.03,
+                "National": 0.14
+            },
+            {
+                "Date": "2021-12-28",
+                "Code": "TAS",
+                "State or territory": 0.22,
+                "National": 0.14
+            },
+            {
+                "Date": "2021-12-28",
+                "Code": "SA",
+                "State or territory": 0.21,
+                "National": 0.14
+            },
+            {
+                "Date": "2021-12-28",
+                "Code": "VIC",
+                "State or territory": 0.04,
+                "National": 0.14
+            },
+            {
+                "Date": "2021-12-29",
+                "Code": "NT",
+                "State or territory": 0.16,
+                "National": 0.13
+            },
+            {
+                "Date": "2021-12-29",
+                "Code": "NSW",
+                "State or territory": 0.02,
+                "National": 0.13
+            },
+            {
+                "Date": "2021-12-29",
+                "Code": "QLD",
+                "State or territory": 0.24,
+                "National": 0.13
+            },
+            {
+                "Date": "2021-12-29",
+                "Code": "WA",
+                "State or territory": 0.36,
+                "National": 0.13
+            },
+            {
+                "Date": "2021-12-29",
+                "Code": "VIC",
+                "State or territory": 0.04,
+                "National": 0.13
+            },
+            {
+                "Date": "2021-12-29",
+                "Code": "TAS",
+                "State or territory": 0.2,
+                "National": 0.13
+            },
+            {
+                "Date": "2021-12-29",
+                "Code": "SA",
+                "State or territory": 0.19,
+                "National": 0.13
+            },
+            {
+                "Date": "2021-12-29",
+                "Code": "ACT",
+                "State or territory": 0.03,
+                "National": 0.13
+            },
+            {
+                "Date": "2021-12-30",
+                "Code": "VIC",
+                "State or territory": 0.03,
+                "National": 0.12
+            },
+            {
+                "Date": "2021-12-30",
+                "Code": "SA",
+                "State or territory": 0.17,
+                "National": 0.12
+            },
+            {
+                "Date": "2021-12-30",
+                "Code": "NSW",
+                "State or territory": 0.02,
+                "National": 0.12
+            },
+            {
+                "Date": "2021-12-30",
+                "Code": "WA",
+                "State or territory": 0.36,
+                "National": 0.12
+            },
+            {
+                "Date": "2021-12-30",
+                "Code": "NT",
+                "State or territory": 0.14,
+                "National": 0.12
+            },
+            {
+                "Date": "2021-12-30",
+                "Code": "QLD",
+                "State or territory": 0.22,
+                "National": 0.12
+            },
+            {
+                "Date": "2021-12-30",
+                "Code": "ACT",
+                "State or territory": 0.02,
+                "National": 0.12
+            },
+            {
+                "Date": "2021-12-30",
+                "Code": "TAS",
+                "State or territory": 0.18,
+                "National": 0.12
+            },
+            {
+                "Date": "2022-01-02",
+                "Code": "NSW",
+                "State or territory": 0.02,
+                "National": 0.11
+            },
+            {
+                "Date": "2022-01-02",
+                "Code": "NT",
+                "State or territory": 0.11,
+                "National": 0.11
+            },
+            {
+                "Date": "2022-01-02",
+                "Code": "WA",
+                "State or territory": 0.37,
+                "National": 0.11
+            },
+            {
+                "Date": "2022-01-02",
+                "Code": "ACT",
+                "State or territory": 0.01,
+                "National": 0.11
+            },
+            {
+                "Date": "2022-01-02",
+                "Code": "QLD",
+                "State or territory": 0.2,
+                "National": 0.11
+            },
+            {
+                "Date": "2022-01-02",
+                "Code": "VIC",
+                "State or territory": 0.02,
+                "National": 0.11
+            },
+            {
+                "Date": "2022-01-02",
+                "Code": "TAS",
+                "State or territory": 0.15,
+                "National": 0.11
+            },
+            {
+                "Date": "2022-01-02",
+                "Code": "SA",
+                "State or territory": 0.15,
+                "National": 0.11
+            },
+            {
+                "Date": "2022-01-03",
+                "Code": "NT",
+                "State or territory": 0.08,
+                "National": 0.09
+            },
+            {
+                "Date": "2022-01-03",
+                "Code": "TAS",
+                "State or territory": 0.11,
+                "National": 0.09
+            },
+            {
+                "Date": "2022-01-03",
+                "Code": "NSW",
+                "State or territory": 0.01,
+                "National": 0.09
+            },
+            {
+                "Date": "2022-01-03",
+                "Code": "VIC",
+                "State or territory": 0.02,
+                "National": 0.09
+            },
+            {
+                "Date": "2022-01-03",
+                "Code": "WA",
+                "State or territory": 0.33,
+                "National": 0.09
+            },
+            {
+                "Date": "2022-01-03",
+                "Code": "SA",
+                "State or territory": 0.12,
+                "National": 0.09
+            },
+            {
+                "Date": "2022-01-03",
+                "Code": "QLD",
+                "State or territory": 0.17,
+                "National": 0.09
+            },
+            {
+                "Date": "2022-01-03",
+                "Code": "ACT",
+                "State or territory": 0.01,
+                "National": 0.09
+            },
+            {
+                "Date": "2022-01-04",
+                "Code": "QLD",
+                "State or territory": 0.16,
+                "National": 0.1
+            },
+            {
+                "Date": "2022-01-04",
+                "Code": "TAS",
+                "State or territory": 0.11,
+                "National": 0.1
+            },
+            {
+                "Date": "2022-01-04",
+                "Code": "SA",
+                "State or territory": 0.15,
+                "National": 0.1
+            },
+            {
+                "Date": "2022-01-04",
+                "Code": "VIC",
+                "State or territory": 0.02,
+                "National": 0.1
+            },
+            {
+                "Date": "2022-01-04",
+                "Code": "NT",
+                "State or territory": 0.08,
+                "National": 0.1
+            },
+            {
+                "Date": "2022-01-04",
+                "Code": "WA",
+                "State or territory": 0.35,
+                "National": 0.1
+            },
+            {
+                "Date": "2022-01-04",
+                "Code": "NSW",
+                "State or territory": 0.02,
+                "National": 0.1
+            },
+            {
+                "Date": "2022-01-04",
+                "Code": "ACT",
+                "State or territory": 0.01,
+                "National": 0.1
+            },
+            {
+                "Date": "2022-01-05",
+                "Code": "NT",
+                "State or territory": 0.1,
+                "National": 0.11
+            },
+            {
+                "Date": "2022-01-05",
+                "Code": "WA",
+                "State or territory": 0.4,
+                "National": 0.11
+            },
+            {
+                "Date": "2022-01-05",
+                "Code": "VIC",
+                "State or territory": 0.03,
+                "National": 0.11
+            },
+            {
+                "Date": "2022-01-05",
+                "Code": "SA",
+                "State or territory": 0.18,
+                "National": 0.11
+            },
+            {
+                "Date": "2022-01-05",
+                "Code": "TAS",
+                "State or territory": 0.13,
+                "National": 0.11
+            },
+            {
+                "Date": "2022-01-05",
+                "Code": "NSW",
+                "State or territory": 0.02,
+                "National": 0.11
+            },
+            {
+                "Date": "2022-01-05",
+                "Code": "QLD",
+                "State or territory": 0.19,
+                "National": 0.11
+            },
+            {
+                "Date": "2022-01-05",
+                "Code": "ACT",
+                "State or territory": 0.02,
+                "National": 0.11
+            },
+            {
+                "Date": "2022-01-06",
+                "Code": "QLD",
+                "State or territory": 0.22,
+                "National": 0.13
+            },
+            {
+                "Date": "2022-01-06",
+                "Code": "SA",
+                "State or territory": 0.21,
+                "National": 0.13
+            },
+            {
+                "Date": "2022-01-06",
+                "Code": "NSW",
+                "State or territory": 0.02,
+                "National": 0.13
+            },
+            {
+                "Date": "2022-01-06",
+                "Code": "TAS",
+                "State or territory": 0.19,
+                "National": 0.13
+            },
+            {
+                "Date": "2022-01-06",
+                "Code": "WA",
+                "State or territory": 0.44,
+                "National": 0.13
+            },
+            {
+                "Date": "2022-01-06",
+                "Code": "ACT",
+                "State or territory": 0.03,
+                "National": 0.13
+            },
+            {
+                "Date": "2022-01-06",
+                "Code": "NT",
+                "State or territory": 0.13,
+                "National": 0.13
+            },
+            {
+                "Date": "2022-01-06",
+                "Code": "VIC",
+                "State or territory": 0.03,
+                "National": 0.13
+            },
+            {
+                "Date": "2022-01-07",
+                "Code": "WA",
+                "State or territory": 0.43,
+                "National": 0.13
+            },
+            {
+                "Date": "2022-01-07",
+                "Code": "QLD",
+                "State or territory": 0.23,
+                "National": 0.13
+            },
+            {
+                "Date": "2022-01-07",
+                "Code": "ACT",
+                "State or territory": 0.03,
+                "National": 0.13
+            },
+            {
+                "Date": "2022-01-07",
+                "Code": "SA",
+                "State or territory": 0.21,
+                "National": 0.13
+            },
+            {
+                "Date": "2022-01-07",
+                "Code": "NSW",
+                "State or territory": 0.02,
+                "National": 0.13
+            },
+            {
+                "Date": "2022-01-07",
+                "Code": "NT",
+                "State or territory": 0.17,
+                "National": 0.13
+            },
+            {
+                "Date": "2022-01-07",
+                "Code": "TAS",
+                "State or territory": 0.22,
+                "National": 0.13
+            },
+            {
+                "Date": "2022-01-07",
+                "Code": "VIC",
+                "State or territory": 0.03,
+                "National": 0.13
+            },
+            {
+                "Date": "2022-01-08",
+                "Code": "SA",
+                "State or territory": 0.2,
+                "National": 0.12
+            },
+            {
+                "Date": "2022-01-08",
+                "Code": "ACT",
+                "State or territory": 0.02,
+                "National": 0.12
+            },
+            {
+                "Date": "2022-01-08",
+                "Code": "TAS",
+                "State or territory": 0.21,
+                "National": 0.12
+            },
+            {
+                "Date": "2022-01-08",
+                "Code": "QLD",
+                "State or territory": 0.21,
+                "National": 0.12
+            },
+            {
+                "Date": "2022-01-08",
+                "Code": "NSW",
+                "State or territory": 0.02,
+                "National": 0.12
+            },
+            {
+                "Date": "2022-01-08",
+                "Code": "NT",
+                "State or territory": 0.17,
+                "National": 0.12
+            },
+            {
+                "Date": "2022-01-08",
+                "Code": "VIC",
+                "State or territory": 0.03,
+                "National": 0.12
+            },
+            {
+                "Date": "2022-01-08",
+                "Code": "WA",
+                "State or territory": 0.4,
+                "National": 0.12
+            },
+            {
+                "Date": "2022-01-09",
+                "Code": "ACT",
+                "State or territory": 0.03,
+                "National": 0.11
+            },
+            {
+                "Date": "2022-01-09",
+                "Code": "TAS",
+                "State or territory": 0.2,
+                "National": 0.11
+            },
+            {
+                "Date": "2022-01-09",
+                "Code": "SA",
+                "State or territory": 0.17,
+                "National": 0.11
+            },
+            {
+                "Date": "2022-01-09",
+                "Code": "QLD",
+                "State or territory": 0.18,
+                "National": 0.11
+            },
+            {
+                "Date": "2022-01-09",
+                "Code": "VIC",
+                "State or territory": 0.03,
+                "National": 0.11
+            },
+            {
+                "Date": "2022-01-09",
+                "Code": "NT",
+                "State or territory": 0.15,
+                "National": 0.11
+            },
+            {
+                "Date": "2022-01-09",
+                "Code": "WA",
+                "State or territory": 0.35,
+                "National": 0.11
+            },
+            {
+                "Date": "2022-01-09",
+                "Code": "NSW",
+                "State or territory": 0.02,
+                "National": 0.11
+            },
+            {
+                "Date": "2022-01-10",
+                "Code": "NT",
+                "State or territory": 0.21,
+                "National": 0.15
+            },
+            {
+                "Date": "2022-01-10",
+                "Code": "ACT",
+                "State or territory": 0.06,
+                "National": 0.15
+            },
+            {
+                "Date": "2022-01-10",
+                "Code": "QLD",
+                "State or territory": 0.22,
+                "National": 0.15
+            },
+            {
+                "Date": "2022-01-10",
+                "Code": "SA",
+                "State or territory": 0.22,
+                "National": 0.15
+            },
+            {
+                "Date": "2022-01-10",
+                "Code": "VIC",
+                "State or territory": 0.06,
+                "National": 0.15
+            },
+            {
+                "Date": "2022-01-10",
+                "Code": "NSW",
+                "State or territory": 0.05,
+                "National": 0.15
+            },
+            {
+                "Date": "2022-01-10",
+                "Code": "TAS",
+                "State or territory": 0.24,
+                "National": 0.15
+            },
+            {
+                "Date": "2022-01-10",
+                "Code": "WA",
+                "State or territory": 0.41,
+                "National": 0.15
+            },
+            {
+                "Date": "2022-01-11",
+                "Code": "QLD",
+                "State or territory": 0.26,
+                "National": 0.17
+            },
+            {
+                "Date": "2022-01-11",
+                "Code": "SA",
+                "State or territory": 0.22,
+                "National": 0.17
+            },
+            {
+                "Date": "2022-01-11",
+                "Code": "NT",
+                "State or territory": 0.25,
+                "National": 0.17
+            },
+            {
+                "Date": "2022-01-11",
+                "Code": "WA",
+                "State or territory": 0.42,
+                "National": 0.17
+            },
+            {
+                "Date": "2022-01-11",
+                "Code": "TAS",
+                "State or territory": 0.27,
+                "National": 0.17
+            },
+            {
+                "Date": "2022-01-11",
+                "Code": "NSW",
+                "State or territory": 0.08,
+                "National": 0.17
+            },
+            {
+                "Date": "2022-01-11",
+                "Code": "ACT",
+                "State or territory": 0.12,
+                "National": 0.17
+            },
+            {
+                "Date": "2022-01-11",
+                "Code": "VIC",
+                "State or territory": 0.08,
+                "National": 0.17
+            },
+            {
+                "Date": "2022-01-12",
+                "Code": "ACT",
+                "State or territory": 0.17,
+                "National": 0.2
+            },
+            {
+                "Date": "2022-01-12",
+                "Code": "SA",
+                "State or territory": 0.23,
+                "National": 0.2
+            },
+            {
+                "Date": "2022-01-12",
+                "Code": "TAS",
+                "State or territory": 0.3,
+                "National": 0.2
+            },
+            {
+                "Date": "2022-01-12",
+                "Code": "NSW",
+                "State or territory": 0.11,
+                "National": 0.2
+            },
+            {
+                "Date": "2022-01-12",
+                "Code": "QLD",
+                "State or territory": 0.28,
+                "National": 0.2
+            },
+            {
+                "Date": "2022-01-12",
+                "Code": "WA",
+                "State or territory": 0.43,
+                "National": 0.2
+            },
+            {
+                "Date": "2022-01-12",
+                "Code": "NT",
+                "State or territory": 0.29,
+                "National": 0.2
+            },
+            {
+                "Date": "2022-01-12",
+                "Code": "VIC",
+                "State or territory": 0.11,
+                "National": 0.2
+            },
+            {
+                "Date": "2022-01-13",
+                "Code": "VIC",
+                "State or territory": 0.14,
+                "National": 0.23
+            },
+            {
+                "Date": "2022-01-13",
+                "Code": "NSW",
+                "State or territory": 0.14,
+                "National": 0.23
+            },
+            {
+                "Date": "2022-01-13",
+                "Code": "QLD",
+                "State or territory": 0.31,
+                "National": 0.23
+            },
+            {
+                "Date": "2022-01-13",
+                "Code": "WA",
+                "State or territory": 0.44,
+                "National": 0.23
+            },
+            {
+                "Date": "2022-01-13",
+                "Code": "SA",
+                "State or territory": 0.25,
+                "National": 0.23
+            },
+            {
+                "Date": "2022-01-13",
+                "Code": "NT",
+                "State or territory": 0.33,
+                "National": 0.23
+            },
+            {
+                "Date": "2022-01-13",
+                "Code": "TAS",
+                "State or territory": 0.32,
+                "National": 0.23
+            },
+            {
+                "Date": "2022-01-13",
+                "Code": "ACT",
+                "State or territory": 0.23,
+                "National": 0.23
+            },
+            {
+                "Date": "2022-01-14",
+                "Code": "NSW",
+                "State or territory": 0.17,
+                "National": 0.26
+            },
+            {
+                "Date": "2022-01-14",
+                "Code": "QLD",
+                "State or territory": 0.34,
+                "National": 0.26
+            },
+            {
+                "Date": "2022-01-14",
+                "Code": "WA",
+                "State or territory": 0.47,
+                "National": 0.26
+            },
+            {
+                "Date": "2022-01-14",
+                "Code": "TAS",
+                "State or territory": 0.34,
+                "National": 0.26
+            },
+            {
+                "Date": "2022-01-14",
+                "Code": "NT",
+                "State or territory": 0.34,
+                "National": 0.26
+            },
+            {
+                "Date": "2022-01-14",
+                "Code": "ACT",
+                "State or territory": 0.29,
+                "National": 0.26
+            },
+            {
+                "Date": "2022-01-14",
+                "Code": "VIC",
+                "State or territory": 0.17,
+                "National": 0.26
+            },
+            {
+                "Date": "2022-01-14",
+                "Code": "SA",
+                "State or territory": 0.27,
+                "National": 0.26
+            },
+            {
+                "Date": "2022-01-15",
+                "Code": "TAS",
+                "State or territory": 0.36,
+                "National": 0.28
+            },
+            {
+                "Date": "2022-01-15",
+                "Code": "ACT",
+                "State or territory": 0.34,
+                "National": 0.28
+            },
+            {
+                "Date": "2022-01-15",
+                "Code": "SA",
+                "State or territory": 0.28,
+                "National": 0.28
+            },
+            {
+                "Date": "2022-01-15",
+                "Code": "NSW",
+                "State or territory": 0.2,
+                "National": 0.28
+            },
+            {
+                "Date": "2022-01-15",
+                "Code": "NT",
+                "State or territory": 0.35,
+                "National": 0.28
+            },
+            {
+                "Date": "2022-01-15",
+                "Code": "WA",
+                "State or territory": 0.48,
+                "National": 0.28
+            },
+            {
+                "Date": "2022-01-15",
+                "Code": "QLD",
+                "State or territory": 0.35,
+                "National": 0.28
+            },
+            {
+                "Date": "2022-01-15",
+                "Code": "VIC",
+                "State or territory": 0.19,
+                "National": 0.28
+            },
+            {
+                "Date": "2022-01-16",
+                "Code": "TAS",
+                "State or territory": 0.43,
+                "National": 0.29
+            },
+            {
+                "Date": "2022-01-16",
+                "Code": "QLD",
+                "State or territory": 0.36,
+                "National": 0.29
+            },
+            {
+                "Date": "2022-01-16",
+                "Code": "SA",
+                "State or territory": 0.3,
+                "National": 0.29
+            },
+            {
+                "Date": "2022-01-16",
+                "Code": "VIC",
+                "State or territory": 0.22,
+                "National": 0.29
+            },
+            {
+                "Date": "2022-01-16",
+                "Code": "ACT",
+                "State or territory": 0.38,
+                "National": 0.29
+            },
+            {
+                "Date": "2022-01-16",
+                "Code": "WA",
+                "State or territory": 0.48,
+                "National": 0.29
+            },
+            {
+                "Date": "2022-01-16",
+                "Code": "NSW",
+                "State or territory": 0.21,
+                "National": 0.29
+            },
+            {
+                "Date": "2022-01-16",
+                "Code": "NT",
+                "State or territory": 0.35,
+                "National": 0.29
+            },
+            {
+                "Date": "2022-01-17",
+                "Code": "WA",
+                "State or territory": 0.49,
+                "National": 0.3
+            },
+            {
+                "Date": "2022-01-17",
+                "Code": "TAS",
+                "State or territory": 0.48,
+                "National": 0.3
+            },
+            {
+                "Date": "2022-01-17",
+                "Code": "SA",
+                "State or territory": 0.3,
+                "National": 0.3
+            },
+            {
+                "Date": "2022-01-17",
+                "Code": "QLD",
+                "State or territory": 0.37,
+                "National": 0.3
+            },
+            {
+                "Date": "2022-01-17",
+                "Code": "VIC",
+                "State or territory": 0.22,
+                "National": 0.3
+            },
+            {
+                "Date": "2022-01-17",
+                "Code": "NSW",
+                "State or territory": 0.21,
+                "National": 0.3
+            },
+            {
+                "Date": "2022-01-17",
+                "Code": "NT",
+                "State or territory": 0.34,
+                "National": 0.3
+            },
+            {
+                "Date": "2022-01-17",
+                "Code": "ACT",
+                "State or territory": 0.4,
+                "National": 0.3
+            }
+        ],
+        "labels": [],
+        "trendline": [],
+        "userkey": [],
+        "periods": [
+            {
+                "label": "Data change",
+                "start": "2021-08-16",
+                "end": "",
+                "textAnchor": "start"
+            }
+        ],
+        "chartId": [
+            {
+                "type": "smallmultiples"
+            }
+        ],
+        "options": [
+            {
+                "numCols": 4,
+                "chartType": "line",
+                "height": 150,
+                "scaleBy": "group",
+                "dateFormat": "%Y-%m-%d"
+            }
+        ],
+        "dropdown": [
+            {
+                "label": "Option one",
+                "values": "State or territory",
+                "colours": "",
+                "tooltip": "",
+                "scale": ""
+            },
+            {
+                "label": "Option two",
+                "values": "National, State or territory",
+                "colours": "",
+                "tooltip": "",
+                "scale": ""
+            }
+        ]
+    }
+}

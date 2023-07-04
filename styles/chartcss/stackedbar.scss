@@ -1,0 +1,14 @@
+@import "tooltip";
+
+figure {
+  margin: 0;
+}
+
+.interactive-wrapper {
+  margin: 0 !important;
+
+  #graphicContainer {
+    position: relative;
+    max-width: 1200px;
+  }
+}

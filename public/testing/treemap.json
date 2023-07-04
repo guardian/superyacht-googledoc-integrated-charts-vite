@@ -1,0 +1,81 @@
+{
+    "sheets": {
+        "template": [
+            {
+                "title": "",
+                "subtitle": "",
+                "source": "",
+                "margin-left": "0",
+                "margin-top": "0",
+                "margin-bottom": "0",
+                "margin-right": "0"
+            }
+        ],
+        "data": [{
+                   "id": "cars",
+                   "parentId": "",
+                   "size": ""
+                 },
+                 {
+                   "id": "owned",
+                   "parentId": "cars",
+                   "size": ""
+                 },
+                 {
+                   "id": "traded",
+                   "parentId": "cars",
+                   "size": ""
+                 },
+                 {
+                   "id": "learned",
+                   "parentId": "cars",
+                   "size": ""
+                 },
+                 {
+                   "id": "pilot",
+                   "parentId": "owned",
+                   "size": 40
+                 },
+                 {
+                   "id": "325ci",
+                   "parentId": "owned",
+                   "size": 40
+                 },
+                 {
+                   "id": "accord",
+                   "parentId": "owned",
+                   "size": 20
+                 },
+                 {
+                   "id": "chevette",
+                   "parentId": "traded",
+                   "size": 10
+                 },
+                 {
+                   "id": "odyssey",
+                   "parentId": "learned",
+                   "size": 20
+                 },
+                 {
+                   "id": "maxima",
+                   "parentId": "learned",
+                   "size": 10
+                 }
+                ],
+        "labels": [],
+        "userkey": [],
+        "lines": [],
+        "periods": [],
+        "chartId": [
+            {
+                "type": "treemap"
+            }
+        ],
+        "options": [
+            {
+                "enableShowMore": "FALSE"
+            }
+        ],
+        "dropdown": []
+    }
+}

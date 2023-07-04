@@ -1,0 +1,38 @@
+{
+    "sheets": {
+        "data": [],
+        "template": [
+            {
+                "title": "",
+                "subtitle": "",
+                "footnote" : "",
+                "source": "",
+                "tooltip": ""
+            }
+        ],
+        "trendline": [],
+        "options": [{
+            "enableShowMore": "FALSE",
+            "aria": "FALSE",
+            "colorScheme": "guardian",
+            "margin-left": "30",
+            "margin-top": "5",
+            "margin-bottom": "20",
+            "margin-right": "20",
+            "xAxisDateFormat" : "",
+            "xColumn" : "",
+            "yColumn" : "",
+            "groupBy" : "",
+            "yAxisLabel" : "FALSE",
+            "xAxisLabel" : "FALSE"
+        }],
+        "labels": [],
+        "userkey": [],
+        "chartId": [
+            {
+                "type": "scatterplot"
+            }
+        ],
+        "dropdown": []
+    }
+}

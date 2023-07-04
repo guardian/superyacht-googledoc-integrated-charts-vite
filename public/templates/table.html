@@ -1,0 +1,52 @@
+<div id="outer-wrapper" class="table">
+
+	<link rel="stylesheet" href="{{pathway}}chartcss/table.css">
+
+	<div class="row" id="furniture">
+
+		<div class='chartTitle' id="chartTitle">{{{title}}}</div>
+		
+		<div class='subTitle' id="subTitle">{{{subtitle}}}</div>
+
+		<div id='chartKey' class="chartNotes"></div>
+
+	</div>
+                 	
+	<div class="search-wrapper" id="search-container" style="display:none;">
+		<input class="search" id="search-field" value="" placeholder="Search"/>
+		<svg version="1.1" baseProfile="basic" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 80 80" xml:space="preserve">
+			<g>
+				<path style="fill:#dcdcdc;" d="M55.616,30.583c0,13.89-11.144,25.034-25.034,25.034S5.47,44.473,5.47,30.583C5.47,16.849,16.693,5.47,30.583,5.47   S55.616,16.849,55.616,30.583z M11.827,30.583c0,10.359,8.318,18.834,18.756,18.834c10.359,0,18.834-8.476,18.834-18.834   c0-10.438-8.476-18.756-18.834-18.756C20.145,11.827,11.827,20.145,11.827,30.583z M74.53,68.173l-6.356,6.356L49.417,55.774   v-3.218l3.139-3.139h3.218L74.53,68.173z"/>
+			</g>
+			</svg>
+	</div>
+
+	<div id="yacht__table__wrapper" class="collapse-true">
+
+	    <table id="yacht__table" cellspacing="0"></table>
+
+	</div>
+
+	<div class='footer offset'>
+		<div id="annotations"></div>
+		<span id="sourceText">Guardian Graphic {{#source}} | Source: {{{source}}}{{/source}} {{{footnote}}}</span>
+	</div>
+
+</div>
+
+<div class="buttonWrapper">
+    <div class="button" data-target=".collapse1" data-toggle="collapse1" id="button2">
+
+      <span id="showbutton" class="is-on">
+        <svg class="icon icon--plus" height="18px" viewbox="0 0 18 18" width="18px">
+          <path d="M8.2 0h1.6l.4 7.8 7.8.4v1.6l-7.8.4-.4 7.8H8.2l-.4-7.8L0 9.8V8.2l7.8-.4.4-7.8z"></path>
+        </svg>Show
+      </span> 
+
+      <span id="hidebutton" class="is-off hide">
+        <svg class="icon icon--minus" height="32px" viewbox="0 0 32 32" width="32px">
+          <rect height="3" width="22" x="5" y="15"></rect>
+        </svg>Hide
+      </span>
+    </div>
+</div>

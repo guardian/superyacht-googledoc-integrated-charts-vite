@@ -1,0 +1,39 @@
+{
+    "sheets": {
+        "template": [
+            {
+                "title": "",
+                "subtitle": "",
+                "source": "",
+                "footnote": "",
+                "tooltip" : ""
+            }
+        ],
+        "data": [],
+        "labels": [],
+        "userkey": [],
+        "lines": [],
+        "mapping": [],
+        "chartId": [
+            {
+                "type": "map"
+            }
+        ],
+        "options": [
+            {
+                "enableShowMore": "FALSE",
+                "autoSort": "FALSE",
+                "aria":"FALSE",
+                "margin-left": "70",
+                "margin-top": "30",
+                "margin-bottom": "20",
+                "margin-right": "10",
+                "xAxisDateFormat" : "",
+                "boundary": "",
+                "place": "",
+                "filter": ""
+            }
+        ],
+        "dropdown": []
+    }
+}

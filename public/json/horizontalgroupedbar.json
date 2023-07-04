@@ -1,0 +1,39 @@
+{
+    "sheets": {
+        "template": [
+            {
+                "title": "",
+                "subtitle": "",
+                "footnote" : "",
+                "source": "",
+                "tooltip" : ""
+            }
+        ],
+        "data": [],
+        "labels": [],
+        "userkey": [],
+        "lines": [],
+        "periods": [],
+        "chartId": [
+            {
+                "type": "horizontalgroupedbar"
+            }
+        ],
+        "options": [
+            {
+                "autoSort": "FALSE",
+                "enableShowMore": "FALSE",
+                "aria": "FALSE",
+                "colorScheme": "guardian",
+                "xAxisDateFormat" : "",
+                "maxHeight" : 30,
+                "groupBy" : "",
+                "margin-left": "60",
+                "margin-top": "30",
+                "margin-bottom": "0",
+                "margin-right": "20"
+            }
+        ],
+        "dropdown": []
+    }
+}

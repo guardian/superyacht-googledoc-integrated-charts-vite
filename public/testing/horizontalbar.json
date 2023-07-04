@@ -1,0 +1,89 @@
+{
+    "sheets": {
+        "template": [
+            {
+                "title": "National first preference swings by party/affiliation",
+                "subtitle": "Showing just the top parties by percentage of national first preference votes. Parties with policies against vaccine mandates are <b style=\"color:rgb(230, 113, 27)\">orange</b>. Some part of the swings are likely due to parties running a different number of candidates in each election.",
+                "footnote": "",
+                "source": "Sources: Australian Electoral Commission, Guardian Australia. Notes: The Australian Federation Party got 0.39% of the national vote and also has policies against vaccine mandates but was excluded as it did not receive any votes in 2019.",
+                "margin-left": "20",
+                "margin-top": "30",
+                "margin-bottom": "20",
+                "margin-right": "10"
+            }
+        ],
+        "data": [
+            {
+                "PartyNm": "Independent",
+                "TotalSwing": 1.96,
+                "Color": "#7d0068"
+            },
+            {
+                "PartyNm": "Pauline Hanson's One Nation",
+                "TotalSwing": 1.81,
+                "Color": "#e6711b"
+            },
+            {
+                "PartyNm": "The Greens",
+                "TotalSwing": 1.51,
+                "Color": "#7d0068"
+            },
+            {
+                "PartyNm": "Liberal Democratic Party",
+                "TotalSwing": 1.45,
+                "Color": "#e6711b"
+            },
+            {
+                "PartyNm": "United Australia Party",
+                "TotalSwing": 0.65,
+                "Color": "#e6711b"
+            },
+            {
+                "PartyNm": "Jacqui Lambie Network",
+                "TotalSwing": 0.17,
+                "Color": "#7d0068"
+            },
+            {
+                "PartyNm": "Informed Medical Options Party",
+                "TotalSwing": 0.17,
+                "Color": "#e6711b"
+            },
+            {
+                "PartyNm": "The Great Australian Party",
+                "TotalSwing": 0.16,
+                "Color": "#e6711b"
+            },
+            {
+                "PartyNm": "Animal Justice Party",
+                "TotalSwing": -0.23,
+                "Color": "#7d0068"
+            },
+            {
+                "PartyNm": "Labor",
+                "TotalSwing": -0.62,
+                "Color": "#7d0068"
+            },
+            {
+                "PartyNm": "Coalition",
+                "TotalSwing": -5.36,
+                "Color": "#7d0068"
+            }
+        ],
+        "labels": [],
+        "key": [],
+        "lines": [],
+        "periods": [],
+        "chartId": [
+            {
+                "type": "horizontalbar"
+            }
+        ],
+        "options": [
+            {
+                "enableShowMore": "TRUE",
+                "autoSort": "FALSE"
+            }
+        ],
+        "dropdown": []
+    }
+}

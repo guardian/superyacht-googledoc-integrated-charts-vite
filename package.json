@@ -1,0 +1,28 @@
+{
+  "name": "Superyacht",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "rollup --config && vite build --base=https://interactive.guim.co.uk/embed/superyacht/",
+    "preview": "vite preview",
+    "postbuild": "node ./scripts/minify.js && node ./scripts/uploader.js"
+  },
+  "devDependencies": {
+    "@aws-sdk/client-s3": "^3.363.0",
+    "@rollup/plugin-terser": "^0.4.3",
+    "file-type": "^18.5.0",
+    "fs": "^0.0.1-security",
+    "mime-types": "^2.1.35",
+    "module": "^1.0.0",
+    "path": "^0.12.7",
+    "rollup": "^3.25.3",
+    "sass": "^1.63.6",
+    "sass-mq": "^6.0.0",
+    "url": "^0.11.1",
+    "vite": "^4.3.9"
+  },
+  "dependencies": {
+    "d3": "^7.8.5"
+  }
+}

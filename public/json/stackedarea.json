@@ -1,0 +1,50 @@
+{
+    "sheets": {
+        "template": [
+            {
+                "title": "",
+                "subtitle": "",
+                "footnote" : "",
+                "source": "",
+                "tooltip": ""
+            }
+        ],
+        "data": [],
+        "labels": [],
+        "userkey": [],
+        "lines": [],
+        "periods": [],
+        "chartId": [
+            {
+                "type": "stackedarea"
+            }
+        ],
+        "options": [
+            {
+                "enableShowMore": "FALSE",
+                "aria": "FALSE",
+                "colorScheme": "guardian",
+                "dateFormat": "%Y-%m-%d",
+                "yScaleType": "",
+                "xAxisLabel": "",
+                "yAxisLabel": "%",
+                "minY": "",
+                "maxY": "",
+                "x_axis_cross_y": 0,
+                "periodDateFormat": "",
+                "margin-left": "50",
+                "margin-top": "30",
+                "margin-bottom": "20",
+                "margin-right": "10",
+                "parseTime" : "",
+                "timeInterval" : "",
+                "xAxisDateFormat" : "",
+                "baseline" : "",
+                "xColumn" : "",
+                "xFormat" : "",
+                "stackedbars" : ""
+            }
+        ],
+        "dropdown": []
+    }
+}

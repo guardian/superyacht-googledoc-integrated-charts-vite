@@ -1,0 +1,189 @@
+.interactive-wrapper {
+  border-top: 1px solid #dcdcdc;
+  border-bottom: 1px solid #dcdcdc;
+  padding-top: 10px;
+  padding-bottom: 5px;
+
+  .tooltip {
+  position: absolute !important;
+  width: 150px;
+  pointer-events: none;
+  background-color: white;
+  border: 1px;
+  border-color: black;
+  border-style: solid;
+  padding: 10px;
+  font-family: "Guardian Text Sans Web", "Helvetica Neue", Helvetica, Arial,
+    "Lucida Grande", sans-serif;
+  font-size: 12px;
+  line-height: 14px;
+}
+
+
+  .axis path,
+  .axis line {
+    fill: none;
+    stroke: #767676;
+    shape-rendering: crispEdges;
+  }
+
+  .dashed.y line {
+    stroke: #dcdcdc;
+  }
+
+  .chartTitle {
+    font-size: 1.25rem;
+    line-height: 1.35rem;
+    font-weight: 600;
+    -webkit-font-smoothing: antialiased;
+    color: #333333;
+    font-family: "Guardian Headline Full", Georgia, serif;
+    margin-bottom: 10px;
+  }
+
+  a {
+    color: #ab0613;
+    text-decoration: none !important;
+    border-bottom: 0.0625rem solid #dcdcdc;
+    -webkit-transition: border-color 0.15s ease-out;
+    transition: border-color 0.15s ease-out;
+  }
+
+  a:hover {
+    border-color: #ab0613;
+  }
+
+/*  .lineLabels {
+    font-weight: bold;
+    font-size:1.2em;
+  }*/
+
+  .subTitle {
+    font-size: 1rem;
+    line-height: 1.25rem;
+    color: #333333;
+    font-family: "Guardian Egyptian Web", Georgia, serif;
+    margin-bottom:10px;
+  }
+
+  .lineText {
+    fill: #767676;
+  }
+
+
+    .chartSubTitle {
+        font-size: 14px;
+        color: #000;
+        font-family: "Guardian Text Sans Web","Agate Sans",sans-serif;
+        padding-left: 60px;
+        margin-bottom: 10px;
+  }
+
+  .footer {
+    margin-top: 5px;
+    font-size: 0.75rem;
+    line-height: 1rem;
+    color: rgb(118, 118, 118);
+    font-family: "Guardian Text Sans Web", "Helvetica Neue", Helvetica, Arial,
+      "Lucida Grande", sans-serif;
+  }
+
+  .notes {
+    font-family: "Guardian Text Sans Web", Arial;
+    font-size: 1rem;
+    color: #767676;
+    width:calc(100% - 40px);
+    // float:left;
+    z-index:89;
+  }
+
+  .chartSans {
+    font-size: 12px;
+    color: #767676;
+    font-family: "Guardian Text Sans Web", "Agate Sans", sans-serif;
+  }
+
+  .tick text {
+    font-size: 0.8rem;
+    line-height: 1em;
+    font-family: "Guardian Text Sans Web", "Agate Sans", sans-serif;
+  }
+
+  .keyText {
+    font-size: 0.8rem;
+    margin-left: 5px;
+  }
+
+  #chartKey div {
+    margin-right: 10px;
+    margin-bottom: 10px;
+  }
+
+  // #chartKey div:first-child {
+  //   margin-left: 0px;
+  // }
+
+  .keyDiv {
+    display: inline-block;
+  }
+
+  // .keyDiv .keyCircle:first-of-type {
+  //   margin-left: 0;
+  // }
+
+  .keyCircle {
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+  // .keyDash {
+  //   background-color: none;
+  //   display: inline-block;
+  //   border-bottom: 2px solid black;
+  //   width: 20px;
+  //   height: 8px;  
+  // }
+
+  .keyDash {
+    
+    position: absolute;
+
+  }
+
+  .annotationTextMobile {
+    font-weight: bold;
+  }
+
+  #footerAnnotations {
+    color: #000;
+  }
+
+  .periodLabel {
+    fill: #cccccc;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+
+  .barPart:hover {
+    opacity: 0.7;
+  }
+
+  .heading {
+    font-family: "Guardian Text Sans Web", Arial;
+    font-size: 16px;
+    fill: #767676;
+    font-weight: bold;
+  }
+
+  .line {
+    fill: none;
+  }
+
+  @media (max-width: 500px) {
+    .mobHide {
+      display: none;
+    }
+  }
+}

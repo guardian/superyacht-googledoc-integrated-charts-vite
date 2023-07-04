@@ -1,0 +1,49 @@
+{
+    "sheets": {
+        "template": [
+            {
+                "title": "",
+                "subtitle": "",
+                "footnote" : "",
+                "source": "",
+                "tooltip" : ""
+            }
+        ],
+        "data": [],
+        "labels": [],
+        "userkey": [],
+        "lines": [],
+        "periods": [],
+        "chartId": [
+            {
+                "type": "horizontalbar"
+            }
+        ],
+        "options": [
+            {
+                "enableShowMore": "FALSE",
+                "aria": "FALSE",
+                "colorScheme": "guardian",
+                "maxXticks" : 3,
+                "scaleByAllMax" : "FALSE",
+                "autoSort" : "FALSE",
+                "margin-left": "20",
+                "margin-top": "30",
+                "margin-bottom": "20",
+                "margin-right": "10",
+                "suffix" : "",
+                "minX" : "",
+                "yColumn" : "",
+                "xColumn" : "",
+                "xMin" : "",
+                "xMax" : "",
+                "xAxis" : "",
+                "yAxis" : "",
+                "stackedhorizontal" : "",
+                "xAxisDateFormat" : "",
+                "dateFormat": "%Y-%m-%d"
+            }
+        ],
+        "dropdown": []
+    }
+}

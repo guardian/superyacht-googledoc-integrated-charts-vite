@@ -1,0 +1,242 @@
+{
+    "sheets": {
+        "data": [
+            {
+                "source": "Cook Isds",
+                "target": "Other",
+                "value": "752000"
+            },
+            {
+                "source": "Cook Isds",
+                "target": "Other Asia, nes",
+                "value": "0"
+            },
+            {
+                "source": "Cook Isds",
+                "target": "Singapore",
+                "value": "4000"
+            },
+            {
+                "source": "Cook Isds",
+                "target": "Thailand",
+                "value": "1971000"
+            },
+            {
+                "source": "Fiji",
+                "target": "Australia",
+                "value": "53365000"
+            },
+            {
+                "source": "Fiji",
+                "target": "China",
+                "value": "4837000"
+            },
+            {
+                "source": "Fiji",
+                "target": "Japan",
+                "value": "15000"
+            },
+            {
+                "source": "Fiji",
+                "target": "Other",
+                "value": "36462000"
+            },
+            {
+                "source": "Fiji",
+                "target": "Other Asia, nes",
+                "value": "1000"
+            },
+            {
+                "source": "Fiji",
+                "target": "Rep. of Korea",
+                "value": "2955000"
+            },
+            {
+                "source": "Fiji",
+                "target": "Singapore",
+                "value": "6580000"
+            },
+            {
+                "source": "Fiji",
+                "target": "Thailand",
+                "value": "0"
+            },
+            {
+                "source": "Marshall Isds",
+                "target": "Australia",
+                "value": "5000"
+            },
+            {
+                "source": "Marshall Isds",
+                "target": "China",
+                "value": "313000"
+            },
+            {
+                "source": "Marshall Isds",
+                "target": "Japan",
+                "value": "12000"
+            },
+            {
+                "source": "Marshall Isds",
+                "target": "Other",
+                "value": "27532000"
+            },
+            {
+                "source": "Marshall Isds",
+                "target": "Rep. of Korea",
+                "value": "1425000"
+            },
+            {
+                "source": "Marshall Isds",
+                "target": "Singapore",
+                "value": "0"
+            },
+            {
+                "source": "Marshall Isds",
+                "target": "Thailand",
+                "value": "16000"
+            },
+            {
+                "source": "Papua New Guinea",
+                "target": "Australia",
+                "value": "2802205000"
+            },
+            {
+                "source": "Papua New Guinea",
+                "target": "China",
+                "value": "2261264000"
+            },
+            {
+                "source": "Papua New Guinea",
+                "target": "Japan",
+                "value": "2375746000"
+            },
+            {
+                "source": "Papua New Guinea",
+                "target": "Other",
+                "value": "395561000"
+            },
+            {
+                "source": "Papua New Guinea",
+                "target": "Other Asia, nes",
+                "value": "737960000"
+            },
+            {
+                "source": "Papua New Guinea",
+                "target": "Rep. of Korea",
+                "value": "327977000"
+            },
+            {
+                "source": "Papua New Guinea",
+                "target": "Singapore",
+                "value": "153965000"
+            },
+            {
+                "source": "Papua New Guinea",
+                "target": "Thailand",
+                "value": "135703000"
+            },
+            {
+                "source": "Samoa",
+                "target": "Australia",
+                "value": "680000"
+            },
+            {
+                "source": "Samoa",
+                "target": "Other",
+                "value": "458000"
+            },
+            {
+                "source": "Samoa",
+                "target": "Rep. of Korea",
+                "value": "438000"
+            },
+            {
+                "source": "Samoa",
+                "target": "Singapore",
+                "value": "0"
+            },
+            {
+                "source": "Samoa",
+                "target": "Thailand",
+                "value": "23000"
+            },
+            {
+                "source": "Solomon Isds",
+                "target": "Australia",
+                "value": "2360000"
+            },
+            {
+                "source": "Solomon Isds",
+                "target": "China",
+                "value": "51770000"
+            },
+            {
+                "source": "Solomon Isds",
+                "target": "Other",
+                "value": "2962000"
+            },
+            {
+                "source": "Solomon Isds",
+                "target": "Other Asia, nes",
+                "value": "3000"
+            },
+            {
+                "source": "Solomon Isds",
+                "target": "Rep. of Korea",
+                "value": "14000"
+            },
+            {
+                "source": "Solomon Isds",
+                "target": "Singapore",
+                "value": "1000"
+            },
+            {
+                "source": "Solomon Isds",
+                "target": "Thailand",
+                "value": "3000"
+            }
+        ],
+        "template": [
+            {
+                "title": "Exports of oil, metals and minerals from the Pacific",
+                "subtitle": "US dollar value of exports in 2019",
+                "footnote": "Excluding exports less than $1000",
+                "source": "Guardian analysis of CEPI's BACI trade flow database ",
+                "tooltip": "",
+                "margin-left": "2",
+                "margin-top": "25",
+                "margin-bottom": "0",
+                "margin-right": "2",
+                "min_height": "800"
+            }
+        ],
+        "options": [],
+        "userkey": [],
+        "labels": [
+            {
+                "x_pct": "0",
+                "y_pct": "0",
+                "text": "Exporters",
+                "align": "start",
+                "offset_x": "",
+                "offset_y": "",
+                "class": "heading"
+            },
+            {
+                "x_pct": "100",
+                "y_pct": "0",
+                "text": "Importers",
+                "align": "end",
+                "offset_x": "",
+                "offset_y": "",
+                "class": "heading"
+            }
+        ],
+        "chartId": [
+            {
+                "type": "sankey"
+            }
+        ]
+    }
+}

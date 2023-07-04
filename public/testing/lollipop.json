@@ -1,0 +1,83 @@
+{
+    "sheets": {
+        "template": [
+            {
+                "title": "More women are in the workforce",
+                "subtitle": "Showing the female labor force participation rate for ages 15-64 (percentage points)",
+                "source": "Source: Sources: Moody's and the OECD",
+                "tooltip" : ""
+            }
+        ],
+        "data": [{
+            "2005": "68.1",
+            "2023": "76.6",
+            "Country": "Australia"
+        }, {
+            "2005": "73",
+            "2023": "77.4",
+            "Country": "Canada"
+        }, {
+            "2005": "61.7",
+            "2023": "69.9",
+            "Country": "Euro area"
+        }, {
+            "2005": "67.4",
+            "2023": "70.6",
+            "Country": "France"
+        }, {
+            "2005": "66.9",
+            "2023": "75.7",
+            "Country": "Germany"
+        }, {
+            "2005": "50.4",
+            "2023": "56.9",
+            "Country": "Italy"
+        }, {
+            "2005": "60.9",
+            "2023": "54.8",
+            "Country": "Japan"
+        }, {
+            "2005": "54.6",
+            "2023": "62.6",
+            "Country": "Korea"
+        }, {
+            "2005": "69.9",
+            "2023": "80.1",
+            "Country": "UK"
+        }, {
+            "2005": "69.1",
+            "2023": "69.5",
+            "Country": "US"
+        }],
+        "labels": [],
+        "userkey": [{
+            "key": "2005",
+            "colour": "red"
+        },
+        {
+            "key": "2023",
+            "colour": "purple"
+        }],
+        "lines": [],
+        "periods": [],
+        "chartId": [
+            {
+                "type": "lollipop"
+            }
+        ],
+        "options": [
+            {
+                "enableShowMore": "FALSE",
+                "autoSort": "FALSE",
+                "aria":"FALSE",
+                "margin-left": "70",
+                "margin-top": "30",
+                "margin-bottom": "20",
+                "margin-right": "10",
+                "groupBy" : "Country",
+                "xColumn" : ""
+            }
+        ],
+        "dropdown": []
+    }
+}
