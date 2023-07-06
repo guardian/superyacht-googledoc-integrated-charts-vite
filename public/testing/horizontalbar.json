@@ -2,75 +2,76 @@
     "sheets": {
         "template": [
             {
-                "title": "National first preference swings by party/affiliation",
-                "subtitle": "Showing just the top parties by percentage of national first preference votes. Parties with policies against vaccine mandates are <b style=\"color:rgb(230, 113, 27)\">orange</b>. Some part of the swings are likely due to parties running a different number of candidates in each election.",
+                "title": "Independent schools have the greatest share of advantaged students",
+                "subtitle": "Showing the average socio-educational advantage (SEA) quartiles for each school type",
                 "footnote": "",
-                "source": "Sources: Australian Electoral Commission, Guardian Australia. Notes: The Australian Federation Party got 0.39% of the national vote and also has policies against vaccine mandates but was excluded as it did not receive any votes in 2019.",
+                "source": "Guardian analysis of ACARA data",
                 "margin-left": "20",
                 "margin-top": "30",
                 "margin-bottom": "20",
-                "margin-right": "10"
+                "margin-right": "15"
             }
         ],
         "data": [
             {
-                "PartyNm": "Independent",
-                "TotalSwing": 1.96,
-                "Color": "#7d0068"
+                "School Sector": "Independent",
+                "Bottom SEA Quarter (%)": 18.7,
+                "Lower Middle SEA Quarter (%)": 22.2,
+                "Upper Middle SEA Quarter (%)": 26.9,
+                "Top SEA Quarter (%)": 32.2
             },
             {
-                "PartyNm": "Pauline Hanson's One Nation",
-                "TotalSwing": 1.81,
-                "Color": "#e6711b"
+                "School Sector": "All schools",
+                "Bottom SEA Quarter (%)": 25.0,
+                "Lower Middle SEA Quarter (%)": 25.0,
+                "Upper Middle SEA Quarter (%)": 25.0,
+                "Top SEA Quarter (%)": 25.0
             },
             {
-                "PartyNm": "The Greens",
-                "TotalSwing": 1.51,
-                "Color": "#7d0068"
+                "School Sector": "Catholic",
+                "Bottom SEA Quarter (%)": 18.8,
+                "Lower Middle SEA Quarter (%)": 27.2,
+                "Upper Middle SEA Quarter (%)": 29.1,
+                "Top SEA Quarter (%)": 24.9
             },
             {
-                "PartyNm": "Liberal Democratic Party",
-                "TotalSwing": 1.45,
-                "Color": "#e6711b"
-            },
-            {
-                "PartyNm": "United Australia Party",
-                "TotalSwing": 0.65,
-                "Color": "#e6711b"
-            },
-            {
-                "PartyNm": "Jacqui Lambie Network",
-                "TotalSwing": 0.17,
-                "Color": "#7d0068"
-            },
-            {
-                "PartyNm": "Informed Medical Options Party",
-                "TotalSwing": 0.17,
-                "Color": "#e6711b"
-            },
-            {
-                "PartyNm": "The Great Australian Party",
-                "TotalSwing": 0.16,
-                "Color": "#e6711b"
-            },
-            {
-                "PartyNm": "Animal Justice Party",
-                "TotalSwing": -0.23,
-                "Color": "#7d0068"
-            },
-            {
-                "PartyNm": "Labor",
-                "TotalSwing": -0.62,
-                "Color": "#7d0068"
-            },
-            {
-                "PartyNm": "Coalition",
-                "TotalSwing": -5.36,
-                "Color": "#7d0068"
+                "School Sector": "Government",
+                "Bottom SEA Quarter (%)": 37.2,
+                "Lower Middle SEA Quarter (%)": 26.3,
+                "Upper Middle SEA Quarter (%)": 20.5,
+                "Top SEA Quarter (%)": 16.0
             }
         ],
-        "labels": [],
-        "key": [],
+        "labels": [
+            {
+                "id": "label1",
+                "coords": "{\"targetX\":0.6797153024911032,\"targetY\":0.09544642857142857,\"sourceX\":0.5587188612099644,\"sourceY\":0.024017857142857143,\"textX\":0.5504151838671412,\"textY\":-0.033125}",
+                "text": "Highest proportion\nin most advantaged group",
+                "coordType": "pct",
+                "sweepFlag": "1",
+                "radius": "200",
+                "arrow": "",
+                "align": "end"
+            }
+        ],
+        "key": [
+            {
+                "keyName": "Bottom SEA Quarter (%)",
+                "colour": "#bd0026"
+            },
+            {
+                "keyName": "Lower Middle SEA Quarter (%)",
+                "colour": "#f03b20"
+            },
+            {
+                "keyName": "Upper Middle SEA Quarter (%)",
+                "colour": "#fd8d3c"
+            },
+            {
+                "keyName": "Top SEA Quarter (%)",
+                "colour": "#fecc5c"
+            }
+        ],
         "lines": [],
         "periods": [],
         "chartId": [
@@ -80,7 +81,7 @@
         ],
         "options": [
             {
-                "enableShowMore": "TRUE",
+                "enableShowMore": "FALSE",
                 "autoSort": "FALSE"
             }
         ],

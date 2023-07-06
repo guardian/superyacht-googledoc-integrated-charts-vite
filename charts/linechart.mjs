@@ -5,9 +5,10 @@ import Tooltip from "./shared/tooltip"
 import ColorScale from "./shared/colorscale"
 import { addPeriods } from "./shared/periods"
 import { addLines } from "./shared/lines"
-import { addLabels } from "./shared/labels"
+//import { addLabels } from "./shared/labels"
+import  { addLabel, clickLogging } from './shared/arrows'
 import { addDrops } from "./shared/drops"
-import { getLongestKeyLength, numberFormat, mustache, mobileCheck, sorter, relax} from './shared/toolbelt';
+import { getURLParams, getLongestKeyLength, numberFormat, mustache, mobileCheck, sorter, relax} from './shared/toolbelt';
 import Dropdown from "./shared/dropdown";
 
 export default class Linechart {
@@ -420,10 +421,39 @@ export default class Linechart {
     } 
 
     if (labels.length > 0) {
+     
+      const clickLoggingOn = getURLParams("labelling") ? true : false ;
+      console.log("clickLoggingOn", clickLoggingOn);
+
+      // Move this to wrangle later once we re-factor the labelling stuff
+
+      if (typeof labels[0].coords  === 'string') {
+        labels.forEach(function(d) {
+          d.coords = JSON.parse(d.coords)
+          d.sweepFlag = +d.sweepFlag
+          d.largeArcFlag = +d.largeArcFlag
+          d.radius = +d.radius
+        })
+      }
+     
+      console.log("annotations", labels)
+      labels.forEach((config) => {
+        addLabel(svg, config, width + marginleft + marginright - buffer, height + margintop + marginbottom, {"left":marginleft, "right":marginright, "top":margintop, "bottom":marginbottom}, clickLoggingOn)
+      })
+
+    }
+
+
+
+    /*
+
+    if (labels.length > 0) {
 
       addLabels(labels, parseTime, features, isMobile, x, y)
       
     }
+
+    */
 
     if (this.settings.tooltip != "") {
 
