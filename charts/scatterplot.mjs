@@ -57,8 +57,21 @@ export default class Scatterplot {
           yColumn,
           xAxisLabel,
           yAxisLabel,
-          groupBy } = this.settings
+          groupBy,
+          yMin,
+          xMin,
+          xMax,
+          yMax,
+          hideKey,
+          zColumn,
+          zMin,
+          zMax,
+          zScale,
+          zLabel,
+          opacity
+         } = this.settings
 
+          console.log(`Opacity: ${opacity / 100}`)
 
     const $tooltip = (this.tooltip) ? this.tooltip : false
 
@@ -82,6 +95,8 @@ export default class Scatterplot {
 
     const yRange = d3.extent(data.map(d => d[yColumn]))
 
+    const zRange = (zColumn in data[0]) ? d3.extent(data.map(d => d[zColumn])) : null
+    
     const groupData = data.map(d => d[groupBy])
     
     const keyData = Array.from(new Set(groupData));
@@ -102,23 +117,28 @@ export default class Scatterplot {
 
     colors.set(keyColor.keys, keyColor.colors)
 
-    keyData.forEach((key, i) => {
+    if (!hideKey) (
 
-      const keyDiv = chartKey
-      .append("div")
-      .attr("class", "keyDiv")
+      keyData.forEach((key, i) => {
 
-      keyDiv
-      .append("span")
-      .attr("class", "keyCircle")
-      .style("background-color", () => colors.get(key))
+        const keyDiv = chartKey
+        .append("div")
+        .attr("class", "keyDiv")
+  
+        keyDiv
+        .append("span")
+        .attr("class", "keyCircle")
+        .style("background-color", () => colors.get(key))
+        .style("opacity", opacity / 100)
+  
+        keyDiv
+        .append("span")
+        .attr("class", "keyText")
+        .text(key)
+  
+      })
 
-      keyDiv
-      .append("span")
-      .attr("class", "keyText")
-      .text(key)
-
-    })
+    )
 
     const labelsXY = []
 
@@ -130,8 +150,13 @@ export default class Scatterplot {
       }
     })
 
+    yMin = (!isNaN(yMin) && yMin != "") ?  yMin : yRange[0]
+    yMax = (!isNaN(yMax) && yMax != "") ?  yMax : yRange[1]
+    xMin = (!isNaN(xMin) && xMin != "") ?  xMin : xRange[0]
+    xMax = (!isNaN(xMax) && xMax != "") ?  xMax : xRange[1]
+
     const x = d3.scaleLinear()
-    .domain(bufferize(xRange[0],xRange[1]))
+    .domain(bufferize(xMin,xMax))
     .range([ 0, width ]);
 
     svg.append("g")
@@ -139,8 +164,12 @@ export default class Scatterplot {
     .call(d3.axisBottom(x));
 
     const y = d3.scaleLinear()
-    .domain(bufferize(yRange[0],yRange[1]))
+    .domain(bufferize(yMin,yMax))
     .range([ height, 0]);
+
+    const z = (zRange != null) ? d3[zScale]()
+    .domain(zRange)
+    .range([zMin, zMax]) : null
 
     svg.append("g")
     .call(d3.axisLeft(y));
@@ -152,21 +181,12 @@ export default class Scatterplot {
     .append("circle")
     .attr("cx", (d) => x(d[xColumn]))
     .attr("cy", (d) => y(d[yColumn]))
-    .attr("r", 3)
+    .attr("r", (d) => {
+      return (z) ? z(d[zColumn]) : 3
+    })
     .style("fill", (d) => colors.get(d[groupBy]))
+    .style("opacity", opacity / 100)
 
-    /*
-    svg
-    .selectAll(".dot-label")
-    .data(labelsXY)
-    .enter()
-    .append("text")
-    .attr("class", "dot-label")
-    .attr("x", (d) => x(d[xColumn]))
-    .attr("dy", 15)
-    .attr("text-anchor", "middle")
-    .attr("y", (d) => y(d[yColumn]))
-    .text((d) => d["electorate"]) */
 
     if ($tooltip) {
 
@@ -202,6 +222,26 @@ export default class Scatterplot {
 
     }
 
+    // Highlight dots if their label property is set to TRUE
+    if (labelsXY.length > 0) {
+
+      svg
+      .selectAll(".dot-label")
+      .data(labelsXY)
+      .enter()
+      .append("text")
+      .attr("class", "dot-label")
+      .attr("x", (d) => x(d[xColumn]))
+      .attr("dy", (d) => {
+        return (z) ? z(d[zColumn]) + 10 : 15
+      })
+      .attr("text-anchor", "middle")
+      .attr("y", (d) => y(d[yColumn]))
+      .text(function (d) {
+        return zLabel != "" ? d[zLabel] : "" 
+      })
+
+    }
 
     if (trendline.length > 0) {
 

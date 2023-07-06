@@ -91,4 +91,14 @@ export default [{
 			plugins: [terser()]
 		}
 	]
+},{
+	input: 'modules/preview.js',
+	output: [
+		{
+			file: 'preview/preview.js',
+			format: 'es',
+			name: 'verticalbar',
+			plugins: [terser()]
+		}
+	]
 }]

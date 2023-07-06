@@ -49,6 +49,8 @@ export function wrangle(data, chart) {
 
       if (key == 'data') {
 
+        console.log(Object.keys(data[key][0]))
+
         let dataKeys = Object.keys(data[key][0])
 
         settings.keys = dataKeys
@@ -103,15 +105,25 @@ export function wrangle(data, chart) {
 
     // Convert strings to numbers
 
-    if (contains(['marginleft','marginright','margintop','marginbottom', 'numCols', 'height', 'x_axis_cross_y', 'maxHeight', 'baseline'], setting)) {
+    if (contains(['marginleft','marginright','margintop','marginbottom', 'numCols', 'height', 'x_axis_cross_y', 'maxHeight', 'baseline', 'opacity'], setting)) {
 
       settings[setting] = (isNaN(settings[setting])) ? settings[setting] : +settings[setting]
 
     }
 
+    if (contains(['xMin','xMax','yMin','yMax', 'zMin', 'zMax'], setting)) {
+
+      if (settings[setting] != "") {
+
+        settings[setting] = (isNaN(settings[setting])) ? settings[setting] : +settings[setting]
+
+      }      
+
+    }
+
     // Convert booleans
 
-    if (contains(['enableShowMore','aria', 'enableSearch', 'enableSort', 'enableScroll', 'zero_line_x', 'zero_line_y', 'lineLabelling', "autoSort", "scaleByAllMax"], setting)) {
+    if (contains(['enableShowMore','aria', 'enableSearch', 'enableSort', 'enableScroll', 'zero_line_x', 'zero_line_y', 'lineLabelling', "autoSort", "scaleByAllMax", "hideKey"], setting)) {
 
       settings[setting] = (settings[setting].toLowerCase() == 'false') ? false : true
 

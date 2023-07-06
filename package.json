@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "vite",
     "build": "rollup --config && vite build --base=https://interactive.guim.co.uk/embed/superyacht/",
-    "preview": "vite preview",
+    "preview": "rollup --config && node ./scripts/preview.js",
     "postbuild": "node ./scripts/minify.js && node ./scripts/uploader.js"
   },
   "devDependencies": {
@@ -23,6 +23,7 @@
     "vite": "^4.3.9"
   },
   "dependencies": {
-    "d3": "^7.8.5"
+    "d3": "^7.8.5",
+    "live-server": "^1.2.2"
   }
 }

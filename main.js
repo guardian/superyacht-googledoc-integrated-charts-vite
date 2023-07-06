@@ -4,7 +4,7 @@ import { charts } from "./modules/charts"
 import './style.scss'
 
 
-const myChart = "lollipop" // Leave it blank or enter a chart type
+const myChart = "scatterplot" // Leave it blank or enter a chart type
 
 /*
 horizontalbar -
@@ -17,9 +17,9 @@ smallmultiples -
 table
 lollipop
 */
-
-const docsdata = "yacht-charter-data" // "yacht-charter-data" // "docsdata" 
-const keyloc = "oz-datablogs-covid-page-juri-hospitalisation-selector-weekly" // "1gZxRIcLe8HrtTR9-shkhZ1nx-xfdqculU-vH63qzv8M"
+// https://interactive.guim.co.uk/embed/aus/2020/yacht-charter-v26/index.html?key=1m9v3K93lpwU7areAMfsNREcU3IftlYZ6eJ2sr3_CFGM&location=docsdata
+const docsdata = "docsdata" // "yacht-charter-data" // "docsdata" 
+const keyloc = "1m9v3K93lpwU7areAMfsNREcU3IftlYZ6eJ2sr3_CFGM" // "1gZxRIcLe8HrtTR9-shkhZ1nx-xfdqculU-vH63qzv8M"
 
 const key = getURLParams("key") ? getURLParams("key") : keyloc ;
 const location = getURLParams("location") ? getURLParams("location") : docsdata ;
