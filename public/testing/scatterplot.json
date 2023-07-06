@@ -74,26 +74,7 @@
             }
         ],
         "userkey": [],
-        "labels": [
-            {
-                "text": "Swing to Coalition\u2192",
-                "x": "2",
-                "y": "-10",
-                "scaled_x": "TRUE",
-                "scaled_y": "FALSE",
-                "text-anchor": "start",
-                "offset" : 0
-            },
-            {
-                "text": "\u2190Swing to Labor",
-                "x": "-2",
-                "y": "-10",
-                "scaled_x": "TRUE",
-                "scaled_y": "FALSE",
-                "text-anchor": "end",
-                "offset" : 0
-            }
-        ],
+        "labels": [],
         "chartId": [
             {
                 "type": "scatterplot"
