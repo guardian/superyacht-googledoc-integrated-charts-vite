@@ -129,6 +129,14 @@ export function wrangle(data, chart) {
 
     }
 
+    // Check that d3 scales are valid
+
+    if (contains(['zScale'], setting)) {
+
+      settings[setting] = (contains(['scaleLinear','scaleSqrt','scalePow','scaleLog','scaleTime','scaleSequential','scaleQuantize','scaleThreshold','scaleOrdinal','scaleBand'], settings[setting])) ? settings[setting] : 'scaleLinear'
+
+    }
+
   }
 
   /*
