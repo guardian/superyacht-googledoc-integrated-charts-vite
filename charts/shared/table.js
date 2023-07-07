@@ -82,7 +82,23 @@ export async function colourize(headings, userKey, data) {
 
     const formating = userKey.map(item => { 
 
-        return (item.format && item.format.includes(",")) ? item.format.split(",") : [] ;
+		if (item.format) {
+
+			if (item.format.includes(",")) {
+
+				return item.format.split(",")
+
+			} else {
+
+				return [ item.format.trim() ]
+
+			}
+
+		} else {
+
+			return []
+
+		}
         
     })
 
@@ -144,10 +160,17 @@ function setContrast(colour) {
 
 			let rgb = (colour.includes("#")) ? hexToRgb(colour.trim()) : colour
 
+			if (colour.includes('rgb(')) {
+
+				let shade = getRGB(colour)
+
+				rgb = { r: shade[0], g: shade[1], b: shade[1] }
+
+			}
+
 	        return (rgb.r * 0.299 + rgb.g * 0.587 + rgb.b * 0.114) > 186
 	            ? '#000000'
 	            : '#FFFFFF';
-
 
 	    }
 

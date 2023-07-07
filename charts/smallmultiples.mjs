@@ -110,7 +110,10 @@ export default class Smallmultiples {
           aria, 
           smallmultiples,
           colorScheme, 
-          dropdown } = this.settings
+          dropdown,
+          xScale,
+          yScale,
+          xFormat } = this.settings
 
     const $tooltip = (this.tooltip) ? this.tooltip : false
 
@@ -142,7 +145,7 @@ export default class Smallmultiples {
     )
 
     datum.forEach(function(d) {
-      if (typeof d[xColumn] == "string") {
+      if (xFormat.date) {
         d[xColumn] = parseTime(d[xColumn])
       }
 
@@ -177,7 +180,7 @@ export default class Smallmultiples {
     }
     */
  
-    colors = new ColorScale({ domain: smallmultiples })
+    colors = new ColorScale()
 
     let showGroupMax = (scaleBy == "group") ? true : false ;
 
@@ -291,10 +294,11 @@ export default class Smallmultiples {
       const features = svg.append("g")
       .attr("transform", "translate(" + marginleft + "," + margintop + ")")
 
-      var x = d3.scaleBand()
+      var x = d3[xScale]()
       .range([0, width])
-      .padding(0)
+      //.padding(0)
 
+      /*
       if (parseTime) {
         if (!isBar) {
           x = d3.scaleTime()
@@ -306,36 +310,50 @@ export default class Smallmultiples {
           .range([0, width])
         }
       }
+      */
 
-      const y = d3.scaleLinear()
-      .range([height, 0])
+      const y = d3[yScale]()
+      .range([height,0])
 
       const duration = 1000
 
-      let yMax = showGroupMax ? data : data.filter((item) => item[groupBy] === key)
+      let yMax = showGroupMax ? datum : datum.filter((item) => item[groupBy] === key)
 
-      x.domain(d3.extent(data, (d) => d[xColumn]))
+      if (xScale == 'scaleBand') {
+
+        x.domain(datum.map(d => d[xColumn]))
+
+      } else {
+
+        x.domain(d3.extend(datum.map(d => d[xColumn])))
+
+      }
+
 
       const tickMod = Math.round(x.domain().length / 3)
 
       let ticks = x.domain().filter((d, i) => !(i % tickMod) || i === x.domain().length - 1)
 
       var xAxis = d3.axisBottom(x)
-      .ticks(3)
+      .ticks(ticks)
 
      if (isBar) {
 
       if (x.domain().length > 9 && numCols > 2) {
 
-        ticks = [ x.domain()[3] , x.domain()[x.domain().length - 4]]
- 
+       ticks = [ x.domain()[3] , x.domain()[x.domain().length - 4]]
+
       }
 
-      xAxis.tickValues(ticks).tickFormat(d3.timeFormat("%b %Y"))
+      if (xFormat.date) {
+
+        xAxis.tickValues(ticks).tickFormat(d3.timeFormat("%b %Y"))
+
+      }
 
      } 
 
-     if (numCols > 3 && !isBar) {
+     if (numCols > 3 && !isBar && xFormat.date) {
     
       var blahTicks = [x.domain()[0],
                       new Date((x.domain()[0].getTime() + x.domain()[1].getTime())/2),
@@ -363,7 +381,7 @@ export default class Smallmultiples {
       .attr("class", "y")
 
       const update = () => {
-        yMax = showGroupMax ? data : data.filter((item) => item[groupBy] === key)
+        yMax = showGroupMax ? datum : datum.filter((item) => item[groupBy] === key)
 
         var allValues = []
         dataKeys.forEach(key => {
@@ -372,7 +390,7 @@ export default class Smallmultiples {
 
         if (chartType === "bar" && scaleBy == "group") {
 
-          y.domain([Math.floor(d3.min(datum.map(d => d.Total))), d3.max(datum.map(d => d.Total))])
+          y.domain([Math.floor(0), d3.max(datum.map(d => d.Total))]) // d3.min(datum.map(d => d.Total))
 
         } else {
 
@@ -459,7 +477,7 @@ export default class Smallmultiples {
       .attr("data-group", (d) => d.group)
       .attr("data-count", (d) => d.data[d.key])
       .attr("height", (d) => y(d[0]) - y(d[1]))
-      .attr("width", (d) =>  x.bandwidth())
+      .attr("width", (d) =>  x.bandwidth() - 2)
 
       bars
         .exit()

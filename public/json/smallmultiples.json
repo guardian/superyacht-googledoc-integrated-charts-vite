@@ -43,8 +43,9 @@
                 "xAxisDateFormat": "",
                 "groupBy" : "",
                 "xColumn" : "",
-                "xFormat" : ""
-
+                "xFormat" : "",
+                "xScale" : "scaleLinear",
+                "yScale" : "scaleLinear"
             }
         ],
         "dropdown": []
