@@ -477,7 +477,10 @@ export default class Smallmultiples {
       .attr("data-group", (d) => d.group)
       .attr("data-count", (d) => d.data[d.key])
       .attr("height", (d) => y(d[0]) - y(d[1]))
-      .attr("width", (d) =>  x.bandwidth() - 2)
+      .attr("width", (d) =>  {
+        return (x.bandwidth() > 4) ? x.bandwidth() - 2 :
+        (x.bandwidth() > 2) ? x.bandwidth() - 1 : 0
+      })
 
       bars
         .exit()
