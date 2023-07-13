@@ -102,4 +102,19 @@ export const charts = [{
 			"default" : 0
 		}]
 	}
+},{
+	"type": "bubble",
+	"names" : ["bubble"],
+	"config" : {
+		"axis" : [{
+			"name" : "xColumn",
+			"default" : 0
+		},{
+			"name" : "yColumn",
+			"default" : 1
+		},{
+			"name" : "zColumn",
+			"default" : 2
+		}]
+	}
 }]

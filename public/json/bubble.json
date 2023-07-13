@@ -1,0 +1,53 @@
+{
+    "sheets": {
+        "data": [],
+        "template": [
+            {
+                "title": "",
+                "subtitle": "",
+                "footnote" : "",
+                "source": "",
+                "tooltip": ""
+            }
+        ],
+        "trendline": [],
+        "options": [{
+            "enableShowMore": "FALSE",
+            "aria": "FALSE",
+            "colorScheme": "guardian",
+            "margin-left": "30",
+            "margin-top": "5",
+            "margin-bottom": "20",
+            "margin-right": "20",
+            "xAxisDateFormat" : "",
+            "yAxisLabel" : "",
+            "xAxisLabel" : "",
+            "yMin": "",
+            "xMin": "",
+            "xMax": "",
+            "yMax": "",
+            "hideKey": "FALSE",
+            "xColumn" : "",
+            "yColumn" : "",
+            "zColumn" : "",
+            "zMin" : "5",
+            "zMax" : "10",
+            "xScale" : "scaleTime",
+            "yScale" : "scaleBand",
+            "zScale" : "scaleSqrt",
+            "zLabel" : "",
+            "xFormat" : "",
+            "opacity" : "80",
+            "parseTime" : "",
+            "dateFormat": "%Y-%m-%d"
+        }],
+        "labels": [],
+        "userkey": [],
+        "chartId": [
+            {
+                "type": "bubble"
+            }
+        ],
+        "dropdown": []
+    }
+}

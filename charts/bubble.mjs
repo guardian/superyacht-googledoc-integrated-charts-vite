@@ -55,24 +55,26 @@ export default class Scatterplot {
           dropdown,
           xColumn,
           yColumn,
+          zColumn,
           xAxisLabel,
           yAxisLabel,
-          groupBy,
           yMin,
           xMin,
           xMax,
           yMax,
           hideKey,
-          zColumn,
           zMin,
           zMax,
+          xScale,
+          yScale,
           zScale,
           zLabel,
+          xFormat,
           opacity,
-          xFormat
-         } = this.settings
+          parseTime
+      } = this.settings
 
-          console.log(`Opacity: ${opacity / 100}`)
+    datum = JSON.parse(JSON.stringify(data));
 
     const $tooltip = (this.tooltip) ? this.tooltip : false
 
@@ -88,23 +90,23 @@ export default class Scatterplot {
 
     height = isMobile ? width * 0.7 : width * 0.5;
 
-    width = width - marginleft - marginright
+    datum.forEach(function(d) {
+      if (xFormat.date) {
+        d[xColumn] = parseTime(d[xColumn])
+      }
+    })
 
-    height = height - margintop - marginbottom
+    const xRange = d3.extent(datum.map(d => d[xColumn]))
 
-    const xRange = d3.extent(data.map(d => d[xColumn]))
+    const yRange = d3.extent(datum.map(d => d[yColumn]))
 
-    const yRange = d3.extent(data.map(d => d[yColumn]))
-
-    const zRange = (zColumn in data[0]) ? d3.extent(data.map(d => d[zColumn])) : null
+    const zRange = (zColumn in datum[0]) ? d3.extent(datum.map(d => d[zColumn])) : null
     
-    const groupData = data.map(d => d[groupBy])
-    
-    const keyData = Array.from(new Set(groupData));
+    const keyData = Array.from(new Set(datum.map(d => d[yColumn])));
 
     const svg = d3.select("#graphicContainer").append("svg")
-    .attr("width", width + marginleft + marginright)
-    .attr("height", height + margintop + marginbottom)
+    .attr("width", width)
+    .attr("height", height)
     .append("g")
     .attr("transform", `translate(${marginleft}, ${margintop})`);      
 
@@ -143,7 +145,7 @@ export default class Scatterplot {
 
     const labelsXY = []
 
-    data.forEach((d) => {
+    datum.forEach((d) => {
       if ("label" in d) {
         if (d.label === "TRUE") {
           labelsXY.push(d)
@@ -151,43 +153,76 @@ export default class Scatterplot {
       }
     })
 
-    yMin = (!isNaN(yMin) && yMin != "") ?  yMin : yRange[0]
-    yMax = (!isNaN(yMax) && yMax != "") ?  yMax : yRange[1]
-    xMin = (!isNaN(xMin) && xMin != "") ?  xMin : xRange[0]
-    xMax = (!isNaN(xMax) && xMax != "") ?  xMax : xRange[1]
+    //yMin = (!isNaN(yMin) && yMin != "") ?  yMin : yRange[0]
+    //yMax = (!isNaN(yMax) && yMax != "") ?  yMax : yRange[1]
+    //xMin = (!isNaN(xMin) && xMin != "") ?  xMin : xRange[0]
+    //xMax = (!isNaN(xMax) && xMax != "") ?  xMax : xRange[1]
 
-    const x = d3.scaleLinear()
-    .domain(bufferize(xMin,xMax))
-    .range([ 0, width ]);
+    const x = d3[xScale]()
+    .range([ zMax, width - marginright - marginleft - zMax ]) // .domain(bufferize(xMin,xMax))
+    .domain(d3.extent(datum.map(d => d[xColumn])))
 
-    svg.append("g")
-    .attr("transform", "translate(0," + height + ")")
-    .call(d3.axisBottom(x));
+    const xLabel = d3[xScale]()
+    .range([ zMax, width - marginright - marginleft - zMax ]) // .domain(bufferize(xMin,xMax))
+    .domain(datum.map(d => d[xColumn]))
 
-    const y = d3.scaleLinear()
-    .domain(bufferize(yMin,yMax))
-    .range([ height, 0]);
+    const tickMod = Math.round(datum.map(d => d[xColumn]).length / 6)
+
+    let ticks = xLabel.domain().filter((d, i) => !(i % tickMod) || i === xLabel.domain().length - 1)
+
+    var xAxis = d3.axisTop(x)
+    .ticks(ticks)
+    .tickSize(-(  height - margintop - marginbottom), 0, 0)
+
+    if (xFormat.date) {
+
+      xAxis.tickValues(ticks).tickFormat(d3.timeFormat("%b %Y"))
+
+    }
+
+    svg
+    .append("g")
+    .attr("class", "x")
+    .attr("transform", "translate(0," + 0 + ")")
+    .call(xAxis)
+    .style("stroke-dasharray", "2 2")
+
+    const y = d3[yScale]()
+    .range([ height - margintop - marginbottom, margintop])
+    .domain(datum.map(d => d[yColumn]))
 
     const z = (zRange != null) ? d3[zScale]()
     .domain(zRange)
     .range([zMin, zMax]) : null
 
-    svg.append("g")
-    .call(d3.axisLeft(y));
-
     svg.append('g')
     .selectAll("dot")
-    .data(data)
+    .data(datum)
     .enter()
     .append("circle")
     .attr("cx", (d) => x(d[xColumn]))
-    .attr("cy", (d) => y(d[yColumn]))
+    .attr("cy", (d) => y(d[yColumn]) + (y.bandwidth() / 2))
     .attr("r", (d) => {
       return (z) ? z(d[zColumn]) : 3
     })
-    .style("fill", (d) => colors.get(d[groupBy]))
+    .style("fill", (d) => colors.get(d[yColumn]))
     .style("opacity", opacity / 100)
 
+    svg.append("g")
+    .attr("class","axis y")
+    .call(d3.axisLeft(y))
+
+    svg.selectAll(".domain").remove()
+
+    svg.selectAll("rect")
+        .data(d => y.domain())
+        .enter()
+        .append("rect")
+        .attr("x", 0)
+        .attr("y", d => y(d) + (y.bandwidth() / 4))
+        .attr("height", y.bandwidth() / 2)
+        .attr("width", 1)
+        .attr("fill", "#767676")
 
     if ($tooltip) {
 
@@ -203,8 +238,8 @@ export default class Scatterplot {
 
       svg
       .append("text")
-      .attr("x", width)
-      .attr("y", height - 6)
+      .attr("x", width - marginright - marginleft)
+      .attr("y", height - margintop - marginbottom)
       .attr("fill", "#767676")
       .attr("text-anchor", "end")
       .text(xAxisLabel)  
@@ -241,42 +276,6 @@ export default class Scatterplot {
       .text(function (d) {
         return zLabel != "" ? d[zLabel] : "" 
       })
-
-    }
-
-    if (trendline.length > 0) {
-
-      let default_filter = "default"
-
-      let trend = trendline.filter((value) => value.trendline == default_filter)
-      
-      if (trend.length == 0) {
-        trend = trendline.filter((value) => value.trendline == "default")
-      }
-
-      const x1 = parseFloat(trendline[0].min_x)
-      const y1 = parseFloat(trendline[0].min_y)
-      const x2 = parseFloat(trendline[0].max_x)
-      const y2 = parseFloat(trendline[0].max_y)
-
-      const trendData = [[x1, y1, x2, y2]]
-
-      const tline = svg.
-      selectAll(".trendline")
-      .data(trendData)
-
-      tline
-      .enter()
-      .append("line")
-      .attr("class", "trendline")
-      .attr("x1", (d) => x(d[0]))
-      .attr("y1", (d) => y(d[1]))
-      .attr("x2", (d) => x(d[2]))
-      .attr("y2", (d) => y(d[3]))
-      .attr("stroke", "black")
-      .attr("stroke-width", 1)
-      .style("opacity", 1)
-      .style("stroke-dasharray", "3, 3")
 
     }
 

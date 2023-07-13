@@ -4,7 +4,7 @@ import { charts } from "./modules/charts"
 import './style.scss'
 
 
-const myChart = "" // Leave it blank or enter a chart type
+const myChart = "bubble" // Leave it blank or enter a chart type
 
 /*
 horizontalbar -
@@ -16,6 +16,7 @@ scatterplot
 smallmultiples -
 table
 lollipop
+bubble
 */
 // https://interactive.guim.co.uk/docsdata/1lwRASZGsEDlFGFlVvwsDpLNW4Gy1B7JSfzBwt4C-slc.json
 const docsdata = "yacht-charter-data" // "yacht-charter-data" // "docsdata" 

@@ -51,7 +51,7 @@
             "yAxisLabel" : "% worked from home",
             "xAxisLabel" : "Income",
             "margin-left": "60",
-            "margin-top": "0",
+            "margin-top": "20",
             "margin-bottom": "20",
             "margin-right": "20",
             "xColumn" : "median_household_income",
@@ -62,7 +62,8 @@
             "zMax" : "10",
             "zScale" : "scaleLinear",
             "zLabel" : "Name",
-            "opacity" : "80"
+            "opacity" : "80",
+            "xFormat" : "",
         }],
         "template": [
             {
