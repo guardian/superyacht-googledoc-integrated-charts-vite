@@ -92,6 +92,16 @@ export default [{
 		}
 	]
 },{
+	input: 'charts/bubble.mjs',
+	output: [
+		{
+			file: 'public/charts/bubble.js',
+			format: 'es',
+			name: 'bubble',
+			plugins: [terser()]
+		}
+	]
+},{
 	input: 'modules/preview.js',
 	output: [
 		{
