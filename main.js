@@ -4,7 +4,7 @@ import { charts } from "./modules/charts"
 import './style.scss'
 
 
-const myChart = "bubble" // Leave it blank or enter a chart type
+const myChart = "" // Leave it blank or enter a chart type
 
 /*
 horizontalbar -
@@ -20,7 +20,7 @@ bubble
 */
 // https://interactive.guim.co.uk/docsdata/1lwRASZGsEDlFGFlVvwsDpLNW4Gy1B7JSfzBwt4C-slc.json
 const docsdata = "yacht-charter-data" // "yacht-charter-data" // "docsdata" 
-const keyloc = "oz-weekly-live-corona-page-second-boosters-fourth-doses-tracker" // "1gZxRIcLe8HrtTR9-shkhZ1nx-xfdqculU-vH63qzv8M"
+const keyloc = "oz-2023-school-state-federal-funding-change-grouped-bar"
 
 const key = getURLParams("key") ? getURLParams("key") : keyloc ;
 const location = getURLParams("location") ? getURLParams("location") : docsdata ;

@@ -2,74 +2,67 @@
     "sheets": {
         "template": [
             {
-                "title": "Independent schools have the greatest share of advantaged students",
-                "subtitle": "Showing the average socio-educational advantage (SEA) quartiles for each school type",
+                "title": "NT and WA government funding to public schools has dropped since 2012",
+                "subtitle": "The % increase or decrease in funding in real terms between 2012 and 2021, by source of funding",
                 "footnote": "",
-                "source": "Guardian analysis of ACARA data",
-                "margin-left": "20",
+                "source": "ACARA, Parliamentary Library",
+                "margin-left": "80",
                 "margin-top": "30",
                 "margin-bottom": "20",
-                "margin-right": "15"
+                "margin-right": "10"
             }
         ],
         "data": [
             {
-                "School Sector": "Independent",
-                "Bottom SEA Quarter (%)": 18.7,
-                "Lower Middle SEA Quarter (%)": 22.2,
-                "Upper Middle SEA Quarter (%)": 26.9,
-                "Top SEA Quarter (%)": 32.2
+                "State": "Australian Capital Territory",
+                "Federal": 45.13,
+                "State/territory": 1.45
             },
             {
-                "School Sector": "All schools",
-                "Bottom SEA Quarter (%)": 25.0,
-                "Lower Middle SEA Quarter (%)": 25.0,
-                "Upper Middle SEA Quarter (%)": 25.0,
-                "Top SEA Quarter (%)": 25.0
+                "State": "New South Wales",
+                "Federal": 40.82,
+                "State/territory": 16.64
             },
             {
-                "School Sector": "Catholic",
-                "Bottom SEA Quarter (%)": 18.8,
-                "Lower Middle SEA Quarter (%)": 27.2,
-                "Upper Middle SEA Quarter (%)": 29.1,
-                "Top SEA Quarter (%)": 24.9
+                "State": "Northern Territory",
+                "Federal": 62.02,
+                "State/territory": -7.75
             },
             {
-                "School Sector": "Government",
-                "Bottom SEA Quarter (%)": 37.2,
-                "Lower Middle SEA Quarter (%)": 26.3,
-                "Upper Middle SEA Quarter (%)": 20.5,
-                "Top SEA Quarter (%)": 16.0
+                "State": "Queensland",
+                "Federal": 83.71,
+                "State/territory": 1.06
+            },
+            {
+                "State": "South Australia",
+                "Federal": 76.76,
+                "State/territory": 10.7
+            },
+            {
+                "State": "Tasmania",
+                "Federal": 38.49,
+                "State/territory": 12.93
+            },
+            {
+                "State": "Victoria",
+                "Federal": 41.86,
+                "State/territory": 22.16
+            },
+            {
+                "State": "Western Australia",
+                "Federal": 57.85,
+                "State/territory": -5.6
             }
         ],
-        "labels": [
-            {
-                "id": "label1",
-                "coords": "{\"targetX\":0.6797153024911032,\"targetY\":0.09544642857142857,\"sourceX\":0.5587188612099644,\"sourceY\":0.024017857142857143,\"textX\":0.5504151838671412,\"textY\":-0.033125}",
-                "text": "Highest proportion\nin most advantaged group",
-                "coordType": "pct",
-                "sweepFlag": "1",
-                "radius": "200",
-                "arrow": "",
-                "align": "end"
-            }
-        ],
+        "labels": [],
         "key": [
             {
-                "keyName": "Bottom SEA Quarter (%)",
-                "colour": "#bd0026"
+                "key": "Federal",
+                "colour": "#cc0a11"
             },
             {
-                "keyName": "Lower Middle SEA Quarter (%)",
-                "colour": "#f03b20"
-            },
-            {
-                "keyName": "Upper Middle SEA Quarter (%)",
-                "colour": "#fd8d3c"
-            },
-            {
-                "keyName": "Top SEA Quarter (%)",
-                "colour": "#fecc5c"
+                "key": "State/territory",
+                "colour": "#00456e"
             }
         ],
         "lines": [],
@@ -82,7 +75,8 @@
         "options": [
             {
                 "enableShowMore": "FALSE",
-                "autoSort": "FALSE"
+                "autoSort": "FALSE",
+                "xMin" : "-10"
             }
         ],
         "dropdown": []

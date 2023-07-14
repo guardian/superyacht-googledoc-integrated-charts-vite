@@ -167,6 +167,8 @@ export default class Horizontalbar {
         d[key] = (d[key] == null) ? null : +d[key]
       })
       d.Total = d3.sum(stackedhorizontal, (k) => +d[k])
+      d.negative = (d3.min(stackedhorizontal, (k) => +d[k]) > 0) ? false : true
+      d.extent = d3.min(stackedhorizontal, (k) => +d[k])
     })
 
     if (autoSort) {
@@ -226,17 +228,21 @@ export default class Horizontalbar {
 
     y.domain(datum.map((d) => d[yColumn]))
 
-    const minMax = getMinMax(datum.map(d => d.Total)) // (scaleByAllMax) ? getMinMax(allValues) : getMinMax(datum.map(d => d[1]))
+    const minMax = getMinMax([...datum.map(d => d.Total), ...datum.map(d => d.extent)]) // (scaleByAllMax) ? getMinMax(allValues) : getMinMax(datum.map(d => d[1]))
 
-    xMax = minMax.max
+    xMax = (xMax == "") ? minMax.max : xMax
 
-    xMin = minMax.min
+    xMin = (xMin == "") ? minMax.min : xMin
 
     if (minX != null) {
       if (minX != "") {
         xMin = parseInt(minX)
       }
     }
+
+
+
+
 
     x.domain([xMin, xMax]).nice()
 
@@ -327,14 +333,10 @@ export default class Horizontalbar {
     .append("text")
     .attr("class", "barText")
     .attr("x", (d) => {
-      return (minMax.status) ? x(0) : 0
+      return (!d.negative) ? x(0) + 5 : x(0) - 5
     })
     .attr("text-anchor",(d) => {
-      let pos = "start"
-      if (minMax.status) {
-        pos = (d.Total > 0) ? "start" : "end"
-      }
-      return pos
+      return (!d.negative) ? "start" : "end"
     })
     .attr("y", (d) => y(d[yColumn]) - 5)
     .text((d) => d[yColumn])
@@ -399,6 +401,8 @@ export default class Horizontalbar {
       .text((d) => numberFormat(d.Total) + suffix)
 
     } else {
+
+      console.log("Sup bro")
 
       layer
       .selectAll(".barNumber")
@@ -466,14 +470,14 @@ export default class Horizontalbar {
       .attr("y", (d) => y(d.data[yColumn]) + (y.bandwidth() / 2 + 5))
       .attr("text-anchor",(d) => {
 
-        let pos = "end"
+        let pos = "start"
 
         let label = numberFormat(d.data[d.group]) + suffix
 
         if (stackedhorizontal.length == 1) {
 
           if (x(d[1]) - x(d[0]) > (label.length * 12 + 10)) {
-            pos = "end"
+            pos = "start"
           } else {
             pos = "start"
           }
@@ -485,10 +489,10 @@ export default class Horizontalbar {
 
         if (stackedhorizontal.length > 1) {
           let label = numberFormat(d.data[d.group]) + suffix
-          if (x(d[1]) - x(d[0]) > (label.length * 12 + 20)) {
+          if (x(d[1]) - x(d[0]) > (label.length * 9 + 10)) {
             return numberFormat(d.data[d.group]) + suffix
           } else {
-            return ""
+            return " " //numberFormat(d.data[d.group]) + suffix
           }
         } else {
 
@@ -498,6 +502,20 @@ export default class Horizontalbar {
       })
 
     }
+
+
+    if (minMax.status) {
+
+    features.append('line')
+        .style("stroke", "#767676")
+        .style("stroke-width", 1)
+        .attr("x1", x(0))
+        .attr("y1", 0)
+        .attr("x2", x(0))
+        .attr("y2", height); 
+
+    }
+
 
     if (this.settings.tooltip != "") {
 

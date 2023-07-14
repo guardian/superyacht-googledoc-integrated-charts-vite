@@ -37,9 +37,11 @@
             "zScale" : "scaleSqrt",
             "zLabel" : "",
             "xFormat" : "",
+            "groupBy" : "",
             "opacity" : "80",
             "parseTime" : "",
-            "dateFormat": "%Y-%m-%d"
+            "dateFormat": "",
+            "defaultRadius" : 7
         }],
         "labels": [],
         "userkey": [],

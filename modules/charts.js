@@ -112,9 +112,6 @@ export const charts = [{
 		},{
 			"name" : "yColumn",
 			"default" : 1
-		},{
-			"name" : "zColumn",
-			"default" : 2
 		}]
 	}
 }]
