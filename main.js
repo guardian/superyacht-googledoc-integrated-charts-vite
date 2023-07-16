@@ -4,7 +4,7 @@ import { charts } from "./modules/charts"
 import './style.scss'
 
 
-const myChart = "" // Leave it blank or enter a chart type
+const myChart = "bubble" // Leave it blank or enter a chart type
 
 /*
 horizontalbar -

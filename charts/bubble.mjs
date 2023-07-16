@@ -2,8 +2,11 @@
 import dataTools from "./shared/dataTools"
 import Tooltip from "./shared/tooltip"
 import ColorScale from "./shared/colorscale"
-import { numberFormat, mustache, mobileCheck, bufferize, validateString } from './shared/toolbelt';
+import { numberFormat, mustache, mobileCheck, bufferize, validateString, dodge } from './shared/toolbelt';
 import { addLabels } from "./shared/labels"
+
+// https://svelte.dev/repl/e4cd6985a78a4d169fe5c54977a4336c?version=4.0.5
+// // https://www.chartfleau.com/tutorials/d3swarm
 
 export default class Scatterplot {
 
@@ -73,7 +76,8 @@ export default class Scatterplot {
           opacity,
           parseTime,
           groupBy, 
-          defaultRadius
+          defaultRadius,
+          beeswarm
       } = this.settings
 
 
@@ -192,97 +196,6 @@ export default class Scatterplot {
 
     }
 
-    function dodge(X, radius) {
-      const Y = new Float64Array(X.length);
-      const radius2 = radius ** 2;
-      const epsilon = 1e-3;
-      let head = null, tail = null;
-
-      // Returns true if circle ⟨x,y⟩ intersects with any circle in the queue.
-      function intersects(x, y) {
-        let a = head;
-        while (a) {
-          const ai = a.index;
-          if (radius2 - epsilon > (X[ai] - x) ** 2 + (Y[ai] - y) ** 2) return true;
-          a = a.next;
-        }
-        return false;
-      }
-
-      // Place each circle sequentially.
-      for (const bi of d3.range(X.length).sort((i, j) => X[i] - X[j])) {
-
-        // Remove circles from the queue that can’t intersect the new circle b.
-        while (head && X[head.index] < X[bi] - radius2) head = head.next;
-
-        // Choose the minimum non-intersecting tangent.
-        if (intersects(X[bi], Y[bi] = 0)) {
-          let a = head;
-          Y[bi] = Infinity;
-          do {
-            const ai = a.index;
-            let y = Y[ai] + Math.sqrt(radius2 - (X[ai] - X[bi]) ** 2);
-            if (y < Y[bi] && !intersects(X[bi], y)) Y[bi] = y;
-            a = a.next;
-          } while (a);
-        }
-
-        // Add b to the queue.
-        const b = {index: bi, next: null};
-        if (head === null) head = tail = b;
-        else tail = tail.next = b;
-      }
-
-      return Y;
-    }
-
-const dodgie = (data, radius) => {
-  const radius2 = radius ** 2;
-  const circles = data
-  const epsilon = 1e-3;
-  let head = null, tail = null;
-
-  // Returns true if circle ⟨x,y⟩ intersects with any circle in the queue.
-  function intersects(x, y) {
-    let a = head;
-    while (a) {
-      if (radius2 - epsilon > (a.x - x) ** 2 + (a.y - y) ** 2) {
-        return true;
-      }
-      a = a.next;
-    }
-    return false;
-  }
-
-  // Place each circle sequentially.
-  for (const b of circles) {
-
-    // Remove circles from the queue that can’t intersect the new circle b.
-    while (head && head.x < b.x - radius2) head = head.next;
-
-    // Choose the minimum non-intersecting tangent.
-    if (intersects(b.x, b.y = 0)) {
-      let a = head;
-      b.y = Infinity;
-      do {
-        let y1 = a.y + Math.sqrt(radius2 - (a.x - b.x) ** 2);
-        let y2 = a.y - Math.sqrt(radius2 - (a.x - b.x) ** 2);
-        if (Math.abs(y1) < Math.abs(b.y) && !intersects(b.x, y1)) b.y = y1;
-        if (Math.abs(y2) < Math.abs(b.y) && !intersects(b.x, y2)) b.y = y2;
-        a = a.next;
-      } while (a);
-    }
-
-    // Add b to the queue.
-    b.next = null;
-    if (head === null) head = tail = b;
-    else tail = tail.next = b;
-  }
-
-  return circles;
-}
-
-
     svg
     .append("g")
     .attr("class", "x")
@@ -303,16 +216,19 @@ const dodgie = (data, radius) => {
       d.y = y(d[yColumn])
     })
 
-    // https://www.chartfleau.com/tutorials/d3swarm
-    const cats = Array.from(new Set(datum.map(d => d[yColumn])));
+    if (beeswarm) {
+    
+      const cats = Array.from(new Set(datum.map(d => d[yColumn])));
 
-    for (const cat of cats) {
-      let targs = datum.filter(d => d[yColumn] == cat)
-      let originY = targs[0].y
-      targs = dodgie(targs, defaultRadius / 2)
-      for (var i = 0; i < targs.length; i++) {
-        targs[i].y = targs[i].y + (originY)
+      for (const cat of cats) {
+        let targs = datum.filter(d => d[yColumn] == cat)
+        let originY = targs[0].y
+        targs = dodge(targs, defaultRadius)
+        for (var i = 0; i < targs.length; i++) {
+          targs[i].y = targs[i].y + (originY)
+        }
       }
+
     }
 
     svg.append('g')

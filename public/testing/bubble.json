@@ -1589,7 +1589,8 @@
             "zScale" : "scaleSqrt",
             "zLabel" : "",
             "dateFormat": "",
-            "opacity" : "40"
+            "opacity" : "40",
+            "beeswarm" : "TRUE"
         }],
         "template": [
             {
