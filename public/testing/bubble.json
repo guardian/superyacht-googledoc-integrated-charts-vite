@@ -1576,9 +1576,9 @@
         "options" : [{
             "yAxisLabel" : "",
             "xAxisLabel" : "Price in Australian dollars ($)",
-            "margin-left": "180",
+            "margin-left": "120",
             "margin-top": "20",
-            "margin-bottom": "60",
+            "margin-bottom": "10",
             "margin-right": "20",
             "xColumn" : "Price",
             "yColumn" : "Name",

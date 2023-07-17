@@ -2,7 +2,7 @@
 import dataTools from "./shared/dataTools"
 import Tooltip from "./shared/tooltip"
 import ColorScale from "./shared/colorscale"
-import { numberFormat, mustache, mobileCheck, bufferize, validateString, dodge } from './shared/toolbelt';
+import { numberFormat, mustache, mobileCheck, bufferize, validateString, dodge, wrap } from './shared/toolbelt';
 import { addLabels } from "./shared/labels"
 
 // https://svelte.dev/repl/e4cd6985a78a4d169fe5c54977a4336c?version=4.0.5
@@ -101,7 +101,7 @@ export default class Scatterplot {
 
     width = document.querySelector("#graphicContainer").getBoundingClientRect().width
 
-    height = isMobile ? width * 0.7 : width * 0.5;
+    height = isMobile ? width * 1.7 : width * 0.5;
 
     datum.forEach(function(d) {
       if (xFormat.date) {
@@ -251,6 +251,10 @@ export default class Scatterplot {
     svg.append("g")
     .attr("class","axis y")
     .call(d3.axisLeft(y))
+    .selectAll(".tick text")
+    .attr("text-anchor", "end")
+    .style("font-size", "12px")
+    .call(wrap, marginleft);
 
     svg.selectAll(".domain").remove()
 
