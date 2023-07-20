@@ -482,6 +482,32 @@ export function validateString(value, array=[]) {
 
 }
 
+export function groupByValues(array, value) {
+
+  const groupedObj = array.map(d => d[value]).reduce(
+    (prev, current) => ({
+      ...prev,
+      [current]: [...(prev[current] || []), current],
+    }),
+    {}
+  ); 
+
+  return groupedObj
+
+}
+
+export function getMaxDuplicate(array, value) {
+
+  const groupedObj = groupByValues(array, value)
+
+  const groupedObjToArr = Object.values(groupedObj);
+
+  const frequency = groupedObjToArr.map((e, i) => i) . sort((i, j) => groupedObjToArr[j].length - groupedObjToArr[i].length) [0]
+
+  return frequency
+
+}
+
 export function timeCheck(timeInterval, data, xColumn) {
 
   console.log(`timeInterval: ${timeInterval}`)

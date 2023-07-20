@@ -1590,6 +1590,9 @@
             "zLabel" : "",
             "dateFormat": "",
             "opacity" : "40",
+            "zMin" : "5",
+            "zMax" : "20",
+            "defaultRadius" : 3,
             "beeswarm" : "TRUE"
         }],
         "template": [

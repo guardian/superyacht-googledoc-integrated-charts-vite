@@ -2,7 +2,7 @@
 import dataTools from "./shared/dataTools"
 import Tooltip from "./shared/tooltip"
 import ColorScale from "./shared/colorscale"
-import { numberFormat, mustache, mobileCheck, bufferize, validateString, dodge, wrap } from './shared/toolbelt';
+import { numberFormat, mustache, mobileCheck, bufferize, validateString, dodge, wrap, getMaxDuplicate } from './shared/toolbelt';
 import { addLabels } from "./shared/labels"
 
 // https://svelte.dev/repl/e4cd6985a78a4d169fe5c54977a4336c?version=4.0.5
@@ -117,6 +117,18 @@ export default class Scatterplot {
     
     const keyData = Array.from(new Set(datum.map(d => d[groupBy])));
 
+    let cats = []
+
+    if (beeswarm) {
+    
+      cats = Array.from(new Set(datum.map(d => d[yColumn])));
+
+      const duplicates = getMaxDuplicate(datum, xColumn)
+
+      height = cats.length * duplicates * ( defaultRadius * 2 )
+
+    }
+
     const svg = d3.select("#graphicContainer").append("svg")
     .attr("width", width)
     .attr("height", height)
@@ -218,12 +230,10 @@ export default class Scatterplot {
 
     if (beeswarm) {
     
-      const cats = Array.from(new Set(datum.map(d => d[yColumn])));
-
       for (const cat of cats) {
         let targs = datum.filter(d => d[yColumn] == cat)
         let originY = targs[0].y
-        targs = dodge(targs, defaultRadius)
+        targs = dodge(targs, defaultRadius * 2)
         for (var i = 0; i < targs.length; i++) {
           targs[i].y = targs[i].y + (originY)
         }
