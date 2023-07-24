@@ -479,27 +479,37 @@ export function validateString(value, array=[]) {
 
 }
 
-export function groupByValues(array, value) {
+// export function groupByValues(array, value) {
+//   console.log("value",value)
+//   console.log("array",array)
+//   console.log(array.map())
+//   // const groupedObj = array.map(d => d[value]).reduce(
+//   //   (prev, current) => ({
+//   //     ...prev,
+//   //     [current]: [...(prev[current] || []), current],
+//   //   }),
+//   //   {}
+//   // ); 
 
-  const groupedObj = array.map(d => d[value]).reduce(
-    (prev, current) => ({
-      ...prev,
-      [current]: [...(prev[current] || []), current],
-    }),
-    {}
-  ); 
+//   return groupedObj
 
-  return groupedObj
+// }
 
-}
+export function getMaxDuplicate(array, yColumn, xColumn) {
 
-export function getMaxDuplicate(array, value) {
-
-  const groupedObj = groupByValues(array, value)
-
-  const groupedObjToArr = Object.values(groupedObj);
-
-  return d3.max(groupedObjToArr.map(d => d.length))
+  const groupedObj = d3.group(array, d => d[yColumn], d => d[xColumn])
+  let max = 0
+  groupedObj.forEach((d) => {
+    console.log(d)
+      d.forEach((dd) => {
+        let len = Object.keys(dd).length
+        if (len > max) {
+          max = len
+        }
+      })
+  })
+  console.log("max", max)
+  return max
 
 }
 

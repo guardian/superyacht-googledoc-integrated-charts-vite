@@ -116,8 +116,8 @@ export default class Scatterplot {
     
       cats = Array.from(new Set(datum.map(d => d[yColumn])));
 
-      const duplicates = getMaxDuplicate(datum, xColumn)
-
+      const duplicates = getMaxDuplicate(datum, yColumn, xColumn)
+      console.log("duplicates", duplicates)
       height = cats.length * duplicates * ( defaultRadius * 2 )
 
     }
