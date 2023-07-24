@@ -80,13 +80,6 @@ export default class Scatterplot {
           beeswarm
       } = this.settings
 
-
-      console.log(`xScale: ${xScale}`)
-      console.log(`yScale: ${yScale}`)
-      console.log(`zScale: ${zScale}`)
-      console.log(`Date (X col): ${xFormat.date}`)
-      console.log(`zColumn: ${zColumn}`)
-
     datum = JSON.parse(JSON.stringify(data));
 
     const $tooltip = (this.tooltip) ? this.tooltip : false

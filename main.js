@@ -19,9 +19,8 @@ lollipop
 bubble
 */
 // https://interactive.guim.co.uk/docsdata/1lwRASZGsEDlFGFlVvwsDpLNW4Gy1B7JSfzBwt4C-slc.json
-const docsdata = "yacht-charter-data" // "yacht-charter-data" // "docsdata" 
-const keyloc = "oz-2023-school-state-federal-funding-change-grouped-bar"
-
+const docsdata = "docsdata" // "yacht-charter-data" // "docsdata" 
+const keyloc = "1hbFGwheOCIpdIAP9x09HWxTYI5lQC73MXIZy_GM7Zkg"
 const key = getURLParams("key") ? getURLParams("key") : keyloc ;
 const location = getURLParams("location") ? getURLParams("location") : docsdata ;
 //const testing = false

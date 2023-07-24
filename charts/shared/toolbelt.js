@@ -52,8 +52,6 @@ export async function premerge(data) {
 
 export function wrap(text, width, padding=20) {
 
-  console.log("YO: " + width)
-
   let w = width - padding
   
   text.each(function() {
@@ -81,7 +79,6 @@ export function wrap(text, width, padding=20) {
 
 export function dodge(data, radius) {
   const radius2 = radius ** 2;
-  console.log(radius2, radius)
   const circles = data
   const epsilon = 1e-3;
   let head = null, tail = null;
@@ -502,15 +499,11 @@ export function getMaxDuplicate(array, value) {
 
   const groupedObjToArr = Object.values(groupedObj);
 
-  const frequency = groupedObjToArr.map((e, i) => i) . sort((i, j) => groupedObjToArr[j].length - groupedObjToArr[i].length) [0]
-
-  return frequency
+  return d3.max(groupedObjToArr.map(d => d.length))
 
 }
 
 export function timeCheck(timeInterval, data, xColumn) {
-
-  console.log(`timeInterval: ${timeInterval}`)
 
   if (timeInterval != "") {
 
@@ -565,7 +558,6 @@ export function xFormatting(settings) {
   } else {
 
     if (settings["dateFormat"]) {
-      console.log(settings["dateFormat"])
       xData.date = true;
       xData.type = 'date';
       xData.status = "".concat(settings.data[0][settings["xColumn"]], " from the ").concat(settings["xColumn"], " inferred as date based on dateFormat");
@@ -604,8 +596,6 @@ export function xFormatting(settings) {
     }
 
   }
-
-  console.log(xData.status)
 
   return xData
 
