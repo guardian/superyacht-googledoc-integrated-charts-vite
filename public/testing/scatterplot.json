@@ -63,7 +63,7 @@
             "zScale" : "scaleLinear",
             "zLabel" : "Name",
             "opacity" : "80",
-            "xFormat" : "",
+            "xFormat" : ""
         }],
         "template": [
             {

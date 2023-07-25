@@ -2,8 +2,9 @@
 import dataTools from "./shared/dataTools"
 import Tooltip from "./shared/tooltip"
 import ColorScale from "./shared/colorscale"
-import { numberFormat, mustache, mobileCheck, bufferize, validateString, dodge, wrap, getMaxDuplicate } from './shared/toolbelt';
-import { addLabels } from "./shared/labels"
+import { numberFormat, mustache, mobileCheck, bufferize, validateString, dodge, wrap, getMaxDuplicate, getURLParams } from './shared/toolbelt';
+// import { addLabels } from "./shared/labels"
+import  { addLabel, clickLogging } from './shared/arrows'
 
 // https://svelte.dev/repl/e4cd6985a78a4d169fe5c54977a4336c?version=4.0.5
 // // https://www.chartfleau.com/tutorials/d3swarm
@@ -128,10 +129,14 @@ export default class Scatterplot {
     .append("g")
     .attr("transform", `translate(${marginleft}, ${margintop})`);      
 
+    const svg2 = d3.select("#graphicContainer svg")
+
+    console.log("keys", keys)
     colors = new ColorScale()
 
+
     const keyColor = dataTools.getKeysColors({
-      keys: keys,
+      keys: keyData,
       userKey: userkey,
       option: { colorScheme : colorScheme }
     })
@@ -324,6 +329,34 @@ export default class Scatterplot {
       .text(function (d) {
         return zLabel != "" ? d[zLabel] : "" 
       })
+
+    }
+
+    if (labels.length > 0) {
+     
+      const clickLoggingOn = getURLParams("labelling") ? true : false ;
+      console.log("clickLoggingOn", clickLoggingOn);
+
+      // Move this to wrangle later once we re-factor the labelling stuff
+
+      if (typeof labels[0].coords  === 'string') {
+        labels.forEach(function(d) {
+          d.coords = JSON.parse(d.coords)
+          d.sweepFlag = +d.sweepFlag
+          d.largeArcFlag = +d.largeArcFlag
+          d.radius = +d.radius
+        })
+      }
+     
+      console.log("annotations", labels)
+      labels.forEach((config) => {
+    		addLabel(svg2, config, width + marginleft + marginright, height + margintop + marginbottom, {
+    			"left": marginleft,
+    			"right": marginright,
+    			"top": margintop,
+    			"bottom": marginbottom
+    		}, clickLoggingOn)
+    	})
 
     }
 

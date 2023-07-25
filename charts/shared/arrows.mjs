@@ -50,7 +50,7 @@ function clickLogging(el, width, height, margin, clickLoggingOn) {
 
 	var clickLogging = true
 	if (clickLogging) {
-
+		console.log("click")
 		var clickNo = 0
 		var id = null
 		var clickType = "svg"
