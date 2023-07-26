@@ -208,7 +208,7 @@ function addLabel(el, config, width, height, margin, clickLoggingOn=false) {
 			.style("fill", "black")
 
 		labelWrapper.append("path")
-			.attr("class", "labelPath")
+			.attr("class", "labelPath mobHide")
 			.attr("fill", "none")
 			.attr("stroke", "black")
 			.attr("stroke-width",2)
@@ -248,7 +248,7 @@ function addLabel(el, config, width, height, margin, clickLoggingOn=false) {
 		}
 
 		labelWrapper.append("text")
-			.attr("class", "labelText")
+			.attr("class", "labelText mobHide")
 			.attr("text-anchor", () => {
 				if (config.align) {
 					return config.align

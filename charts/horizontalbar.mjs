@@ -84,6 +84,7 @@ export default class Horizontalbar {
           marginbottom, 
           marginright, 
           tooltip, 
+          xAxisLabel,
           suffix, 
           minX, 
           yColumn, 
@@ -541,7 +542,6 @@ export default class Horizontalbar {
 
     }
 
-
     if (this.settings.tooltip != "") {
 
       this.tooltip.bindEvents(
@@ -549,6 +549,18 @@ export default class Horizontalbar {
         width,
         height + margintop + marginbottom
       )
+
+    }
+
+    if (xAxisLabel) {
+
+      features
+        .append("text")
+        .attr("x", width - marginright)
+        .attr("y", -25)
+        .attr("fill", "#767676")
+        .attr("text-anchor", "end")
+        .text(xAxisLabel)
 
     }
 
