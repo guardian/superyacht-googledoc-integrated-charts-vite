@@ -290,8 +290,8 @@ export default class Scatterplot {
 
       svg
       .append("text")
-      .attr("x", width - marginright - marginleft)
-      .attr("y", height - margintop - marginbottom)
+      .attr("x", 0)
+      .attr("y", 0)
       .attr("fill", "#767676")
       .attr("text-anchor", "end")
       .text(xAxisLabel)
