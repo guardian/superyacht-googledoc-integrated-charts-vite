@@ -175,6 +175,8 @@ export default class Horizontalbar {
       datum = datum.sort((a, b) => d3.descending(+a.Total, +b.Total))
     }
     
+    console.log("stack",stackedhorizontal, stackedhorizontal.length)
+
     width = document
     .querySelector("#graphicContainer")
     .getBoundingClientRect().width
@@ -341,8 +343,15 @@ export default class Horizontalbar {
     .attr("y", (d) => y(d[yColumn]) - 5)
     .text((d) => d[yColumn])
 
-    // Show totals
 
+    // Testing for label positions
+    // ?key=1BJG_8rB8nkob0O7DsNU_oBpRq-5qsixNxfosp5AVphE&location=docsdata
+    // ?key=oz-2023-school-state-federal-funding-change-grouped-bar&location=yacht-charter-data
+    // ?key=2023-education-school-quartiles&location=yacht-charter-data
+    // ?key=1DL9_rNNg3XVKodTmVHWO1DdABBRrOKVXQ5wshSK7pGw&location=docsdata
+
+    // Show totals
+    console.log("showTotals", showTotals)
     if (showTotals) {
 
       layer
@@ -353,11 +362,9 @@ export default class Horizontalbar {
       .attr("class", "barNumber")
       .style("font-weight", "bold")
       .attr("x", (d) => {
-
         let pos = x(d.Total) + 10
-
+        
         if (d.Total > 0) {
-
           if (x(d.Total) > x(0) + 100) {
             pos = x(d.Total) - 50
           }
@@ -412,42 +419,42 @@ export default class Horizontalbar {
       .attr("class", "barNumber")
       .style("font-weight", "bold")
       .attr("x", (d, i) => {
-
-        if (xMin < 0) {
-
-        let pos = x(d[0]) + 10
-
-        if (d[1] > 0) {
-
-          if (x(d[1]) > x(0) + 100) {
-            pos = x(d[1]) - 50
-          }
-
-        } else if (d[1] < 0) {
-
-          if (x(d[1]) > x(0) - 100) {
-            pos = x(d[1]) - 50
-          }
-
-        } else {
-          pos = x(d[0]) + 10
-        }
-        return pos
-      } else {
-
-        let pos = x(d[1]) + 10
-
+        console.log(d)
+        let barWidth = x(d[1]) - x(d[0])
         let label = numberFormat(d.data[d.group]) + suffix
+        let buffer = 10
+        let labelLength = label.length * 12 + buffer
+        console.log("barWidth", barWidth, "labelLength", labelLength)
 
-        if (x(d[1]) - x(d[0]) > (label.length * 12 + 10)) {
-          pos = x(d[1]) - 10
-        } else {
-          pos = x(d[1]) + 10
+        if (d.groupValue < 0) {
+            // room for label in bar
+            if (barWidth > labelLength) {
+              return x(d[0]) + buffer
+            }
+
+            // no room for you!!! 
+            else {
+              return x(d[0]) - buffer 
+            }
+
         }
-      
-        return pos
 
-      }
+        else if (d.groupValue > 0) {
+          // room for label in bar
+            if (barWidth > labelLength) {
+              return x(d[1]) - buffer
+            }
+
+            // no room for you!!!
+            else {
+              return x(d[1]) + buffer 
+            }
+        }
+
+        else {
+          return x(d.groupValue) + buffer 
+        }
+
 
       })
       .style("fill",(d) => {
@@ -469,21 +476,39 @@ export default class Horizontalbar {
       })
       .attr("y", (d) => y(d.data[yColumn]) + (y.bandwidth() / 2 + 5))
       .attr("text-anchor",(d) => {
-
-        let pos = "start"
-
+        let barWidth = x(d[1]) - x(d[0])
         let label = numberFormat(d.data[d.group]) + suffix
+        let buffer = 10
+        let labelLength = label.length * 12 + buffer
+        
+        if (d.groupValue < 0) {
+            // room for label in bar
+            if (barWidth > labelLength) {
+              return "start"
+            }
 
-        if (stackedhorizontal.length == 1) {
-
-          if (x(d[1]) - x(d[0]) > (label.length * 12 + 10)) {
-            pos = "start"
-          } else {
-            pos = "start"
-          }
+            // no room for you!!! 
+            else {
+              return "end"
+            }
 
         }
-        return pos
+
+        else if (d.groupValue > 0) {
+          // room for label in bar
+            if (barWidth > labelLength) {
+              return "end"
+            }
+
+            // no room for you!!!
+            else {
+              return "start"
+            }
+        }
+
+        else {
+          return "start"
+        }
       })
       .text((d) => {
 

@@ -4,7 +4,7 @@ import { charts } from "./modules/charts"
 import './style.scss'
 
 
-const myChart = "scatterplot" // Leave it blank or enter a chart type
+const myChart = "horizontalgroupedbar" // Leave it blank or enter a chart type
 
 /*
 horizontalbar -
@@ -23,8 +23,8 @@ const docsdata = "docsdata" // "yacht-charter-data" // "docsdata"
 const keyloc = "1hbFGwheOCIpdIAP9x09HWxTYI5lQC73MXIZy_GM7Zkg"
 const key = getURLParams("key") ? getURLParams("key") : keyloc ;
 const location = getURLParams("location") ? getURLParams("location") : docsdata ;
-const testing = false
-// const testing = (window.location.hostname === "localhost") ? preflight(charts, myChart) : false ;
+// const testing = false
+const testing = (window.location.hostname === "localhost") ? preflight(charts, myChart) : false ;
 
 console.log(`https://interactive.guim.co.uk/${location}/${key}.json`)
 
