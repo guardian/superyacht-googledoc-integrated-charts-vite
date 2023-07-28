@@ -168,7 +168,7 @@ export default class Horizontalbar {
         d[key] = (d[key] == null) ? null : +d[key]
       })
       d.Total = d3.sum(stackedhorizontal, (k) => +d[k])
-      d.negative = (d3.min(stackedhorizontal, (k) => +d[k]) > 0) ? false : true
+      d.negative = (d3.min(stackedhorizontal, (k) => +d[k]) >= 0) ? false : true
       d.extent = d3.min(stackedhorizontal, (k) => +d[k])
     })
 
@@ -336,6 +336,7 @@ export default class Horizontalbar {
     .append("text")
     .attr("class", "barText")
     .attr("x", (d) => {
+      console.log(d)
       return (!d.negative) ? x(0) + 5 : x(0) - 5
     })
     .attr("text-anchor",(d) => {
@@ -352,7 +353,7 @@ export default class Horizontalbar {
     // ?key=1DL9_rNNg3XVKodTmVHWO1DdABBRrOKVXQ5wshSK7pGw&location=docsdata
 
     // Show totals
-    console.log("showTotals", showTotals)
+    // console.log("showTotals", showTotals)
     if (showTotals) {
 
       layer
@@ -420,12 +421,11 @@ export default class Horizontalbar {
       .attr("class", "barNumber")
       .style("font-weight", "bold")
       .attr("x", (d, i) => {
-        console.log(d)
+    
         let barWidth = x(d[1]) - x(d[0])
         let label = numberFormat(d.data[d.group]) + suffix
         let buffer = 10
         let labelLength = label.length * 12 + buffer
-        console.log("barWidth", barWidth, "labelLength", labelLength)
 
         if (d.groupValue < 0) {
             // room for label in bar
