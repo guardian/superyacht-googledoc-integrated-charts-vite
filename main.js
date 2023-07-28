@@ -1,33 +1,14 @@
-import { getURLParams, contains, preflight } from './charts/shared/toolbelt';
-import { yachtCharter } from "./modules/chart"
-import { charts } from "./modules/charts"
+import { getURLParams, contains } from './charts/shared/toolbelt';
+import { yachtCharter } from "./yachtCharter.js"
 import './style.scss'
 
-
-const myChart = "scatterplot" // Leave it blank or enter a chart type
-
-/*
-horizontalbar -
-horizontalgroupedbar - (Was formerlly groupedbar)
-linechart -
-verticalbar (Was formerlly stackedbar)
-stackedarea
-scatterplot
-smallmultiples -
-table
-lollipop
-bubble
-*/
-// https://interactive.guim.co.uk/docsdata/1lwRASZGsEDlFGFlVvwsDpLNW4Gy1B7JSfzBwt4C-slc.json
 const docsdata = "docsdata" // "yacht-charter-data" // "docsdata" 
 const keyloc = "1hbFGwheOCIpdIAP9x09HWxTYI5lQC73MXIZy_GM7Zkg"
 const key = getURLParams("key") ? getURLParams("key") : keyloc ;
 const location = getURLParams("location") ? getURLParams("location") : docsdata ;
-const testing = false
-// const testing = (window.location.hostname === "localhost") ? preflight(charts, myChart) : false ;
 
 console.log(`https://interactive.guim.co.uk/${location}/${key}.json`)
 
-console.log(` https://interactive.guim.co.uk/embed/superyacht/index.html?key=${key}&location=${location}`)
+console.log(`https://interactive.guim.co.uk/embed/superyacht/index.html?key=${key}&location=${location}`)
 
-new yachtCharter(key, location, testing, charts)
+new yachtCharter(key, location)

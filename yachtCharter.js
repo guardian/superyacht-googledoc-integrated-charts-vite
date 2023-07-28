@@ -1,6 +1,5 @@
-
-import { getJson, getTemplate, premerge, merge, contains, mustache } from '../charts/shared/toolbelt';
-import { wrangle } from '../charts/shared/wrangle';
+import { getJson, getTemplate, premerge, merge, contains, mustache, preflight } from './charts/shared/toolbelt';
+import { wrangle } from './charts/shared/wrangle';
 
 d3.selection.prototype.moveToBack = function() {  
     return this.each(function() { 
@@ -13,17 +12,36 @@ d3.selection.prototype.moveToBack = function() {
 
 export class yachtCharter {
 
-  constructor(key, location, testing, charts) {
+  constructor(key, location) {
+
+    this.setUp(key, location)
+
+  }
+
+  async setUp(key, location) {
+
+    const myChart = "" // Leave it blank or enter a chart type
+
+    /*
+    horizontalbar -
+    horizontalgroupedbar - (Was formerlly groupedbar)
+    linechart -
+    verticalbar (Was formerlly stackedbar)
+    stackedarea
+    scatterplot
+    smallmultiples -
+    table
+    lollipop
+    bubble
+    */
 
     this.url = (import.meta.env.MODE == 'development') ? '/' : 'https://interactive.guim.co.uk/embed/superyacht/'
 
-    console.log(`URL: ${this.url}`)
+    this.charts  = await this.setChartType()
 
-    this.charts = charts
+    this.chartTypes = this.charts.flatMap(item => item.names)
 
-    this.chartTypes = charts.flatMap(item => item.names)
-
-    //console.log(charts.map(item => item.type))
+    const testing = (window.location.hostname === "localhost") ? preflight(this.charts, myChart) : false ;
 
     if (key != null && !testing) {
 
@@ -65,12 +83,17 @@ export class yachtCharter {
 
       this.loadTemplate()
 
-
     } else {
 
       console.log(`The chart type has not been defined`)
 
     }
+
+  }
+
+  async setChartType() {
+
+    return await getJson(`${this.url}types/charts.json`)
 
   }
 
@@ -95,7 +118,6 @@ export class yachtCharter {
       window.addEventListener("resize", () => { clearTimeout(document.body.data), document.body.data = setTimeout( () => chart.render(), 800)});
       
     })
-
 
   }
 
