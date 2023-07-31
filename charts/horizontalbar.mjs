@@ -243,10 +243,6 @@ export default class Horizontalbar {
       }
     }
 
-
-
-
-
     x.domain([xMin, xMax]).nice()
 
     const xTicks = Math.round(width / 100)
