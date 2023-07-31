@@ -1,4 +1,4 @@
-export const charts = [{
+[{
 	"type": "verticalbar",
 	"names" : ["stackedbar","verticalbar"],
 	"config" : {

@@ -102,7 +102,7 @@ export default [{
 		}
 	]
 },{
-	input: 'modules/preview.js',
+	input: 'preview/preview.mjs',
 	output: [
 		{
 			file: 'preview/preview.js',
