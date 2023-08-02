@@ -56,14 +56,6 @@
         ],
         "labels": [],
         "key": [
-            {
-                "key": "Federal",
-                "colour": "#cc0a11"
-            },
-            {
-                "key": "State/territory",
-                "colour": "#00456e"
-            }
         ],
         "lines": [],
         "periods": [],

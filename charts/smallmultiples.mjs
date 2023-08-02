@@ -325,7 +325,7 @@ export default class Smallmultiples {
 
       } else {
 
-        x.domain(d3.extend(datum.map(d => d[xColumn])))
+        x.domain(d3.extent(datum.map(d => d[xColumn])))
 
       }
 
