@@ -2,7 +2,7 @@
 import dataTools from "./shared/dataTools"
 import ColorScale from "./shared/colorscale"
 import colorPresets from "./constants/colors"
-import { numberFormat, mustache, mobileCheck, getMinMax, textPadding, textPaddingMobile, bufferize } from './shared/toolbelt';
+import { numberFormat, mustache, mobileCheck, getMinMax, textPadding, textPaddingMobile, bufferize, tickTok } from './shared/toolbelt';
 
 export default class Lollipop {
 
@@ -284,7 +284,7 @@ export default class Lollipop {
 
     }
  
-    const xTicks = Math.round(width / 100)
+    const xTicks = tickTok(isMobile, x.domain(), width) // Set the number of ticks
 
     const xAxis = g => g
     .attr("transform", `translate(0,${0})`)
@@ -327,6 +327,18 @@ export default class Lollipop {
 
       })
 
+    }
+
+    if (minMax.status || x(0) > marginleft) {
+
+      features.append('line')
+          .style("stroke", "#767676")
+          .style("stroke-width", 1)
+          .attr("x1", x(0))
+          .attr("y1", 0)
+          .attr("x2", x(0))
+          .attr("y2", height); 
+  
     }
 
   }

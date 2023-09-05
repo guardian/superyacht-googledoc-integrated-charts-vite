@@ -551,6 +551,24 @@ export function timeCheck(timeInterval, data, xColumn) {
 
 }
 
+export function tickTok(isMob, array, width) {
+
+  if (isMob) {
+    return 4
+  }
+
+  let diff = Math.round( array[1] - array[0] )
+
+  let val = Math.round(width / 100)
+
+  console.log(diff)
+
+  //? 4 : Math.round(width / 100)
+
+  return (val > diff) ? diff : val
+
+}
+
 export function sorter(arr, value) {
 
       return arr.sort((a, b) => (a[value] < b[value]) ? 1 : -1).reverse()
@@ -561,7 +579,6 @@ export function xFormatting(settings) {
 
   let xData = { date : false, string : false , number : false, status : "", type : null }
 
-  console.log("Here I am")
 
   if (!settings["xColumn"]) {
 
