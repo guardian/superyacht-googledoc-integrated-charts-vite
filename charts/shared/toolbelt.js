@@ -561,10 +561,6 @@ export function tickTok(isMob, array, width) {
 
   let val = Math.round(width / 100)
 
-  console.log(diff)
-
-  //? 4 : Math.round(width / 100)
-
   return (val > diff) ? diff : val
 
 }
