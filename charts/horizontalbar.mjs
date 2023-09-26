@@ -284,6 +284,8 @@ export default class Horizontalbar {
       })
     })
 
+    console.log("layers",layers)
+
     const layer = features
     .selectAll("layer")
     .data(layers, (d) => d.key)

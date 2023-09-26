@@ -20,7 +20,7 @@ export default class Groupedbar {
   }
 
   init() {
-
+    console.log(this.settings.enableShowMore)
     drawShowMore(this.settings.enableShowMore)  
 
     if (this.settings.tooltip != "") {
@@ -178,8 +178,12 @@ export default class Groupedbar {
     .call(d3.axisTop(x).tickSizeOuter(0))
     .call(d3.axisTop(x)
     .ticks(3)
+    .tickFormat((d) => {
+      return numberFormat(d)
+    })
     .tickSize(-height, 0, 0)
     .tickPadding(10))
+    
       
     const yAxis = g => g
     .attr("transform", `translate(${marginleft},0)`)
@@ -212,7 +216,7 @@ export default class Groupedbar {
     .attr("y", d => y1(d.key) + ( y1.bandwidth() - 7 ) )
     .attr("fill", d => (x(d.value) - x(0) < 100) ? "black" : "white")
     .attr("font-weight","600")
-    .text((d) => d.value);
+    .text((d) => numberFormat(d.value));
 
     bars.selectAll("line")
     .data(d => columns.map(key => ({key, value: d[key]})))
