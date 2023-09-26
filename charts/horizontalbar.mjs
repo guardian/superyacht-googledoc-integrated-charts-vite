@@ -113,7 +113,7 @@ export default class Horizontalbar {
 
     d3.select("#graphicContainer svg").remove()
 
-    xColumn = stackedhorizontal[0]
+    //xColumn = stackedhorizontal[0] // Changed this so it is set by default before this module is loaded
 
     stackedhorizontal = stackedhorizontal.filter(d => d != 'Color')
 
@@ -408,8 +408,6 @@ export default class Horizontalbar {
       .text((d) => numberFormat(d.Total) + suffix)
 
     } else {
-
-      console.log("Sup bro")
 
       layer
       .selectAll(".barNumber")

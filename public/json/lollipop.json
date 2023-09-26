@@ -32,7 +32,10 @@
                 "groupBy" : "",
                 "minX" : "",
                 "maxX" : "",
-                "xFormat" : ""
+                "xFormat" : "",
+                "xScale" : "scaleLinear",
+                "yScale" : "scaleBand",
+                "parseTime" : ""
             }
         ],
         "dropdown": []

@@ -48,6 +48,9 @@ export const charts = [{
 		"axis" : [{
 			"name" : "yColumn",
 			"default" : 0
+		},{
+			"name" : "xColumn",
+			"default" : 1
 		}],
 		"settings" : [{
 			"name" : "stackedhorizontal"

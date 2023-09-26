@@ -33,7 +33,7 @@
                 "maxY" : "",
                 "timeInterval" : "",
                 "x_axis_cross_y" : "",
-                "xAxisDateFormat" : "",
+                "xAxisDateFormat" : "%b %y",
                 "xColumn" : "",
                 "xFormat" : ""
             }

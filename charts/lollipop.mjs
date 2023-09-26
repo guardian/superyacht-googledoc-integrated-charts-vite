@@ -2,7 +2,7 @@
 import dataTools from "./shared/dataTools"
 import ColorScale from "./shared/colorscale"
 import colorPresets from "./constants/colors"
-import { numberFormat, mustache, mobileCheck, getMinMax, textPadding, textPaddingMobile, bufferize } from './shared/toolbelt';
+import { numberFormat, mustache, mobileCheck, getMinMax, textPadding, textPaddingMobile, bufferize, tickTok, contains } from './shared/toolbelt';
 
 export default class Lollipop {
 
@@ -47,10 +47,11 @@ export default class Lollipop {
           groupBy,
           minX,
           maxX,
-          xFormat } = this.settings
-
-
-          console.log(`xFormat: ${xFormat}`)
+          xFormat,
+          xScale,
+          yScale,
+          parseTime,
+          xColumn } = this.settings
 
     let space = 40
 
@@ -82,18 +83,24 @@ export default class Lollipop {
 
     width = width - marginright
 
-    let lollies = keys.filter(d => d != 'Color'&& d != groupBy)
+    let lollies = keys.filter(d => d != 'Color' && d != groupBy)
 
     let range = []
 
+    datum.forEach(function(d) {
+      if (xFormat.date) {
+        lollies.forEach((lolly) => {
+          if (contains(lollies, lolly)) {
+            d[lolly] = parseTime( d[lolly] )
+          }
+        })
+      }
+    })
+
     for (var i = 0; i < datum.length; i++) {
-
       lollies.forEach((d) => {
-
         range.push(datum[i][d])
-
       })
-
     }
 
     let extent = d3.extent(range)
@@ -105,8 +112,6 @@ export default class Lollipop {
     let min = minMax.min
 
     let buffer = bufferize(extent[0], extent[1], 15)
-
-    //(extent[0] < 0) ? bufferize(min, max, 15) : bufferize(extent[0], extent[1], 15)
 
     minX = (!isNaN(minX)) ? buffer[0] : +minX
 
@@ -124,25 +129,20 @@ export default class Lollipop {
     .append("g")
     .attr("transform","translate(" + marginleft + "," + margintop + ")")
 
-    var x = d3.scaleLinear()
-    x.domain([minX, maxX]).nice()
-    .range([ 0, width - marginright - marginleft]);
+    var x = d3[xScale]()
+    
+    x.range([ 0, width - marginright - marginleft]);
 
     features.append("g")
     .attr("transform", "translate(0," + height + ")")
     .call(d3.axisBottom(x))
 
-    var y = d3.scaleBand()
+    var y = d3[yScale]()
     .range([ 0, height - margintop - marginbottom])
     .domain(datum.map(function(d) { return d[groupBy]; }))
     .padding(1);
 
-    /*
-
-    features.append("g")
-    .call(d3.axisLeft(y))
-
-    */
+    (xFormat.date) ? x.domain(d3.extent(range)) : x.domain([minX, maxX]); //.nice() // 
 
     if (lollies.length == 2) {
 
@@ -154,7 +154,8 @@ export default class Lollipop {
       .data(datum)
       .enter()
       .append("line")
-      .attr("x1", function(d) { return x(+d[lollies[0]]); })
+      .attr("x1", function(d) { 
+        return x(+d[lollies[0]]); })
       .attr("x2", function(d) { return x(+d[lollies[1]]); })
       .attr("y1", function(d) { return y(d[groupBy]); })
       .attr("y2", function(d) { return y(d[groupBy]); + 10})
@@ -284,7 +285,7 @@ export default class Lollipop {
 
     }
  
-    const xTicks = Math.round(width / 100)
+    const xTicks = tickTok(isMobile, x.domain(), width) // Set the number of ticks
 
     const xAxis = g => g
     .attr("transform", `translate(0,${0})`)
@@ -294,7 +295,7 @@ export default class Lollipop {
     .tickSize(-height, 0, 0)
     .ticks(xTicks)
     .tickFormat((d) => {
-      return numberFormat(d)
+      return xFormat.date ? d3.timeFormat("%b %Y")(d) : numberFormat(d)
     })
     .tickPadding(10))
 
@@ -327,6 +328,18 @@ export default class Lollipop {
 
       })
 
+    }
+
+    if (minMax.status || x(0) > marginleft) {
+
+      features.append('line')
+          .style("stroke", "#767676")
+          .style("stroke-width", 1)
+          .attr("x1", x(0))
+          .attr("y1", 0)
+          .attr("x2", x(0))
+          .attr("y2", height); 
+  
     }
 
   }

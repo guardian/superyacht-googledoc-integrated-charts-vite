@@ -179,6 +179,8 @@ export default class Linechart {
     
     let buffer = (lineLabelling) ? getLongestKeyLength(svg, keyCopy, isMobile, lineLabelling) : 0 ;
 
+    console.log(xFormat)
+
     if (xFormat.date) {
       x = d3.scaleTime()
       .rangeRound([0, width - buffer])
