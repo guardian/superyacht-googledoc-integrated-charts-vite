@@ -179,7 +179,12 @@ export default class Linechart {
     
     let buffer = (lineLabelling) ? getLongestKeyLength(svg, keyCopy, isMobile, lineLabelling) : 0 ;
 
-    console.log(xFormat)
+    console.log("xFormat",xFormat)
+
+    // Set a default x scale
+    
+    x = d3.scaleLinear()
+      .rangeRound([0, width - buffer])
 
     if (xFormat.date) {
       x = d3.scaleTime()
@@ -187,8 +192,10 @@ export default class Linechart {
     } else if (xFormat.string) {
       x = d3.scaleLinear()
       .rangeRound([0, width - buffer])
+    } else if (xFormat.number) {
+      x = d3.scaleLinear()
+      .rangeRound([0, width - buffer])
     }
-
     const features = svg
     .append("g")
     .attr("transform","translate(" + marginleft + "," + margintop + ")")
@@ -280,6 +287,7 @@ export default class Linechart {
 
    let range = datum.map( d => d[xColumn])
 
+   console.log("renage",range) 
     x.domain(d3.extent(range))
 
     y.domain([min, max])
