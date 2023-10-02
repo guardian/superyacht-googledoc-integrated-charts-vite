@@ -35,7 +35,8 @@
                 "x_axis_cross_y" : "",
                 "xAxisDateFormat" : "%b %y",
                 "xColumn" : "",
-                "xFormat" : ""
+                "xFormat" : "",
+                "invertY": "FALSE"
             }
         ],
         "chartId": [

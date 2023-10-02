@@ -119,6 +119,7 @@ export default class Linechart {
           chartlines,
           current,
           parseTime,
+          invertY,
           hideNullValues,
           tooltipModule } = this.settings
 
@@ -143,10 +144,26 @@ export default class Linechart {
     width = containerwidth - marginleft - marginright
 
     height = containerheight - margintop - marginbottom
-
-    let x
+  
+    // Reverses the yAxis
+    
+    let yRange = [height, 0]
+    if (invertY) {
+      yRange = [0, height]
+    
+    }
+    
     let y = d3.scaleLinear()
-    .rangeRound([height, 0])
+    .rangeRound(yRange)
+
+    console.log("invertY", invertY)
+   
+    if (yScaleType != "" && yScaleType != null) {
+      y = d3[yScaleType]()
+      .range(yRange)
+      .nice()
+    }  
+
 
     let lineGenerators = {}
     let chartValues = []
@@ -162,11 +179,7 @@ export default class Linechart {
     //console.log("keyColor",keyColor)
     colors.set(keyColor.keys, keyColor.colors)
 
-    if (yScaleType != "" && yScaleType != null) {
-      y = d3[yScaleType]()
-      .range([height, 0])
-      .nice()
-    }
+  
 
 
     const svg = d3
@@ -182,8 +195,7 @@ export default class Linechart {
     console.log("xFormat",xFormat)
 
     // Set a default x scale
-    
-    x = d3.scaleLinear()
+    let x = d3.scaleLinear()
       .rangeRound([0, width - buffer])
 
     if (xFormat.date) {

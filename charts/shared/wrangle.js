@@ -123,7 +123,7 @@ export function wrangle(data, chart) {
 
     // Convert booleans
 
-    if (contains(['enableShowMore','aria', 'enableSearch', 'enableSort', 'enableScroll', 'zero_line_x', 'zero_line_y', 'lineLabelling', "autoSort", "scaleByAllMax", "hideKey", "beeswarm"], setting)) {
+    if (contains(['enableShowMore','aria', 'enableSearch', 'enableSort', 'enableScroll', 'zero_line_x', 'zero_line_y', 'lineLabelling', "autoSort", "scaleByAllMax", "hideKey", "beeswarm", "invertY"], setting)) {
 
       settings[setting] = (settings[setting].toLowerCase() == 'false') ? false : true
 
