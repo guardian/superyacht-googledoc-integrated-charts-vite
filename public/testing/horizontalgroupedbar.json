@@ -1,97 +1,80 @@
 {
     "sheets": {
-        "data": [
-            {
-                "state": "NSW",
-                "Population %": "31.8",
-                "Labor spending %": "14.8",
-                "Coalition spending %": "24.1"
-            },
-            {
-                "state": "QLD",
-                "Population %": "20.4",
-                "Labor spending %": "41.7",
-                "Coalition spending %": "23.1"
-            },
-            {
-                "state": "NT",
-                "Population %": "1.0",
-                "Labor spending %": "3.5",
-                "Coalition spending %": "20.7"
-            },
-            {
-                "state": "VIC",
-                "Population %": "25.8",
-                "Labor spending %": "4.3",
-                "Coalition spending %": "9.4"
-            },
-            {
-                "state": "SA",
-                "Population %": "6.9",
-                "Labor spending %": "9.3",
-                "Coalition spending %": "8.7"
-            },
-            {
-                "state": "WA",
-                "Population %": "10.4",
-                "Labor spending %": "6.8",
-                "Coalition spending %": "8.3"
-            },
-            {
-                "state": "TAS",
-                "Population %": "2.1",
-                "Labor spending %": "18.4",
-                "Coalition spending %": "4.0"
-            },
-            {
-                "state": "ACT",
-                "Population %": "1.7",
-                "Labor spending %": "0.7",
-                "Coalition spending %": "0.7"
-            }
-        ],
         "template": [
             {
-                "title": "Major party campaign spending in states and territories v population share",
-                "subtitle": "Showing the % of election promises and grants from each party in each state and territory compared with the population share of the state or territory",
+                "title": "Declining group membership",
+                "subtitle": "Showing the percentage of Australians aged 18+ that were members of social, community or civic groups in the year preceding the survey, by group type. Data from the respective General Social Surveys",
                 "footnote": "",
-                "source": "| Source: Guardian Australia's pork-o-meter",
-                "dateFormat": "",
-                "xAxisLabel": "",
-                "yAxisLabel": "",
-                "baseline": "",
-                "periodDateFormat": "",
-                "margin-left": "60",
+                "source": "Australian Bureau of Statistics, General Social Survey",
+                "margin-left": "170",
                 "margin-top": "30",
-                "margin-bottom": "0",
-                "margin-right": "20",
-                "tooltip" : "Population: {{Population %}}</br>State: {{state}}</br>"
+                "margin-bottom": "20",
+                "margin-right": "10"
+            }
+        ],
+        "data": [
+            {
+                "Group": "Social groups ",
+                "2020": 45.6,
+                "2019": 50.0,
+                "2014": 50.7,
+                "2010": 62.5,
+                "2006": 62.7
+            },
+            {
+                "Group": "Community support groups",
+                "2020": 20.9,
+                "2019": 25.0,
+                "2014": 32.8,
+                "2010": 34.9,
+                "2006": 33.3
+            },
+            {
+                "Group": "Civic and political groups",
+                "2020": 7.4,
+                "2019": 9.4,
+                "2014": 13.8,
+                "2010": 18.7,
+                "2006": 18.6
+            }
+        ],
+        "labels": [],
+        "key": [
+            {
+                "key": "2006",
+                "colour": "#4e79a7"
+            },
+            {
+                "key": "2010",
+                "colour": "#f28e2c"
+            },
+            {
+                "key": "2014",
+                "colour": "#e15759"
+            },
+            {
+                "key": "2019",
+                "colour": "#59a14f"
+            },
+            {
+                "key": "2020",
+                "colour": "#af7aa1"
+            }
+        ],
+        "lines": [],
+        "periods": [],
+        "chartId": [
+            {
+                "type": "groupedbar"
             }
         ],
         "options": [
             {
-                "enableShowMore": "TRUE"
+                "enableShowMore": "FALSE",
+                "autoSort": "FALSE",
+                "groupBy" : "Group"
             }
         ],
-        "labels": [],
-        "userkey": [
-            {
-                "key": "Coalition spending %",
-                "colour": "rgb(4, 109, 161)"
-            },
-            {
-                "key": "Labor spending %",
-                "colour": "rgb(204, 10, 17)"
-            },
-            {
-                "key": "Population %",
-                "colour": "#7d0068"
-            }
-        ],
-        "chartId": [
-            {
-                "type": "horizontalgroupedbar"
-            }
-        ]
+        "dropdown": []
     }
 }

@@ -20,7 +20,7 @@ export default class Groupedbar {
   }
 
   init() {
-    console.log(this.settings.enableShowMore)
+
     drawShowMore(this.settings.enableShowMore)  
 
     if (this.settings.tooltip != "") {
@@ -100,7 +100,7 @@ export default class Groupedbar {
           dropdown,
           groupBy } = this.settings
 
-    d3.select("#graphicContainer svg").remove();      
+    d3.select("#graphicContainer svg").remove();
 
     const chartKey = d3.select("#chartKey")
 
@@ -112,7 +112,7 @@ export default class Groupedbar {
 
     const columns = JSON.parse(JSON.stringify(keys))
 
-    columns.shift()
+    columns.filter(d => d != groupBy)
 
     data.map(d => columns.map(key => (+d[key]))).forEach(ob => datum.push(...ob))
 
@@ -130,7 +130,7 @@ export default class Groupedbar {
     .attr("width", width + marginleft + marginright)
     .attr("height", height + margintop + marginbottom)
     .attr("id", "svg")
-    .attr("overflow", "hidden");          
+    .attr("overflow", "hidden");         
 
     const y0 = d3.scaleBand()
     .domain(groupKey)
@@ -156,19 +156,23 @@ export default class Groupedbar {
 
     columns.forEach((key, i) => {
 
-      const keyDiv = chartKey
-      .append("div")
-      .attr("class", "keyDiv")
+      if (key != groupBy) {
 
-      keyDiv
-      .append("span")
-      .attr("class", "keyCircle")
-      .style("background-color", () => colors.get(key))
+        const keyDiv = chartKey
+        .append("div")
+        .attr("class", "keyDiv")
 
-      keyDiv
-      .append("span")
-      .attr("class", "keyText")
-      .text(key)
+        keyDiv
+        .append("span")
+        .attr("class", "keyCircle")
+        .style("background-color", () => colors.get(key))
+
+        keyDiv
+        .append("span")
+        .attr("class", "keyText")
+        .text(key)
+
+      }
 
     })
 
