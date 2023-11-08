@@ -1,12 +1,12 @@
 
 import dataTools from "./shared/dataTools"
 import ColorScale from "./shared/colorscale"
-import { numberFormat, mustache, mobileCheck, textPadding, textPaddingMobile, stackMin, stackMax, timeCheck } from './shared/toolbelt';
+import { numberFormat,getURLParams, mustache, mobileCheck, textPadding, textPaddingMobile, stackMin, stackMax, timeCheck } from './shared/toolbelt';
 import Dropdown from "./shared/dropdown";
 import { addDrops } from "./shared/drops"
 import Tooltip from "./shared/tooltip"
 import { addPeriods } from "./shared/periods"
-import { addLabels } from "./shared/labels"
+import { addLabel } from './shared/arrows'
 import { addTrendline } from "./shared/trendline"
 
 export default class Stackedbar {
@@ -293,7 +293,23 @@ export default class Stackedbar {
 
     if (labels.length > 0) {
 
-      addLabels(labels, parseTime, features, isMobile, x, y)
+      const clickLoggingOn = getURLParams("labelling") ? true : false ;
+      console.log("clickLoggingOn", clickLoggingOn);
+
+      // Move this to wrangle later once we re-factor the labelling stuff
+
+      if (typeof labels[0].coords  === 'string') {
+        labels.forEach(function(d) {
+          d.coords = JSON.parse(d.coords)
+          d.sweepFlag = +d.sweepFlag
+          d.largeArcFlag = +d.largeArcFlag
+          d.radius = +d.radius
+        })
+      }
+
+      labels.forEach((config) => {
+        addLabel(svg, config, width + marginleft + marginright, height + margintop + marginbottom, {"left":marginleft, "right":marginright, "top":margintop, "bottom":marginbottom}, clickLoggingOn)
+      })
       
     }
 
