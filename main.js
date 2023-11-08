@@ -2,8 +2,8 @@ import { getURLParams, contains } from './charts/shared/toolbelt';
 import { yachtCharter } from "./yachtCharter.js"
 import './style.scss'
 
-const docsdata = "yacht-charter-data" // "yacht-charter-data" // "docsdata" 
-const keyloc = "oz-datablogs-civic-groups-2006-2020-gss-groupedbar-FOR_ANDY"
+const docsdata = "docsdata" // "yacht-charter-data" // "docsdata" 
+const keyloc = "11LFp54PIb08Cqu6fBpQGDcQ15enT2F-9HsO8kokXbfQ"
 const key = getURLParams("key") ? getURLParams("key") : keyloc ;
 const location = getURLParams("location") ? getURLParams("location") : docsdata ;
 
