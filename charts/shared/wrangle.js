@@ -105,7 +105,7 @@ export function wrangle(data, chart) {
 
     // Convert strings to numbers
 
-    if (contains(['marginleft','marginright','margintop','marginbottom', 'numCols', 'height', 'x_axis_cross_y', 'maxHeight', 'baseline', 'opacity'], setting)) {
+    if (contains(['marginleft','marginright','margintop','marginbottom', 'numCols', 'height', 'maxHeight', 'opacity'], setting)) { //'x_axis_cross_y' 'baseline'
 
       settings[setting] = (isNaN(settings[setting])) ? settings[setting] : +settings[setting]
 
