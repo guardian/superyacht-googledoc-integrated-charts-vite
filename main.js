@@ -3,7 +3,7 @@ import { yachtCharter } from "./yachtCharter.js"
 import './style.scss'
 
 const docsdata = "docsdata" // "yacht-charter-data" // "docsdata" 
-const keyloc = "1cC22i3myfbgSs3wYbA5i83q4tDyLNnS554oDxoeIfTc"
+const keyloc = "1dmlEUPhIc5FdmT54_EvaJ6BJ7KBvp2oKr-SRiJfvVrk"
 const key = getURLParams("key") ? getURLParams("key") : keyloc ;
 const location = getURLParams("location") ? getURLParams("location") : docsdata ;
 

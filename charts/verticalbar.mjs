@@ -105,6 +105,11 @@ export default class Stackedbar {
           parseTime,
           stackedbars } = this.settings
 
+          console.log(`x_axis_cross_y: ${x_axis_cross_y}`)
+          console.log(`baseline: ${baseline}`)
+
+          //x_axis_cross_y = -1.2
+
     d3.select("#graphicContainer svg").remove()
 
     const chartKey = d3.select("#chartKey")
@@ -277,7 +282,7 @@ export default class Stackedbar {
     features
     .append("g")
     .attr("class", "x")
-    .attr("transform", () => (x_axis_cross_y != null) ? "translate(0," + y(x_axis_cross_y) + ")" : "translate(0," + height + ")")
+    .attr("transform", () => (x_axis_cross_y != null && x_axis_cross_y != "") ? "translate(0," + y(x_axis_cross_y) + ")" : "translate(0," + height + ")")
     .call(xAxis)
 
     if (periods.length > 0) {

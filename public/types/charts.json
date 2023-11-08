@@ -1,5 +1,6 @@
 [{
 	"type": "verticalbar",
+	"admin" : true,
 	"names" : ["stackedbar","verticalbar"],
 	"config" : {
 		"axis" : [{
@@ -16,6 +17,7 @@
 	}
 }, {
 	"type": "scatterplot",
+	"admin" : false,
 	"names" : ["scatterplot"],
 	"config" : {
 		"axis" : [{
@@ -31,6 +33,7 @@
 	}
 }, {
 	"type": "linechart",
+	"admin" : true,
 	"names" : ["linechart"],
 	"config" : {
 		"axis" : [{
@@ -43,6 +46,7 @@
 	}
 }, {
 	"type": "horizontalbar",
+	"admin" : true,
 	"names" : ["horizontalbar"],
 	"config" : {
 		"axis" : [{
@@ -58,6 +62,7 @@
 	}
 }, {
 	"type": "smallmultiples",
+	"admin" : false,
 	"names" : ["smallmultiples"],
 	"config" : {
 		"axis" : [{
@@ -73,6 +78,7 @@
 	}
 }, {
 	"type": "stackedarea",
+	"admin" : false,
 	"names" : ["stackedarea"],
 	"config" : {
 		"axis" : [{
@@ -85,10 +91,12 @@
 	}
 }, {
 	"type": "table",
+	"admin" : true,
 	"names" : ["table"],
 	"config" : {}
 }, {
 	"type": "horizontalgroupedbar",
+	"admin" : false,
 	"names" : ["groupedbar","horizontalgroupedbar"],
 	"config" : {
 		"axis" : [{
@@ -98,6 +106,7 @@
 	}
 }, {
 	"type": "lollipop",
+	"admin" : false,
 	"names" : ["lollipop"],
 	"config" : {
 		"axis" : [{
@@ -107,6 +116,7 @@
 	}
 },{
 	"type": "bubble",
+	"admin" : false,
 	"names" : ["bubble"],
 	"config" : {
 		"axis" : [{
