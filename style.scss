@@ -210,35 +210,42 @@ figure {
         }
 
         #graphicContainer svg {    
-                text {
-                    fill:#FFF;
-                }
+          text {
+              fill:#FFF;
+          }
 
-                .line {
-                    stroke: #FFF;
-                }
+          .line {
+              stroke: #FFF;
+          }
 
-                .x path, .x line {
-                    fill: none;
-                    stroke: #cccccc;
-                    shape-rendering: crispEdges;
-                }
+          .x path, .x line {
+              fill: none;
+              stroke: #cccccc;
+              shape-rendering: crispEdges;
+          }
 
-                .heading {
-                    fill: #cccccc;
-                }
+          .heading {
+              fill: #cccccc;
+          }
 
-                .periodLine {
-                    stroke: #bdbdbd;
-                }
+          .periodLine {
+              stroke: #bdbdbd;
+          }
 
-                .periodLabel {
-                    fill: #cccccc;
-                }
+          .periodLabel {
+              fill: #cccccc;
+          }
 
-                .dashed.y line {
-                    stroke: #dcdcdc;
-                }
-            }
+          .dashed.y line {
+              stroke: #dcdcdc;
+          }
+        }
+
+        .tooltip {
+          background-color: white;
+          border-color: white;
+          color:black;
+        }
+
     }
 }
