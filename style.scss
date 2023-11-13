@@ -186,3 +186,59 @@ figure {
   color: #767676;
   font-family: "Guardian Text Sans Web", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 }
+
+.dark-mode-on {
+    .interactive-wrapper  {
+        background-color: #000;
+
+         .subTitle, .sourceText, .keyText {
+            color:#FFF;
+        }
+
+        .chartTitle {
+            color:white;
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }    
+
+        .subTitle {
+            margin-top: 15px;
+        }
+
+        .chartSans, .footer {
+          color: white;
+        }
+
+        #graphicContainer svg {    
+                text {
+                    fill:#FFF;
+                }
+
+                .line {
+                    stroke: #FFF;
+                }
+
+                .x path, .x line {
+                    fill: none;
+                    stroke: #cccccc;
+                    shape-rendering: crispEdges;
+                }
+
+                .heading {
+                    fill: #cccccc;
+                }
+
+                .periodLine {
+                    stroke: #bdbdbd;
+                }
+
+                .periodLabel {
+                    fill: #cccccc;
+                }
+
+                .dashed.y line {
+                    stroke: #dcdcdc;
+                }
+            }
+    }
+}
