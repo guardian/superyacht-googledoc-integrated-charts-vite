@@ -8,6 +8,7 @@ import Tooltip from "./shared/tooltip"
 import { addPeriods } from "./shared/periods"
 import { addLabel } from './shared/arrows'
 import { addTrendline } from "./shared/trendline"
+import Sonic from "./shared/sonic"
 
 export default class Stackedbar {
 
@@ -105,9 +106,6 @@ export default class Stackedbar {
           parseTime,
           stackedbars } = this.settings
 
-          console.log(`x_axis_cross_y: ${x_axis_cross_y}`)
-          console.log(`baseline: ${baseline}`)
-
           //x_axis_cross_y = -1.2
 
     d3.select("#graphicContainer svg").remove()
@@ -130,12 +128,15 @@ export default class Stackedbar {
 
     datum = JSON.parse(JSON.stringify(data))
 
+    console.log("data", data)
+
     const keyColor = dataTools.getKeysColors({
       keys: stackedbars,
       userKey: userkey,
       option: { colorScheme : colorScheme }
     })
 
+    console.log("stackedbars",stackedbars)
     colors.set(keyColor.keys, keyColor.colors)
 
     stackedbars.forEach((key, i) => {
@@ -151,18 +152,25 @@ export default class Stackedbar {
       .attr("class", "keyText")
       .text(key)
     })
-
+  
     datum.forEach((d) => {
       if (xFormat.date) {
         d[xColumn] = parseTime(d[xColumn])
       }
+
       stackedbars.forEach((key, i) => {
         d[key] = (d[key] == null) ? null : +d[key]
       })
       d.Total = d3.sum(stackedbars, (k) => +d[k])
     })
 
-    console.log("datum",datum)
+
+
+    let sonic = new Sonic(this.settings)
+    let playButton = d3.select("#playChart")
+    playButton
+      .on("click", () => {sonic.playAudio(datum, keys=stackedbars)})
+
     let xRange = timeCheck(timeInterval, datum, xColumn)
 
     var layers = d3.stack()
@@ -177,6 +185,7 @@ export default class Stackedbar {
       })
     })
 
+    console.log(layers)  
     const svg = d3.select("#graphicContainer")
     .append("svg")
     .attr("width", width + marginleft + marginright)

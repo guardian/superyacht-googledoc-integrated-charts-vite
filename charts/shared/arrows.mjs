@@ -1,7 +1,7 @@
 function generateArc(el, config, margin, width, height) {
 
 	// Optional arg for large arc flag, set to zero if doesn't exist
-	console.log("margin", margin, "width", width, "height", height)
+	// console.log("margin", margin, "width", width, "height", height)
 	if (!config.largeArcFlag) {
 		config.largeArcFlag = 0
 	}
@@ -28,7 +28,7 @@ function generateArc(el, config, margin, width, height) {
 			var group = el.select("g")
 			var svgWidth = width - margin.left - margin.right
 			var svgHeight = height - margin.top - margin.bottom
-			console.log("svgWidth", svgWidth, "svgHeight", svgHeight)
+			// console.log("svgWidth", svgWidth, "svgHeight", svgHeight)
 
 			newCoords.sourceX = (config.coords.sourceX * svgWidth) + margin.left
 			newCoords.targetX = (config.coords.targetX * svgWidth)  + margin.left
@@ -180,7 +180,7 @@ var insertLinebreaks = function () {
 
 function addLabel(el, config, width, height, margin, clickLoggingOn=false) {
 
-		console.log("Drawing arrow label", config.id, "clickLoggingOn", clickLoggingOn)
+		// console.log("Drawing arrow label", config.id, "clickLoggingOn", clickLoggingOn)
 
 
 		el.select(`#${config.id}`).remove()
@@ -194,7 +194,7 @@ function addLabel(el, config, width, height, margin, clickLoggingOn=false) {
 		var newStuff = generateArc(el, config, margin, width, height)
 		var curvePath = newStuff.curvePath
 		var newCoords = newStuff.newCoords				
-		console.log("newCoords",newCoords)
+		// console.log("newCoords",newCoords)
 		el.append("svg:defs").append("svg:marker")
 			.attr("id", "arrow")
 			.attr("refX", 6)

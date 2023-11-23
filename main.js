@@ -3,7 +3,10 @@ import { yachtCharter } from "./yachtCharter.js"
 import './style.scss'
 
 const docsdata = "docsdata" // "yacht-charter-data" // "docsdata" 
-const keyloc = "1dmlEUPhIc5FdmT54_EvaJ6BJ7KBvp2oKr-SRiJfvVrk"
+
+// long data 10EMTCsz3lOVDFImtDm_LxIufnDw0QMYLcqd6ceLNOdc
+// short data 1MVhSw-zT2XBl8gFzLhXBp1OBkkeWVyJ5x0owS3RKTJw"
+const keyloc = "10EMTCsz3lOVDFImtDm_LxIufnDw0QMYLcqd6ceLNOdc"
 const key = getURLParams("key") ? getURLParams("key") : keyloc ;
 const location = getURLParams("location") ? getURLParams("location") : docsdata ;
 

@@ -10,6 +10,7 @@ import  { addLabel, clickLogging } from './shared/arrows'
 import { addDrops } from "./shared/drops"
 import { getURLParams, getLongestKeyLength, numberFormat, mustache, mobileCheck, sorter, relax} from './shared/toolbelt';
 import Dropdown from "./shared/dropdown";
+import Sonic from "./shared/sonic"
 
 export default class Linechart {
 
@@ -179,9 +180,6 @@ export default class Linechart {
     //console.log("keyColor",keyColor)
     colors.set(keyColor.keys, keyColor.colors)
 
-  
-
-
     const svg = d3
     .select("#graphicContainer")
     .append("svg")
@@ -289,6 +287,11 @@ export default class Linechart {
       })
     })
 
+    let sonic = new Sonic(this.settings)
+    let playButton = d3.select("#playChart")
+    playButton
+      .on("click", () => {sonic.playAudio(datum)})
+
     const max = (maxY && maxY !== "")
         ? parseInt(maxY)
         : d3.max(chartValues)
@@ -299,7 +302,7 @@ export default class Linechart {
 
    let range = datum.map( d => d[xColumn])
 
-   console.log("renage",range) 
+  //  console.log("renage",range) 
     x.domain(d3.extent(range))
 
     y.domain([min, max])
