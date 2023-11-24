@@ -188,6 +188,7 @@ function analyseTime(data, settings) {
   const ONE_DAY = ONE_HOUR * 24;
   const ONE_WEEK = ONE_DAY * 7;
   const ONE_MONTH = ONE_DAY * 28; // approximate
+  const ONE_QUARTER = ONE_MONTH * 3; // approximate
   const ONE_YEAR = ONE_DAY * 365;
 
   // Determine the appropriate time unit and strftime format
@@ -203,11 +204,17 @@ function analyseTime(data, settings) {
     results.interval = timeDiff / ONE_WEEK;
     results.timescale = 'week';
     results.suggestedFormat = '%d %b'; // week of the year
-  } else if (timeDiff < ONE_YEAR) {
+  } else if (timeDiff < ONE_QUARTER) {
     results.interval = timeDiff / ONE_MONTH;
     results.timescale = 'month';
-    results.suggestedFormat = '%b %Y'; // month and year
-  } else {
+    results.suggestedFormat = '%B %Y'; // month and year
+  } 
+  else if (timeDiff < ONE_YEAR) {
+    results.interval = timeDiff / ONE_QUARTER;
+    results.timescale = 'quarter';
+    results.suggestedFormat = '%B %Y'; // month and year
+  }
+  else {
     results.interval = timeDiff / ONE_YEAR;
     results.timescale = 'year';
     results.suggestedFormat = '%Y'; // year
@@ -447,7 +454,7 @@ export default class sonic {
                     }
                     
                     else {
-                      click.triggerAttackRelease(880, note, note * i)
+                      click.triggerAttackRelease(440, note, note * i)
                     }
                     
                     // tone.Transport.schedule(function(){
