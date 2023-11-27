@@ -35,7 +35,7 @@ export class yachtCharter {
     bubble
     */
 
-    this.url = (import.meta.env.MODE == 'development') ? '/' : 'https://interactive.guim.co.uk/embed/superyacht/'
+    this.url = (import.meta.env.MODE == 'development') ? '/' : 'https://interactive.guim.co.uk/embed/superyacht-testing/'
 
     this.charts  = await this.setChartType()
 

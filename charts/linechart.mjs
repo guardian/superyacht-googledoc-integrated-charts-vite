@@ -288,9 +288,10 @@ export default class Linechart {
     })
 
     let sonic = new Sonic(this.settings)
+    sonic.setupSonicData(datum)
     let playButton = d3.select("#playChart")
     playButton
-      .on("click", () => {sonic.playAudio(datum)})
+      .on("click", () => {sonic.playPause()})
 
     const max = (maxY && maxY !== "")
         ? parseInt(maxY)

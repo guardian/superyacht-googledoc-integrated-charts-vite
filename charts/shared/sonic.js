@@ -1,7 +1,9 @@
-import * as tone from 'tone'
-import * as d3 from 'd3' // You can replace with only d3-scale and d3-array if you're not already using d3 for your charts
+import * as tone from './Tone'
+// import * as d3 from 'd3' // You can replace with only d3-scale and d3-array if you're not already using d3 for your charts
 // import notes from './notes.json';
 
+// No idea why Tone needs to be uppercase T when importing like this
+// console.log(Tone)
 function numberFormatSpeech(num) {
   if ( num > 0 ) {
       if ( num >= 1000000000 ) { 
@@ -225,6 +227,7 @@ function analyseTime(data, settings) {
 
 }
 
+// Sets the note duration to fit an overall duration for playing back a data series
 
 function getDuration(dataLength) {
   let targetDuration = 20
@@ -261,6 +264,19 @@ export default class sonic {
       // this.synth2 = null
       this.isPlaying = false
       this.hasRun = false
+      this.currentKeyIndex = 0
+      this.duration = {"note":0.2, "audioRendering":"discrete"}
+      this.note = 0.2
+      this.sonicData = {}
+      this.interval = null
+      this.timeSettings = null
+      this.domainX = null
+      this.domainY = null
+      this.xVar = null
+      this.isPlaying = false
+      this.inProgress = false
+      this.scale = null
+      this.dataKeys = null
   }
 
   loadSynth(selectedInstrument)  {
@@ -269,21 +285,19 @@ export default class sonic {
     console.log("settings",settings)
     let synthType = settings.Synth
     let synthPreset = settings.Presets
-    let newSynth = new tone[synthType](synthPreset).toDestination();
+    let newSynth = new Tone[synthType](synthPreset).toDestination();
     this.synth = newSynth
     console.log(this.synth)
-
     let clickSettings = instruments['Click']
-    this.click = new tone['Synth'](clickSettings.Presets).toDestination();
-
+    this.click = new Tone['Synth'](clickSettings.Presets).toDestination();
 
   }
   
 
   beep(freq) {
     return new Promise( (resolve, reject) => {
-      tone.Transport.stop()
-      tone.Transport.cancel()
+      Tone.Transport.stop()
+      Tone.Transport.cancel()
       
       let synth = this.synth
       
@@ -333,30 +347,20 @@ export default class sonic {
   });
   }
 
-  // Sets the note duration to fit an overall duration for playing back a data series
 
- 
 
-  
-  playAudio(data, keys = [], exclude = []) {
-    console.log("loaded")
-    let self = this
+  setupSonicData(data, keys = [], exclude = []) {
     
-    // note duration in seconds
-    // 
-    // const note = options.duration / data.length
-    const duration = getDuration(data.length)
-    const note = duration.note
+    let self = this
+    self.duration = getDuration(data.length)
+    self.note = self.duration.note
     
     const xFormat = this.settings.xFormat
-    let timeseries = false
-    if (xFormat.date) {
-      timeseries = true
-    }
+    
     console.log("xFormat", xFormat)
-    console.log("note", note)
+    console.log("note", self.note)
 
-    if (duration.audioRendering == "continuous") {
+    if (self.duration.audioRendering == "continuous") {
       self.loadSynth('DefaultLine')
     }
 
@@ -364,215 +368,250 @@ export default class sonic {
       self.loadSynth('Kalimba')
     }
    
-    console.log("note", note)
-    console.log("data", data)
+    console.log("note", self.note)
+    console.log("data", self.data)
     
     // set up the data structure we need, and the keys of data to be sonified
 
-    let sonicData = {}
-    let synth = this.synth
-    let click = this.click
-    // let synth2 = this.synth2
-    var hasRun = this.hasRun
+    let synth = self.synth
+    let click = self.click
+  
+    var hasRun = self.hasRun
     let dataKeys = Object.keys(data[0])
 
-    let xVar = dataKeys[0]
-    let timeSettings = null
-    if (timeseries) {
-      timeSettings = analyseTime(data, this.settings)
+    self.xVar = dataKeys[0]
+    if (xFormat.date) {
+      self.timeSettings = analyseTime(data, self.settings)
     }
     
-    let interval = getInterval(this.settings, xVar, timeSettings)
+    self.interval = getInterval(self.settings, self.xVar, self.timeSettings)
     
-    console.log("time settings", timeSettings)
-    console.log("interval", interval)
+    console.log("time settings", self.timeSettings)
+    console.log("interval", self.interval)
 
     let allDataValues = []
     let hideNullValues = false
     
+    // Check if chart code set specific keys, otherwise just use the keys from the data
+
     if (keys.length === 0) {
         keys = dataKeys.slice(1)
     }
+
+    // make keys available to other methods
+
+    self.dataKeys = keys
+    
+    // Format the data as needed, add to the sonicData dict
+
     keys.forEach(function(key) {
-        sonicData[key] = []
+        self.sonicData[key] = []
         data.forEach((d) => {
         if (d[key] != null) {
             let newData = {}
-            newData[xVar] = d[xVar]
+            newData[self.xVar] = d[self.xVar]
             newData[key] = d[key]
-            sonicData[key].push(newData)
+            self.sonicData[key].push(newData)
             allDataValues.push(d[key])
         } else if (!hideNullValues) {
             let newData = {}
-            newData[xVar] = d[xVar]
+            newData[self.xVar] = d[self.xVar]
             newData[key] = d[key]
-            sonicData[key].push(newData)
+            self.sonicData[key].push(newData)
         }
         })
     })
 
     // Setting the scale range for linear scale
     // console.log("allDataValues", allDataValues)
-    console.log("sonicData", sonicData)
+    console.log("sonicData", self.sonicData)
     let range = [130.81,523.25]
-    let domainY = d3.extent(allDataValues)
-    let domainX = d3.extent(data, d => d[xVar])
+    self.domainY = d3.extent(allDataValues)
+    self.domainX = d3.extent(data, d => d[self.xVar])
     // Invert if needed
-
-    // if (options.invertAudio) {
-    //   range = range.reverse()
-    // }
+    // ranked charts use inverted scale, eg bird of the year
+    // https://interactive.guim.co.uk/embed/superyacht-testing/index.html?key=1WVTOMn-2BPVPUahzMzCM4H1inPM6oCT8w17GE5giDe8&location=docsdata
+    if ("invertY" in this.settings) {
+      if (this.settings.invertY) {
+        range = range.reverse()
+      }
+    }
     
-    console.log("range", range)
-    let scale = d3.scaleLinear()
-      .domain(domainY)
+    console.log("range", range, "domain", self.domainY)
+    self.scale = d3.scaleLinear()
+      .domain(self.domainY)
       .range(range)
 
-    function makeNoise(noiseKeys) {
-        console.log("makeNoise")
-        tone.Transport.stop()
-        tone.Transport.cancel()
-       
-        noiseKeys.forEach(function(key) {
+  }
+  
 
-            let keyI = keys.indexOf(key)
-            console.log(keyI)
 
-            if (duration.audioRendering == "discrete") {
-              
-              synth.sync()
-              click.sync()
+ playAudio = (dataKey) => {
+    return new Promise((resolve, reject) => {
+      let self = this
+      let keyIndex = self.dataKeys.indexOf(dataKey)
+      console.log(`Setting up the transport for ${dataKey}`)
+      // Clear the transport
+      Tone.Transport.stop()
+      Tone.Transport.cancel()
 
+      // syncs the synth to the transport
+
+      if (self.duration.audioRendering == "discrete") {  
+        self.synth.sync()
+        self.click.sync()
+      }
+
+      self.sonicData[dataKey].forEach(function(d,i) { 
+        
+        if (self.duration.audioRendering == "discrete") {
+          
+            if (d[dataKey]) {
+              self.synth.triggerAttackRelease(self.scale(d[dataKey]), self.note, self.note * i)
             }
             
-            sonicData[key].forEach(function(d,i) { 
-                
-                if (duration.audioRendering == "discrete") {
-                  
-                    if (d[key]) {
-                      synth.triggerAttackRelease(scale(d[key]), note, note * i)
-                    }
-                    
-                    else {
-                      click.triggerAttackRelease(440, note, note * i)
-                    }
-                    
-                    // tone.Transport.schedule(function(){
-                    //     animateDisc(key, i, sonicData[key].length)
-                    // }, i * note);
-                }
-
-                else {
-                  console.log("making continuous noise")
-                  if (i == 0) { 
-                    synth.triggerAttackRelease(scale(d[key]), sonicData[key].length * note)
-                    // animateCont(key)
-                  }
-                  else {
-                      tone.Transport.schedule(function(){
-                      synth.frequency.rampTo(scale(d[key]), note);
-                      }, i * note);
-                  }
-                }
-
-            
-              })
-
-        })
-        
-        tone.Transport.position = "0:0:0"  
-        tone.Transport.start()
-        
-        function clearSynth() {
-          tone.Transport.stop()
-          tone.Transport.cancel()
-        }
-    
-    } // end makeNoise
-
-    // check if play data series simultaneously or consecutively
-
-    let isPlaying = this.isPlaying
-
-    
-    async function noiseLoop() {    
-
-      if (!isPlaying) {
-
-        isPlaying = true
-
-        let lowestY = domainY[0]
-        let highestY = domainY[1]
-
-        let lowestX = domainX[0]
-        let highestX = domainX[1]
-        if (timeseries) {
-          lowestX = xvarFormatSpeech(domainX[0], timeSettings.suggestedFormat)
-          highestX = xvarFormatSpeech(domainX[1], timeSettings.suggestedFormat)
+            else {
+              self.click.triggerAttackRelease(440, self.note, self.note * i)
+            }
         }
 
-        console.log("domainY",domainY)
-        if (typeof lowestY == 'number') {
-            lowestY = numberFormatSpeech(lowestY)
-            highestY = numberFormatSpeech(highestY)
+        else {
+          console.log("making continuous noise")
+          if (i == 0) { 
+            synth.triggerAttackRelease(self.scale(d[key]), self.sonicData[dataKey].length * self.note)
+            // animateCont(key)
+          }
+          else {
+              Tone.Transport.schedule(function(){
+              self.synth.frequency.rampTo(scale(d[dataKey]), self.note);
+              }, i * self.note);
+          }
         }
-
-        const text1 = await self.speaker(`The lowest value on the chart is ${lowestY}, and it sounds like `)
-        const beep1 = await self.beep(scale(domainY[0]))        
-
-        await timer(1200);
-
-        const text2 = await self.speaker(`The highest value on the chart is ${highestY}, and it sounds like `)
-
-        const beep2 = await self.beep(scale(domainY[1]))
-
-        await timer(1200);
-
-        const text3 = await self.speaker(`Each note is a ${interval}, and the chart goes from ${lowestX} to ${highestX}`)
     
-        
-        // for await (const datastream of self.keyOrder) {
+    })
+      
+      // resolve after the last note is played
 
-        // //       d3.select("#playHead")
-        // //         .attr("cx",self.x(self.sonicData[datastream][0][xVar]) + self.margin.left)
-        // //         .attr("cy",self.y(self.sonicData[datastream][0][datastream]) + self.margin.top)
+      Tone.Transport.schedule(function(){
+        console.log("the end")
+        self.isPlaying = false
+        resolve({ status : "success"})
+      }, self.sonicData[dataKey].length * self.note);
+    
+      // set inprogress to false after the last note of the last data series is played
 
-        // //   const category = await speaker(datastream)
-
-        //   makeNoise(xVar, datastream)
-
-        //   await timer(self.sonicData[datastream].length * note * 1000);
-
-        // }
-
+      if (keyIndex === self.dataKeys.length -1) {
+        Tone.Transport.schedule(function(){
+          console.log("the actual end")
+          self.inProgress = false
+          }, self.sonicData[dataKey].length * self.note);
+      }
   
-   
-    async function play() {
-        console.log("keys", keys)
-        for await (const key of keys) {
-            console.log(key)
-            
-            let speakKey = await self.speaker(`${key}`)
-            
-            makeNoise([key])
-            await timer(sonicData[key].length * note * 1000 + 1000);
-        
+      Tone.Transport.position = "0:0:0"  
+      Tone.Transport.start()
+      self.inProgress = true
+    });
+
+  }  
+
+ playFurniture = () => { 
+    return new Promise((resolve, reject) => {
+    let self = this
+    async function blah() {
+      
+      let lowestY = self.domainY[0]
+      let highestY = self.domainY[1]
+      console.log("scaled", self.scale)
+      if ("invertY" in self.settings) {
+        if (self.settings.invertY) {
+          lowestY = self.domainY[1]
+          highestY = self.domainY[0]
         }
+      }
+  
+      let lowestX = self.domainX[0]
+      let highestX = self.domainX[1]
+  
+      if (self.settings.xFormat.date) {
+        lowestX = xvarFormatSpeech(self.domainX[0], self.timeSettings.suggestedFormat)
+        highestX = xvarFormatSpeech(self.domainX[1], self.timeSettings.suggestedFormat)
+      }
+  
+      console.log("domainY",self.domainY)
+      let lowestYStr = lowestY
+      let highestYStr = highestY
+      if (typeof lowestY == 'number') {
+          lowestYStr = numberFormatSpeech(lowestY)
+          highestYStr = numberFormatSpeech(highestY)
+      }
+  
+      const text1 = await self.speaker(`The lowest value on the chart is ${lowestYStr}, and it sounds like `)
+      const beep1 = await self.beep(self.scale(lowestY))        
+  
+      await timer(1200);
+  
+      const text2 = await self.speaker(`The highest value on the chart is ${highestYStr}, and it sounds like `)
+  
+      const beep2 = await self.beep(self.scale(highestY))
+  
+      await timer(1200);
+  
+      const text3 = await self.speaker(`Each note is a ${self.interval}, and the chart goes from ${lowestX} to ${highestX}`)
+      resolve({ status : "success"})
+    }  
+
+    blah()  
+    
+  })
+}
+
+  async playPause() { 
+
+    let self = this
+
+    if (!self.runOnce) {
+      Tone.start()
+      self.runOnce = true
+      await self.playFurniture()
     }
     
-    play()
-       
-    //   await timer(3000);  
-      isPlaying = false
+    // it's not playing, and not pause so play it from the start
+  
+    if (!self.isPlaying && !self.inProgress) {
+      console.log("playing")
+      self.isPlaying = true
+      self.inProgress = true
+      console.log("yeh")
+      
+      for await (const key of this.dataKeys) {
+        console.log(key)
+        
+        let speakKey = await self.speaker(`${key}`)
+        
+        await self.playAudio(key)
 
+      }
+  
     }
+  
+    // it is playing so pause 
+  
+    else if (self.isPlaying && self.inProgress) {
+      console.log("pause")
+      self.isPlaying = false
+      Tone.Transport.pause();
+    }
+  
+    // it has been paused, so restart 
+  
+    else if (!self.isPlaying && self.inProgress) {
+      console.log("restart")
+      self.isPlaying = true
+      Tone.Transport.start();
+    }
+    
+  }	
 
-    } // end noiseLoop
 
-
-    noiseLoop()
-   
-
-} // end playAudio
 
 }
