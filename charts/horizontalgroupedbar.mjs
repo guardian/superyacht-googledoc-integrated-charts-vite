@@ -93,7 +93,7 @@ export default class Groupedbar {
           lines, 
           periods, 
           type, 
-          autoSort, 
+          autoSort,
           enableShowMore, 
           aria, 
           colorScheme, 
@@ -110,9 +110,13 @@ export default class Groupedbar {
 
     datum = []
 
-    const columns = JSON.parse(JSON.stringify(keys))
+    let columns = JSON.parse(JSON.stringify(keys))
+    let xColumn = columns[0]  
+  
+    columns = columns.filter(d => d != groupBy && d != xColumn)
 
-    columns.filter(d => d != groupBy)
+    console.log("columns", columns)
+
 
     data.map(d => columns.map(key => (+d[key]))).forEach(ob => datum.push(...ob))
 
