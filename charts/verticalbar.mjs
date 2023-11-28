@@ -164,12 +164,13 @@ export default class Stackedbar {
       d.Total = d3.sum(stackedbars, (k) => +d[k])
     })
 
-
-
     let sonic = new Sonic(this.settings)
+    sonic.setupSonicData(datum, keys=stackedbars)
+    sonic.addInteraction()
+
     let playButton = d3.select("#playChart")
     playButton
-      .on("click", () => {sonic.playAudio(datum, keys=stackedbars)})
+      .on("click", () => {sonic.playPause(datum)})
 
     let xRange = timeCheck(timeInterval, datum, xColumn)
 

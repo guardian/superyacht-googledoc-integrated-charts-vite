@@ -254,6 +254,8 @@ function getDuration(dataLength) {
 
 const timer = ms => new Promise(res => setTimeout(res, ms))
 
+
+
 // The main function for playing a series of data
 
 export default class sonic {
@@ -277,6 +279,9 @@ export default class sonic {
       this.inProgress = false
       this.scale = null
       this.dataKeys = null
+      this.speech = window.speechSynthesis
+      this.furniturePlaying = false
+  
   }
 
   loadSynth(selectedInstrument)  {
@@ -293,7 +298,6 @@ export default class sonic {
 
   }
   
-
   beep(freq) {
     return new Promise( (resolve, reject) => {
       Tone.Transport.stop()
@@ -319,14 +323,15 @@ export default class sonic {
   speaker(text) {
   
     return new Promise( (resolve, reject) => {
-  
+    let self = this
     if ('speechSynthesis' in window) {
      
       var msg = new SpeechSynthesisUtterance();
   
       msg.text = text
-  
-      window.speechSynthesis.speak(msg);
+      msg.lang = 'en-GB'
+      // msg.rate = 0.89
+      self.speech.speak(msg);
   
       msg.onend = function() {
   
@@ -346,8 +351,6 @@ export default class sonic {
   
   });
   }
-
-
 
   setupSonicData(data, keys = [], exclude = []) {
     
@@ -518,6 +521,9 @@ export default class sonic {
     return new Promise((resolve, reject) => {
     let self = this
     async function blah() {
+
+      // uncomment to make testing synth / audio context faster  
+      // await self.beep(440)    
       
       let lowestY = self.domainY[0]
       let highestY = self.domainY[1]
@@ -544,7 +550,7 @@ export default class sonic {
           lowestYStr = numberFormatSpeech(lowestY)
           highestYStr = numberFormatSpeech(highestY)
       }
-  
+      self.furniturePlaying = true
       const text1 = await self.speaker(`The lowest value on the chart is ${lowestYStr}, and it sounds like `)
       const beep1 = await self.beep(self.scale(lowestY))        
   
@@ -557,6 +563,7 @@ export default class sonic {
       await timer(1200);
   
       const text3 = await self.speaker(`Each note is a ${self.interval}, and the chart goes from ${lowestX} to ${highestX}`)
+      self.furniturePlaying = false
       resolve({ status : "success"})
     }  
 
@@ -571,10 +578,23 @@ export default class sonic {
 
     if (!self.runOnce) {
       Tone.start()
+      self.synth.context.resume();
       self.runOnce = true
       await self.playFurniture()
     }
     
+    // Pausing and resuming speech needs work
+
+    // if (self.furniturePlaying) {
+    //   self.speech.pause()
+    //   self.furniturePlaying = false
+    // }
+
+    // else if (!self.furniturePlaying) {
+    //   self.speech.resume()
+    //   self.furniturePlaying = true
+    // }
+
     // it's not playing, and not pause so play it from the start
   
     if (!self.isPlaying && !self.inProgress) {
@@ -612,6 +632,22 @@ export default class sonic {
     
   }	
 
+  addInteraction() {
+    let self = this
+    let ele = document.getElementById("app");
+    let btn = document.getElementById("playChart");
+    ele.addEventListener('keypress', (e) => {
+      console.log(e.code)
+      if (e.code === "Space") {
+        this.playPause()
+      }
+    });
 
+    btn.addEventListener('keyup', (e) => {
+      if (e.code === "Space") {
+        e.preventDefault();
+      }
+    })
+  }
 
 }
