@@ -292,8 +292,6 @@ function getDuration(dataLength) {
 
 const timer = ms => new Promise(res => setTimeout(res, ms))
 
-
-
 // The main function for playing a series of data
 
 export default class sonic {
@@ -510,10 +508,10 @@ export default class sonic {
       let data = self.sonicData[dataKey]
 
       // Check if the cursor has been used, slice to the current position
-
+      console.log("current index",self.currentIndex)
       if (self.currentIndex != 0) {
         data = data.slice(self.currentIndex)
-        console.log(data)
+        // console.log(data)
       }
 
       data.forEach(function(d,i) { 
@@ -560,6 +558,7 @@ export default class sonic {
 
       Tone.Transport.schedule(function(){
         console.log("the end")
+        self.currentIndex = 0
         self.isPlaying = false
         resolve({ status : "success"})
       }, data.length * self.note);
@@ -673,10 +672,14 @@ export default class sonic {
         
         await self.playAudio(key)
 
+
       }
   
     }
   
+    // Function to resume after using the cursor here
+
+
     // it is playing so pause 
   
     else if (self.isPlaying && self.inProgress) {
@@ -688,6 +691,7 @@ export default class sonic {
     // it has been paused, so restart 
   
     else if (!self.isPlaying && self.inProgress) {
+
       console.log("restart")
       self.isPlaying = true
       Tone.Transport.start();
@@ -720,13 +724,26 @@ export default class sonic {
     self.speaker(numberFormatSpeech(currentY))
     self.beep(self.scale(currentY))
 
-
   }
 
   moveSeries(direction) {
+    let self = this
     console.log("Move series", direction)
     self.isPlaying = false
     Tone.Transport.pause();
+    let currentKeyIndex = self.dataKeys.indexOf(self.currentKey)
+    console.log("Old key", self.currentKey, "old key index", currentKeyIndex)
+    currentKeyIndex = currentKeyIndex + direction
+    if (currentKeyIndex >= self.dataKeys.length) {
+      currentKeyIndex = 0
+    }
+
+    if (currentKeyIndex < 0) {
+      currentKeyIndex = self.dataKeys.length - 1
+    }
+
+    self.currentKey = self.dataKeys[currentKeyIndex]
+    console.log("New key", self.currentKey, "new key index", currentKeyIndex)
   }
 
   addInteraction() {
@@ -753,7 +770,7 @@ export default class sonic {
       }
 
       if (e.code === "KeyS") {
-        self.moveSeriesr(-1)
+        self.moveSeries(-1)
       }
     });
 
