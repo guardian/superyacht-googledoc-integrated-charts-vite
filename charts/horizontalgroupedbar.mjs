@@ -111,12 +111,8 @@ export default class Groupedbar {
     datum = []
 
     let columns = JSON.parse(JSON.stringify(keys))
-    let xColumn = columns[0]  
-  
-    columns = columns.filter(d => d != groupBy && d != xColumn)
 
-    console.log("columns", columns)
-
+    columns = columns.filter(d => d != groupBy)
 
     data.map(d => columns.map(key => (+d[key]))).forEach(ob => datum.push(...ob))
 
@@ -205,7 +201,9 @@ export default class Groupedbar {
     .attr("transform", d => `translate(0,${y0(d[[groupBy]])})`)
 
     bars.selectAll("rect")
-    .data(d => columns.map(key => ({key, value: d[key], ...d})))
+    .data(d => {
+      return columns.filter(key => d[key] !== null).map(key => ({key, value: d[key], ...d}))
+    })
     .enter()
     .append("rect")
     .attr("class", "barPart")
@@ -216,7 +214,7 @@ export default class Groupedbar {
     .attr("fill", d => colors.get(d.key))
 
     bars.selectAll("text")
-    .data(d => columns.map(key => ({key, value: d[key]})))
+    .data(d => columns.filter(key => d[key] !== null).map(key => ({key, value: d[key]})))
     .enter()
     .append("text")
     .attr("text-anchor", d => (x(d.value) - x(0) < 100) ? "start" : "end" )
