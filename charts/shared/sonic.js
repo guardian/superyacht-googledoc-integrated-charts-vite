@@ -41,13 +41,51 @@ function numberFormatSpeech(num) {
   return num;
 }
 
+function yearText(year) {
+
+	if (year.length !=4) {
+		console.log("Error, not a year string")
+		return year
+	} 
+
+	else {
+		let partOne = year.slice(0,2)
+		let partTwo = year.slice(2,4)
+		let checkZero = year.slice(2,3)
+
+		console.log(partOne, partTwo)
+		if (year != "2000" && partTwo == "00") {
+			
+			partTwo = "hundred"
+		}
+
+		else if (year == "2000") {
+			partOne = "two thousand"
+			partTwo  = ""
+		}
+
+		else if (checkZero == "0") {
+			console.log("yeh")
+			let lastNum = year.slice(3,4)
+			partTwo = "oh " + lastNum
+		}
+
+		return `${partOne} ${partTwo}`
+	}	
+	
+}
+
 function xvarFormatSpeech(xVar, format) {
   // check for date objects
-  console.log("yeh", xVar, format)
+  console.log(xVar, format)
   if (typeof xVar == "object") {
-    console.log("yeh2")
+    
     let timeFormatter = d3.timeFormat(format)
-    return timeFormatter(xVar)
+    let result = timeFormatter(xVar)
+    if (format == "%Y") {
+      result = yearText(result)
+    }
+    return result
   }
   
   else {
@@ -266,7 +304,8 @@ export default class sonic {
       // this.synth2 = null
       this.isPlaying = false
       this.hasRun = false
-      this.currentKeyIndex = 0
+      this.currentKey = null
+      this.currentIndex = 0
       this.duration = {"note":0.2, "audioRendering":"discrete"}
       this.note = 0.2
       this.sonicData = {}
@@ -308,7 +347,7 @@ export default class sonic {
       synth.unsync()
       console.log("freq", freq)
       console.log(synth)
-      synth.triggerAttackRelease(freq, 1)
+      synth.triggerAttackRelease(freq, 0.5)
       setTimeout(success, 1000)
   
       function success () {
@@ -325,7 +364,7 @@ export default class sonic {
     return new Promise( (resolve, reject) => {
     let self = this
     if ('speechSynthesis' in window) {
-     
+      // clear any current speech
       var msg = new SpeechSynthesisUtterance();
   
       msg.text = text
@@ -404,22 +443,24 @@ export default class sonic {
     // make keys available to other methods
 
     self.dataKeys = keys
-    
+    self.currentKey = keys[0]
     // Format the data as needed, add to the sonicData dict
 
     keys.forEach(function(key) {
         self.sonicData[key] = []
-        data.forEach((d) => {
+        data.forEach((d, i) => {
         if (d[key] != null) {
             let newData = {}
             newData[self.xVar] = d[self.xVar]
             newData[key] = d[key]
+            newData.index = i
             self.sonicData[key].push(newData)
             allDataValues.push(d[key])
         } else if (!hideNullValues) {
             let newData = {}
             newData[self.xVar] = d[self.xVar]
             newData[key] = d[key]
+            newData.index = i
             self.sonicData[key].push(newData)
         }
         })
@@ -453,6 +494,7 @@ export default class sonic {
     return new Promise((resolve, reject) => {
       let self = this
       let keyIndex = self.dataKeys.indexOf(dataKey)
+      // let halfway = self.sonicData[dataKey]
       console.log(`Setting up the transport for ${dataKey}`)
       // Clear the transport
       Tone.Transport.stop()
@@ -465,7 +507,18 @@ export default class sonic {
         self.click.sync()
       }
 
-      self.sonicData[dataKey].forEach(function(d,i) { 
+      let data = self.sonicData[dataKey]
+
+      // Check if the cursor has been used, slice to the current position
+
+      if (self.currentIndex != 0) {
+        data = data.slice(self.currentIndex)
+        console.log(data)
+      }
+
+      data.forEach(function(d,i) { 
+
+        self.currentKey = dataKey
         
         if (self.duration.audioRendering == "discrete") {
           
@@ -476,12 +529,17 @@ export default class sonic {
             else {
               self.click.triggerAttackRelease(440, self.note, self.note * i)
             }
+
+            Tone.Transport.schedule(function(){
+              self.currentIndex = d.index
+              // console.log(self.currentIndex)
+              }, i * self.note);
         }
 
         else {
           console.log("making continuous noise")
           if (i == 0) { 
-            synth.triggerAttackRelease(self.scale(d[key]), self.sonicData[dataKey].length * self.note)
+            synth.triggerAttackRelease(self.scale(d[key]), data[dataKey].length * self.note)
             // animateCont(key)
           }
           else {
@@ -493,13 +551,18 @@ export default class sonic {
     
     })
       
+    Tone.Transport.schedule(function(){
+      console.log("the start")
+    }, 0);
+
+
       // resolve after the last note is played
 
       Tone.Transport.schedule(function(){
         console.log("the end")
         self.isPlaying = false
         resolve({ status : "success"})
-      }, self.sonicData[dataKey].length * self.note);
+      }, data.length * self.note);
     
       // set inprogress to false after the last note of the last data series is played
 
@@ -507,7 +570,7 @@ export default class sonic {
         Tone.Transport.schedule(function(){
           console.log("the actual end")
           self.inProgress = false
-          }, self.sonicData[dataKey].length * self.note);
+          }, data.length * self.note);
       }
   
       Tone.Transport.position = "0:0:0"  
@@ -580,7 +643,7 @@ export default class sonic {
       Tone.start()
       self.synth.context.resume();
       self.runOnce = true
-      await self.playFurniture()
+      // await self.playFurniture()
     }
     
     // Pausing and resuming speech needs work
@@ -632,6 +695,40 @@ export default class sonic {
     
   }	
 
+  async moveCursor(direction) {
+
+    // increment the position of the current data index up by one, then play the datapoint
+    let self = this
+
+    console.log("Move cursor", direction)
+    self.isPlaying = false
+    Tone.Transport.pause();
+
+    self.currentIndex = self.currentIndex + direction
+   
+    if (self.currentIndex >= self.sonicData[self.currentKey].length) {
+      self.currentIndex = 0
+    }
+
+    let currentData = self.sonicData[self.currentKey][self.currentIndex]
+    console.log("currentData", currentData)
+    let currentX = currentData[self.xVar]
+    let currentY = currentData[self.currentKey]
+
+    // self.speech.cancel()
+    self.speaker(xvarFormatSpeech(currentX, self.timeSettings.suggestedFormat))
+    self.speaker(numberFormatSpeech(currentY))
+    self.beep(self.scale(currentY))
+
+
+  }
+
+  moveSeries(direction) {
+    console.log("Move series", direction)
+    self.isPlaying = false
+    Tone.Transport.pause();
+  }
+
   addInteraction() {
     let self = this
     let ele = document.getElementById("app");
@@ -641,12 +738,33 @@ export default class sonic {
       if (e.code === "Space") {
         this.playPause()
       }
+
+      if (e.code === "KeyD") {
+        console.log("keyd")
+        self.moveCursor(1)
+      }
+
+      if (e.code === "KeyA") {
+        self.moveCursor(-1)
+      }
+
+      if (e.code === "KeyW") {
+        self.moveSeries(1)
+      }
+
+      if (e.code === "KeyS") {
+        self.moveSeriesr(-1)
+      }
     });
 
     btn.addEventListener('keyup', (e) => {
+
       if (e.code === "Space") {
         e.preventDefault();
       }
+
+      
+
     })
   }
 

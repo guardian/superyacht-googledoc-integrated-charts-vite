@@ -6,7 +6,7 @@ const docsdata = "docsdata" // "yacht-charter-data" // "docsdata"
 
 // long data 10EMTCsz3lOVDFImtDm_LxIufnDw0QMYLcqd6ceLNOdc
 // short data 1MVhSw-zT2XBl8gFzLhXBp1OBkkeWVyJ5x0owS3RKTJw"
-const keyloc = "10EMTCsz3lOVDFImtDm_LxIufnDw0QMYLcqd6ceLNOdc"
+const keyloc = "1MVhSw-zT2XBl8gFzLhXBp1OBkkeWVyJ5x0owS3RKTJw"
 const key = getURLParams("key") ? getURLParams("key") : keyloc ;
 const location = getURLParams("location") ? getURLParams("location") : docsdata ;
 

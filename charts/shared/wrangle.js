@@ -267,7 +267,7 @@ export function wrangle(data, chart) {
   / check if it is a date, a string
   */
 
-  if (contains(['stackedbar', 'linechart', 'smallmultiples', 'stackedarea', 'bubble', 'scatterplot', 'lollipop'], settings["type"])) {
+  if (contains(['stackedbar', 'verticalbar', 'linechart', 'smallmultiples', 'stackedarea', 'bubble', 'scatterplot', 'lollipop'], settings["type"])) {
 
     settings["xFormat"] = xFormatting(settings)
 
