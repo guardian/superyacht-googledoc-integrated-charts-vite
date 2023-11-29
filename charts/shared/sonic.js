@@ -53,7 +53,6 @@ function yearText(year) {
 		let partTwo = year.slice(2,4)
 		let checkZero = year.slice(2,3)
 
-		console.log(partOne, partTwo)
 		if (year != "2000" && partTwo == "00") {
 			
 			partTwo = "hundred"
@@ -65,7 +64,7 @@ function yearText(year) {
 		}
 
 		else if (checkZero == "0") {
-			console.log("yeh")
+
 			let lastNum = year.slice(3,4)
 			partTwo = "oh " + lastNum
 		}
@@ -318,18 +317,17 @@ export default class sonic {
       this.dataKeys = null
       this.speech = window.speechSynthesis
       this.furniturePlaying = false
+      this.usedCursor = false
   
   }
 
   loadSynth(selectedInstrument)  {
-    console.log(this.synth)
     let settings = instruments[selectedInstrument]
     console.log("settings",settings)
     let synthType = settings.Synth
     let synthPreset = settings.Presets
     let newSynth = new Tone[synthType](synthPreset).toDestination();
     this.synth = newSynth
-    console.log(this.synth)
     let clickSettings = instruments['Click']
     this.click = new Tone['Synth'](clickSettings.Presets).toDestination();
 
@@ -344,7 +342,6 @@ export default class sonic {
       
       synth.unsync()
       console.log("freq", freq)
-      console.log(synth)
       synth.triggerAttackRelease(freq, 0.5)
       setTimeout(success, 1000)
   
@@ -396,9 +393,6 @@ export default class sonic {
     self.note = self.duration.note
     
     const xFormat = this.settings.xFormat
-    
-    console.log("xFormat", xFormat)
-    console.log("note", self.note)
 
     if (self.duration.audioRendering == "continuous") {
       self.loadSynth('DefaultLine')
@@ -451,14 +445,14 @@ export default class sonic {
             let newData = {}
             newData[self.xVar] = d[self.xVar]
             newData[key] = d[key]
-            newData.index = i
+            newData.sonic_index = i
             self.sonicData[key].push(newData)
             allDataValues.push(d[key])
         } else if (!hideNullValues) {
             let newData = {}
             newData[self.xVar] = d[self.xVar]
             newData[key] = d[key]
-            newData.index = i
+            newData.sonic_index  = i
             self.sonicData[key].push(newData)
         }
         })
@@ -529,7 +523,7 @@ export default class sonic {
             }
 
             Tone.Transport.schedule(function(){
-              self.currentIndex = d.index
+              self.currentIndex = d.sonic_index
               // console.log(self.currentIndex)
               }, i * self.note);
         }
@@ -569,12 +563,14 @@ export default class sonic {
         Tone.Transport.schedule(function(){
           console.log("the actual end")
           self.inProgress = false
+          self.usedCursor = false
           }, data.length * self.note);
       }
   
       Tone.Transport.position = "0:0:0"  
       Tone.Transport.start()
       self.inProgress = true
+      self.isPlaying = true
     });
 
   }  
@@ -589,7 +585,7 @@ export default class sonic {
       
       let lowestY = self.domainY[0]
       let highestY = self.domainY[1]
-      console.log("scaled", self.scale)
+
       if ("invertY" in self.settings) {
         if (self.settings.invertY) {
           lowestY = self.domainY[1]
@@ -605,7 +601,6 @@ export default class sonic {
         highestX = xvarFormatSpeech(self.domainX[1], self.timeSettings.suggestedFormat)
       }
   
-      console.log("domainY",self.domainY)
       let lowestYStr = lowestY
       let highestYStr = highestY
       if (typeof lowestY == 'number') {
@@ -637,12 +632,12 @@ export default class sonic {
   async playPause() { 
 
     let self = this
-
+    console.log("playing", self.isPlaying, "progress", self.inProgress, "cursor", self.usedCursor)
     if (!self.runOnce) {
       Tone.start()
       self.synth.context.resume();
       self.runOnce = true
-      // await self.playFurniture()
+      await self.playFurniture()
     }
     
     // Pausing and resuming speech needs work
@@ -659,11 +654,10 @@ export default class sonic {
 
     // it's not playing, and not pause so play it from the start
   
-    if (!self.isPlaying && !self.inProgress) {
+    if (!self.isPlaying && !self.inProgress && !self.usedCursor) {
       console.log("playing")
-      self.isPlaying = true
-      self.inProgress = true
-      console.log("yeh")
+      // self.isPlaying = true
+      // self.inProgress = true
       
       for await (const key of this.dataKeys) {
         console.log(key)
@@ -679,6 +673,21 @@ export default class sonic {
   
     // Function to resume after using the cursor here
 
+    else if (!self.isPlaying && self.inProgress && self.usedCursor) {
+      console.log("playing from cursor")
+      // self.isPlaying = true
+      // self.inProgress = true
+      console.log("yeh")
+      
+      let currentKeyIndex = self.dataKeys.indexOf(self.currentKey)
+
+      for (let i = currentKeyIndex; i < self.dataKeys.length; i++) {
+        self.currentKey = self.dataKeys[i]
+        let speakKey = await self.speaker(`${self.currentKey}`)
+        await self.playAudio(self.currentKey)
+      }
+
+    }
 
     // it is playing so pause 
   
@@ -693,7 +702,7 @@ export default class sonic {
     else if (!self.isPlaying && self.inProgress) {
 
       console.log("restart")
-      self.isPlaying = true
+      // self.isPlaying = true
       Tone.Transport.start();
     }
     
@@ -701,17 +710,25 @@ export default class sonic {
 
   async moveCursor(direction) {
 
+
     // increment the position of the current data index up by one, then play the datapoint
     let self = this
+    self.usedCursor = true
+    self.isPlaying = false
+    self.inProgress = true
 
     console.log("Move cursor", direction)
-    self.isPlaying = false
+    
     Tone.Transport.pause();
 
     self.currentIndex = self.currentIndex + direction
    
     if (self.currentIndex >= self.sonicData[self.currentKey].length) {
       self.currentIndex = 0
+    }
+
+    if (self.currentIndex < 0) {
+      self.currentIndex = self.sonicData[self.currentKey].length - 1
     }
 
     let currentData = self.sonicData[self.currentKey][self.currentIndex]
@@ -728,12 +745,18 @@ export default class sonic {
 
   moveSeries(direction) {
     let self = this
-    console.log("Move series", direction)
+    self.usedCursor = true
     self.isPlaying = false
+    self.inProgress = true
+    
+    console.log("Move series", direction)
+    
     Tone.Transport.pause();
+
     let currentKeyIndex = self.dataKeys.indexOf(self.currentKey)
     console.log("Old key", self.currentKey, "old key index", currentKeyIndex)
     currentKeyIndex = currentKeyIndex + direction
+
     if (currentKeyIndex >= self.dataKeys.length) {
       currentKeyIndex = 0
     }
@@ -744,6 +767,7 @@ export default class sonic {
 
     self.currentKey = self.dataKeys[currentKeyIndex]
     console.log("New key", self.currentKey, "new key index", currentKeyIndex)
+    self.speaker(self.currentKey)
   }
 
   addInteraction() {
