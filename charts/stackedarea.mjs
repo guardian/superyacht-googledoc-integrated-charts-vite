@@ -98,7 +98,6 @@ export default class Stackedarea {
           parseTime,
           timeInterval,
           xAxisDateFormat,
-          baseline,
           xColumn,
           stackedbars } = this.settings
 
@@ -258,7 +257,7 @@ export default class Stackedarea {
     features
     .append("g")
     .attr("class", "x")
-    .attr("transform", () => (baseline != "") ? "translate(0," + y(baseline) + ")" : "translate(0," + height + ")")
+    .attr("transform", "translate(0," + height + ")")
     .call(xAxis)
 
     if (xAxisLabel) {

@@ -14,7 +14,6 @@
             "enableShowMore": "FALSE",
             "aria": "FALSE",
             "colorScheme": "guardian",
-            "baseline" : "",
             "dateFormat": "%Y-%m-%d",
             "timeInterval": "",
             "parseTime" : "",
@@ -26,7 +25,6 @@
             "margin-top": "20",
             "margin-bottom": "20",
             "margin-right": "20",
-            "x_axis_cross_y" : "",
             "xColumn" : "",
             "yColumn" : ""
         }],

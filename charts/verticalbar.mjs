@@ -79,11 +79,9 @@ export default class Stackedbar {
           timeInterval,
           xAxisLabel, 
           yAxisLabel, 
-          tooltip, 
-          baseline, 
+          tooltip,
           periodDateFormat, 
           xAxisDateFormat,
-          x_axis_cross_y,
           xColumn,
           xFormat,
           yColumn,
@@ -104,8 +102,6 @@ export default class Stackedbar {
           periods,
           parseTime,
           stackedbars } = this.settings
-
-          //x_axis_cross_y = -1.2
 
     d3.select("#graphicContainer svg").remove()
 
@@ -278,7 +274,7 @@ export default class Stackedbar {
     features
     .append("g")
     .attr("class", "x")
-    .attr("transform", () => (baseline != "") ? "translate(0," + y(baseline) + ")" : "translate(0," + height + ")")
+    .attr("transform", "translate(0," + height + ")")
     .call(xAxis)
 
     if (periods.length > 0) {

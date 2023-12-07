@@ -89,8 +89,7 @@ export default class Linechart {
           dateFormat, 
           yScaleType, 
           xAxisLabel, 
-          yAxisLabel, 
-          baseline, 
+          yAxisLabel,
           tooltip, 
           periodDateFormat, 
           marginleft, 
@@ -328,7 +327,7 @@ export default class Linechart {
     features
     .append("g")
     .attr("class", "x")
-    .attr("transform", () => (baseline != "") ? "translate(0," + y(baseline) + ")" : "translate(0," + height + ")")
+    .attr("transform", "translate(0," + height + ")")
     .call(xAxis)
 
     features

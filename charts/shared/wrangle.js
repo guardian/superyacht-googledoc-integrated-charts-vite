@@ -105,7 +105,7 @@ export function wrangle(data, chart) {
 
     // Convert strings to numbers
 
-    if (contains(['marginleft','marginright','margintop','marginbottom', 'numCols', 'height', 'maxHeight', 'opacity'], setting)) { //'x_axis_cross_y' 'baseline'
+    if (contains(['marginleft','marginright','margintop','marginbottom', 'numCols', 'height', 'maxHeight', 'opacity'], setting)) {
 
       settings[setting] = (isNaN(settings[setting])) ? settings[setting] : +settings[setting]
 
@@ -218,40 +218,6 @@ export function wrangle(data, chart) {
 
   }
 
-
-  /*
-  / Set x_axis_cross_y
-  */
-
-  /*
-
-  if (settings["baseline"]) {
-
-    if (settings["baseline"] != "") {
-
-      settings["x_axis_cross_y"] = settings["baseline"]
-
-    }
-
-  }
-
-  */
-
-  if (settings["x_axis_cross_y"]) {
-
-    if (settings["x_axis_cross_y"] != "") {
-
-      settings["baseline"] = settings["x_axis_cross_y"]
-
-    }
-
-  }
-
-  if (settings["baseline"]) {
-
-    console.log(`Baseline: ${settings["baseline"]}`)
-
-  }
 
   /*
   / If this is a table with graphics
