@@ -84,7 +84,6 @@ export default class Groupedbar {
           tooltip,
           xAxisLabel, 
           yAxisLabel, 
-          baseline, 
           periodDateFormat, 
           data, 
           keys,

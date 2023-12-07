@@ -223,6 +223,8 @@ export function wrangle(data, chart) {
   / Set x_axis_cross_y
   */
 
+  /*
+
   if (settings["baseline"]) {
 
     if (settings["baseline"] != "") {
@@ -230,6 +232,24 @@ export function wrangle(data, chart) {
       settings["x_axis_cross_y"] = settings["baseline"]
 
     }
+
+  }
+
+  */
+
+  if (settings["x_axis_cross_y"]) {
+
+    if (settings["x_axis_cross_y"] != "") {
+
+      settings["baseline"] = settings["x_axis_cross_y"]
+
+    }
+
+  }
+
+  if (settings["baseline"]) {
+
+    console.log(`Baseline: ${settings["baseline"]}`)
 
   }
 

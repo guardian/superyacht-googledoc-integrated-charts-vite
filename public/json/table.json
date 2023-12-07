@@ -23,8 +23,7 @@
                 "enableSort": "TRUE",
                 "enableShowMore" : "FALSE",
                 "enableScroll" : "TRUE",
-                "aria": "FALSE",
-                "xAxisDateFormat" : ""
+                "aria": "FALSE"
             }
         ],
         "dropdown": []

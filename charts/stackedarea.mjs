@@ -78,7 +78,6 @@ export default class Stackedarea {
           yAxisLabel, 
           minY, 
           maxY, 
-          x_axis_cross_y, 
           periodDateFormat, 
           marginleft, 
           margintop, 
@@ -259,14 +258,10 @@ export default class Stackedarea {
     features
     .append("g")
     .attr("class", "x")
-    .attr("transform", () => (x_axis_cross_y != "") ? "translate(0," + y(x_axis_cross_y) + ")" : "translate(0," + height + ")")
+    .attr("transform", () => (baseline != "") ? "translate(0," + y(baseline) + ")" : "translate(0," + height + ")")
     .call(xAxis)
 
     if (xAxisLabel) {
-
-      console.log("Has x axis label")
-
-      console.log(xAxisLabel)
 
       features
       .append("text")
@@ -278,10 +273,6 @@ export default class Stackedarea {
     }
 
     if (yAxisLabel) {
-
-      console.log("Has y axis label")
-
-      console.log(yAxisLabel)
       
       features
       .append("text")
