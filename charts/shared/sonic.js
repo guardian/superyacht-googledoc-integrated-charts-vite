@@ -364,7 +364,7 @@ export default class sonic {
   
       msg.text = text
       msg.lang = 'en-GB'
-      // msg.rate = 0.89
+      // msg.rate = 0.8
       self.speech.speak(msg);
   
       msg.onend = function() {
@@ -467,6 +467,7 @@ export default class sonic {
     // Invert if needed
     // ranked charts use inverted scale, eg bird of the year
     // https://interactive.guim.co.uk/embed/superyacht-testing/index.html?key=1WVTOMn-2BPVPUahzMzCM4H1inPM6oCT8w17GE5giDe8&location=docsdata
+    
     if ("invertY" in this.settings) {
       if (this.settings.invertY) {
         range = range.reverse()
@@ -492,6 +493,7 @@ export default class sonic {
       Tone.Transport.stop()
       Tone.Transport.cancel()
 
+      
       // syncs the synth to the transport
 
       if (self.duration.audioRendering == "discrete") {  
@@ -542,16 +544,21 @@ export default class sonic {
         }
     
     })
-      
-    Tone.Transport.schedule(function(){
-      console.log("the start")
-    }, 0);
+
+    // Reads out the middle X value halfway through the series
+
+    // let halfway = Math.floor(data.length / 2)
+    // Tone.Transport.schedule(function(){
+    //   console.log("the start")
+    //   self.speaker(xvarFormatSpeech(data[halfway][self.xVar], self.timeSettings.suggestedFormat))
+    // }, halfway * self.note);
 
 
       // resolve after the last note is played
 
       Tone.Transport.schedule(function(){
         console.log("the end")
+        // self.speaker(xvarFormatSpeech(data[data.length - 1][self.xVar], self.timeSettings.suggestedFormat))
         self.currentIndex = 0
         self.isPlaying = false
         resolve({ status : "success"})

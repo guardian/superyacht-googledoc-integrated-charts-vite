@@ -120,7 +120,7 @@ export default class Stackedbar {
 
     width = document.querySelector("#graphicContainer").getBoundingClientRect().width
     
-    height = width * 0.5
+    height = width * 0.4
 
     width = width - marginleft - marginright
 

@@ -140,7 +140,7 @@ export default class Linechart {
     .querySelector("#graphicContainer")
     .getBoundingClientRect().width
 
-    const containerheight = containerwidth * 0.6
+    const containerheight = containerwidth * 0.4
 
     width = containerwidth - marginleft - marginright
 
