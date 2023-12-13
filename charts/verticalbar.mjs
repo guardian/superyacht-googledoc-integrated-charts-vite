@@ -109,7 +109,7 @@ export default class Stackedbar {
           //x_axis_cross_y = -1.2
 
     d3.select("#graphicContainer svg").remove()
-
+    console.log("type", type)  
     const chartKey = d3.select("#chartKey")
 
     chartKey.html("")
@@ -164,9 +164,7 @@ export default class Stackedbar {
       d.Total = d3.sum(stackedbars, (k) => +d[k])
     })
 
-    let sonic = new Sonic(this.settings)
-    sonic.setupSonicData(datum, keys=stackedbars)
-    sonic.addInteraction()
+ 
 
     let playButton = d3.select("#playChart")
     playButton
@@ -197,6 +195,7 @@ export default class Stackedbar {
     const features = svg
     .append("g")
     .attr("transform", "translate(" + marginleft + "," + margintop + ")")
+    .attr("id", "features")
 
     const x = d3.scaleBand()
     .range([0, width])
@@ -250,6 +249,11 @@ export default class Stackedbar {
       .tickFormat((d) => numberFormat(d))
 
     }
+
+    let sonic = new Sonic(this.settings, x, y, colors)
+    sonic.setupSonicData(datum, keys=stackedbars)
+    sonic.addInteraction()
+
 
     features
     .append("g")

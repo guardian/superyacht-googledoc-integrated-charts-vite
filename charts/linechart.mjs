@@ -287,13 +287,7 @@ export default class Linechart {
       })
     })
 
-    let sonic = new Sonic(this.settings)
-    sonic.setupSonicData(datum)
-    sonic.addInteraction()
-
-    let playButton = d3.select("#playChart")
-    playButton
-      .on("click", () => {sonic.playPause()})
+   
 
     const max = (maxY && maxY !== "")
         ? parseInt(maxY)
@@ -323,6 +317,14 @@ export default class Linechart {
         .tickFormat(d3.timeFormat(xAxisDateFormat))
 
     }
+
+    let sonic = new Sonic(this.settings, x, y, colors)
+    sonic.setupSonicData(datum)
+    sonic.addInteraction()
+
+    let playButton = d3.select("#playChart")
+    playButton
+      .on("click", () => {sonic.playPause()})
 
     const yAxis = d3
     .axisLeft(y)

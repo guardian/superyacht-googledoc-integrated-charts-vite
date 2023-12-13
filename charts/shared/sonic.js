@@ -295,8 +295,11 @@ const timer = ms => new Promise(res => setTimeout(res, ms))
 
 export default class sonic {
   
-  constructor(settings) {
+  constructor(settings, x, y, colors) {
       this.settings = settings
+      this.x = x
+      this.y = y
+      this.colors = colors
       this.synth = null
       // this.synth2 = null
       this.isPlaying = false
@@ -318,7 +321,19 @@ export default class sonic {
       this.speech = window.speechSynthesis
       this.furniturePlaying = false
       this.usedCursor = false
-  
+
+      let xBand = checkNull(this.x, 'bandwidth')
+      if (xBand) {
+        xBand = xBand()
+      }
+
+      let yBand = checkNull(this.y, 'bandwidth')
+      if (yBand) {
+        yBand = yBand()
+      }
+
+      this.xBand = xBand
+      this.yBand = yBand
   }
 
   loadSynth(selectedInstrument)  {
@@ -436,12 +451,23 @@ export default class sonic {
 
     self.dataKeys = keys
     self.currentKey = keys[0]
-    // Format the data as needed, add to the sonicData dict
+    
+    // To store the highest and lowest data objects
+    console.log("data", data)
+    // self.lowestVal = data[[0]]
+    self.highestVal = data[0][keys[0]]
 
+    console.log("highestVal", self.highestVal)
+    // Format the data as needed, add to the sonicData dict
     keys.forEach(function(key) {
         self.sonicData[key] = []
         data.forEach((d, i) => {
         if (d[key] != null) {
+
+            if (d[self.xVar] > self.highestVal) {
+              
+            }
+
             let newData = {}
             newData[self.xVar] = d[self.xVar]
             newData[key] = d[key]
@@ -464,6 +490,9 @@ export default class sonic {
     let range = [130.81,523.25]
     self.domainY = d3.extent(allDataValues)
     self.domainX = d3.extent(data, d => d[self.xVar])
+
+
+
     // Invert if needed
     // ranked charts use inverted scale, eg bird of the year
     // https://interactive.guim.co.uk/embed/superyacht-testing/index.html?key=1WVTOMn-2BPVPUahzMzCM4H1inPM6oCT8w17GE5giDe8&location=docsdata
@@ -526,6 +555,9 @@ export default class sonic {
 
             Tone.Transport.schedule(function(){
               self.currentIndex = d.sonic_index
+              if (d[dataKey]) {
+                self.animateCursor(dataKey,i, null)
+              }
               // console.log(self.currentIndex)
               }, i * self.note);
         }
@@ -602,10 +634,12 @@ export default class sonic {
   
       let lowestX = self.domainX[0]
       let highestX = self.domainX[1]
-  
+
+      let lowestXStr = lowestX
+      let highestXStr = highestX
       if (self.settings.xFormat.date) {
-        lowestX = xvarFormatSpeech(self.domainX[0], self.timeSettings.suggestedFormat)
-        highestX = xvarFormatSpeech(self.domainX[1], self.timeSettings.suggestedFormat)
+        lowestXStr = xvarFormatSpeech(self.domainX[0], self.timeSettings.suggestedFormat)
+        highestXStr = xvarFormatSpeech(self.domainX[1], self.timeSettings.suggestedFormat)
       }
   
       let lowestYStr = lowestY
@@ -616,17 +650,18 @@ export default class sonic {
       }
       self.furniturePlaying = true
       const text1 = await self.speaker(`The lowest value on the chart is ${lowestYStr}, and it sounds like `)
+      self.animateCircle(lowestX,lowestY)
       const beep1 = await self.beep(self.scale(lowestY))        
   
       await timer(1200);
   
       const text2 = await self.speaker(`The highest value on the chart is ${highestYStr}, and it sounds like `)
-  
+      self.animateCircle(highestX,highestY)
       const beep2 = await self.beep(self.scale(highestY))
   
       await timer(1200);
   
-      const text3 = await self.speaker(`Each note is a ${self.interval}, and the chart goes from ${lowestX} to ${highestX}`)
+      const text3 = await self.speaker(`Each note is a ${self.interval}, and the chart goes from ${lowestXStr} to ${highestXStr}`)
       self.furniturePlaying = false
       resolve({ status : "success"})
     }  
@@ -640,10 +675,13 @@ export default class sonic {
 
     let self = this
     console.log("playing", self.isPlaying, "progress", self.inProgress, "cursor", self.usedCursor)
-    if (!self.runOnce) {
+    
+    if (!self.runOnce && !self.inProgress) {
+      console.log("playing furniture")
       Tone.start()
       self.synth.context.resume();
       self.runOnce = true
+      // self.inProgress = true
       await self.playFurniture()
     }
     
@@ -717,7 +755,6 @@ export default class sonic {
 
   async moveCursor(direction) {
 
-
     // increment the position of the current data index up by one, then play the datapoint
     let self = this
     self.usedCursor = true
@@ -746,6 +783,7 @@ export default class sonic {
     // self.speech.cancel()
     self.speaker(xvarFormatSpeech(currentX, self.timeSettings.suggestedFormat))
     self.speaker(numberFormatSpeech(currentY))
+    self.animateCursor(self.currentKey,self.currentIndex, null)
     self.beep(self.scale(currentY))
 
   }
@@ -773,8 +811,16 @@ export default class sonic {
     }
 
     self.currentKey = self.dataKeys[currentKeyIndex]
+    let currentData = self.sonicData[self.currentKey][self.currentIndex]
+    console.log("currentData", currentData)
+    let currentX = currentData[self.xVar]
+    let currentY = currentData[self.currentKey]
+
     console.log("New key", self.currentKey, "new key index", currentKeyIndex)
     self.speaker(self.currentKey)
+    self.speaker(numberFormatSpeech(currentY))
+    self.animateCursor(self.currentKey,self.currentIndex, null)
+    self.beep(self.scale(currentY))
   }
 
   addInteraction() {
@@ -815,5 +861,54 @@ export default class sonic {
 
     })
   }
+
+  animateCursor(key, i, len) {
+
+    let self = this
+    let data = self.sonicData[key]
+    // let chartType = self.settings.type
+    // console.log(self.x)
+    // console.log(chartType)
+
+    d3.select("#features")
+        .append("circle")
+        .attr("cy", self.y(data[i][key]))
+        .attr("fill", self.colors.get(key))
+        .attr("cx", self.x(data[i][self.xVar]) + self.xBand / 2)
+        .attr("r", 0)
+        .style("opacity", 1)
+        .transition()
+        .duration(300)
+        .attr("r",40)
+        .style("opacity",0)
+        .remove()
+  
+
+  }
+
+  animateCircle(cx, cy) {
+    console.log("cx", cx, "cy", cy)
+    let self = this
+    let chartType = self.settings.type
+    
+    
+    console.log(cx, self.x(cx), self.xBand / 2)
+    
+    d3.select("#features")
+        .append("circle")
+        .attr("cy", self.y(cy))
+        .attr("fill", self.colors.get(self.currentKey))
+        .attr("cx", self.x(cx) + self.xBand / 2)
+        .attr("r", 0)
+        .style("opacity", 1)
+        .transition()
+        .duration(300)
+        .attr("r",40)
+        .style("opacity",0)
+        .remove()
+  
+
+  }
+
 
 }
