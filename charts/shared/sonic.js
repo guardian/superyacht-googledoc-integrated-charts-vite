@@ -19,7 +19,7 @@ function numberFormatSpeech(num) {
       if ( num >= 1000000 ) { 
 
           if (( num / 1000000 ) % 1 == 0) {
-            return ( num / 1000000 ) + 'm' 
+            return ( num / 1000000 ) + ' million' 
           }  
           else {
             return ( num / 1000000 ).toFixed(1) + ' million' 
@@ -28,7 +28,7 @@ function numberFormatSpeech(num) {
           }
 
       if (num % 1 != 0) { 
-          return num
+          return num.toFixed(2)
         }
       else { return num }
   }
@@ -264,27 +264,36 @@ function analyseTime(data, settings) {
 
 }
 
+// Set defaults based on the dataset and chart type
+
+
+
 // Sets the note duration to fit an overall duration for playing back a data series
 
 function getDuration(dataLength) {
+
   let targetDuration = 20
   let note = 0.20
   console.log("full length at 0.20", note * dataLength)
   if ((note * dataLength) <=  targetDuration) {
-    return {"note":note, "audioRendering":"discrete"}
+    // return {"note":note, "audioRendering":"discrete"}
+    return note
   }
 
-  if ((note * dataLength) >  targetDuration) {
+  if ((note * dataLength) > targetDuration) {
     note = 0.1
   }
 
   if ((note * dataLength) <=  targetDuration) {
-    return {"note":note, "audioRendering":"discrete"}
+    // return {"note":note, "audioRendering":"discrete"}
+    return note
   }
 
   else {
-    note =  targetDuration / dataLength
-    return {"note":note, "audioRendering":"discrete"}
+    note = targetDuration / dataLength
+    // TBC: set audioRendering to continuous for very long datasets. requires testing
+    // return {"note":note, "audioRendering":"discrete"}
+    return note
   }
 
 }
@@ -306,7 +315,6 @@ export default class sonic {
       this.hasRun = false
       this.currentKey = null
       this.currentIndex = 0
-      this.duration = {"note":0.2, "audioRendering":"discrete"}
       this.note = 0.2
       this.sonicData = {}
       this.interval = null
@@ -321,6 +329,7 @@ export default class sonic {
       this.speech = window.speechSynthesis
       this.furniturePlaying = false
       this.usedCursor = false
+      this.audioRendering = 'discrete'
 
       let xBand = checkNull(this.x, 'bandwidth')
       if (xBand) {
@@ -334,6 +343,8 @@ export default class sonic {
 
       this.xBand = xBand
       this.yBand = yBand
+
+      console.log("xBand", xBand, "yBand", yBand)
   }
 
   loadSynth(selectedInstrument)  {
@@ -358,7 +369,7 @@ export default class sonic {
       synth.unsync()
       console.log("freq", freq)
       synth.triggerAttackRelease(freq, 0.5)
-      setTimeout(success, 1000)
+      setTimeout(success, 500)
   
       function success () {
         resolve({ status : "success"})
@@ -404,12 +415,17 @@ export default class sonic {
   setupSonicData(data, keys = [], exclude = []) {
     
     let self = this
-    self.duration = getDuration(data.length)
-    self.note = self.duration.note
+    self.note = getDuration(data.length)
     
     const xFormat = this.settings.xFormat
 
-    if (self.duration.audioRendering == "continuous") {
+    if (self.settings.audioRendering) {
+      self.audioRendering = self.settings.audioRendering
+    }
+
+    console.log("audioRendering", self.audioRendering)
+
+    if (self.audioRendering == "continuous") {
       self.loadSynth('DefaultLine')
     }
 
@@ -454,19 +470,16 @@ export default class sonic {
     
     // To store the highest and lowest data objects
     console.log("data", data)
-    // self.lowestVal = data[[0]]
-    self.highestVal = data[0][keys[0]]
+    let xVar = self.xVar
+    self.lowestVal = {"key":keys[0], "value":data[0][keys[0]], [xVar]:data[0][self.xVar]}
+    self.highestVal = {"key":keys[0], "value":data[0][keys[0]], [xVar]:data[0][self.xVar]}
 
-    console.log("highestVal", self.highestVal)
+
     // Format the data as needed, add to the sonicData dict
     keys.forEach(function(key) {
         self.sonicData[key] = []
         data.forEach((d, i) => {
         if (d[key] != null) {
-
-            if (d[self.xVar] > self.highestVal) {
-              
-            }
 
             let newData = {}
             newData[self.xVar] = d[self.xVar]
@@ -474,6 +487,19 @@ export default class sonic {
             newData.sonic_index = i
             self.sonicData[key].push(newData)
             allDataValues.push(d[key])
+
+            if (newData[key] > self.highestVal.value) {
+              self.highestVal['key'] = key
+              self.highestVal['value'] = d[key]
+              self.highestVal[xVar] = d[self.xVar]
+            }
+
+            if (newData[key] < self.lowestVal.value) {
+              self.lowestVal['key'] = key
+              self.lowestVal['value'] = d[key]
+              self.lowestVal[xVar] = d[self.xVar]
+            }
+           
         } else if (!hideNullValues) {
             let newData = {}
             newData[self.xVar] = d[self.xVar]
@@ -487,6 +513,8 @@ export default class sonic {
     // Setting the scale range for linear scale
     // console.log("allDataValues", allDataValues)
     console.log("sonicData", self.sonicData)
+    console.log("highestVal", self.highestVal)
+    console.log("lowestVal", self.lowestVal)
     let range = [130.81,523.25]
     self.domainY = d3.extent(allDataValues)
     self.domainX = d3.extent(data, d => d[self.xVar])
@@ -513,7 +541,7 @@ export default class sonic {
 
 
  playAudio = (dataKey) => {
-    return new Promise((resolve, reject) => {
+    return new Promise(async (resolve, reject) => {
       let self = this
       let keyIndex = self.dataKeys.indexOf(dataKey)
       // let halfway = self.sonicData[dataKey]
@@ -525,7 +553,7 @@ export default class sonic {
       
       // syncs the synth to the transport
 
-      if (self.duration.audioRendering == "discrete") {  
+      if (self.audioRendering == "discrete") {  
         self.synth.sync()
         self.click.sync()
       }
@@ -539,11 +567,11 @@ export default class sonic {
         // console.log(data)
       }
 
-      data.forEach(function(d,i) { 
-
+      for (let i = 0; i < data.length; i++) {
+        const d = data[i];
         self.currentKey = dataKey
         
-        if (self.duration.audioRendering == "discrete") {
+        if (self.audioRendering == "discrete") {
           
             if (d[dataKey]) {
               self.synth.triggerAttackRelease(self.scale(d[dataKey]), self.note, self.note * i)
@@ -560,9 +588,9 @@ export default class sonic {
               }
               // console.log(self.currentIndex)
               }, i * self.note);
-        }
+        } // end discrete
 
-        else {
+        else if (self.audioRendering == "continuous") {
           console.log("making continuous noise")
           if (i == 0) { 
             synth.triggerAttackRelease(self.scale(d[key]), data[dataKey].length * self.note)
@@ -573,9 +601,19 @@ export default class sonic {
               self.synth.frequency.rampTo(scale(d[dataKey]), self.note);
               }, i * self.note);
           }
+        }  
+
+
+        else if (self.audioRendering == "categorical") {
+            console.log("categorical")
+            
+            await self.speaker(d[self.xVar])
+            
+            self.animateCursor(dataKey,i, null)
+            let thing2 = await self.beep(self.scale(d[dataKey]))
         }
     
-    })
+    }
 
     // Reads out the middle X value halfway through the series
 
@@ -650,18 +688,21 @@ export default class sonic {
       }
       self.furniturePlaying = true
       const text1 = await self.speaker(`The lowest value on the chart is ${lowestYStr}, and it sounds like `)
-      self.animateCircle(lowestX,lowestY)
+      self.animateCircle(self.lowestVal[self.xVar],self.lowestVal.value, self.lowestVal.key)
       const beep1 = await self.beep(self.scale(lowestY))        
   
       await timer(1200);
   
       const text2 = await self.speaker(`The highest value on the chart is ${highestYStr}, and it sounds like `)
-      self.animateCircle(highestX,highestY)
+      self.animateCircle(self.highestVal[self.xVar],self.highestVal.value, self.highestVal.key)
       const beep2 = await self.beep(self.scale(highestY))
   
       await timer(1200);
   
-      const text3 = await self.speaker(`Each note is a ${self.interval}, and the chart goes from ${lowestXStr} to ${highestXStr}`)
+      if (self.audioRendering == "discrete" || self.audioRendering == "continuous") {
+        const text3 = await self.speaker(`Each note is a ${self.interval}, and the chart goes from ${lowestXStr} to ${highestXStr}`)
+      }  
+      
       self.furniturePlaying = false
       resolve({ status : "success"})
     }  
@@ -866,15 +907,22 @@ export default class sonic {
 
     let self = this
     let data = self.sonicData[key]
-    // let chartType = self.settings.type
+    let chartType = self.settings.type
     // console.log(self.x)
-    // console.log(chartType)
 
+    let y = self.y(data[i][key])
+    let x = self.x(data[i][self.xVar])
+
+    if (chartType == 'horizontalbar') {
+      y = self.y(data[i][self.xVar])
+      x = self.x(data[i][key])
+    }
+    
     d3.select("#features")
         .append("circle")
-        .attr("cy", self.y(data[i][key]))
+        .attr("cy", y + self.yBand / 2)
         .attr("fill", self.colors.get(key))
-        .attr("cx", self.x(data[i][self.xVar]) + self.xBand / 2)
+        .attr("cx", x + self.xBand / 2)
         .attr("r", 0)
         .style("opacity", 1)
         .transition()
@@ -886,19 +934,27 @@ export default class sonic {
 
   }
 
-  animateCircle(cx, cy) {
+  animateCircle(cx, cy, key=null) {
     console.log("cx", cx, "cy", cy)
     let self = this
     let chartType = self.settings.type
-    
-    
-    console.log(cx, self.x(cx), self.xBand / 2)
-    
+    if (!key) {
+      key = self.currentKey
+    }
+
+    let y = cy
+    let x = cx
+
+    if (chartType == 'horizontalbar') {
+      y = cx
+      x = cy
+    }
+
     d3.select("#features")
         .append("circle")
-        .attr("cy", self.y(cy))
-        .attr("fill", self.colors.get(self.currentKey))
-        .attr("cx", self.x(cx) + self.xBand / 2)
+        .attr("cy", self.y(y) + self.yBand / 2)
+        .attr("fill", self.colors.get(key))
+        .attr("cx", self.x(x) + self.xBand / 2)
         .attr("r", 0)
         .style("opacity", 1)
         .transition()

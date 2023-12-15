@@ -8,6 +8,7 @@ import Dropdown from "./shared/dropdown";
 import Tooltip from "./shared/tooltip"
 import { drawShowMore } from "./shared/showmore"
 import  { addLabel, clickLogging } from './shared/arrows'
+import Sonic from "./shared/sonic"
 
 export default class Horizontalbar {
 
@@ -105,6 +106,7 @@ export default class Horizontalbar {
           dropdown,
           xMin,
           xMax,
+          xFormat,
           xAxis,
           yAxis,
           stackedhorizontal,
@@ -162,7 +164,7 @@ export default class Horizontalbar {
     let set = new Set(datum.map(d => d[yColumn]))
 
     let barheight = Array.from(set).length;
-
+  
     datum.forEach((d) => {
       stackedhorizontal.forEach((key, i) => {
         d[key] = (d[key] == null) ? null : +d[key]
@@ -176,13 +178,28 @@ export default class Horizontalbar {
       datum = datum.sort((a, b) => d3.descending(+a.Total, +b.Total))
     }
     
+    let sonicData = []
+
+    datum.forEach((d) => {
+      let newData = {}
+      columns.forEach((key, i) => {
+        newData[key] = d[key]
+      })
+      sonicData.push(newData)
+    })
+
+    console.log("sonicdata1", sonicData)
+    sonicData = sonicData.sort((a, b) => d3.ascending(+a[columns[1]], +b[columns[1]]))
+
     console.log("stack",stackedhorizontal, stackedhorizontal.length)
 
     width = document
     .querySelector("#graphicContainer")
     .getBoundingClientRect().width
 
-    height = (barheight) * 75 + margintop + marginbottom
+    // height = (barheight) * 75 + margintop + marginbottom
+
+    height = 550
 
     width = width - marginleft - marginright
 
@@ -246,6 +263,19 @@ export default class Horizontalbar {
     x.domain([xMin, xMax]).nice()
 
     const xTicks = Math.round(width / 100)
+    this.settings.audioRendering = 'categorical'
+    let sonic = new Sonic(this.settings, x, y, colors)
+    let excludes = ['Color', 'color']
+
+  
+    sonic.setupSonicData(sonicData)
+    sonic.addInteraction()
+
+    let playButton = d3.select("#playChart")
+    playButton
+      .on("click", () => {sonic.playPause()})
+
+
 
     xAxis = g => g
     .attr("transform", `translate(0,${0})`)
@@ -292,6 +322,7 @@ export default class Horizontalbar {
     .enter()
     .append("g")
     .attr("class", (d) => "layer " + d.key)
+    .attr("id", "features")
 
     let x_axis_cross_y = null
 
@@ -334,7 +365,6 @@ export default class Horizontalbar {
     .append("text")
     .attr("class", "barText")
     .attr("x", (d) => {
-      console.log(d)
       return (!d.negative) ? x(0) + 5 : x(0) - 5
     })
     .attr("text-anchor",(d) => {
