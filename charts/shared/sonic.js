@@ -584,7 +584,7 @@ export default class sonic {
             Tone.Transport.schedule(function(){
               self.currentIndex = d.sonic_index
               if (d[dataKey]) {
-                self.animateCursor(dataKey,i, null)
+                self.animateCursor(dataKey,d.sonic_index, null)
               }
               // console.log(self.currentIndex)
               }, i * self.note);

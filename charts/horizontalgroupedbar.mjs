@@ -6,7 +6,7 @@ import Dropdown from "./shared/dropdown";
 import { addDrops } from "./shared/drops"
 import Tooltip from "./shared/tooltip"
 import { drawShowMore } from "./shared/showmore"
-
+import  { addLabel, clickLogging } from './shared/arrows'
 
 
 export default class Groupedbar {
@@ -244,6 +244,29 @@ export default class Groupedbar {
 
     d3.selectAll('.domain')
     .remove()
+
+    if (labels.length > 0) {
+    	const clickLoggingOn = getURLParams("labelling") ? true : false;
+    	console.log("clickLoggingOn", clickLoggingOn);
+    	// Move this to wrangle later once we re-factor the labelling stuff
+    	if (typeof labels[0].coords === 'string') {
+    		labels.forEach(function(d) {
+    			d.coords = JSON.parse(d.coords)
+    			d.sweepFlag = +d.sweepFlag
+    			d.largeArcFlag = +d.largeArcFlag
+    			d.radius = +d.radius
+    		})
+    	}
+    	console.log("annotations", labels)
+    	labels.forEach((config) => {
+    		addLabel(svg, config, width + marginleft + marginright, height + margintop + marginbottom, {
+    			"left": marginleft,
+    			"right": marginright,
+    			"top": margintop,
+    			"bottom": marginbottom
+    		}, clickLoggingOn)
+    	})
+    }
 
   }
 
