@@ -386,7 +386,7 @@ export default class Linechart {
       .attr("stroke", (d) => colors.get(key))
       .attr("stroke-linejoin", "round")
       .attr("stroke-linecap", "round")
-      .attr("stroke-width", 2)
+      .attr("stroke-width", 3)
       .attr("d", lineGenerators[key])
 
       const tempLabelData = chartKeyData[key].filter((d) => d != null)
