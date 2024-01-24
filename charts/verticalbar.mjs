@@ -79,11 +79,9 @@ export default class Stackedbar {
           timeInterval,
           xAxisLabel, 
           yAxisLabel, 
-          tooltip, 
-          baseline, 
+          tooltip,
           periodDateFormat, 
           xAxisDateFormat,
-          x_axis_cross_y,
           xColumn,
           xFormat,
           yColumn,
@@ -104,11 +102,6 @@ export default class Stackedbar {
           periods,
           parseTime,
           stackedbars } = this.settings
-
-          console.log(`x_axis_cross_y: ${x_axis_cross_y}`)
-          console.log(`baseline: ${baseline}`)
-
-          //x_axis_cross_y = -1.2
 
     d3.select("#graphicContainer svg").remove()
 
@@ -162,7 +155,6 @@ export default class Stackedbar {
       d.Total = d3.sum(stackedbars, (k) => +d[k])
     })
 
-    console.log("datum",datum)
     let xRange = timeCheck(timeInterval, datum, xColumn)
 
     var layers = d3.stack()
@@ -282,7 +274,7 @@ export default class Stackedbar {
     features
     .append("g")
     .attr("class", "x")
-    .attr("transform", () => (x_axis_cross_y != null && x_axis_cross_y != "") ? "translate(0," + y(x_axis_cross_y) + ")" : "translate(0," + height + ")")
+    .attr("transform", "translate(0," + height + ")")
     .call(xAxis)
 
     if (periods.length > 0) {
@@ -314,9 +306,7 @@ export default class Stackedbar {
     }
 
     if (trendline.length > 0) {
-
       addTrendline(trendline, data, xColumn, parseTime, x, y, features, xFormat)
-
     }
 
     if (this.settings.tooltip != "") {

@@ -176,8 +176,6 @@ export default class Horizontalbar {
       datum = datum.sort((a, b) => d3.descending(+a.Total, +b.Total))
     }
     
-    console.log("stack",stackedhorizontal, stackedhorizontal.length)
-
     width = document
     .querySelector("#graphicContainer")
     .getBoundingClientRect().width
@@ -284,16 +282,12 @@ export default class Horizontalbar {
       })
     })
 
-    console.log("layers",layers)
-
     const layer = features
     .selectAll("layer")
     .data(layers, (d) => d.key)
     .enter()
     .append("g")
     .attr("class", (d) => "layer " + d.key)
-
-    let x_axis_cross_y = null
 
     layer
     .selectAll("rect")
@@ -322,19 +316,12 @@ export default class Horizontalbar {
     })
 
     features
-    .append("g")
-    .attr("class", "x")
-    .attr("transform", () => (x_axis_cross_y != null) ? "translate(0," + y(x_axis_cross_y) + ")" : "translate(0," + height + ")")
-    .call(xAxis)
-
-    features
     .selectAll(".barText")
     .data(Array.from(new Set(datum.map(e => e))))
     .enter()
     .append("text")
     .attr("class", "barText")
     .attr("x", (d) => {
-      console.log(d)
       return (!d.negative) ? x(0) + 5 : x(0) - 5
     })
     .attr("text-anchor",(d) => {
