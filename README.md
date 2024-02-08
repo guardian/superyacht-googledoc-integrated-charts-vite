@@ -4,7 +4,7 @@ Yacht Charter is a charting tool made by the Australian part of The Guardian. Th
 
 Yacht makes responsive charts with labels in a wider variety of formats than previous Guardian chart tools, and it supports programmatic chart updating as well as editing-in-place.
 
-For example it supports: scatterplots with trendlines, stacked areas, small multiples, dumbbell and bubble charts, as well as line, column and bar charts.
+For example it supports: [scatterplots with trendlines](https://interactive.guim.co.uk/embed/superyacht/index.html?key=1EbFtLna39KLlDL-M0QVu0TNZUHkfTS_kRH1GwkeHHD4&location=docsdata), stacked areas, small multiples, dumbbell, bubble and [beeswarm charts](https://interactive.guim.co.uk/embed/superyacht/index.html?location=docsdata&key=1hbFGwheOCIpdIAP9x09HWxTYI5lQC73MXIZy_GM7Zkg), as well as line, column and [bar charts](https://interactive.guim.co.uk/embed/superyacht/index.html?location=docsdata&key=17rVwplGRJP0VIx5MilM_bTr1XLD91TKrBlnn_Y_9A_o).
 
 Yacht supports making responsive charts in the following ways:
 
