@@ -4,6 +4,8 @@ Yacht Charter is a charting tool made by the Australian part of The Guardian. Th
 
 Yacht makes responsive charts with labels in a wider variety of formats than previous Guardian chart tools, and it supports programmatic chart updating as well as editing-in-place.
 
+For example it supports: scatterplots with trendlines, stacked areas, small multiples, dumbbell and bubble charts, as well as line, column and bar charts.
+
 Yacht supports making responsive charts in the following ways:
 
 * Through the [Yacht Charter admin](https://pollarama.herokuapp.com/)
