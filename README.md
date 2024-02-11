@@ -1,4 +1,4 @@
-# Yet Another CHart Tool ⛵📊
+# Yacht Charter - Yet Another CHart Tool ⛵📊
 
 Yacht Charter is a charting tool made by the Australian part of The Guardian. This is the front-end part of Yacht Charter. The backend and admin are currently under development!
 
