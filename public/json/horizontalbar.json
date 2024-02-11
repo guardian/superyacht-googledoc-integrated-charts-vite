@@ -24,8 +24,6 @@
                 "enableShowMore": "FALSE",
                 "aria": "FALSE",
                 "colorScheme": "guardian",
-                "maxXticks" : 3,
-                "scaleByAllMax" : "FALSE",
                 "autoSort" : "FALSE",
                 "margin-left": "20",
                 "margin-top": "30",

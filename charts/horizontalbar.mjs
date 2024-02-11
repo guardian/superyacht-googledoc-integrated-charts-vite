@@ -100,8 +100,6 @@ export default class Horizontalbar {
           enableShowMore, 
           aria, 
           colorScheme, 
-          maxXticks, 
-          scaleByAllMax, 
           autoSort, 
           dropdown,
           xMin,

@@ -92,7 +92,6 @@ export default class Stackedbar {
           footnote, 
           minY,
           trendline, 
-          enableShowMore, 
           aria, 
           colorScheme, 
           type, 
@@ -101,7 +100,9 @@ export default class Stackedbar {
           dropdown, 
           periods,
           parseTime,
-          stackedbars } = this.settings
+          stackedbars,
+          hideKey
+          } = this.settings
 
     d3.select("#graphicContainer svg").remove()
 
@@ -131,19 +132,23 @@ export default class Stackedbar {
 
     colors.set(keyColor.keys, keyColor.colors)
 
-    stackedbars.forEach((key, i) => {
-      const keyDiv = chartKey
-      .append("div")
-      .attr("class", "keyDiv")
+    if (!hideKey) {
 
-      keyDiv.append("span")
-      .attr("class", "keyCircle")
-      .style("background-color", () => colors.get(key))
+      stackedbars.forEach((key, i) => {
+        const keyDiv = chartKey
+        .append("div")
+        .attr("class", "keyDiv")
 
-      keyDiv.append("span")
-      .attr("class", "keyText")
-      .text(key)
-    })
+        keyDiv.append("span")
+        .attr("class", "keyCircle")
+        .style("background-color", () => colors.get(key))
+
+        keyDiv.append("span")
+        .attr("class", "keyText")
+        .text(key)
+      })
+
+    }
 
     datum.forEach((d) => {
       if (xFormat.date) {
@@ -276,6 +281,32 @@ export default class Stackedbar {
     .attr("class", "x")
     .attr("transform", "translate(0," + height + ")")
     .call(xAxis)
+
+    if (xAxisLabel) {
+
+      svg
+      .append("text")
+      .attr("x", width + marginleft)
+      .attr("y", height + margintop + marginbottom)
+      .attr("fill", "#767676")
+      .attr("text-anchor", "end")
+      .text(xAxisLabel)  
+    }
+
+    if (yAxisLabel) {
+      
+      svg
+      .append("text")
+      //.attr("transform", "rotate(-90)")
+      .attr("x", marginleft)
+      .attr("y", 0)
+      .attr("dy", "0.71em")
+      .attr("fill", "#767676")
+      .attr("text-anchor", "end")
+      .text(yAxisLabel)
+
+    }
+
 
     if (periods.length > 0) {
 

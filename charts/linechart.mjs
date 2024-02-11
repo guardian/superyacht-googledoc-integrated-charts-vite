@@ -100,7 +100,6 @@ export default class Linechart {
           minY, 
           maxY,
           footnote, 
-          enableShowMore, 
           aria, 
           colorScheme, 
           lineLabelling, 
@@ -345,7 +344,9 @@ export default class Linechart {
 
     features
     .append("text")
-    .attr("x", width)
+    .attr("x", () => {
+      return lineLabelling ? width - buffer : width
+    })
     .attr("y", height - 6)
     .attr("fill", "#767676")
     .attr("text-anchor", "end")

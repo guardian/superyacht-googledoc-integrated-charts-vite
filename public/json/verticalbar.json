@@ -11,7 +11,6 @@
 		}],
 		"trendline": [],
 		"options": [{
-            "enableShowMore": "FALSE",
             "aria": "FALSE",
             "colorScheme": "guardian",
             "stackedbars" : "",
@@ -27,7 +26,8 @@
 			"margin-right": "20",
 			"xColumn" : "",
 			"xFormat" : "",
-			"parseTime" : ""
+			"parseTime" : "",
+			"hideKey" : "FALSE"
 		}],
 		"chartId": [{
 			"type": "verticalbar"
