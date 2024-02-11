@@ -20,7 +20,7 @@ export default class Horizontalbar {
   }
 
   init() {
-
+    console.log('enableshowmore',this.settings.enableShowMore)
     drawShowMore(this.settings.enableShowMore)  
 
     if (this.settings.tooltip != "") {
@@ -94,6 +94,7 @@ export default class Horizontalbar {
           labels, 
           userkey, 
           keys,
+          forceCentre,
           lines, 
           periods, 
           enableShowMore, 
@@ -228,12 +229,20 @@ export default class Horizontalbar {
     .paddingOuter(0.45)
 
     y.domain(datum.map((d) => d[yColumn]))
-
-    const minMax = getMinMax([...datum.map(d => d.Total), ...datum.map(d => d.extent)]) // (scaleByAllMax) ? getMinMax(allValues) : getMinMax(datum.map(d => d[1]))
-
-    xMax = (xMax == "") ? minMax.max : xMax
-
-    xMin = (xMin == "") ? minMax.min : xMin
+    console.log("forceCentre", forceCentre)
+    if (forceCentre) {
+      const minMax = getMinMax([...datum.map(d => d.Total), ...datum.map(d => d.extent)]) // (scaleByAllMax) ? getMinMax(allValues) : getMinMax(datum.map(d => d[1]))
+      xMax = (xMax == "") ? minMax.max : xMax
+      xMin = (xMin == "") ? minMax.min : xMin
+    }
+    
+    else {
+      const extent = d3.extent([...datum.map(d => d.Total), ...datum.map(d => d.extent)])  
+      console.log('extent',extent)
+      xMax = extent[1]
+      xMin = extent[0]
+    }
+    
 
     if (minX != null) {
       if (minX != "") {
@@ -513,7 +522,7 @@ export default class Horizontalbar {
     }
 
 
-    if (minMax.status) {
+    // Draws a solid line at zero
 
     features.append('line')
         .style("stroke", "#767676")
@@ -523,7 +532,7 @@ export default class Horizontalbar {
         .attr("x2", x(0))
         .attr("y2", height); 
 
-    }
+  
 
     if (this.settings.tooltip != "") {
 
