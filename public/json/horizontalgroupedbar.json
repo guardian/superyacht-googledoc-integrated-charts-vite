@@ -21,7 +21,6 @@
         ],
         "options": [
             {
-                "autoSort": "FALSE",
                 "enableShowMore": "FALSE",
                 "aria": "FALSE",
                 "colorScheme": "guardian",

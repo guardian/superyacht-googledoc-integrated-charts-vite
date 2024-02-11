@@ -21,7 +21,6 @@
         ],
         "options": [
             {
-                "enableShowMore": "FALSE",
                 "aria": "FALSE",
                 "colorScheme": "guardian",
                 "dateFormat": "%Y-%m-%d",

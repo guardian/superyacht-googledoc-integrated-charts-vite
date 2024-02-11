@@ -99,8 +99,6 @@ export default class Horizontalbar {
           enableShowMore, 
           aria, 
           colorScheme, 
-          maxXticks, 
-          scaleByAllMax, 
           autoSort, 
           dropdown,
           xMin,
@@ -229,7 +227,7 @@ export default class Horizontalbar {
 
     y.domain(datum.map((d) => d[yColumn]))
 
-    const minMax = getMinMax([...datum.map(d => d.Total), ...datum.map(d => d.extent)]) // (scaleByAllMax) ? getMinMax(allValues) : getMinMax(datum.map(d => d[1]))
+    const minMax = getMinMax([...datum.map(d => d.Total), ...datum.map(d => d.extent)])
 
     xMax = (xMax == "") ? minMax.max : xMax
 

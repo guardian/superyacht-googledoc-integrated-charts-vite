@@ -12,7 +12,6 @@
         ],
         "options": [
             {
-                "enableShowMore": "FALSE",
                 "lineLabelling" : "FALSE",
                 "aria": "FALSE",
                 "colorScheme": "guardian",

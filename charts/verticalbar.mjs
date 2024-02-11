@@ -92,7 +92,6 @@ export default class Stackedbar {
           footnote, 
           minY,
           trendline, 
-          enableShowMore, 
           aria, 
           colorScheme, 
           type, 

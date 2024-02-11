@@ -91,7 +91,6 @@ export default class Stackedarea {
           lines, 
           periods, 
           type, 
-          enableShowMore, 
           aria, 
           colorScheme, 
           dropdown,
@@ -265,7 +264,7 @@ export default class Stackedarea {
       features
       .append("text")
       .attr("x", width)
-      .attr("y", height - 6)
+      .attr("y", height + (marginbottom / 2))
       .attr("fill", "#767676")
       .attr("text-anchor", "end")
       .text(xAxisLabel)  

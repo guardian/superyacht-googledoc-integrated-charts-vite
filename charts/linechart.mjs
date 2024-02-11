@@ -100,7 +100,6 @@ export default class Linechart {
           minY, 
           maxY,
           footnote, 
-          enableShowMore, 
           aria, 
           colorScheme, 
           lineLabelling, 
