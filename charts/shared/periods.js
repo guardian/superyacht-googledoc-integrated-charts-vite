@@ -1,6 +1,8 @@
-export function addPeriods(periods, parseTime, features, x, height, xFormat) {
+export function addPeriods(periods, features, x, height, xFormat) {
 
-	console.log(periods, parseTime, features, x, height, xFormat)
+	// All dates must be in standard format
+
+	let parseTime = d3.timeParse("%Y-%m-%d")
 
 	d3.selectAll(".periodLine").remove()
 
@@ -8,13 +10,15 @@ export function addPeriods(periods, parseTime, features, x, height, xFormat) {
 
 	periods.forEach((d) => {
 		if (xFormat.date) {
-
+			console.log("yeh")
 		      d.start = parseTime(d.start)
+
 		      if (d.end != "") {
 		        d.end = parseTime(d.end)
 		        d.middle = new Date((d.start.getTime() + d.end.getTime()) / 2)
 		      } else {
 		        d.middle = d.start
+				d.end = d.start
 		      }
 		      
 		  } else {
@@ -63,11 +67,17 @@ export function addPeriods(periods, parseTime, features, x, height, xFormat) {
 	.enter()
 	.append("text")
 	.attr("x", (d) => {
-	if (d.labelAlign == "middle") {
-	  return x(d.middle)
-	} else if (d.labelAlign == "start") {
-	  return x(d.start) + 5
-	}
+		if (d.labelAlign == "middle") {
+		return x(d.middle)
+		} 
+		else if (d.labelAlign == "start") {
+	  		return x(d.start) + 5
+		}
+
+		else if (d.labelAlign == "end") {
+			return x(d.end) + 5
+	  	}
+
 	})
 	.attr("y", -5)
 	.attr("text-anchor", (d) => d.labelAlign)

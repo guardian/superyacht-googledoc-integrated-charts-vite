@@ -428,7 +428,7 @@ export default class Linechart {
 
     if (periods.length > 0) {
 
-      addPeriods(periods, parseTime, features, x, height, xFormat)
+      addPeriods(periods, features, x, height, xFormat)
 
     }
 
