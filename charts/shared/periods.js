@@ -1,7 +1,6 @@
 export function addPeriods(periods, parseTime, features, x, height, xFormat) {
 
-
-	console.log("Hello peiods")
+	console.log(periods, parseTime, features, x, height, xFormat)
 
 	d3.selectAll(".periodLine").remove()
 
