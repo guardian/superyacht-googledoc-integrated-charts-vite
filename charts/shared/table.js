@@ -256,7 +256,8 @@ export function createTable(table, data, enableSort) {
 		th.classList.add("column-header")
 
 		let span = document.createElement("SPAN")
-		let text = document.createTextNode(key)
+		let heading = (key.includes('unknown title')) ? '' : key
+		let text = document.createTextNode(heading)
 		th.appendChild(span)
 		span.appendChild(text)
 		if (enableSort==="TRUE") {

@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "node ./scripts/sassy.js && vite",
     "build": "rollup --config && vite build --base=https://interactive.guim.co.uk/embed/superyacht/",
     "preview": "rollup --config && node ./scripts/preview.js",
     "postbuild": "node ./scripts/minify.js && node ./scripts/uploader.js"

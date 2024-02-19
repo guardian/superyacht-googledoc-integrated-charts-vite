@@ -1,13 +1,1 @@
-.tipster {
-  position: absolute !important;
-  width: 200px;
-  pointer-events: none;
-  background-color: white;
-  border: 1px;
-  border-color: black;
-  border-style: solid;
-  padding: 10px;
-  line-height: 1.1rem;
-  font-size: 0.9rem; }
-
-/*# sourceMappingURL=data:application/json;base64,ewoJInZlcnNpb24iOiAzLAoJImZpbGUiOiAic3JjL3N0eWxlcy9jaGFydGNzcy90aXBzLmNzcyIsCgkic291cmNlcyI6IFsKCQkic3JjL3N0eWxlcy9jaGFydGNzcy90aXBzLnNjc3MiCgldLAoJIm5hbWVzIjogW10sCgkibWFwcGluZ3MiOiAiQUFBQSxBQUFBLFFBQVEsQ0FBQztFQUNQLFFBQVEsRUFBRSxtQkFBbUI7RUFDN0IsS0FBSyxFQUFFLEtBQUs7RUFDWixjQUFjLEVBQUUsSUFBSTtFQUNwQixnQkFBZ0IsRUFBRSxLQUFLO0VBQ3ZCLE1BQU0sRUFBRSxHQUFHO0VBQ1gsWUFBWSxFQUFFLEtBQUs7RUFDbkIsWUFBWSxFQUFFLEtBQUs7RUFDbkIsT0FBTyxFQUFFLElBQUk7RUFDYixXQUFXLEVBQUUsTUFBTTtFQUNuQixTQUFTLEVBQUUsTUFBTSxHQUNsQiIKfQ== */
+.tipster{position:absolute !important;width:200px;pointer-events:none;background-color:#fff;border:1px;border-color:#000;border-style:solid;padding:10px;line-height:1.1rem;font-size:.9rem}
