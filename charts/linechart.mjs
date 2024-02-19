@@ -425,10 +425,10 @@ export default class Linechart {
 
     })
 
-
+    d3.select("#annotations").text("")
     if (periods.length > 0) {
 
-      addPeriods(periods, features, x, height, xFormat)
+      addPeriods(periods, features, x, height, xFormat, isMobile)
 
     }
 
