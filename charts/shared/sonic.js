@@ -1,8 +1,8 @@
-import * as tone from './Tone'
 // import * as d3 from 'd3' // You can replace with only d3-scale and d3-array if you're not already using d3 for your charts
 // import notes from './notes.json';
 
 // No idea why Tone needs to be uppercase T when importing like this
+import * as tone from './Tone'
 // console.log(Tone)
 function numberFormatSpeech(num) {
   if ( num > 0 ) {
@@ -384,10 +384,14 @@ export default class sonic {
   
     return new Promise( (resolve, reject) => {
     let self = this
+
+    // check if speechSynthesis is supported
+
     if ('speechSynthesis' in window) {
       // clear any current speech
+
       var msg = new SpeechSynthesisUtterance();
-  
+      
       msg.text = text
       msg.lang = 'en-GB'
       // msg.rate = 0.8
@@ -794,9 +798,10 @@ export default class sonic {
     
   }	
 
+  // increment the position of the current data index up by one, then play the datapoint
+
   async moveCursor(direction) {
 
-    // increment the position of the current data index up by one, then play the datapoint
     let self = this
     self.usedCursor = true
     self.isPlaying = false
@@ -821,11 +826,28 @@ export default class sonic {
     let currentX = currentData[self.xVar]
     let currentY = currentData[self.currentKey]
 
-    // self.speech.cancel()
-    self.speaker(xvarFormatSpeech(currentX, self.timeSettings.suggestedFormat))
-    self.speaker(numberFormatSpeech(currentY))
-    self.animateCursor(self.currentKey,self.currentIndex, null)
-    self.beep(self.scale(currentY))
+    function playCursorAudio() {
+      self.speaker(xvarFormatSpeech(currentX, self.timeSettings.suggestedFormat))
+      self.speaker(numberFormatSpeech(currentY))
+      self.animateCursor(self.currentKey,self.currentIndex, null)
+      self.beep(self.scale(currentY))
+    }
+
+    if (self.speech.speaking) {
+        self.speech.cancel()
+
+        setTimeout(() => {
+          playCursorAudio()
+      }, 100);
+
+    }
+
+    else {
+      playCursorAudio()
+    }
+
+  
+  
 
   }
 
