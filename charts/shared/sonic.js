@@ -744,17 +744,6 @@ export default class sonic {
   
       self.speech.pause()
       self.furniturePaused = true
-      // setTimeout(() => {
-        
-      //   resolveExternal();
-      //   console.log("Yeah")
-        
-      // }, 1000);
-      
-     
-      // else {
-      //   resolveExternal();
-      // }   
       
     }
     else if (self.furniturePlaying && self.furniturePaused) {
