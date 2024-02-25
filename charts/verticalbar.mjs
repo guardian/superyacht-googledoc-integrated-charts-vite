@@ -109,7 +109,7 @@ export default class Stackedbar {
           //x_axis_cross_y = -1.2
 
     d3.select("#graphicContainer svg").remove()
-    console.log("type", type)  
+    // console.log("type", type)  
     const chartKey = d3.select("#chartKey")
 
     chartKey.html("")
@@ -128,7 +128,7 @@ export default class Stackedbar {
 
     datum = JSON.parse(JSON.stringify(data))
 
-    console.log("data", data)
+    // console.log("data", data)
 
     const keyColor = dataTools.getKeysColors({
       keys: stackedbars,
@@ -136,7 +136,7 @@ export default class Stackedbar {
       option: { colorScheme : colorScheme }
     })
 
-    console.log("stackedbars",stackedbars)
+    // console.log("stackedbars",stackedbars)
     colors.set(keyColor.keys, keyColor.colors)
 
     stackedbars.forEach((key, i) => {
@@ -184,7 +184,7 @@ export default class Stackedbar {
       })
     })
 
-    console.log(layers)  
+    // console.log(layers)  
     const svg = d3.select("#graphicContainer")
     .append("svg")
     .attr("width", width + marginleft + marginright)
@@ -308,7 +308,7 @@ export default class Stackedbar {
     if (labels.length > 0) {
 
       const clickLoggingOn = getURLParams("labelling") ? true : false ;
-      console.log("clickLoggingOn", clickLoggingOn);
+      // console.log("clickLoggingOn", clickLoggingOn);
 
       // Move this to wrangle later once we re-factor the labelling stuff
 

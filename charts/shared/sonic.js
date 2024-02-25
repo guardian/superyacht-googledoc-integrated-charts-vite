@@ -76,7 +76,7 @@ function yearText(year) {
 
 function xvarFormatSpeech(xVar, format) {
   // check for date objects
-  console.log(xVar, format)
+  // console.log(xVar, format)
   if (typeof xVar == "object") {
     
     let timeFormatter = d3.timeFormat(format)
@@ -219,9 +219,9 @@ function analyseTime(data, settings) {
 
   let time1 = data[0][xVar]
   let time2 = data[1][xVar]
-  console.log(xVar, time1, time2)
+ 
   let timeDiff = Math.abs(time2 - time1); // difference in milliseconds
-  console.log(timeDiff)
+
   // Define time constants
   const ONE_HOUR = 1000 * 60 * 60;
   const ONE_DAY = ONE_HOUR * 24;
@@ -274,7 +274,7 @@ function getDuration(dataLength) {
 
   let targetDuration = 20
   let note = 0.20
-  console.log("full length at 0.20", note * dataLength)
+  // console.log("full length at 0.20", note * dataLength)
   if ((note * dataLength) <=  targetDuration) {
     // return {"note":note, "audioRendering":"discrete"}
     return note
@@ -328,8 +328,10 @@ export default class sonic {
       this.dataKeys = null
       this.speech = window.speechSynthesis
       this.furniturePlaying = false
+      this.furniturePaused = false
       this.usedCursor = false
       this.audioRendering = 'discrete'
+      this.resolveExternal
 
       let xBand = checkNull(this.x, 'bandwidth')
       if (xBand) {
@@ -344,12 +346,12 @@ export default class sonic {
       this.xBand = xBand
       this.yBand = yBand
 
-      console.log("xBand", xBand, "yBand", yBand)
+      // console.log("xBand", xBand, "yBand", yBand)
   }
 
   loadSynth(selectedInstrument)  {
     let settings = instruments[selectedInstrument]
-    console.log("settings",settings)
+    // console.log("settings",settings)
     let synthType = settings.Synth
     let synthPreset = settings.Presets
     let newSynth = new Tone[synthType](synthPreset).toDestination();
@@ -367,7 +369,7 @@ export default class sonic {
       let synth = this.synth
       
       synth.unsync()
-      console.log("freq", freq)
+      // console.log("freq", freq)
       synth.triggerAttackRelease(freq, 0.5)
       setTimeout(success, 500)
   
@@ -427,7 +429,7 @@ export default class sonic {
       self.audioRendering = self.settings.audioRendering
     }
 
-    console.log("audioRendering", self.audioRendering)
+    // console.log("audioRendering", self.audioRendering)
 
     if (self.audioRendering == "continuous") {
       self.loadSynth('DefaultLine')
@@ -437,8 +439,8 @@ export default class sonic {
       self.loadSynth('Kalimba')
     }
    
-    console.log("note", self.note)
-    console.log("data", self.data)
+    // console.log("note", self.note)
+    // console.log("data", self.data)
     
     // set up the data structure we need, and the keys of data to be sonified
 
@@ -455,8 +457,8 @@ export default class sonic {
     
     self.interval = getInterval(self.settings, self.xVar, self.timeSettings)
     
-    console.log("time settings", self.timeSettings)
-    console.log("interval", self.interval)
+    // console.log("time settings", self.timeSettings)
+    // console.log("interval", self.interval)
 
     let allDataValues = []
     let hideNullValues = false
@@ -473,7 +475,7 @@ export default class sonic {
     self.currentKey = keys[0]
     
     // To store the highest and lowest data objects
-    console.log("data", data)
+    // console.log("data", data)
     let xVar = self.xVar
     self.lowestVal = {"key":keys[0], "value":data[0][keys[0]], [xVar]:data[0][self.xVar]}
     self.highestVal = {"key":keys[0], "value":data[0][keys[0]], [xVar]:data[0][self.xVar]}
@@ -516,9 +518,9 @@ export default class sonic {
 
     // Setting the scale range for linear scale
     // console.log("allDataValues", allDataValues)
-    console.log("sonicData", self.sonicData)
-    console.log("highestVal", self.highestVal)
-    console.log("lowestVal", self.lowestVal)
+    // console.log("sonicData", self.sonicData)
+    // console.log("highestVal", self.highestVal)
+    // console.log("lowestVal", self.lowestVal)
     let range = [130.81,523.25]
     self.domainY = d3.extent(allDataValues)
     self.domainX = d3.extent(data, d => d[self.xVar])
@@ -535,7 +537,7 @@ export default class sonic {
       }
     }
     
-    console.log("range", range, "domain", self.domainY)
+    // console.log("range", range, "domain", self.domainY)
     self.scale = d3.scaleLinear()
       .domain(self.domainY)
       .range(range)
@@ -549,7 +551,7 @@ export default class sonic {
       let self = this
       let keyIndex = self.dataKeys.indexOf(dataKey)
       // let halfway = self.sonicData[dataKey]
-      console.log(`Setting up the transport for ${dataKey}`)
+      // console.log(`Setting up the transport for ${dataKey}`)
       // Clear the transport
       Tone.Transport.stop()
       Tone.Transport.cancel()
@@ -565,7 +567,7 @@ export default class sonic {
       let data = self.sonicData[dataKey]
 
       // Check if the cursor has been used, slice to the current position
-      console.log("current index",self.currentIndex)
+      // console.log("current index",self.currentIndex)
       if (self.currentIndex != 0) {
         data = data.slice(self.currentIndex)
         // console.log(data)
@@ -595,7 +597,7 @@ export default class sonic {
         } // end discrete
 
         else if (self.audioRendering == "continuous") {
-          console.log("making continuous noise")
+          // console.log("making continuous noise")
           if (i == 0) { 
             synth.triggerAttackRelease(self.scale(d[key]), data[dataKey].length * self.note)
             // animateCont(key)
@@ -609,7 +611,7 @@ export default class sonic {
 
 
         else if (self.audioRendering == "categorical") {
-            console.log("categorical")
+            // console.log("categorical")
             
             await self.speaker(d[self.xVar])
             
@@ -631,7 +633,7 @@ export default class sonic {
       // resolve after the last note is played
 
       Tone.Transport.schedule(function(){
-        console.log("the end")
+        // console.log("the end")
         // self.speaker(xvarFormatSpeech(data[data.length - 1][self.xVar], self.timeSettings.suggestedFormat))
         self.currentIndex = 0
         self.isPlaying = false
@@ -642,7 +644,7 @@ export default class sonic {
 
       if (keyIndex === self.dataKeys.length -1) {
         Tone.Transport.schedule(function(){
-          console.log("the actual end")
+          // console.log("the actual end")
           self.inProgress = false
           self.usedCursor = false
           }, data.length * self.note);
@@ -690,6 +692,7 @@ export default class sonic {
           lowestYStr = numberFormatSpeech(lowestY)
           highestYStr = numberFormatSpeech(highestY)
       }
+
       self.furniturePlaying = true
       const text1 = await self.speaker(`The lowest value on the chart is ${lowestYStr}, and it sounds like `)
       self.animateCircle(self.lowestVal[self.xVar],self.lowestVal.value, self.lowestVal.key)
@@ -709,8 +712,9 @@ export default class sonic {
       
       self.furniturePlaying = false
       resolve({ status : "success"})
+      
     }  
-
+    
     blah()  
     
   })
@@ -719,45 +723,62 @@ export default class sonic {
   async playPause() { 
 
     let self = this
-    console.log("playing", self.isPlaying, "progress", self.inProgress, "cursor", self.usedCursor)
+    console.log("isPlaying", self.isPlaying, "inProgress", self.inProgress, "usedCursor", self.usedCursor, "furniturePlayer", self.furniturePlaying, "furniturePaused", self.furniturePaused)
     
-    if (!self.runOnce && !self.inProgress) {
+    // Audio has not played through, so start with the furniture
+
+    if (!self.runOnce && !self.inProgress && !self.furniturePlaying) {
       console.log("playing furniture")
       Tone.start()
       self.synth.context.resume();
       self.runOnce = true
       // self.inProgress = true
+      
       await self.playFurniture()
     }
     
-    // Pausing and resuming speech needs work
+    // Furniture is playing, so clear speech on second press
 
-    // if (self.furniturePlaying) {
-    //   self.speech.pause()
-    //   self.furniturePlaying = false
-    // }
-
-    // else if (!self.furniturePlaying) {
-    //   self.speech.resume()
-    //   self.furniturePlaying = true
-    // }
-
-    // it's not playing, and not pause so play it from the start
+    else if (self.furniturePlaying && !self.furniturePaused) {
+      console.log("pausing furniture")
   
-    if (!self.isPlaying && !self.inProgress && !self.usedCursor) {
+      self.speech.pause()
+      self.furniturePaused = true
+      // setTimeout(() => {
+        
+      //   resolveExternal();
+      //   console.log("Yeah")
+        
+      // }, 1000);
+      
+     
+      // else {
+      //   resolveExternal();
+      // }   
+      
+    }
+    else if (self.furniturePlaying && self.furniturePaused) {
+      self.speech.resume()
+      self.furniturePaused = false
+    }
+
+    // it's not playing, and not paused so play it from the start
+  
+    if (!self.isPlaying && !self.inProgress && !self.usedCursor && !self.furniturePlaying) {
       console.log("playing")
       // self.isPlaying = true
       // self.inProgress = true
       
-      for await (const key of this.dataKeys) {
-        console.log(key)
-        
-        let speakKey = await self.speaker(`${key}`)
-        
-        await self.playAudio(key)
+        for await (const key of this.dataKeys) {
+          
+          console.log(key)
+          setTimeout(async () => {
+          let speakKey = await self.speaker(`${key}`)
+          
+          await self.playAudio(key)
 
-
-      }
+          },100)
+        }
   
     }
   
@@ -792,7 +813,7 @@ export default class sonic {
     else if (!self.isPlaying && self.inProgress) {
 
       console.log("restart")
-      // self.isPlaying = true
+      self.isPlaying = true
       Tone.Transport.start();
     }
     
