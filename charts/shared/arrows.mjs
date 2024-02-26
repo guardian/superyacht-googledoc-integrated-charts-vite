@@ -1,8 +1,8 @@
 function addLabel(el, config, width, height, margin, clickLoggingOn = false) {
 
-	const viewBox = `0 0 ${width} ${height}`;
+	// const viewBox = `0 0 ${width} ${height}`;
 
-	el.attr("viewBox", viewBox)
+	// el.attr("viewBox", viewBox)
 
 	el.select(`#${config.id}`).remove()
 

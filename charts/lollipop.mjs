@@ -2,7 +2,9 @@
 import dataTools from "./shared/dataTools"
 import ColorScale from "./shared/colorscale"
 import colorPresets from "./constants/colors"
-import { numberFormat, mustache, mobileCheck, getMinMax, textPadding, textPaddingMobile, bufferize, tickTok, contains } from './shared/toolbelt';
+import { getURLParams, numberFormat, mustache, mobileCheck, getMinMax, textPadding, textPaddingMobile, bufferize, tickTok, contains } from './shared/toolbelt';
+import  { addLabel, clickLogging } from './shared/arrows'
+import { drawShowMore } from "./shared/showmore"
 
 export default class Lollipop {
 
@@ -15,7 +17,8 @@ export default class Lollipop {
   }
 
   init() {
-
+    console.log('enableshowmore',this.settings.enableShowMore)
+    drawShowMore(this.settings.enableShowMore)  
     this.render()
 
   }
@@ -340,6 +343,34 @@ export default class Lollipop {
           .attr("x2", x(0))
           .attr("y2", height); 
   
+    }
+
+    if (labels.length > 0) {
+     
+      const clickLoggingOn = getURLParams("labelling") ? true : false ;
+      console.log("clickLoggingOn", clickLoggingOn);
+
+      // Move this to wrangle later once we re-factor the labelling stuff
+
+      if (typeof labels[0].coords  === 'string') {
+        labels.forEach(function(d) {
+          d.coords = JSON.parse(d.coords)
+          d.sweepFlag = +d.sweepFlag
+          d.largeArcFlag = +d.largeArcFlag
+          d.radius = +d.radius
+        })
+      }
+     
+      console.log("annotations", labels)
+      labels.forEach((config) => {
+    		addLabel(svg, config, width + marginleft + marginright, height + margintop + marginbottom, {
+    			"left": marginleft,
+    			"right": marginright,
+    			"top": margintop,
+    			"bottom": marginbottom
+    		}, clickLoggingOn)
+    	})
+
     }
 
   }
