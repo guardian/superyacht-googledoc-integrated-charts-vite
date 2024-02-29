@@ -80,6 +80,7 @@ function newLabel(svg, data, containerWidth, containerHeight, margin) {
 	    .attr('class', 'labelText mobHide')
 	    .attr('x', width * data.coords.textX)
 	    .attr('y', height * data.coords.textY)
+	    .attr('text-anchor', data.align) // Align text to the end
 	    .attr('data-id', data.id)
 	    .text(data.text)
 
