@@ -29,7 +29,11 @@ export default class Lollipop {
           type,
           colors,
           height, 
-          width, 
+          width,
+          featuresWidth,
+          featuresHeight,
+          svgWidth,
+          svgHeight, 
           isMobile, 
           title, 
           subtitle, 
@@ -44,6 +48,7 @@ export default class Lollipop {
           labels, 
           userkey, 
           keys,
+          rowHeight,
           enableShowMore, 
           colorScheme, 
           dropdown,
@@ -56,8 +61,9 @@ export default class Lollipop {
           parseTime,
           xColumn } = this.settings
 
-    let space = 40
-
+          
+    // let space = 40
+   
     d3.select("#graphicContainer svg").remove()
 
     const chartKey = d3.select("#chartKey")
@@ -78,13 +84,14 @@ export default class Lollipop {
 
     colors.set(keyColor.keys, keyColor.colors)
 
-    width = document
-    .querySelector("#graphicContainer")
-    .getBoundingClientRect().width
+    svgWidth = document
+      .querySelector("#graphicContainer")
+      .getBoundingClientRect().width
 
-    height = datum.length * space + margintop + marginbottom
+    svgHeight = datum.length * rowHeight + margintop + marginbottom
 
-    width = width - marginright
+    featuresWidth = svgWidth - marginright - marginleft
+    featuresHeight = svgHeight - margintop - marginbottom
 
     let lollies = keys.filter(d => d != 'Color' && d != groupBy)
 
@@ -123,8 +130,8 @@ export default class Lollipop {
     const svg = d3
     .select("#graphicContainer")
     .append("svg")
-    .attr("width", width)
-    .attr("height", height)
+    .attr("width", svgWidth)
+    .attr("height", svgHeight)
     .attr("id", "svg")
     .attr("overflow", "hidden")
 
@@ -134,14 +141,14 @@ export default class Lollipop {
 
     var x = d3[xScale]()
     
-    x.range([ 0, width - marginright - marginleft]);
+    x.range([ 0, featuresWidth]);
 
     features.append("g")
-    .attr("transform", "translate(0," + height + ")")
-    .call(d3.axisBottom(x))
+      .attr("transform", "translate(0," + svgHeight + ")")
+      .call(d3.axisBottom(x))
 
     var y = d3[yScale]()
-    .range([ 0, height - margintop - marginbottom])
+    .range([ 0, featuresHeight])
     .domain(datum.map(function(d) { return d[groupBy]; }))
     .padding(1);
 
@@ -232,7 +239,7 @@ export default class Lollipop {
       .attr("text-anchor",function(d) {
         return (d[lollies[0]] > 0) ? "start" : "end" ; 
       })
-      .attr("y", function(d) { return y(d[groupBy]) - (space / 3.5); })
+      .attr("y", function(d) { return y(d[groupBy]) - (rowHeight / 3.5); })
       .text((d) => d[groupBy])
 
       if (minX < 0 && maxX > 0) {
@@ -241,7 +248,7 @@ export default class Lollipop {
         .attr("x1", function(d) { return x(0); })
         .attr("x2", function(d) { return x(0); })
         .attr("y1", function(d) { return 0; })
-        .attr("y2", function(d) { return height; })
+        .attr("y2", function(d) { return innerHeigth; })
         .style("stroke", '#767676')
         .style("stroke-width", "1px")
 
@@ -288,14 +295,14 @@ export default class Lollipop {
 
     }
  
-    const xTicks = tickTok(isMobile, x.domain(), width) // Set the number of ticks
+    const xTicks = tickTok(isMobile, x.domain(), featuresWidth) // Set the number of ticks
 
     const xAxis = g => g
     .attr("transform", `translate(0,${0})`)
     .attr("class", "axisgroup") 
     .call(d3.axisTop(x).tickSizeOuter(0))
     .call(d3.axisTop(x)
-    .tickSize(-height, 0, 0)
+    .tickSize(-svgHeight, 0, 0)
     .ticks(xTicks)
     .tickFormat((d) => {
       return xFormat.date ? d3.timeFormat("%b %Y")(d) : numberFormat(d)
@@ -308,8 +315,15 @@ export default class Lollipop {
     features
     .append("g")
     .attr("class", "x")
-    .attr("transform", "translate(0," + height + ")")
+    .attr("transform", "translate(0," + svgHeight + ")")
     .call(xAxis)
+
+    // features
+    //   .append("circle")
+    //   .attr("cx", `${ (featuresWidth) /2}`)
+    //   .attr("cy", `${ (featuresHeight) /2}`)
+    //   .attr("fill", "red")
+    //   .attr("r", 5)
 
     if (lollies.length > 1) {
 
@@ -341,7 +355,7 @@ export default class Lollipop {
           .attr("x1", x(0))
           .attr("y1", 0)
           .attr("x2", x(0))
-          .attr("y2", height); 
+          .attr("y2", innerHeigth); 
   
     }
 
@@ -363,7 +377,7 @@ export default class Lollipop {
      
       console.log("annotations", labels)
       labels.forEach((config) => {
-    		addLabel(svg, config, width + marginleft + marginright, height + margintop + marginbottom, {
+    		addLabel(svg, config, svgWidth, svgHeight, {
     			"left": marginleft,
     			"right": marginright,
     			"top": margintop,
