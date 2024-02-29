@@ -41,6 +41,25 @@ function numberFormatSpeech(num) {
   return num;
 }
 
+function getBrowser() {
+  let browserInfo = navigator.userAgent;
+  let browser;
+  if (browserInfo.includes('Opera') || browserInfo.includes('Opr')) {
+    browser = 'Opera';
+  } else if (browserInfo.includes('Edg')) {
+    browser = 'Edge';
+  } else if (browserInfo.includes('Chrome')) {
+    browser = 'Chrome';
+  } else if (browserInfo.includes('Safari')) {
+    browser = 'Safari';
+  } else if (browserInfo.includes('Firefox')) {
+    browser = 'Firefox'
+  } else {
+    browser = 'unknown'
+  }
+    return browser;
+}
+
 function yearText(year) {
 
 	if (year.length !=4) {
@@ -333,6 +352,8 @@ export default class sonic {
       this.audioRendering = 'discrete'
       this.resolveExternal
 
+
+
       let xBand = checkNull(this.x, 'bandwidth')
       if (xBand) {
         xBand = xBand()
@@ -396,7 +417,21 @@ export default class sonic {
       
       msg.text = text
       msg.lang = 'en-GB'
-      // msg.rate = 0.8
+
+      // Speech synthesis is very quirky in different browsers, hence we tweak the settings
+      // I don't know why but Firefox's default voice for en-US is an awful robot?
+
+      let browser = getBrowser()
+
+      if (browser == 'Firefox') {
+        msg.rate = 1.1
+        msg.lang = 'en-AU'
+      }
+
+      if (browser == 'Safari') {
+        msg.rate = 1.1
+      }
+      
       self.speech.speak(msg);
   
       msg.onend = function() {
@@ -722,6 +757,10 @@ export default class sonic {
 
   async playPause() { 
 
+    // This needs to be here to make Safari work because of its strict autoplay policies
+
+    Tone.context.resume()
+
     let self = this
     console.log("isPlaying", self.isPlaying, "inProgress", self.inProgress, "usedCursor", self.usedCursor, "furniturePlayer", self.furniturePlaying, "furniturePaused", self.furniturePaused)
     
@@ -761,12 +800,12 @@ export default class sonic {
         for await (const key of this.dataKeys) {
           
           console.log(key)
-          setTimeout(async () => {
+          // setTimeout(async () => {
           let speakKey = await self.speaker(`${key}`)
           
           await self.playAudio(key)
 
-          },100)
+          // },100)
         }
   
     }
