@@ -78,8 +78,8 @@ function newLabel(svg, data, containerWidth, containerHeight, margin) {
 
 	const text = labelWrapper.append('text')
 	    .attr('class', 'labelText mobHide')
-	    .attr('x', width * data.coords.sourceX + 5)
-	    .attr('y', height * data.coords.sourceY + 5)
+	    .attr('x', width * data.coords.textX)
+	    .attr('y', height * data.coords.textY)
 	    .attr('data-id', data.id)
 	    .text(data.text)
 
