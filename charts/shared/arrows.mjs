@@ -6,7 +6,7 @@ function addLabel(el, config, width, height, margin, clickLoggingOn = false) {
 
 	el.select(`#${config.id}`).remove()
 
-	if (config.path) {
+	if (config.path == "true") {
 
 		newLabel(el, config, width, height, margin)
 
