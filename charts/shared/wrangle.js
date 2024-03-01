@@ -21,6 +21,10 @@ export function wrangle(data, chart) {
 
   settings.width = 0
 
+  settings.svgWidth = 0
+  settings.svgHeight = 0
+  settings.featuresWidth = 0
+  settings.featuresHeight = 0
   settings.isMobile = null
 
   settings.colors = null
