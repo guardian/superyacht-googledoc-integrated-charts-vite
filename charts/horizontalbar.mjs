@@ -74,7 +74,12 @@ export default class Horizontalbar {
           type,
           colors,
           height, 
-          width, 
+          width,
+          featuresWidth,
+          featuresHeight,
+          svgWidth,
+          svgHeight,
+          rowHeight,  
           isMobile, 
           title, 
           subtitle, 
@@ -160,8 +165,6 @@ export default class Horizontalbar {
 
     let set = new Set(datum.map(d => d[yColumn]))
 
-    let barheight = Array.from(set).length;
-
     datum.forEach((d) => {
       stackedhorizontal.forEach((key, i) => {
         d[key] = (d[key] == null) ? null : +d[key]
@@ -175,19 +178,22 @@ export default class Horizontalbar {
       datum = datum.sort((a, b) => d3.descending(+a.Total, +b.Total))
     }
     
-    width = document
+    svgWidth = document
     .querySelector("#graphicContainer")
     .getBoundingClientRect().width
 
-    height = (barheight) * 75 + margintop + marginbottom
+    let rowCount = Array.from(set).length;
 
-    width = width - marginleft - marginright
+    svgHeight = rowCount * rowHeight + margintop + marginbottom
 
+    featuresWidth = svgWidth - marginleft - marginright
+    featuresHeight = svgHeight - margintop - marginbottom
+    
     const svg = d3
     .select("#graphicContainer")
     .append("svg")
-    .attr("width", width)
-    .attr("height", height)
+    .attr("width", svgWidth)
+    .attr("height", svgHeight)
     .attr("id", "svg")
     .attr("overflow", "hidden")
 
@@ -218,11 +224,11 @@ export default class Horizontalbar {
     }
 
     const x = d3.scaleLinear()
-    .range([0, width - marginright - marginleft])
+    .range([0, featuresWidth])
 
     const y = d3
     .scaleBand()
-    .range([0, height])
+    .range([0, featuresHeight])
     .paddingInner(0.45)
     .paddingOuter(0.45)
 
@@ -250,14 +256,14 @@ export default class Horizontalbar {
 
     x.domain([xMin, xMax]).nice()
 
-    const xTicks = Math.round(width / 100)
+    const xTicks = Math.round(featuresWidth / 100)
 
     xAxis = g => g
     .attr("transform", `translate(0,${0})`)
     .attr("class", "axisgroup") 
     .call(d3.axisTop(x).tickSizeOuter(0))
     .call(d3.axisTop(x)
-    .tickSize(-height, 0, 0)
+    .tickSize(-svgHeight, 0, 0)
     .ticks(xTicks)
     .tickFormat((d) => {
       return numberFormat(d)
@@ -270,7 +276,7 @@ export default class Horizontalbar {
     features
     .append("g")
     .attr("class", "x")
-    .attr("transform", "translate(0," + height + ")")
+    .attr("transform", "translate(0," + svgHeight + ")")
     .call(xAxis)
 
     var layers = d3.stack()
@@ -528,7 +534,7 @@ export default class Horizontalbar {
         .attr("x1", x(0))
         .attr("y1", 0)
         .attr("x2", x(0))
-        .attr("y2", height); 
+        .attr("y2", svgHeight); 
 
   
 
@@ -536,8 +542,8 @@ export default class Horizontalbar {
 
       this.tooltip.bindEvents(
         d3.selectAll(".barPart"),
-        width,
-        height + margintop + marginbottom
+        svgWidth,
+        svgHeight
       )
 
     }
@@ -546,7 +552,7 @@ export default class Horizontalbar {
 
       features
         .append("text")
-        .attr("x", width - marginright)
+        .attr("x", svgWidth - marginright)
         .attr("y", -25)
         .attr("fill", "#767676")
         .attr("text-anchor", "end")
@@ -568,7 +574,7 @@ export default class Horizontalbar {
     	}
     	console.log("annotations", labels)
     	labels.forEach((config) => {
-    		addLabel(svg, config, width + marginleft + marginright, height + margintop + marginbottom, {
+    		addLabel(svg, config, svgWidth, svgHeight, {
     			"left": marginleft,
     			"right": marginright,
     			"top": margintop,
