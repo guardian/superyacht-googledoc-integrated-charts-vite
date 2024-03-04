@@ -67,7 +67,11 @@ export default class Groupedbar {
 
     let { modules, 
           height, 
-          width, 
+          width,
+          featuresWidth,
+          featuresHeight,
+          svgWidth,
+          svgHeight, 
           isMobile, 
           colors, 
           datum, 
@@ -116,23 +120,23 @@ export default class Groupedbar {
 
     isMobile = mobileCheck()
 
-    width = document.querySelector("#graphicContainer").getBoundingClientRect().width
+    svgWidth = document.querySelector("#graphicContainer").getBoundingClientRect().width
 
-    height = (columns.length * maxHeight) * groupKey.length   
+    console.log("columns.length", columns.length, "groupKey.length", groupKey.length)
+    svgHeight = (columns.length * maxHeight) * groupKey.length   
 
-    width = width - marginleft - marginright
-
-    height = height - margintop - marginbottom
+    featuresWidth = svgWidth - marginleft - marginright
+    featuresHeight = svgHeight - margintop - marginbottom
 
     const svg = d3.select("#graphicContainer").append("svg")
-    .attr("width", width + marginleft + marginright)
-    .attr("height", height + margintop + marginbottom)
+    .attr("width", svgWidth)
+    .attr("height", svgHeight)
     .attr("id", "svg")
     .attr("overflow", "hidden");         
 
     const y0 = d3.scaleBand()
     .domain(groupKey)
-    .rangeRound([margintop, height - marginbottom])
+    .rangeRound([margintop, svgHeight - marginbottom])
     .paddingInner(0.1)
 
     const y1 = d3.scaleBand()
@@ -140,9 +144,11 @@ export default class Groupedbar {
     .rangeRound([y0.bandwidth(), 0])
     .padding(0.05)
 
+    console.log(y1.bandwidth())
+
     const x = d3.scaleLinear()
     .domain([0, d3.max(datum)])
-    .rangeRound([ marginleft, ( width + marginleft )  - marginright ])
+    .rangeRound([ marginleft, ( featuresWidth + marginleft )  - marginright ])
 
     colors = new ColorScale()
 
@@ -183,7 +189,7 @@ export default class Groupedbar {
     .tickFormat((d) => {
       return numberFormat(d)
     })
-    .tickSize(-height, 0, 0)
+    .tickSize(-featuresHeight, 0, 0)
     .tickPadding(10))
     
       
@@ -259,7 +265,7 @@ export default class Groupedbar {
     	}
     	console.log("annotations", labels)
     	labels.forEach((config) => {
-    		addLabel(svg, config, width + marginleft + marginright, height + margintop + marginbottom, {
+    		addLabel(svg, config, svgWidth, svgHeight, {
     			"left": marginleft,
     			"right": marginright,
     			"top": margintop,
