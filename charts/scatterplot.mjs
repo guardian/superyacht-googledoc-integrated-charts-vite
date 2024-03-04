@@ -31,7 +31,11 @@ export default class Scatterplot {
 
     let { modules, 
           height, 
-          width, 
+          width,
+          svgHeight,
+          svgWidth,
+          featuresWidth,
+          featuresHeight, 
           isMobile, 
           colors, 
           datum, 
@@ -84,13 +88,13 @@ export default class Scatterplot {
 
     isMobile = mobileCheck()
 
-    width = document.querySelector("#graphicContainer").getBoundingClientRect().width
+    svgWidth = document.querySelector("#graphicContainer").getBoundingClientRect().width
 
-    height = isMobile ? width * 0.7 : width * 0.5;
+    svgHeight = svgWidth * 0.6
 
-    width = width - marginleft - marginright
+    featuresWidth = svgWidth - marginleft - marginright
 
-    height = height - margintop - marginbottom
+    featuresHeight = svgHeight - margintop - marginbottom
 
     const xRange = d3.extent(data.map(d => d[xColumn]))
 
@@ -103,8 +107,8 @@ export default class Scatterplot {
     const keyData = Array.from(new Set(groupData));
 
     const svg = d3.select("#graphicContainer").append("svg")
-    .attr("width", width + marginleft + marginright)
-    .attr("height", height + margintop + marginbottom)
+    .attr("width", svgWidth)
+    .attr("height", svgHeight)
     .append("g")
     .attr("transform", `translate(${marginleft}, ${margintop})`);      
 
@@ -158,15 +162,15 @@ export default class Scatterplot {
 
     const x = d3.scaleLinear()
     .domain(bufferize(xMin,xMax))
-    .range([ 0, width ]);
+    .range([ 0, featuresWidth ]);
 
     svg.append("g")
-    .attr("transform", "translate(0," + height + ")")
+    .attr("transform", "translate(0," + featuresHeight + ")")
     .call(d3.axisBottom(x));
 
     const y = d3.scaleLinear()
     .domain(bufferize(yMin,yMax))
-    .range([ height, 0]);
+    .range([ featuresHeight, 0]);
 
     const z = (zRange != null) ? d3[zScale]()
     .domain(zRange)
@@ -193,8 +197,8 @@ export default class Scatterplot {
 
       $tooltip.bindEvents(
         d3.selectAll("circle"),
-        width,
-        height
+        featuresWidth,
+        featuresHeight
       )
 
     }
@@ -203,11 +207,12 @@ export default class Scatterplot {
 
       svg
       .append("text")
-      .attr("x", width)
-      .attr("y", height - 6)
+      .attr("x", featuresWidth)
+      .attr("y", featuresHeight - 6)
       .attr("fill", "#767676")
       .attr("text-anchor", "end")
       .text(xAxisLabel)  
+    
     }
 
     if (yAxisLabel) {
