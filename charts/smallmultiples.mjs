@@ -132,7 +132,7 @@ export default class Smallmultiples {
     d3.select("#switch").html(label)
 
     const multiples = [...new Set(datum.map((d) => d[groupBy]))]
-
+    console.log(multiples)
     let hideNullValues = (chartType === "bar") ? "no" : "yes"
 
     let dataKeys = JSON.parse(JSON.stringify(smallmultiples));
@@ -229,6 +229,7 @@ export default class Smallmultiples {
     .remove()
 
     multiples.forEach((key, index) => {
+      console.log(key)
       drawChart({
         data: datum,
         key,
@@ -256,6 +257,7 @@ export default class Smallmultiples {
       hasTooltip,
       index
     }) {
+      console.log("key", key)
       const id = dataTools.getId(key),
         chartId = `#${id}`,
         isBar = chartType === "bar",

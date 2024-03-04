@@ -43,6 +43,7 @@ const dataTools = {
     create a html id to be used as chartId
   *******/
   getId(str) {
+    console.log("str", str)
     return str.replace(/ |-|\(|\)/g, "_")
   },
 

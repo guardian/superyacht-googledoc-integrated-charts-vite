@@ -184,7 +184,7 @@ export default class Horizontalbar {
 
     let rowCount = Array.from(set).length;
 
-    svgHeight = rowCount * rowHeight + margintop + marginbottom
+    svgHeight = rowCount * rowHeight
 
     featuresWidth = svgWidth - marginleft - marginright
     featuresHeight = svgHeight - margintop - marginbottom
@@ -263,7 +263,7 @@ export default class Horizontalbar {
     .attr("class", "axisgroup") 
     .call(d3.axisTop(x).tickSizeOuter(0))
     .call(d3.axisTop(x)
-    .tickSize(-svgHeight, 0, 0)
+    .tickSize(-featuresHeight, 0, 0)
     .ticks(xTicks)
     .tickFormat((d) => {
       return numberFormat(d)
@@ -276,7 +276,7 @@ export default class Horizontalbar {
     features
       .append("g")
       .attr("class", "x")
-      .attr("transform", "translate(0," + svgHeight + ")")
+      .attr("transform", "translate(0," + featuresHeight + ")")
       .call(xAxis)
 
     var layers = d3.stack()
@@ -534,7 +534,7 @@ export default class Horizontalbar {
         .attr("x1", x(0))
         .attr("y1", 0)
         .attr("x2", x(0))
-        .attr("y2", svgHeight); 
+        .attr("y2", featuresHeight); 
 
   
 

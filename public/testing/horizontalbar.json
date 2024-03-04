@@ -8,7 +8,7 @@
                 "source": "ACARA, Parliamentary Library",
                 "margin-left": "80",
                 "margin-top": "30",
-                "margin-bottom": "20",
+                "margin-bottom": "0",
                 "margin-right": "10"
             }
         ],
@@ -54,7 +54,18 @@
                 "State/territory": -5.6
             }
         ],
-        "labels": [],
+        "labels": [
+            {
+                "id": "label1",
+                "coords": {"targetX":0.6767441860465117,"targetY":0.09317708333333333,"sourceX":0.6,"sourceY":0.16817708333333334,"textX":0.6802325581395349,"textY":0.07317708333333334},
+                "text": "Preliminary data",
+                "coordType": "pct",
+                "sweepFlag": 1,
+                "radius": 200,
+                "arrow": "false",
+                "align": "start"
+            }
+        ],
         "key": [
         ],
         "lines": [],
