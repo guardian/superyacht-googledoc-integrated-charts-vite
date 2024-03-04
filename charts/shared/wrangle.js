@@ -1,4 +1,4 @@
-import { contains, merge, xFormatting } from './toolbelt';
+import { contains, merge, xFormatting, capitalizeFirstLetter } from './toolbelt';
 import dataTools from "../dataTools"
 import ColorScale from "./colorscale"
 
@@ -228,6 +228,9 @@ export function wrangle(data, chart) {
   / format the graphics data
   */
 
+
+
+
   if (settings["type"] == "table") {
 
     if (data.userkey) {
@@ -242,7 +245,23 @@ export function wrangle(data, chart) {
 
           let max = d3.max(range)
 
-          key.graphics = { type : "bar", max : max }
+          let colours = (key.colours && key.colours != "" && key.colours.includes(",")) ? key.colours.split(',') :
+          (key.colours && key.colours != "") ? [ key.colours ] : ["red"]
+
+          let domain = (key.values && key.values.includes(",")) ? key.values.split(',') :
+          key.values != "" ? [ key.values ] : [];
+
+          let scale = (key.scale) ? key.scale :  'Linear' ;
+
+          // Need to check if scale type is valid... one for later
+
+          let colour  = new ColorScale({
+            type: capitalizeFirstLetter(scale),
+            domain: domain,
+            colors: colours
+          })
+
+          key.graphics = { type : "bar", max : max, colour : colour }
 
         }
 
