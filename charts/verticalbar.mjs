@@ -65,7 +65,11 @@ export default class Stackedbar {
 
     let { modules, 
           height, 
-          width, 
+          width,
+          svgHeight,
+          svgWidth,
+          featuresWidth,
+          featuresHeight, 
           isMobile, 
           colors, 
           datum, 
@@ -114,13 +118,13 @@ export default class Stackedbar {
     
     isMobile = mobileCheck()
 
-    width = document.querySelector("#graphicContainer").getBoundingClientRect().width
+    svgWidth = document.querySelector("#graphicContainer").getBoundingClientRect().width
     
-    height = width * 0.5
+    svgHeight = svgWidth * 0.6
 
-    width = width - marginleft - marginright
+    featuresWidth = svgWidth - marginleft - marginright
 
-    height = height - margintop - marginbottom
+    featuresHeight = svgHeight - margintop - marginbottom
 
     datum = JSON.parse(JSON.stringify(data))
 
@@ -176,8 +180,8 @@ export default class Stackedbar {
 
     const svg = d3.select("#graphicContainer")
     .append("svg")
-    .attr("width", width + marginleft + marginright)
-    .attr("height", height + margintop + marginbottom)
+    .attr("width", svgWidth)
+    .attr("height", svgHeight)
     .attr("id", "svg")
     .attr("overflow", "hidden")
     
@@ -186,12 +190,12 @@ export default class Stackedbar {
     .attr("transform", "translate(" + marginleft + "," + margintop + ")")
 
     const x = d3.scaleBand()
-    .range([0, width])
+    .range([0, featuresWidth])
 
     x.domain(xRange)
 
     const y = d3.scaleLinear()
-    .range([height, 0])
+    .range([featuresHeight, 0])
 
     y.domain([d3.min(layers, stackMin), d3.max(layers, stackMax)])
 
@@ -239,58 +243,58 @@ export default class Stackedbar {
     }
 
     features
-    .append("g")
-    .attr("class", "y")
-    .call(yAxis)
+      .append("g")
+      .attr("class", "y")
+      .call(yAxis)
 
     d3.selectAll(".y .tick line")
-    .style("stroke", "#dcdcdc")
-    .style("stroke-dasharray", "2 2")
-    .attr("x2", width)
+      .style("stroke", "#dcdcdc")
+      .style("stroke-dasharray", "2 2")
+      .attr("x2", featuresWidth)
     
     d3.selectAll(".y path")
-    .style("stroke-width", "0")
+      .style("stroke-width", "0")
 
     const layer = features
-    .selectAll("layer")
-    .data(layers, (d) => d.key)
-    .enter()
-    .append("g")
-    .attr("class", (d) => "layer " + d.key)
-    .style("fill", (d, i) => colors.get(d.key))
+      .selectAll("layer")
+      .data(layers, (d) => d.key)
+      .enter()
+      .append("g")
+      .attr("class", (d) => "layer " + d.key)
+      .style("fill", (d, i) => colors.get(d.key))
     
     layer
-    .selectAll("rect")
-    .data((d) => d)
-    .enter()
-    .append("rect")
-    .attr("x", (d) => x(d.data[xColumn]))
-    .attr("y", (d) => y(d[1]))
-    .attr("class", "barPart")
-    .attr("title", (d) => d.data[d.key])
-    .attr("data-group", (d) => d.group)
-    .attr("data-count", (d) => d.data[d.key])
-    .attr("height", (d) => y(d[0]) - y(d[1]))
-    .attr("width", (d) => {
-      let band = x.bandwidth()
-      return (band < 4) ? band : band - 2
-    }) //x(data[data.length - 1][xColumn]) / data.length
+      .selectAll("rect")
+      .data((d) => d)
+      .enter()
+      .append("rect")
+      .attr("x", (d) => x(d.data[xColumn]))
+      .attr("y", (d) => y(d[1]))
+      .attr("class", "barPart")
+      .attr("title", (d) => d.data[d.key])
+      .attr("data-group", (d) => d.group)
+      .attr("data-count", (d) => d.data[d.key])
+      .attr("height", (d) => y(d[0]) - y(d[1]))
+      .attr("width", (d) => {
+        let band = x.bandwidth()
+        return (band < 4) ? band : band - 2
+      }) //x(data[data.length - 1][xColumn]) / data.length
 
     features
-    .append("g")
-    .attr("class", "x")
-    .attr("transform", "translate(0," + height + ")")
-    .call(xAxis)
+      .append("g")
+      .attr("class", "x")
+      .attr("transform", "translate(0," + featuresHeight + ")")
+      .call(xAxis)
 
     if (xAxisLabel) {
 
       svg
-      .append("text")
-      .attr("x", width + marginleft)
-      .attr("y", height + margintop + marginbottom)
-      .attr("fill", "#767676")
-      .attr("text-anchor", "end")
-      .text(xAxisLabel)  
+        .append("text")
+        .attr("x", svgWidth)
+        .attr("y", svgHeight)
+        .attr("fill", "#767676")
+        .attr("text-anchor", "end")
+        .text(xAxisLabel)  
     }
 
     if (yAxisLabel) {
@@ -310,7 +314,7 @@ export default class Stackedbar {
 
     if (periods.length > 0) {
 
-      addPeriods(periods, parseTime, features, x, height, xFormat)
+      addPeriods(periods, parseTime, features, x, featuresHeight, xFormat)
 
     }
 
@@ -331,7 +335,7 @@ export default class Stackedbar {
       }
 
       labels.forEach((config) => {
-        addLabel(svg, config, width + marginleft + marginright, height + margintop + marginbottom, {"left":marginleft, "right":marginright, "top":margintop, "bottom":marginbottom}, clickLoggingOn)
+        addLabel(svg, config, svgWidth, svgHeight, {"left":marginleft, "right":marginright, "top":margintop, "bottom":marginbottom}, clickLoggingOn)
       })
       
     }
@@ -344,8 +348,8 @@ export default class Stackedbar {
 
       this.tooltip.bindEvents(
         d3.selectAll(".barPart"),
-        width,
-        height + margintop + marginbottom
+        featuresWidth,
+        featuresHeight
       )
 
     }
