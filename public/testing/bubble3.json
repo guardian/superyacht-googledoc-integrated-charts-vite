@@ -1,0 +1,1626 @@
+{
+    "sheets": {
+        "data": [
+             {
+               "Name": "Apple (Granny Smith)",
+               "Price": 3.99,
+               "store_category2": "Asian grocer"
+             },
+             {
+               "Name": "Bok Choy / Buk Choy / Pak Choy",
+               "Price": 1.2,
+               "store_category2": "Asian grocer"
+             },
+             {
+               "Name": "Pear (Packham)",
+               "Price": 3.99,
+               "store_category2": "Asian grocer"
+             },
+             {
+               "Name": "Potato (white, washed)",
+               "Price": 3.99,
+               "store_category2": "Asian grocer"
+             },
+             {
+               "Name": "Sweet potato (orange)",
+               "Price": 1.99,
+               "store_category2": "Asian grocer"
+             },
+             {
+               "Name": "Zucchini",
+               "Price": 4.99,
+               "store_category2": "Asian grocer"
+             },
+             {
+               "Name": "Eggplant (round)",
+               "Price": 4.99,
+               "store_category2": "Asian grocer"
+             },
+             {
+               "Name": "Apple (Pink Lady)",
+               "Price": 3.99,
+               "store_category2": "Asian grocer"
+             },
+             {
+               "Name": "Apple (Granny Smith)",
+               "Price": 4.99,
+               "store_category2": "Asian grocer"
+             },
+             {
+               "Name": "Bok Choy / Buk Choy / Pak Choy",
+               "Price": 1.7,
+               "store_category2": "Asian grocer"
+             },
+             {
+               "Name": "Sweet potato (orange)",
+               "Price": 1.99,
+               "store_category2": "Asian grocer"
+             },
+             {
+               "Name": "Zucchini",
+               "Price": 2.99,
+               "store_category2": "Asian grocer"
+             },
+             {
+               "Name": "Eggplant (round)",
+               "Price": 4.99,
+               "store_category2": "Asian grocer"
+             },
+             {
+               "Name": "Bok Choy / Buk Choy / Pak Choy",
+               "Price": 1.15,
+               "store_category2": "Asian grocer"
+             },
+             {
+               "Name": "Sweet potato (orange)",
+               "Price": 2.49,
+               "store_category2": "Asian grocer"
+             },
+             {
+               "Name": "Eggplant (round)",
+               "Price": 4.99,
+               "store_category2": "Asian grocer"
+             },
+             {
+               "Name": "Bok Choy / Buk Choy / Pak Choy",
+               "Price": 2.49,
+               "store_category2": "Asian grocer"
+             },
+             {
+               "Name": "Bok Choy / Buk Choy / Pak Choy",
+               "Price": 3,
+               "store_category2": "Asian grocer"
+             },
+             {
+               "Name": "Eggplant (round)",
+               "Price": 3.99,
+               "store_category2": "Asian grocer"
+             },
+             {
+               "Name": "Sweet potato (orange)",
+               "Price": 2.49,
+               "store_category2": "Asian grocer"
+             },
+             {
+               "Name": "Zucchini",
+               "Price": 2.99,
+               "store_category2": "Asian grocer"
+             },
+             {
+               "Name": "Potato (white, washed)",
+               "Price": 3.99,
+               "store_category2": "Asian grocer"
+             },
+             {
+               "Name": "Apple (Pink Lady)",
+               "Price": 3.99,
+               "store_category2": "Asian grocer"
+             },
+             {
+               "Name": "Apple (Granny Smith)",
+               "Price": 2.99,
+               "store_category2": "Asian grocer"
+             },
+             {
+               "Name": "Bok Choy / Buk Choy / Pak Choy",
+               "Price": 1.69,
+               "store_category2": "Asian grocer"
+             },
+             {
+               "Name": "Apple (Pink Lady)",
+               "Price": 2.49,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Bok Choy / Buk Choy / Pak Choy",
+               "Price": 1.1,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Pear (Packham)",
+               "Price": 1.89,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Potato (white, washed)",
+               "Price": 3.49,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Sweet potato (orange)",
+               "Price": 2.87,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Zucchini",
+               "Price": 2.99,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Eggplant (round)",
+               "Price": 4.69,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Apple (Pink Lady)",
+               "Price": 4.99,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Apple (Granny Smith)",
+               "Price": 4.99,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Bok Choy / Buk Choy / Pak Choy",
+               "Price": 2.49,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Pear (Packham)",
+               "Price": 4.99,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Potato (white, washed)",
+               "Price": 3.99,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Sweet potato (orange)",
+               "Price": 3.99,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Zucchini",
+               "Price": 4.99,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Eggplant (round)",
+               "Price": 6.99,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Apple (Pink Lady)",
+               "Price": 1.99,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Apple (Granny Smith)",
+               "Price": 4.99,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Apple (Granny Smith)",
+               "Price": 4.99,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Pear (Packham)",
+               "Price": 1.99,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Pear (Packham)",
+               "Price": 1.99,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Potato (white, washed)",
+               "Price": 3.99,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Sweet potato (orange)",
+               "Price": 1.49,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Zucchini",
+               "Price": 4.99,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Eggplant (round)",
+               "Price": 8.99,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Apple (Granny Smith)",
+               "Price": 6.99,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Apple (Pink Lady)",
+               "Price": 10.99,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Pear (Packham)",
+               "Price": 4.99,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Zucchini",
+               "Price": 2.99,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Eggplant (round)",
+               "Price": 4.99,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Sweet potato (orange)",
+               "Price": 4.99,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Potato (white, washed)",
+               "Price": 4.99,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Bok Choy / Buk Choy / Pak Choy",
+               "Price": 1.99,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Bok Choy / Buk Choy / Pak Choy",
+               "Price": 0.8,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Zucchini",
+               "Price": 2.99,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Eggplant (round)",
+               "Price": 2.99,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Sweet potato (orange)",
+               "Price": 0.99,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Potato (white, washed)",
+               "Price": 3.38,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Apple (Pink Lady)",
+               "Price": 1.99,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Pear (Packham)",
+               "Price": 2.49,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Zucchini",
+               "Price": 5.99,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Bok Choy / Buk Choy / Pak Choy",
+               "Price": 3.99,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Potato (white, washed)",
+               "Price": 3.99,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Apple (Pink Lady)",
+               "Price": 14.99,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Apple (Granny Smith)",
+               "Price": 6.99,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Pear (Packham)",
+               "Price": 6.99,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Sweet potato (orange)",
+               "Price": 3.99,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Apple (Granny Smith)",
+               "Price": 4.99,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Apple (Pink Lady)",
+               "Price": 4.99,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Zucchini",
+               "Price": 4.99,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Eggplant (round)",
+               "Price": 7.99,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Potato (white, washed)",
+               "Price": 4.5,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Sweet potato (orange)",
+               "Price": 3.99,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Bok Choy / Buk Choy / Pak Choy",
+               "Price": 5,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Apple (Pink Lady)",
+               "Price": 7.99,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Pear (Packham)",
+               "Price": 3.99,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Apple (Granny Smith)",
+               "Price": 6.99,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Bok Choy / Buk Choy / Pak Choy",
+               "Price": 1.99,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Pear (Packham)",
+               "Price": 6.99,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Potato (white, washed)",
+               "Price": 4.99,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Sweet potato (orange)",
+               "Price": 4.99,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Zucchini",
+               "Price": 6.99,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Eggplant (round)",
+               "Price": 11.99,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Apple (Granny Smith)",
+               "Price": 5.99,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Apple (Pink Lady)",
+               "Price": 6.99,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Potato (white, washed)",
+               "Price": 4.59,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Sweet potato (orange)",
+               "Price": 3.79,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Zucchini",
+               "Price": 5.99,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Eggplant (round)",
+               "Price": 8.99,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Bok Choy / Buk Choy / Pak Choy",
+               "Price": 2.49,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Zucchini",
+               "Price": 3.99,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Sweet potato (orange)",
+               "Price": 3.99,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Potato (white, washed)",
+               "Price": 4.99,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Apple (Pink Lady)",
+               "Price": 4.99,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Apple (Granny Smith)",
+               "Price": 5.99,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Pear (Packham)",
+               "Price": 5.99,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Sweet potato (orange)",
+               "Price": 4.99,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Potato (white, washed)",
+               "Price": 3.99,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Apple (Pink Lady)",
+               "Price": 6.95,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Apple (Granny Smith)",
+               "Price": 5.99,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Zucchini",
+               "Price": 4.95,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Eggplant (round)",
+               "Price": 9.95,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Bok Choy / Buk Choy / Pak Choy",
+               "Price": 3.5,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Pear (Packham)",
+               "Price": 1.99,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Apple (Pink Lady)",
+               "Price": 2.99,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Apple (Pink Lady)",
+               "Price": 2.99,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Apple (Granny Smith)",
+               "Price": 2.99,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Pear (Packham)",
+               "Price": 2.49,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Potato (white, washed)",
+               "Price": 3.99,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Zucchini",
+               "Price": 2.99,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Eggplant (round)",
+               "Price": 6.99,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Sweet potato (orange)",
+               "Price": 2.99,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Bok Choy / Buk Choy / Pak Choy",
+               "Price": 0.99,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Pear (Packham)",
+               "Price": 4.99,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Apple (Granny Smith)",
+               "Price": 3.99,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Apple (Pink Lady)",
+               "Price": 4.99,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Potato (white, washed)",
+               "Price": 3.49,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Sweet potato (orange)",
+               "Price": 6.99,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Zucchini",
+               "Price": 2.79,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Eggplant (round)",
+               "Price": 3.19,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Sweet potato (orange)",
+               "Price": 3.2,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Eggplant (round)",
+               "Price": 7.99,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Bok Choy / Buk Choy / Pak Choy",
+               "Price": 0.9,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Zucchini",
+               "Price": 6.99,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Bok Choy / Buk Choy / Pak Choy",
+               "Price": 2.99,
+               "store_category2": "Independent"
+             },
+             {
+               "Name": "Bok Choy / Buk Choy / Pak Choy",
+               "Price": 1.99,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Apple (Granny Smith)",
+               "Price": 3.99,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Apple (Pink Lady)",
+               "Price": 4.99,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Zucchini",
+               "Price": 3.49,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Eggplant (round)",
+               "Price": 6.99,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Potato (white, washed)",
+               "Price": 3.69,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Sweet potato (orange)",
+               "Price": 3.99,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Pear (Packham)",
+               "Price": 3.49,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Bok Choy / Buk Choy / Pak Choy",
+               "Price": 2.5,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Apple (Granny Smith)",
+               "Price": 4.9,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Pear (Packham)",
+               "Price": 3.9,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Apple (Pink Lady)",
+               "Price": 4.9,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Eggplant (round)",
+               "Price": 7.9,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Zucchini",
+               "Price": 4.9,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Sweet potato (orange)",
+               "Price": 2.5,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Potato (white, washed)",
+               "Price": 4.5,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Bok Choy / Buk Choy / Pak Choy",
+               "Price": 2.5,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Zucchini",
+               "Price": 5.9,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Eggplant (round)",
+               "Price": 7.9,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Pear (Packham)",
+               "Price": 3.9,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Apple (Pink Lady)",
+               "Price": 4,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Apple (Granny Smith)",
+               "Price": 4.9,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Sweet potato (orange)",
+               "Price": 4.9,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Potato (white, washed)",
+               "Price": 4.5,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Zucchini",
+               "Price": 2.9,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Eggplant (round)",
+               "Price": 7.9,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Potato (white, washed)",
+               "Price": 4.5,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Sweet potato (orange)",
+               "Price": 2.5,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Pear (Packham)",
+               "Price": 2.9,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Apple (Pink Lady)",
+               "Price": 5.9,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Bok Choy / Buk Choy / Pak Choy",
+               "Price": 2.5,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Bok Choy / Buk Choy / Pak Choy",
+               "Price": 2.5,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Zucchini",
+               "Price": 4.9,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Eggplant (round)",
+               "Price": 7.9,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Apple (Pink Lady)",
+               "Price": 4.9,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Apple (Granny Smith)",
+               "Price": 4.9,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Pear (Packham)",
+               "Price": 3.9,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Sweet potato (orange)",
+               "Price": 2.5,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Potato (white, washed)",
+               "Price": 4.5,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Apple (Pink Lady)",
+               "Price": 5.9,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Apple (Granny Smith)",
+               "Price": 4.5,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Pear (Packham)",
+               "Price": 2.9,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Potato (white, washed)",
+               "Price": 4.5,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Sweet potato (orange)",
+               "Price": 2.5,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Apple (Pink Lady)",
+               "Price": 4.9,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Zucchini",
+               "Price": 2.9,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Apple (Granny Smith)",
+               "Price": 4.9,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Bok Choy / Buk Choy / Pak Choy",
+               "Price": 2.5,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Bok Choy / Buk Choy / Pak Choy",
+               "Price": 2.5,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Pear (Packham)",
+               "Price": 2.9,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Potato (white, washed)",
+               "Price": 2.25,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Sweet potato (orange)",
+               "Price": 4.5,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Zucchini",
+               "Price": 4.9,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Eggplant (round)",
+               "Price": 7.9,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Apple (Pink Lady)",
+               "Price": 5.9,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Apple (Granny Smith)",
+               "Price": 4.9,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Pear (Packham)",
+               "Price": 3.9,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Bok Choy / Buk Choy / Pak Choy",
+               "Price": 2.5,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Potato (white, washed)",
+               "Price": 4.5,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Sweet potato (orange)",
+               "Price": 4.9,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Eggplant (round)",
+               "Price": 7.9,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Zucchini",
+               "Price": 5.9,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Apple (Pink Lady)",
+               "Price": 4,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Apple (Granny Smith)",
+               "Price": 4.5,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Pear (Packham)",
+               "Price": 3.9,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Bok Choy / Buk Choy / Pak Choy",
+               "Price": 2.5,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Potato (white, washed)",
+               "Price": 4.5,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Sweet potato (orange)",
+               "Price": 4.5,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Zucchini",
+               "Price": 3.5,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Eggplant (round)",
+               "Price": 5.9,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Pear (Packham)",
+               "Price": 3.49,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Sweet potato (orange)",
+               "Price": 2.49,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Apple (Pink Lady)",
+               "Price": 5.9,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Apple (Granny Smith)",
+               "Price": 4.5,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Potato (white, washed)",
+               "Price": 3.69,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Pear (Packham)",
+               "Price": 2.9,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Apple (Pink Lady)",
+               "Price": 4.99,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Apple (Granny Smith)",
+               "Price": 3.99,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Eggplant (round)",
+               "Price": 6.99,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Apple (Pink Lady)",
+               "Price": 5.9,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Eggplant (round)",
+               "Price": 7.9,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Apple (Granny Smith)",
+               "Price": 4.9,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Pear (Packham)",
+               "Price": 2.9,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Zucchini",
+               "Price": 2.9,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Zucchini",
+               "Price": 2.9,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Sweet potato (orange)",
+               "Price": 4.5,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Bok Choy / Buk Choy / Pak Choy",
+               "Price": 2.5,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Potato (white, washed)",
+               "Price": 4.5,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Bok Choy / Buk Choy / Pak Choy",
+               "Price": 2.5,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Sweet potato (orange)",
+               "Price": 4.5,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Eggplant (round)",
+               "Price": 7.9,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Zucchini",
+               "Price": 2.9,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Pear (Packham)",
+               "Price": 2.9,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Apple (Granny Smith)",
+               "Price": 4.9,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Apple (Pink Lady)",
+               "Price": 5.9,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Potato (white, washed)",
+               "Price": 4.5,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Sweet potato (orange)",
+               "Price": 4.5,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Apple (Pink Lady)",
+               "Price": 4.9,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Apple (Granny Smith)",
+               "Price": 5.05,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Potato (white, washed)",
+               "Price": 4.5,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Pear (Packham)",
+               "Price": 2.9,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Sweet potato (orange)",
+               "Price": 4.65,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Apple (Pink Lady)",
+               "Price": 5.9,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Eggplant (round)",
+               "Price": 8.15,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Apple (Granny Smith)",
+               "Price": 4.5,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Zucchini",
+               "Price": 4.9,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Zucchini",
+               "Price": 2.9,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Bok Choy / Buk Choy / Pak Choy",
+               "Price": 2.75,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Bok Choy / Buk Choy / Pak Choy",
+               "Price": 2.5,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Pear (Packham)",
+               "Price": 3,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Potato (white, washed)",
+               "Price": 4.5,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Sweet potato (orange)",
+               "Price": 2.5,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Eggplant (round)",
+               "Price": 7.9,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Apple (Granny Smith)",
+               "Price": 4.5,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Apple (Pink Lady)",
+               "Price": 4.9,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Apple (Granny Smith)",
+               "Price": 5.05,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Zucchini",
+               "Price": 4.9,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Bok Choy / Buk Choy / Pak Choy",
+               "Price": 2.75,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Potato (white, washed)",
+               "Price": 4.5,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Sweet potato (orange)",
+               "Price": 2.5,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Sweet potato (orange)",
+               "Price": 4.65,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Eggplant (round)",
+               "Price": 8.15,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Pear (Packham)",
+               "Price": 2.9,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Pear (Packham)",
+               "Price": 4.05,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Potato (white, washed)",
+               "Price": 4.95,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Sweet potato (orange)",
+               "Price": 2.5,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Zucchini",
+               "Price": 3.9,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Apple (Pink Lady)",
+               "Price": 5.5,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Bok Choy / Buk Choy / Pak Choy",
+               "Price": 2.5,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Eggplant (round)",
+               "Price": 7.9,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Sweet potato (orange)",
+               "Price": 2.5,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Potato (white, washed)",
+               "Price": 4.5,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Apple (Granny Smith)",
+               "Price": 4.5,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Apple (Pink Lady)",
+               "Price": 5.9,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Pear (Packham)",
+               "Price": 2.9,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Eggplant (round)",
+               "Price": 7.9,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Bok Choy / Buk Choy / Pak Choy",
+               "Price": 2.5,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Apple (Pink Lady)",
+               "Price": 4,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Potato (white, washed)",
+               "Price": 4.5,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Apple (Pink Lady)",
+               "Price": 4.49,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Apple (Granny Smith)",
+               "Price": 3.99,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Pear (Packham)",
+               "Price": 3.49,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Potato (white, washed)",
+               "Price": 3.99,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Sweet potato (orange)",
+               "Price": 2.5,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Zucchini",
+               "Price": 3.49,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Apple (Granny Smith)",
+               "Price": 4.5,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Eggplant (round)",
+               "Price": 6.99,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Pear (Packham)",
+               "Price": 3.9,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Sweet potato (orange)",
+               "Price": 3.99,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Apple (Granny Smith)",
+               "Price": 4.9,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Bok Choy / Buk Choy / Pak Choy",
+               "Price": 2.5,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Apple (Pink Lady)",
+               "Price": 4.9,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Pear (Packham)",
+               "Price": 3.9,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Eggplant (round)",
+               "Price": 5.9,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Potato (white, washed)",
+               "Price": 4.5,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Zucchini",
+               "Price": 3.5,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Zucchini",
+               "Price": 4.9,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Eggplant (round)",
+               "Price": 7.9,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Sweet potato (orange)",
+               "Price": 2.5,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Bok Choy / Buk Choy / Pak Choy",
+               "Price": 2.5,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Apple (Pink Lady)",
+               "Price": 7.99,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Apple (Granny Smith)",
+               "Price": 5.99,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Potato (white, washed)",
+               "Price": 4.99,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Apple (Granny Smith)",
+               "Price": 4.5,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Apple (Pink Lady)",
+               "Price": 4.9,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Potato (white, washed)",
+               "Price": 4.5,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Pear (Packham)",
+               "Price": 2.9,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Bok Choy / Buk Choy / Pak Choy",
+               "Price": 2.5,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Eggplant (round)",
+               "Price": 7.9,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Bok Choy / Buk Choy / Pak Choy",
+               "Price": 2.5,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Pear (Packham)",
+               "Price": 3.9,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Apple (Granny Smith)",
+               "Price": 4.9,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Apple (Pink Lady)",
+               "Price": 4,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Eggplant (round)",
+               "Price": 7.9,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Zucchini",
+               "Price": 5.9,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Sweet potato (orange)",
+               "Price": 4.9,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Potato (white, washed)",
+               "Price": 4.5,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Sweet potato (orange)",
+               "Price": 4.9,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Bok Choy / Buk Choy / Pak Choy",
+               "Price": 2.5,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Apple (Pink Lady)",
+               "Price": 4,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Apple (Granny Smith)",
+               "Price": 4.9,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Pear (Packham)",
+               "Price": 3.9,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Zucchini",
+               "Price": 5.9,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Eggplant (round)",
+               "Price": 7.9,
+               "store_category2": "Major"
+             },
+             {
+               "Name": "Potato (white, washed)",
+               "Price": 4.5,
+               "store_category2": "Major"
+             }
+        ],
+        "trendline": [],
+        "options" : [{
+            "yAxisLabel" : "",
+            "xAxisLabel" : "Price in Australian dollars ($)",
+            "margin-left": "120",
+            "margin-top": "20",
+            "margin-bottom": "10",
+            "margin-right": "20",
+            "xColumn" : "Price",
+            "yColumn" : "Name",
+            "zColumn" : "",
+            "groupBy" : "store_category2",
+            "xScale" : "scaleLinear",
+            "yScale" : "scaleBand",
+            "zScale" : "scaleSqrt",
+            "zLabel" : "",
+            "dateFormat": "",
+            "opacity" : "40",
+            "zMin" : "5",
+            "zMax" : "20",
+            "defaultRadius" : 3,
+            "beeswarm" : "TRUE"
+        }],
+        "template": [
+            {
+                "title": "",
+                "subtitle": "",
+                "footnote" : "",
+                "source": "Guardian Australia analysis of ABS data",
+                "tooltip": "<strong>{{Name}}</strong><br/><strong>Price: ${{Price}}</strong><br/><strong>{{store_category2}}</strong>"
+            }
+        ],
+        "userkey": [
+            {
+                "key": "Major",
+                "colour": "#b30000"
+            },{
+                "key": "Independent",
+                "colour": "#2b8cbe"
+            },{
+                "key": "Asian grocer",
+                "colour": "#c51b8a"
+            }
+        ],
+        "labels": [],
+        "chartId": [
+            {
+                "type": "bubble"
+            }
+        ]
+    }
+}

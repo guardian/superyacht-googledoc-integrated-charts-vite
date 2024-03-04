@@ -35,7 +35,12 @@ export default class Scatterplot {
 
     let { modules, 
           height, 
-          width, 
+          width,
+          featuresWidth,
+          featuresHeight,
+          svgWidth,
+          svgHeight,
+          rowHeight, 
           isMobile, 
           colors, 
           datum, 
@@ -81,6 +86,7 @@ export default class Scatterplot {
           beeswarm
       } = this.settings
 
+    console.log(this.settings)  
     datum = JSON.parse(JSON.stringify(data));
 
     const $tooltip = (this.tooltip) ? this.tooltip : false
@@ -93,9 +99,7 @@ export default class Scatterplot {
 
     isMobile = mobileCheck()
 
-    width = document.querySelector("#graphicContainer").getBoundingClientRect().width
-
-    height = isMobile ? width * 1.7 : width * 0.5;
+    svgWidth = document.querySelector("#graphicContainer").getBoundingClientRect().width
 
     datum.forEach(function(d) {
       if (xFormat.date) {
@@ -103,10 +107,26 @@ export default class Scatterplot {
       }
     })
 
-    const xRange = d3.extent(datum.map(d => d[xColumn]))
+    let buffer = defaultRadius
+
+    if (zMax > 0) {
+      buffer = zMax
+    }
+    console.log("xMin", xMin, !xMin)
+    // marginleft = marginleft + buffer
+    if (xMin === "") {
+      xMin = d3.min(datum.map(d => d[xColumn]))
+    }
+    
+    if (xMax === "") {
+      xMax = d3.max(datum.map(d => d[xColumn]))
+    }
+
+    console.log("xMin", xMin, "xMax",xMax)
+    const xRange = [xMin, xMax]
 
     const yRange = d3.extent(datum.map(d => d[yColumn]))
-
+    
     const zRange = (zColumn in datum[0]) ? d3.extent(datum.map(d => d[zColumn])) : null
     
     const keyData = Array.from(new Set(datum.map(d => d[groupBy])));
@@ -116,24 +136,32 @@ export default class Scatterplot {
     if (beeswarm) {
     
       cats = Array.from(new Set(datum.map(d => d[yColumn])));
-
       const duplicates = getMaxDuplicate(datum, yColumn, xColumn)
       console.log("duplicates", duplicates)
       height = cats.length * duplicates * ( defaultRadius * 2 )
 
     }
 
+    let rowCount = Array.from(new Set(datum.map(d => d[yColumn]))).length
+    console.log(rowCount)
+    svgHeight = rowCount * rowHeight + margintop + marginbottom
+
+    featuresHeight = svgHeight - marginbottom - margintop
+    featuresWidth = svgWidth - marginleft - marginright
+
     const svg = d3.select("#graphicContainer").append("svg")
-    .attr("width", width)
-    .attr("height", height)
-    .append("g")
-    .attr("transform", `translate(${marginleft}, ${margintop})`);      
+    .attr("width",svgWidth)
+    .attr("height", svgHeight)
+
+    const features = svg
+      .append("g")
+      .attr("transform", `translate(${marginleft}, ${margintop})`)
+        
 
     const svg2 = d3.select("#graphicContainer svg")
 
     console.log("keys", keys)
     colors = new ColorScale()
-
 
     const keyColor = dataTools.getKeysColors({
       keys: keyData,
@@ -182,23 +210,28 @@ export default class Scatterplot {
     //xMax = (!isNaN(xMax) && xMax != "") ?  xMax : xRange[1]
 
     const x = d3[xScale]()
-    .range([ zMax, width - marginright - marginleft - zMax ]) // .domain(bufferize(xMin,xMax))
-    .domain(d3.extent(datum.map(d => d[xColumn])))
+    .range([ zMax, featuresWidth - buffer ]) // .domain(bufferize(xMin,xMax))
+    .domain(xRange)
 
     const xLabel = d3[xScale]()
-    .range([ zMax, width - marginright - marginleft - zMax ]) // .domain(bufferize(xMin,xMax))
+    .range([ zMax, featuresWidth - buffer ]) // .domain(bufferize(xMin,xMax))
     .domain(datum.map(d => d[xColumn]))
 
     const tickMod = Math.round(datum.map(d => d[xColumn]).length / 6)
 
     let ticks = xLabel.domain().filter((d, i) => !(i % tickMod) || i === xLabel.domain().length - 1)
+    console.log("ticks", ticks)
 
+    const xTicks = Math.round(featuresWidth / 100)
+    
+    console.log("xTicks", xTicks)
     var xAxis = (xFormat.date) ? d3.axisTop(x)
     .ticks(ticks)
-    .tickSize(-(  height - margintop - marginbottom), 0, 0) :
+    .tickSize(-(  featuresHeight), 0, 0) :
 
     d3.axisTop(x)
-    .tickSize(-(  height - margintop - marginbottom), 0, 0) 
+    .ticks(xTicks)
+    .tickSize(-(  featuresHeight), 0, 0) 
 
     if (xFormat.date) {
 
@@ -206,15 +239,17 @@ export default class Scatterplot {
 
     }
 
-    svg
-    .append("g")
-    .attr("class", "x")
-    .attr("transform", "translate(0," + 0 + ")")
-    .call(xAxis)
-    .style("stroke-dasharray", "2 2")
+    features
+      .append("g")
+      .attr("class", "x")
+      .attr("transform", "translate(0," + 0 + ")")
+      .call(xAxis)
+    
+    d3.selectAll(".x line")
+      .attr("class", "dashed")  
 
     const y = d3[yScale]()
-    .range([ height - margintop - marginbottom, margintop])
+    .range([ featuresHeight, margintop])
     .domain(datum.map(d => d[yColumn]))
 
     const z = (zRange != null) ? d3[zScale]()
@@ -239,38 +274,53 @@ export default class Scatterplot {
 
     }
 
-    svg.append('g')
-    .selectAll("dot")
-    .data(datum)
-    .enter()
-    .append("circle")
-    .attr("cx", (d) => {
-      return d.x
-    })
-    .attr("cy", (d) => {
-      return d.y + (y.bandwidth() / 2)
-    })
-    .attr("r", (d) => {
-      return (zRange) ? z(d[zColumn]) : defaultRadius
-    })
-    .style("fill", (d) => colors.get(d[groupBy]))
-    .style("opacity", opacity / 100)
+    features.append('g')
+      .selectAll("dot")
+      .data(datum)
+      .enter()
+      .append("circle")
+      .attr("cx", (d) => {
+        return d.x
+      })
+      .attr("cy", (d) => {
+        return d.y + (y.bandwidth() / 2)
+      })
+      .attr("r", (d) => {
+        return (zRange) ? z(d[zColumn]) : defaultRadius
+      })
+      .style("fill", (d) => colors.get(d[groupBy]))
+      .style("opacity", opacity / 100)
 
-    svg.append("g")
+    let yAxis = features.append("g")
     .attr("class","axis y")
-    .call(d3.axisLeft(y))
-    .selectAll(".tick text")
-    .attr("text-anchor", "end")
-    .style("font-size", "12px")
-    .call(wrap, marginleft);
+    .attr("transform", `translate(${-buffer},0)`)
 
-    svg.selectAll(".domain").remove()
+    yAxis
+      .call(d3.axisLeft(y))
+      .selectAll(".tick text")
+      .attr("text-anchor", "end")
+      .style("font-size", "12px")
+      .call(wrap, marginleft);
 
-    svg.selectAll("rect")
+    // Add back in a zero line
+    console.log("x0", y(0))
+
+    // features
+    //   .append("line")
+    //   .attr("id", "zeroLine")
+    //   .attr("class", "dashed")
+    //   .attr("x1", x(0))
+    //   .attr("y1", y(0))
+    //   .attr("x2", 0)
+    //   .attr("y2", featuresHeight)
+
+    features.selectAll(".domain").remove()
+
+    features.selectAll("rect")
       .data(d => y.domain())
       .enter()
       .append("rect")
-      .attr("x", 0)
+      .attr("x", -buffer)
       .attr("y", d => y(d) + (y.bandwidth() / 4))
       .attr("height", y.bandwidth() / 2)
       .attr("width", 1)
@@ -280,8 +330,8 @@ export default class Scatterplot {
 
       $tooltip.bindEvents(
         d3.selectAll("circle"),
-        width,
-        height
+        svgWidth,
+        svgHeight
       )
 
     }
@@ -350,7 +400,7 @@ export default class Scatterplot {
      
       console.log("annotations", labels)
       labels.forEach((config) => {
-    		addLabel(svg2, config, width + marginleft + marginright, height + margintop + marginbottom, {
+    		addLabel(svg2, config, svgWidth, svgHeight, {
     			"left": marginleft,
     			"right": marginright,
     			"top": margintop,
