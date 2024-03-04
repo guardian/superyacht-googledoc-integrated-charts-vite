@@ -231,7 +231,8 @@ export default class Scatterplot {
 
     d3.axisTop(x)
     .ticks(xTicks)
-    .tickSize(-(  featuresHeight), 0, 0) 
+    .tickSize(-(  featuresHeight), 0, 0)
+    .tickPadding(10) 
 
     if (xFormat.date) {
 
