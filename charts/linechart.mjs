@@ -77,7 +77,11 @@ export default class Linechart {
 
     let { modules, 
           height, 
-          width, 
+          width,
+          svgWidth,
+          svgHeight,
+          featuresWidth,
+          featuresHeight, 
           isMobile, 
           colors, 
           datum, 
@@ -132,21 +136,22 @@ export default class Linechart {
 
     let keyCopy = JSON.parse(JSON.stringify(keys))
     keyCopy = keyCopy.filter(d => d != xColumn)
-    const containerwidth = document
+    
+    svgWidth = document
     .querySelector("#graphicContainer")
     .getBoundingClientRect().width
 
-    const containerheight = containerwidth * 0.6
+    svgHeight = svgWidth * 0.6
 
-    width = containerwidth - marginleft - marginright
+    featuresWidth = svgWidth - marginleft - marginright
 
-    height = containerheight - margintop - marginbottom
+    featuresHeight = svgHeight - margintop - marginbottom
   
     // Reverses the yAxis
     
-    let yRange = [height, 0]
+    let yRange = [featuresHeight, 0]
     if (invertY) {
-      yRange = [0, height]
+      yRange = [0, featuresHeight]
     
     }
     
@@ -160,7 +165,6 @@ export default class Linechart {
       .range(yRange)
       .nice()
     }  
-
 
     let lineGenerators = {}
     let chartValues = []
@@ -179,8 +183,8 @@ export default class Linechart {
     const svg = d3
     .select("#graphicContainer")
     .append("svg")
-    .attr("width", containerwidth)
-    .attr("height", containerheight)
+    .attr("width", svgWidth)
+    .attr("height", svgHeight)
     .attr("id", "svg")
     .attr("overflow", "hidden")
     
@@ -190,17 +194,17 @@ export default class Linechart {
 
     // Set a default x scale
     let x = d3.scaleLinear()
-      .rangeRound([0, width - buffer])
+      .rangeRound([0, featuresWidth - buffer])
 
     if (xFormat.date) {
       x = d3.scaleTime()
-      .rangeRound([0, width - buffer])
+      .rangeRound([0, featuresWidth - buffer])
     } else if (xFormat.string) {
       x = d3.scaleLinear()
-      .rangeRound([0, width - buffer])
+      .rangeRound([0, featuresWidth - buffer])
     } else if (xFormat.number) {
       x = d3.scaleLinear()
-      .rangeRound([0, width - buffer])
+      .rangeRound([0, featuresWidth - buffer])
     }
     const features = svg
     .append("g")
@@ -298,7 +302,7 @@ export default class Linechart {
 
     y.domain([min, max])
 
-    const xTicks = Math.round(width / 110)
+    const xTicks = Math.round(featuresWidth / 110)
 
     const yTicks = (yScaleType === "scaleLog") ? 3 : 5
 
@@ -316,7 +320,7 @@ export default class Linechart {
     .axisLeft(y)
     .tickFormat((d) => numberFormat(d))
     .ticks(yTicks)
-    .tickSize(-(width - buffer))  
+    .tickSize(-(featuresWidth - buffer))  
 
     features.append("g")
     .attr("class", "y dashed")
@@ -326,7 +330,7 @@ export default class Linechart {
     features
     .append("g")
     .attr("class", "x")
-    .attr("transform", "translate(0," + height + ")")
+    .attr("transform", "translate(0," + featuresHeight + ")")
     .call(xAxis)
 
     features
@@ -345,9 +349,9 @@ export default class Linechart {
     features
     .append("text")
     .attr("x", () => {
-      return lineLabelling ? width - buffer : width
+      return lineLabelling ? featuresWidth - buffer : featuresWidth
     })
-    .attr("y", height - 6)
+    .attr("y", featuresHeight - 6)
     .attr("fill", "#767676")
     .attr("text-anchor", "end")
     .text(xAxisLabel)
@@ -428,7 +432,7 @@ export default class Linechart {
     d3.select("#annotations").text("")
     if (periods.length > 0) {
 
-      addPeriods(periods, features, x, height, xFormat, isMobile)
+      addPeriods(periods, features, x, featuresHeight, xFormat, isMobile)
 
     }
 
@@ -456,7 +460,7 @@ export default class Linechart {
      
       console.log("annotations", labels)
       labels.forEach((config) => {
-        addLabel(svg, config, width + marginleft + marginright - buffer, height + margintop + marginbottom, {"left":marginleft, "right":marginright, "top":margintop, "bottom":marginbottom}, clickLoggingOn)
+        addLabel(svg, config, svgWidth - buffer, svgHeight, {"left":marginleft, "right":marginright, "top":margintop, "bottom":marginbottom}, clickLoggingOn)
       })
 
     }
@@ -475,7 +479,7 @@ export default class Linechart {
 
     if (this.settings.tooltip != "") {
 
-      this.tooltip.drawHoverFeature(features, height, width, xColumn, marginleft, chartKeyData, x, datum, keyCopy)
+      this.tooltip.drawHoverFeature(features, featuresHeight, featuresWidth, xColumn, marginleft, chartKeyData, x, datum, keyCopy)
  
     }
 
