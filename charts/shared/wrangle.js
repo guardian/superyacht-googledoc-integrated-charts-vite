@@ -115,7 +115,7 @@ export function wrangle(data, chart) {
 
     }
 
-    if (contains(['xMin','xMax','yMin','yMax', 'zMin', 'zMax'], setting)) {
+    if (contains(['xMin','xMax','yMin','yMax', 'zMin', 'zMax', 'defaultRadius'], setting)) {
 
       if (settings[setting] != "") {
 
@@ -289,22 +289,22 @@ export function wrangle(data, chart) {
   / Set xAxisDateFormat
   */
 
-  if (settings["xAxisDateFormat"]) {
+  if (settings["xAxisDateFormat"]) {  
 
     if (settings["xAxisDateFormat"] != "") {
 
       settings["xAxisDateFormat"] = d3.timeFormat(settings["xAxisDateFormat"])
 
-    } else {
+    } 
 
-      if (settings["dateParse"]) {
+  }
 
-        settings["xAxisDateFormat"] = d3.timeFormat("%d %b '%y")
+  else if ("xAxisDateFormat" in settings) {
+    if (settings["dateFormat"]) {
 
-      }
+      settings["xAxisDateFormat"] = d3.timeFormat("%d %b '%y")
 
     }
-
   }
 
   // console.log(Object.keys(settings))

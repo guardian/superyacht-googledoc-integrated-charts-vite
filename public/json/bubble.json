@@ -41,7 +41,7 @@
             "opacity" : "80",
             "parseTime" : "",
             "dateFormat": "",
-            "defaultRadius" : 5,
+            "defaultRadius" : "5",
             "beeswarm" : "FALSE"
         }],
         "labels": [],

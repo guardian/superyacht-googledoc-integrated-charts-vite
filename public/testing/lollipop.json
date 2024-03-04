@@ -50,14 +50,7 @@
             "Country": "US"
         }],
         "labels": [],
-        "userkey": [{
-            "key": "2005",
-            "colour": "red"
-        },
-        {
-            "key": "2023",
-            "colour": "purple"
-        }],
+        "userkey": [],
         "lines": [],
         "periods": [],
         "chartId": [

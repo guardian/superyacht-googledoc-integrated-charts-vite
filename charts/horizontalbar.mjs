@@ -274,10 +274,10 @@ export default class Horizontalbar {
     .call(d3.axisLeft(y)) 
 
     features
-    .append("g")
-    .attr("class", "x")
-    .attr("transform", "translate(0," + svgHeight + ")")
-    .call(xAxis)
+      .append("g")
+      .attr("class", "x")
+      .attr("transform", "translate(0," + svgHeight + ")")
+      .call(xAxis)
 
     var layers = d3.stack()
     .offset(d3.stackOffsetDiverging)

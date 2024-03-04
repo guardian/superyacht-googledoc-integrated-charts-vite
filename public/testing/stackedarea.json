@@ -477,7 +477,7 @@
                 "coordType": "pct",
                 "sweepFlag": 1,
                 "radius": 200,
-                "arrow": "true",
+                "arrow": "false",
                 "align": "end"
             }
         ],
@@ -491,7 +491,7 @@
         ],
         "options": [
             {
-                "colorScheme": "schemeTableau10"
+                "colorScheme": "guardian"
             }
         ],
         "dropdown": []

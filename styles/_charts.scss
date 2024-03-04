@@ -27,8 +27,22 @@
     shape-rendering: crispEdges;
   }
 
+  .axis text {
+    fill:#767676;
+  }
+
   .dashed.y line {
     stroke: #dcdcdc;
+  }
+
+
+  .dashed line, line.dashed {
+    fill: none;
+    stroke: #dcdcdc;
+    stroke-width: 1px;
+    shape-rendering: crispEdges;
+    stroke-dasharray: 2 2;
+    // z-index: 1;
   }
 
   .chartTitle {
@@ -97,9 +111,10 @@
     z-index:89;
   }
 
-  .chartSans {
+  .chartSans text {
     font-size: 12px;
     color: #767676;
+    // fill: #767676;
     font-family: "Guardian Text Sans Web", "Agate Sans", sans-serif;
   }
 

@@ -72,8 +72,6 @@ function newLabel(svg, data, containerWidth, containerHeight, margin) {
 
 	labelWrapper.append('path')
 	    .attr('class', 'labelPath mobHide')
-	    .attr('fill', 'none')
-	    .attr('stroke', 'black')
 	    .attr('stroke-width', 2)
 	    .attr('data-id', data.id)
 	    .attr('d', generatePath(

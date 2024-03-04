@@ -10,7 +10,9 @@ export default {
     "#ff9da7",
     "#9c755f",
     "#bab0ab",
-    "#000000"
+    "#13F4EF",
+    "#9d02d7",
+    "#0000ff"
   ],
   guardian2: [
     "rgb(204, 10, 17)",

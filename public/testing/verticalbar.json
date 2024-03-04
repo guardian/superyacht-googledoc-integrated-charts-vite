@@ -433,12 +433,7 @@
         ],
         "labels": [],
         "trendline": [],
-        "userkey": [
-            {
-                "key": "Deaths",
-                "colour": "#cfa1d4"
-            }
-        ],
+        "userkey": [],
         "periods": [],
         "chartId": [
             {

@@ -16,7 +16,7 @@
         "data": [
             {
                 "Description": "Less than 8L",
-                "New rate": 51.63,
+                "New rate": 0,
                 "Alcohol": "3% or less"
             },
             {
@@ -96,7 +96,7 @@
                 "yAxisLabel": "",
                 "xAxisLabel": "Container size",
                 "yMin": "",
-                "xMin": "",
+                "xMin": "0",
                 "xMax": "",
                 "yMax": "",
                 "hideKey": "FALSE",
@@ -110,7 +110,6 @@
                 "opacity": "80",
                 "parseTime": "",
                 "dateFormat": "",
-                "defaultRadius": 10,
                 "beeswarm": "FALSE",
                 "xColumn": "New rate",
                 "yColumn": "Description",
