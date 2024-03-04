@@ -7,7 +7,6 @@ import Dropdown from "./shared/dropdown";
 import { addDrops } from "./shared/drops"
 import Tooltip from "./shared/tooltip"
 import { addPeriods } from "./shared/periods"
-import { addLabels } from "./shared/labels"
 
 export default class Stackedarea {
 
@@ -65,7 +64,11 @@ export default class Stackedarea {
 
     let { modules, 
           height, 
-          width, 
+          width,
+          svgWidth,
+          svgHeight,
+          featuresWidth,
+          featuresHeight, 
           isMobile, 
           colors, 
           datum, 
@@ -101,7 +104,7 @@ export default class Stackedarea {
           stackedbars } = this.settings
 
     d3.select("#graphicContainer svg").remove()
-
+    console.log("xAxisDateFormat", xAxisDateFormat)
     const chartKey = d3.select("#chartKey")
 
     chartKey.html("")
@@ -112,11 +115,11 @@ export default class Stackedarea {
     
     isMobile = mobileCheck()
     
-    width = document
-    .querySelector("#graphicContainer")
-    .getBoundingClientRect().width
+    svgWidth = document
+      .querySelector("#graphicContainer")
+      .getBoundingClientRect().width
 
-    height = width * 0.5
+    svgHeight = svgWidth * 0.6
 
     const keyColor = dataTools.getKeysColors({ keys: stackedbars, userKey: userkey, option: { colorScheme : colorScheme }})
 
@@ -175,15 +178,15 @@ export default class Stackedarea {
       })
     })
 
-    width = width - marginleft - marginright
+    featuresWidth = svgWidth - marginleft - marginright
     
-    height = height - margintop - marginbottom
+    featuresHeight = svgHeight - margintop - marginbottom
 
     const svg = d3
     .select("#graphicContainer")
     .append("svg")
-    .attr("width", width + marginleft + marginright)
-    .attr("height", height + margintop + marginbottom)
+    .attr("width", svgWidth)
+    .attr("height", svgHeight)
     .attr("id", "svg")
     .attr("overflow", "hidden")
 
@@ -192,12 +195,12 @@ export default class Stackedarea {
     .attr("transform", "translate(" + marginleft + "," + margintop + ")")
   
     const x = d3.scaleTime()
-    .range([0, width])
+    .range([0, featuresWidth])
 
     x.domain(d3.extent(datum, d => d[xColumn]))
   
     const y = d3.scaleLinear()
-    .range([height, 0])
+      .range([featuresHeight, 0])
 
     y.domain([d3.min(layers, stackMin), d3.max(layers, stackMax)])  
 
@@ -231,15 +234,7 @@ export default class Stackedarea {
 
     }
 
-    features.append("g").attr("class", "y").call(yAxis)
-
-    d3.selectAll(".y .tick line")
-    .style("stroke", "#dcdcdc")
-    .style("stroke-dasharray", "2 2")  
-    .attr("x2", width)
-    
-    d3.selectAll(".y path")
-    .style("stroke-width", "0") 
+  
     
     const layer = features
     .selectAll("layer")
@@ -253,18 +248,28 @@ export default class Stackedarea {
     .attr("class", "area")
     .attr("d", area);
 
+    features.append("g").attr("class", "y").call(yAxis)
+
+    d3.selectAll(".y .tick line")
+    .style("stroke", "#dcdcdc")
+    .style("stroke-dasharray", "2 2")  
+    .attr("x2", featuresWidth)
+    
+    d3.selectAll(".y path")
+    .style("stroke-width", "0") 
+
     features
     .append("g")
     .attr("class", "x")
-    .attr("transform", "translate(0," + height + ")")
+    .attr("transform", "translate(0," + featuresHeight + ")")
     .call(xAxis)
 
     if (xAxisLabel) {
 
       features
       .append("text")
-      .attr("x", width)
-      .attr("y", height + (marginbottom / 2))
+      .attr("x", featuresWidth)
+      .attr("y", featuresHeight + (marginbottom / 2))
       .attr("fill", "#767676")
       .attr("text-anchor", "end")
       .text(xAxisLabel)  
@@ -284,7 +289,7 @@ export default class Stackedarea {
     }
 
     labels.forEach((config) => {
-      addLabel(svg, config, width + marginleft + marginright, height + margintop + marginbottom,{ top: margintop,right: marginright, bottom: marginbottom, left: marginleft }, false)
+      addLabel(svg, config, svgWidth, svgHeight,{ top: margintop,right: marginright, bottom: marginbottom, left: marginleft }, false)
     })
   }
 }
