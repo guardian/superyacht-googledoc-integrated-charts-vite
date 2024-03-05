@@ -46,7 +46,7 @@ export default class Table {
           source, 
           data, 
           keys, 
-          labels, 
+          cols, 
           userkey, 
           type, 
           enableSearch, 

@@ -68,17 +68,11 @@
         "userkey": [
             {
                 "key": "Fair Australia",
-                "values": "0,40",
-                "colours": "#f1eef6,#0570b0",
-                "scale": "linear",
-                "format": "shading"
+                "format": "$"
             },
             {
                 "key": "Not Enough",
-                "values": "0,40",
-                "colours": "#f1eef6,#0570b0",
-                "scale": "linear",
-                "format": "shading"
+                "format": "numberFormat"
             },
             {
                 "key": "Referendum News",
@@ -90,15 +84,12 @@
             {
                 "key": "Senator Price",
                 "values": "0,20",
-                "colours": "red",
+                "colours": "#f1eef6,#0570b0",
                 "scale": "linear",
                 "format": "bar"
             },
             {
                 "key": "Ranking",
-                "values": "0,40",
-                "colours": "#f1eef6,#0570b0",
-                "scale": "linear",
                 "format": "rating"
             }
 
