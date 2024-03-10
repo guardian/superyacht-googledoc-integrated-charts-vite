@@ -237,10 +237,10 @@ function swatches(data, userKey) {
         			name.colours != "" ? [ name.colours ] : ['red'];
 
         swatch.profile = new ColorScale({
-								type: name.scale,
-								domain: domain,
-								colors: (colours.length>0) ? colours : ['grey']
-							})
+			type: name.scale,
+			domain: domain,
+			colors: (colours.length>0) ? colours : ['grey']
+		})
 
         return swatch
 
