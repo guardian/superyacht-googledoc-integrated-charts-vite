@@ -6,7 +6,7 @@ var lastSorted = null
 var reversed = null
 
 export function propComparator(prop) {
-	console.log(prop)
+	//console.log(prop)
 	var c, d;
 	currentSort = (currentSort !== prop) ? prop : null;
 	return function Comparator(a, b) {
@@ -111,6 +111,13 @@ export async function colourize(headings, userKey, data) {
         
     })
 
+    const outta = userKey.map(item => { 
+
+        return (item.outta) ? item.outta : undefined ;
+        
+    })
+
+
 	const colourizer = (value, index) => (!contains(headings[index], highlighted)) ? false : pantone.find(item => item.name === headings[index]).profile.get(value) ;
 
 	const values = data.map((row) => Object.values(row))
@@ -127,8 +134,14 @@ export async function colourize(headings, userKey, data) {
         return (highlighted.indexOf(headings[index]) > -1) ? graphics[highlighted.indexOf(headings[index])] : null
     }
 
+    const getOutta = (index) => {
+        return (highlighted.indexOf(headings[index]) > -1) ? outta[highlighted.indexOf(headings[index])] : null
+    }
+
+
 	return await values.map((row, i) => {
-		return row.map((value, index) => { return { value : value, sort : checkDate(value, index), format: getFormat(index), color : colourizer(value, index), contrast : setContrast(colourizer(value, index)), graphics: getGraphics(index) }})
+		//console.log(row)
+		return row.map((value, index) => { return { value : value, sort : checkDate(value, index), format: getFormat(index), color : colourizer(value, index), contrast : setContrast(colourizer(value, index)), graphics: getGraphics(index), outta : getOutta(index) }})
 	})
 }
 
@@ -375,7 +388,9 @@ export function formatedNumber() {
 
 		if (contains(arr,'rating')) {
 
-			value = `<span style="font-weight:bold;">${value}</span>/10`
+			let outOf = (this.outta) ? this.outta : 10
+
+			value = `<span style="font-weight:bold;">${value}</span>/${outOf}`
 
 		}
 
