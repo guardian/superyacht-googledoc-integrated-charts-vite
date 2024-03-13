@@ -2,160 +2,144 @@
     "sheets": {
         "data": [
             {
-                "Year": "2020",
+                "Country": "China",
                 "Day_of_week": "Monday",
-                "Years": 100.0
+                "Years": "100"
             },
             {
-                "Year": "2020",
+                "Country": "China",
                 "Day_of_week": "Tuesday",
-                "Years": 100.0
+                "Years": "100"
             },
             {
-                "Year": "2020",
+                "Country": "China",
                 "Day_of_week": "Wednesday",
-                "Years": 100.0
+                "Years": "100"
             },
             {
-                "Year": "2020",
+                "Country": "China",
                 "Day_of_week": "Thursday",
-                "Years": 100.0
+                "Years": "100"
             },
             {
-                "Year": "2020",
+                "Country": "China",
                 "Day_of_week": "Friday",
-                "Years": 100.0
+                "Years": "100"
             },
             {
-                "Year": "2020",
+                "Country": "China",
                 "Day_of_week": "Saturday",
-                "Years": 100.0
+                "Years": "100"
             },
             {
-                "Year": "2020",
+                "Country": "China",
                 "Day_of_week": "Sunday",
-                "Years": 100.0
+                "Years": "100"
             },
             {
-                "Year": "2021",
+                "Country": "France",
                 "Day_of_week": "Monday",
-                "Years": 57.41
+                "Years": "57.41"
             },
             {
-                "Year": "2021",
+                "Country": "France",
                 "Day_of_week": "Tuesday",
-                "Years": 54.95
+                "Years": "54.95"
             },
             {
-                "Year": "2021",
+                "Country": "France",
                 "Day_of_week": "Wednesday",
-                "Years": 51.61
+                "Years": "51.61"
             },
             {
-                "Year": "2021",
+                "Country": "France",
                 "Day_of_week": "Thursday",
-                "Years": 52.31
+                "Years": "52.31"
             },
             {
-                "Year": "2021",
+                "Country": "France",
                 "Day_of_week": "Friday",
-                "Years": 55.19
+                "Years": "55.19"
             },
             {
-                "Year": "2021",
+                "Country": "France",
                 "Day_of_week": "Saturday",
-                "Years": 71.31
+                "Years": "71.31"
             },
             {
-                "Year": "2021",
+                "Country": "France",
                 "Day_of_week": "Sunday",
-                "Years": 74.52
+                "Years": "74.52"
             },
             {
-                "Year": "2022",
+                "Country": "UK",
                 "Day_of_week": "Monday",
-                "Years": 46.47
+                "Years": "46.47"
             },
             {
-                "Year": "2022",
+                "Country": "UK",
                 "Day_of_week": "Tuesday",
-                "Years": 37.69
+                "Years": "37.69"
             },
             {
-                "Year": "2022",
+                "Country": "UK",
                 "Day_of_week": "Wednesday",
-                "Years": 39.73
+                "Years": "39.73"
             },
             {
-                "Year": "2022",
+                "Country": "UK",
                 "Day_of_week": "Thursday",
-                "Years": 39.24
+                "Years": "39.24"
             },
             {
-                "Year": "2022",
+                "Country": "UK",
                 "Day_of_week": "Friday",
-                "Years": 41.99
+                "Years": "41.99"
             },
             {
-                "Year": "2022",
+                "Country": "UK",
                 "Day_of_week": "Saturday",
-                "Years": 64.84
+                "Years": "64.84"
             },
             {
-                "Year": "2022",
+                "Country": "UK",
                 "Day_of_week": "Sunday",
-                "Years": 61.55
+                "Years": "61.55"
             },
             {
-                "Year": "2023",
+                "Country": "Spain",
                 "Day_of_week": "Monday",
-                "Years": 56.73
+                "Years": "56.73"
             },
             {
-                "Year": "2023",
+                "Country": "Spain",
                 "Day_of_week": "Tuesday",
-                "Years": 63.28
+                "Years": "63.28"
             },
             {
-                "Year": "2023",
+                "Country": "Spain",
                 "Day_of_week": "Wednesday",
-                "Years": 50.83
+                "Years": "50.83"
             },
             {
-                "Year": "2023",
+                "Country": "Spain",
                 "Day_of_week": "Thursday",
-                "Years": 56.67
+                "Years": "56.67"
             },
             {
-                "Year": "2023",
+                "Country": "Spain",
                 "Day_of_week": "Friday",
-                "Years": 55.47
+                "Years": "55.47"
             },
             {
-                "Year": "2023",
+                "Country": "Spain",
                 "Day_of_week": "Saturday",
-                "Years": 85.15
+                "Years": "85.15"
             },
             {
-                "Year": "2023",
+                "Country": "Spain",
                 "Day_of_week": "Sunday",
-                "Years": 83.38
-            }
-        ],
-        "template": [
-            {
-                "title": "Advertising spending on different vehicle types",
-                "subtitle": "",
-                "footnote": "",
-                "source": ""
-            }
-        ],
-        "key": [],
-        "options": [
-            {
-                "scaleBy": "group",
-                "chartType": "bar",
-                "xScale": "scaleBand"
+                "Years": "83.38"
             }
         ],
         "chartId": [
@@ -163,7 +147,44 @@
                 "type": "smallmultiples"
             }
         ],
-        "periods": [],
+        "template": [
+            {
+                "title": "My first small multiples bar",
+                "subtitle": "",
+                "footnote": "",
+                "source": "",
+                "tooltip": ""
+            }
+        ],
+        "options": [
+            {
+                "numCols": 4,
+                "breaks": "",
+                "chartType": "bar",
+                "height": 150,
+                "scaleBy": "group",
+                "enableShowMore": "FALSE",
+                "aria": "FALSE",
+                "colorScheme": "guardian",
+                "smallmultiples": "",
+                "parseTime": "",
+                "dateFormat": "",
+                "xAxisLabel": "",
+                "yAxisLabel": "",
+                "timeInterval": "",
+                "periodDateFormat": "",
+                "margin-left": 38,
+                "margin-top": 25,
+                "margin-bottom": 22,
+                "margin-right": 22,
+                "xAxisDateFormat": "",
+                "groupBy": "Day_of_week",
+                "xColumn": "Country",
+                "xFormat": "",
+                "xScale": "scaleBand",
+                "yScale": "scaleLinear"
+            }
+        ],
         "labels": []
     }
 }

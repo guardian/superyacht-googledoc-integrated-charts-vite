@@ -810,3 +810,12 @@ export function getDateTextFormat(domain) {
   default: console.error("a new time format is required!");
   }
 }
+
+
+export function capitalizeFirstLetter(word) {
+  if (typeof word === 'string' && word.length > 0) {
+    return word.charAt(0).toUpperCase() + word.slice(1);
+  }
+  return word; // Return the original input if it's not a non-empty string
+}
+

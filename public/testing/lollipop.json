@@ -1,83 +1,136 @@
 {
     "sheets": {
-        "template": [
+        "data": [
             {
-                "title": "More women are in the workforce",
-                "subtitle": "Showing the female labor force participation rate for ages 15-64 (percentage points)",
-                "source": "Source: Sources: Moody's and the OECD",
-                "tooltip" : ""
+                "Industry": "Construction",
+                "Median base salary women": "72727",
+                "Median base salary men": "97236"
+            },
+            {
+                "Industry": "Financial and Insurance Services",
+                "Median base salary women": "87550",
+                "Median base salary men": "114660"
+            },
+            {
+                "Industry": "Professional, Scientific and Technical Services",
+                "Median base salary women": "85973",
+                "Median base salary men": "114359"
+            },
+            {
+                "Industry": "Information Media and Telecommunications",
+                "Median base salary women": "82812",
+                "Median base salary men": "106836"
+            },
+            {
+                "Industry": "Transport, Postal and Warehousing",
+                "Median base salary women": "67553",
+                "Median base salary men": "75000"
+            },
+            {
+                "Industry": "Electricity, Gas, Water and Waste Services",
+                "Median base salary women": "92447",
+                "Median base salary men": "102105"
+            },
+            {
+                "Industry": "Manufacturing",
+                "Median base salary women": "69619",
+                "Median base salary men": "79868"
+            },
+            {
+                "Industry": "Rental, Hiring and Real Estate Services",
+                "Median base salary women": "73222",
+                "Median base salary men": "81016"
+            },
+            {
+                "Industry": "Mining",
+                "Median base salary women": "113807",
+                "Median base salary men": "129768"
+            },
+            {
+                "Industry": "Other Services",
+                "Median base salary women": "66793",
+                "Median base salary men": "74999"
+            },
+            {
+                "Industry": "Wholesale Trade",
+                "Median base salary women": "69384",
+                "Median base salary men": "77100"
+            },
+            {
+                "Industry": "Agriculture, Forestry and Fishing",
+                "Median base salary women": "58020",
+                "Median base salary men": "62500"
+            },
+            {
+                "Industry": "Retail Trade",
+                "Median base salary women": "55328",
+                "Median base salary men": "58910"
+            },
+            {
+                "Industry": "Health Care and Social Assistance",
+                "Median base salary women": "67727",
+                "Median base salary men": "70879"
+            },
+            {
+                "Industry": "Administrative and Support Services",
+                "Median base salary women": "64398",
+                "Median base salary men": "67998"
+            },
+            {
+                "Industry": "Education and Training",
+                "Median base salary women": "95310",
+                "Median base salary men": "99905"
+            },
+            {
+                "Industry": "Arts and Recreation Services",
+                "Median base salary women": "63702",
+                "Median base salary men": "66905"
+            },
+            {
+                "Industry": "Public Administration and Safety",
+                "Median base salary women": "60762",
+                "Median base salary men": "62106"
+            },
+            {
+                "Industry": "Accommodation and Food Services",
+                "Median base salary women": "52244",
+                "Median base salary men": "52852"
             }
         ],
-        "data": [{
-            "2005": "68.1",
-            "2023": "76.6",
-            "Country": "Australia"
-        }, {
-            "2005": "73",
-            "2023": "77.4",
-            "Country": "Canada"
-        }, {
-            "2005": "61.7",
-            "2023": "69.9",
-            "Country": "Euro area"
-        }, {
-            "2005": "67.4",
-            "2023": "70.6",
-            "Country": "France"
-        }, {
-            "2005": "66.9",
-            "2023": "75.7",
-            "Country": "Germany"
-        }, {
-            "2005": "50.4",
-            "2023": "56.9",
-            "Country": "Italy"
-        }, {
-            "2005": "60.9",
-            "2023": "54.8",
-            "Country": "Japan"
-        }, {
-            "2005": "54.6",
-            "2023": "62.6",
-            "Country": "Korea"
-        }, {
-            "2005": "69.9",
-            "2023": "80.1",
-            "Country": "UK"
-        }, {
-            "2005": "69.1",
-            "2023": "69.5",
-            "Country": "US"
-        }],
-        "labels": [],
-        "userkey": [{
-            "key": "2005",
-            "colour": "red"
-        },
-        {
-            "key": "2023",
-            "colour": "purple"
-        }],
-        "lines": [],
-        "periods": [],
         "chartId": [
             {
                 "type": "lollipop"
+            }
+        ],
+        "template": [
+            {
+                "title": "",
+                "subtitle": "",
+                "footnote": "",
+                "source": "",
+                "tooltip": ""
             }
         ],
         "options": [
             {
                 "enableShowMore": "FALSE",
                 "autoSort": "FALSE",
-                "aria":"FALSE",
-                "margin-left": "70",
-                "margin-top": "30",
-                "margin-bottom": "20",
-                "margin-right": "10",
-                "groupBy" : "Country",
-                "xColumn" : ""
+                "aria": "FALSE",
+                "margin-left": 77,
+                "margin-top": 30,
+                "margin-bottom": 20,
+                "margin-right": 10,
+                "xAxisDateFormat": "",
+                "groupBy": "Industry",
+                "minX": "",
+                "maxX": "",
+                "xFormat": "",
+                "xScale": "scaleLinear",
+                "yScale": "scaleBand",
+                "parseTime": "",
+                "colorScheme": "guardian"
             }
         ],
-        "dropdown": []
+        "labels": []
     }
 }

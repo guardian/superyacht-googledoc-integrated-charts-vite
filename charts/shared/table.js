@@ -6,6 +6,7 @@ var lastSorted = null
 var reversed = null
 
 export function propComparator(prop) {
+	//console.log(prop)
 	var c, d;
 	currentSort = (currentSort !== prop) ? prop : null;
 	return function Comparator(a, b) {
@@ -110,6 +111,13 @@ export async function colourize(headings, userKey, data) {
         
     })
 
+    const outta = userKey.map(item => { 
+
+        return (item.outta) ? item.outta : undefined ;
+        
+    })
+
+
 	const colourizer = (value, index) => (!contains(headings[index], highlighted)) ? false : pantone.find(item => item.name === headings[index]).profile.get(value) ;
 
 	const values = data.map((row) => Object.values(row))
@@ -126,8 +134,14 @@ export async function colourize(headings, userKey, data) {
         return (highlighted.indexOf(headings[index]) > -1) ? graphics[highlighted.indexOf(headings[index])] : null
     }
 
+    const getOutta = (index) => {
+        return (highlighted.indexOf(headings[index]) > -1) ? outta[highlighted.indexOf(headings[index])] : null
+    }
+
+
 	return await values.map((row, i) => {
-		return row.map((value, index) => { return { value : value, sort : checkDate(value, index), format: getFormat(index), color : colourizer(value, index), contrast : setContrast(colourizer(value, index)), graphics: getGraphics(index) }})
+		//console.log(row)
+		return row.map((value, index) => { return { value : value, sort : checkDate(value, index), format: getFormat(index), color : colourizer(value, index), contrast : setContrast(colourizer(value, index)), graphics: getGraphics(index), outta : getOutta(index) }})
 	})
 }
 
@@ -227,17 +241,19 @@ function swatches(data, userKey) {
 
         swatch.name = name.key
 
-        let domain = name.values.split(',')
+        let domain = (name.values && name.values.includes(",")) ? name.values.split(',') :
+        name.values != "" ? [ name.values ] : [];
 
         domain = (domain[0]=="") ? extent : domain
 
-        let colours = name.colours.split(',')
+        let colours = (name.colours && name.colours.includes(",")) ? name.colours.split(',') : ['red'];
+        			name.colours != "" ? [ name.colours ] : ['red'];
 
         swatch.profile = new ColorScale({
-								type: name.scale,
-								domain: domain,
-								colors: (colours.length>0) ? colours : ['grey']
-							})
+			type: name.scale,
+			domain: domain,
+			colors: (colours.length>0) ? colours : ['grey']
+		})
 
         return swatch
 
@@ -316,7 +332,6 @@ export function styleCheck() {
 }
 
 function removeZero(value) {
-	console.log(value==0)
 	return (value==0) ? '' : value
 }
 
@@ -330,7 +345,7 @@ export function formatedNumber() {
 
 		/*
 		Formatting options are
-		$, nozero, numberFormat, commas, bar, date, textColor, shading
+		$, nozero, numberFormat, commas, bar, date, textColor, shading, rating
 		*/
 
 		let val = this.value
@@ -347,11 +362,11 @@ export function formatedNumber() {
 
 			let position = (percentage < 30) ? percentage + 5 : 5 ;
 
-			let background = (this.color) ? this.color : 'grey' //this.graphics.colour.get(value) 
+			let background = (this.color) ? this.color : this.graphics.colour.get(value) 
 
 			let contrast = (percentage < 20) ? 'black' : 'white'
 
-			value = `<div class="table-bar-chart"><div class="table-bar" style="background: ${background}; margin-left: 0%; width: ${percentage}%;"></div><div class="table-bar-label" style="left:${position}%;color:${contrast}">${value}</div></div>`
+			value = `<div class="table-bar-chart"><div class="table-bar" style="background-color: ${background}; margin-left: 0%; width: ${percentage}%;"></div><div class="table-bar-label" style="left:${position}%;color:${contrast}">${value}</div></div>`
 
 	  	}
 
@@ -370,6 +385,15 @@ export function formatedNumber() {
 			value = date.toLocaleDateString("en-AU", options)   
 
 		}
+
+		if (contains(arr,'rating')) {
+
+			let outOf = (this.outta) ? this.outta : 10
+
+			value = `<span style="font-weight:bold;">${value}</span>/${outOf}`
+
+		}
+
 
 	} else {
 

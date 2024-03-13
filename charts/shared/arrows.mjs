@@ -6,11 +6,15 @@ function addLabel(el, config, width, height, margin, clickLoggingOn = false) {
 
 	el.select(`#${config.id}`).remove()
 
-	if (config.path) {
+	if (config.path || config.path == "true") {
 
 		newLabel(el, config, width, height, margin)
 
-	} else {
+	} 
+	
+	// Otherwise use the legacy labeller
+
+	else {
 
 		var labelWrapper = el.append("g").attr("id", config.id).attr("class", "labelWrapper").attr("data-config", JSON.stringify(config)).style("opacity", 0)
 		var newStuff = generateArc(el, config, margin, width, height)
@@ -51,6 +55,8 @@ function addLabel(el, config, width, height, margin, clickLoggingOn = false) {
 
 }
 
+// Function used by new labels in YC admin
+
 function newLabel(svg, data, containerWidth, containerHeight, margin) {
 
 	const width = containerWidth - margin.left - margin.right
@@ -78,8 +84,9 @@ function newLabel(svg, data, containerWidth, containerHeight, margin) {
 
 	const text = labelWrapper.append('text')
 	    .attr('class', 'labelText mobHide')
-	    .attr('x', width * data.coords.sourceX + 5)
-	    .attr('y', height * data.coords.sourceY + 5)
+	    .attr('x', width * data.coords.textX)
+	    .attr('y', height * data.coords.textY)
+	    .attr('text-anchor', data.align) // Align text to the end
 	    .attr('data-id', data.id)
 	    .text(data.text)
 
@@ -88,6 +95,8 @@ function newLabel(svg, data, containerWidth, containerHeight, margin) {
 	labelWrapper.transition().style("opacity", 1)
 
 }
+
+
 
 const generatePath = (x1, y1, c1, c2, x2, y2) => {
 

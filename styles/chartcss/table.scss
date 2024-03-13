@@ -134,6 +134,21 @@ tr td {
   border-bottom: 1px dotted lightgrey;
 }
 
+.table-bar-chart {
+  position:relative
+}
+
+.table-bar {
+  float:left;
+  height: 20px;
+}
+
+.table-bar-label {
+  position:absolute;
+  text-align:center;
+  line-height: 20px;
+}
+
 /*----- App fixes -----*/
 .ios,
 .android {
