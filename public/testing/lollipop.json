@@ -128,7 +128,8 @@
                 "xScale": "scaleLinear",
                 "yScale": "scaleBand",
                 "parseTime": "",
-                "colorScheme": "guardian"
+                "colorScheme": "guardian",
+                "xAxisLabel": "Median base salary"
             }
         ],
         "labels": []

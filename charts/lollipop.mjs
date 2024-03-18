@@ -2,7 +2,7 @@
 import dataTools from "./shared/dataTools"
 import ColorScale from "./shared/colorscale"
 import colorPresets from "./constants/colors"
-import { getURLParams, numberFormat, mustache, mobileCheck, getMinMax, textPadding, textPaddingMobile, bufferize, tickTok, contains } from './shared/toolbelt';
+import { getURLParams, numberFormat, mustache, mobileCheck, getMinMax, textPadding, textPaddingMobile, bufferize, tickTok, contains, wrap } from './shared/toolbelt';
 import  { addLabel, clickLogging } from './shared/arrows'
 import { drawShowMore } from "./shared/showmore"
 
@@ -59,6 +59,7 @@ export default class Lollipop {
           xScale,
           yScale,
           parseTime,
+          xAxisLabel,
           xColumn } = this.settings
 
           
@@ -274,6 +275,7 @@ export default class Lollipop {
       })
       .attr("y", function(d) { return y(d[groupBy]) + 3; })
       .text((d) => d[groupBy])
+      //.call(wrap, 180);
 
     }
 
@@ -298,7 +300,7 @@ export default class Lollipop {
     const xTicks = tickTok(isMobile, x.domain(), featuresWidth) // Set the number of ticks
 
     const xAxis = g => g
-    .attr("transform", `translate(0,${0})`)
+    .attr("transform", `translate(0,${margintop})`)
     .attr("class", "axisgroup") 
     .call(d3.axisTop(x).tickSizeOuter(0))
     .call(d3.axisTop(x)
@@ -346,6 +348,20 @@ export default class Lollipop {
       })
 
     }
+
+    if (xAxisLabel) {
+
+      svg
+      .append("text")
+      .attr("x", marginleft)
+      .attr("y", margintop)
+      .attr("fill", "#767676")
+      .attr("text-anchor", "end")
+      .text(xAxisLabel)
+      .call(wrap, marginleft); // Assuming `maxWidth` is defined
+
+    }
+
 
     if (minMax.status || x(0) > marginleft) {
 
