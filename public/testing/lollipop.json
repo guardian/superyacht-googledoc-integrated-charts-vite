@@ -1,137 +1,228 @@
 {
     "sheets": {
-        "data": [
+        "template": [
             {
-                "Industry": "Construction",
-                "Median base salary women": "72727",
-                "Median base salary men": "97236"
-            },
-            {
-                "Industry": "Financial and Insurance Services",
-                "Median base salary women": "87550",
-                "Median base salary men": "114660"
-            },
-            {
-                "Industry": "Professional, Scientific and Technical Services",
-                "Median base salary women": "85973",
-                "Median base salary men": "114359"
-            },
-            {
-                "Industry": "Information Media and Telecommunications",
-                "Median base salary women": "82812",
-                "Median base salary men": "106836"
-            },
-            {
-                "Industry": "Transport, Postal and Warehousing",
-                "Median base salary women": "67553",
-                "Median base salary men": "75000"
-            },
-            {
-                "Industry": "Electricity, Gas, Water and Waste Services",
-                "Median base salary women": "92447",
-                "Median base salary men": "102105"
-            },
-            {
-                "Industry": "Manufacturing",
-                "Median base salary women": "69619",
-                "Median base salary men": "79868"
-            },
-            {
-                "Industry": "Rental, Hiring and Real Estate Services",
-                "Median base salary women": "73222",
-                "Median base salary men": "81016"
-            },
-            {
-                "Industry": "Mining",
-                "Median base salary women": "113807",
-                "Median base salary men": "129768"
-            },
-            {
-                "Industry": "Other Services",
-                "Median base salary women": "66793",
-                "Median base salary men": "74999"
-            },
-            {
-                "Industry": "Wholesale Trade",
-                "Median base salary women": "69384",
-                "Median base salary men": "77100"
-            },
-            {
-                "Industry": "Agriculture, Forestry and Fishing",
-                "Median base salary women": "58020",
-                "Median base salary men": "62500"
-            },
-            {
-                "Industry": "Retail Trade",
-                "Median base salary women": "55328",
-                "Median base salary men": "58910"
-            },
-            {
-                "Industry": "Health Care and Social Assistance",
-                "Median base salary women": "67727",
-                "Median base salary men": "70879"
-            },
-            {
-                "Industry": "Administrative and Support Services",
-                "Median base salary women": "64398",
-                "Median base salary men": "67998"
-            },
-            {
-                "Industry": "Education and Training",
-                "Median base salary women": "95310",
-                "Median base salary men": "99905"
-            },
-            {
-                "Industry": "Arts and Recreation Services",
-                "Median base salary women": "63702",
-                "Median base salary men": "66905"
-            },
-            {
-                "Industry": "Public Administration and Safety",
-                "Median base salary women": "60762",
-                "Median base salary men": "62106"
-            },
-            {
-                "Industry": "Accommodation and Food Services",
-                "Median base salary women": "52244",
-                "Median base salary men": "52852"
+                "title": "Beer and spirits taxes in the OECD",
+                "subtitle": "Showing excise on alcohol-content as a percentage of the most common brand of beer (330ml) and spirits (700ml). Excludes countries that don't have national excises on both beer and spirits",
+                "footnote": "",
+                "source": "World Health Organisation",
+                "tooltip": "",
+                "margin-left": "60",
+                "margin-top": "40",
+                "margin-bottom": "20",
+                "margin-right": "40"
             }
         ],
+        "data": [
+            {
+                "Country": "Norway",
+                "Beer": 0.0,
+                "Spirits": 68.51
+            },
+            {
+                "Country": "Finland",
+                "Beer": 28.82,
+                "Spirits": 66.82
+            },
+            {
+                "Country": "Sweden",
+                "Beer": 38.51,
+                "Spirits": 66.8
+            },
+            {
+                "Country": "Iceland",
+                "Beer": 30.91,
+                "Spirits": 66.47
+            },
+            {
+                "Country": "Estonia",
+                "Beer": 18.37,
+                "Spirits": 57.92
+            },
+            {
+                "Country": "T\u00fcrkiye",
+                "Beer": 36.14,
+                "Spirits": 57.81
+            },
+            {
+                "Country": "Australia",
+                "Beer": 17.73,
+                "Spirits": 56.5
+            },
+            {
+                "Country": "Lithuania",
+                "Beer": 16.67,
+                "Spirits": 52.06
+            },
+            {
+                "Country": "Ireland",
+                "Beer": 25.6,
+                "Spirits": 48.59
+            },
+            {
+                "Country": "Poland",
+                "Beer": 17.74,
+                "Spirits": 47.8
+            },
+            {
+                "Country": "United Kingdom",
+                "Beer": 27.45,
+                "Spirits": 47.15
+            },
+            {
+                "Country": "Latvia",
+                "Beer": 23.52,
+                "Spirits": 46.79
+            },
+            {
+                "Country": "Hungary",
+                "Beer": 13.46,
+                "Spirits": 45.02
+            },
+            {
+                "Country": "Germany",
+                "Beer": 5.56,
+                "Spirits": 40.29
+            },
+            {
+                "Country": "Belgium",
+                "Beer": 10.53,
+                "Spirits": 39.78
+            },
+            {
+                "Country": "Czech Republic",
+                "Beer": 11.28,
+                "Spirits": 37.82
+            },
+            {
+                "Country": "Greece",
+                "Beer": 21.05,
+                "Spirits": 36.41
+            },
+            {
+                "Country": "Spain",
+                "Beer": 0.0,
+                "Spirits": 35.96
+            },
+            {
+                "Country": "Slovak Republic",
+                "Beer": 5.07,
+                "Spirits": 30.27
+            },
+            {
+                "Country": "Portugal",
+                "Beer": 0.0,
+                "Spirits": 29.2
+            },
+            {
+                "Country": "Netherlands",
+                "Beer": 0.0,
+                "Spirits": 25.08
+            },
+            {
+                "Country": "Austria",
+                "Beer": 7.73,
+                "Spirits": 19.1
+            },
+            {
+                "Country": "Colombia",
+                "Beer": 0.0,
+                "Spirits": 19.0
+            },
+            {
+                "Country": "Slovenia",
+                "Beer": 19.76,
+                "Spirits": 17.41
+            },
+            {
+                "Country": "Switzerland",
+                "Beer": 0.0,
+                "Spirits": 17.3
+            },
+            {
+                "Country": "Costa Rica",
+                "Beer": 4.48,
+                "Spirits": 16.54
+            },
+            {
+                "Country": "Denmark",
+                "Beer": 11.46,
+                "Spirits": 13.23
+            },
+            {
+                "Country": "Canada",
+                "Beer": 0.0,
+                "Spirits": 11.87
+            },
+            {
+                "Country": "Italy",
+                "Beer": 12.32,
+                "Spirits": 8.87
+            },
+            {
+                "Country": "Japan",
+                "Beer": 0.0,
+                "Spirits": 8.1
+            }
+        ],
+        "labels": [
+            {
+                "id": "label-IGcJRCRB",
+                "coords": {
+                    "targetX": 0.19712793733681466,
+                    "targetY": 0.22393254950495048,
+                    "sourceX": 0.10182767624020889,
+                    "sourceY": 0.287463902640264,
+                    "centreX": 0.09530026109660575,
+                    "centreY": 0.22640779702970296,
+                    "textX": 0.10966057441253264,
+                    "textY": 0.3031404702970297
+                },
+                "text": "17.7% of the cost\n of beer",
+                "coordType": "pct",
+                "sweepFlag": "0",
+                "radius": "0",
+                "arrow": "",
+                "align": "middle",
+                "path": "true"
+            }
+        ],
+        "key": [
+            {
+                "key": "Spirits",
+                "colour": "#005689"
+            },
+            {
+                "key": "Beer",
+                "colour": "#ff9b0b"
+            }
+        ],
+        "lines": [],
+        "periods": [],
         "chartId": [
             {
                 "type": "lollipop"
             }
         ],
-        "template": [
-            {
-                "title": "",
-                "subtitle": "",
-                "footnote": "",
-                "source": "",
-                "tooltip": ""
-            }
-        ],
         "options": [
             {
                 "enableShowMore": "FALSE",
-                "autoSort": "FALSE",
                 "aria": "FALSE",
-                "margin-left": 77,
-                "margin-top": 30,
-                "margin-bottom": 20,
-                "margin-right": 10,
-                "xAxisDateFormat": "",
-                "groupBy": "Industry",
-                "minX": "",
-                "maxX": "",
-                "xFormat": "",
-                "xScale": "scaleLinear",
-                "yScale": "scaleBand",
-                "parseTime": "",
                 "colorScheme": "guardian",
-                "xAxisLabel": "Median base salary"
+                "margin-left": 25,
+                "margin-top": 17,
+                "margin-bottom": 20,
+                "margin-right": 15,
+                "xAxisDateFormat": "",
+                "yAxisLabel": "",
+                "xAxisLabel": "Tax percentage",
+                "hideKey": "FALSE",
+                "opacity": "80",
+                "defaultRadius": 10,
+                "beeswarm": "FALSE",
+                "groupBy": "Country"
             }
         ],
-        "labels": []
+        "dropdown": []
     }
 }

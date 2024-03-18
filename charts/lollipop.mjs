@@ -249,7 +249,7 @@ export default class Lollipop {
         .attr("x1", function(d) { return x(0); })
         .attr("x2", function(d) { return x(0); })
         .attr("y1", function(d) { return 0; })
-        .attr("y2", function(d) { return innerHeigth; })
+        .attr("y2", function(d) { return featuresHeight; })
         .style("stroke", '#767676')
         .style("stroke-width", "1px")
 
@@ -371,7 +371,7 @@ export default class Lollipop {
           .attr("x1", x(0))
           .attr("y1", 0)
           .attr("x2", x(0))
-          .attr("y2", innerHeigth); 
+          .attr("y2", featuresHeight); 
   
     }
 
