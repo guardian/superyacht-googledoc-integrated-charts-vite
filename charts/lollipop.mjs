@@ -62,8 +62,6 @@ export default class Lollipop {
           xAxisLabel,
           xColumn } = this.settings
 
-          
-    // let space = 40
    
     d3.select("#graphicContainer svg").remove()
 
@@ -77,8 +75,10 @@ export default class Lollipop {
 
     isMobile = mobileCheck()
 
+    let lollies = keys.filter(d => d != 'Color' && d != groupBy)
+
     const keyColor = dataTools.getKeysColors({
-      keys: keys,
+      keys: lollies,
       userKey: userkey,
       option: { colorScheme : colorScheme }
     })
@@ -93,8 +93,6 @@ export default class Lollipop {
 
     featuresWidth = svgWidth - marginright - marginleft
     featuresHeight = svgHeight - margintop - marginbottom
-
-    let lollies = keys.filter(d => d != 'Color' && d != groupBy)
 
     let range = []
 

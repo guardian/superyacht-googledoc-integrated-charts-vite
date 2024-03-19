@@ -187,16 +187,7 @@
                 "path": "true"
             }
         ],
-        "key": [
-            {
-                "key": "Spirits",
-                "colour": "#005689"
-            },
-            {
-                "key": "Beer",
-                "colour": "#ff9b0b"
-            }
-        ],
+        "userkey": [],
         "lines": [],
         "periods": [],
         "chartId": [

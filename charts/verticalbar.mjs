@@ -104,6 +104,7 @@ export default class Stackedbar {
           hideKey
           } = this.settings
 
+
     d3.select("#graphicContainer svg").remove()
 
     const chartKey = d3.select("#chartKey")
