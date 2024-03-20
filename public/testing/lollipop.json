@@ -7,10 +7,10 @@
                 "footnote": "",
                 "source": "World Health Organisation",
                 "tooltip": "",
-                "margin-left": "60",
-                "margin-top": "40",
+                "margin-left": "10",
+                "margin-top": "30",
                 "margin-bottom": "20",
-                "margin-right": "40"
+                "margin-right": "0"
             }
         ],
         "data": [

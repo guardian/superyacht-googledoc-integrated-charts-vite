@@ -142,9 +142,9 @@ export default class Lollipop {
     
     x.range([ 0, featuresWidth]);
 
-    features.append("g")
-      .attr("transform", "translate(0," + svgHeight + ")")
-      .call(d3.axisBottom(x))
+    //features.append("g")
+      //.attr("transform", "translate(0," + svgHeight + ")")
+      //.call(d3.axisBottom(x))
 
     var y = d3[yScale]()
     .range([ 0, featuresHeight])
@@ -152,6 +152,109 @@ export default class Lollipop {
     .padding(1);
 
     (xFormat.date) ? x.domain(d3.extent(range)) : x.domain([minX, maxX]); //.nice() // 
+
+    if (minMax.status || x(0) > marginleft) {
+
+      features.append('line')
+          .style("stroke", "#767676")
+          .style("stroke-width", 1)
+          .attr("x1", x(0))
+          .attr("y1", margintop / 2)
+          .attr("x2", x(0))
+          .attr("y2", svgHeight)
+          .attr("opacity", 0.5); 
+  
+    }
+
+    if (lollies.length == 1) {
+
+      if (minX < 0 && maxX > 0) {
+
+        features.append("line")
+        .attr("x1", function(d) { return x(0); })
+        .attr("x2", function(d) { return x(0); })
+        .attr("y1", function(d) { return 0; })
+        .attr("y2", function(d) { return featuresHeight; })
+        .style("stroke", '#767676')
+        .style("stroke-width", "1px")
+
+      }
+
+      features.selectAll("lines")
+      .data(datum)
+      .enter()
+      .append("line")
+      .attr("x1", function(d) { return x(0); })
+      .attr("x2", function(d) { return x(+d[lollies[0]]); })
+      .attr("y1", function(d) { return y(d[groupBy]); })
+      .attr("y2", function(d) { return y(d[groupBy]); })
+      .style("stroke", (d, i) => {
+        return (d.Color) ? d.Color : colors.get(d[lollies[0]])
+      })
+      .style("stroke-width", "4px")
+
+      features
+      .selectAll(".barText")
+      .data(datum)
+      .enter()
+      .append("text")
+      .attr("class", "barText")
+      .attr("x", function(d) {
+        let gap = (d[lollies[0]] < 0 ) ? -6 : 6 ;
+        return x(0) + gap //(d[lollies[0]] > 0) ? x(d[lollies[0]]) + 20 : x(d[lollies[0]]) - 20; 
+      })
+      .attr("text-anchor",function(d) {
+        return (d[lollies[0]] > 0) ? "start" : "end" ; 
+      })
+      .attr("y", function(d) { return y(d[groupBy]) - (rowHeight / 3.5); })
+      .text((d) => d[groupBy])
+
+    } else {
+
+      features
+      .selectAll(".barText")
+      .data(datum)
+      .enter()
+      .append("text")
+      .attr("class", "barText")
+      .attr("x", function(d) {
+        let range = []
+        for (var i = 0; i < lollies.length; i++) {
+          range.push(d[lollies[i]])
+        }
+        return x(d3.min(range)) - 3
+      })
+      .attr("text-anchor",function(d) {
+        return "start" //(minMax.status) ? "start" : "end" ; 
+      })
+      .attr("y", function(d) { return y(d[groupBy]) - (rowHeight / 3); })
+      .text((d) => d[groupBy])
+
+    }
+
+
+    const xTicks = tickTok(isMobile, x.domain(), featuresWidth) // Set the number of ticks
+
+    const xAxis = g => g
+    .attr("transform", `translate(0,${margintop / 2})`)
+    .attr("class", "axisgroup") 
+    .call(d3.axisTop(x).tickSizeOuter(0))
+    .call(d3.axisTop(x)
+    .tickSize(-svgHeight, 0, 0)
+    .ticks(xTicks)
+    .tickFormat((d) => {
+      return xFormat.date ? d3.timeFormat("%b %Y")(d) : numberFormat(d)
+    })
+    .tickPadding(10))
+
+    const yAxis = g => g
+    .call(d3.axisLeft(y)) 
+
+    features
+    .append("g")
+    .attr("class", "x")
+    .attr("transform", "translate(0," + svgHeight + ")")
+    .call(xAxis)
 
     if (lollies.length == 2) {
 
@@ -210,113 +313,7 @@ export default class Lollipop {
 
     }
 
-    if (lollies.length == 1) {
 
-      features.selectAll("lines")
-      .data(datum)
-      .enter()
-      .append("line")
-      .attr("x1", function(d) { return x(0); })
-      .attr("x2", function(d) { return x(+d[lollies[0]]); })
-      .attr("y1", function(d) { return y(d[groupBy]); })
-      .attr("y2", function(d) { return y(d[groupBy]); })
-      .style("stroke", (d, i) => {
-        return (d.Color) ? d.Color : colors.get(d[lollies[0]])
-      })
-      .style("stroke-width", "4px")
-
-      features
-      .selectAll(".barText")
-      .data(datum)
-      .enter()
-      .append("text")
-      .attr("class", "barText")
-      .attr("x", function(d) {
-        let gap = (d[lollies[0]] < 0 ) ? -6 : 6 ;
-        return x(0) + gap //(d[lollies[0]] > 0) ? x(d[lollies[0]]) + 20 : x(d[lollies[0]]) - 20; 
-      })
-      .attr("text-anchor",function(d) {
-        return (d[lollies[0]] > 0) ? "start" : "end" ; 
-      })
-      .attr("y", function(d) { return y(d[groupBy]) - (rowHeight / 3.5); })
-      .text((d) => d[groupBy])
-
-      if (minX < 0 && maxX > 0) {
-
-        features.append("line")
-        .attr("x1", function(d) { return x(0); })
-        .attr("x2", function(d) { return x(0); })
-        .attr("y1", function(d) { return 0; })
-        .attr("y2", function(d) { return featuresHeight; })
-        .style("stroke", '#767676')
-        .style("stroke-width", "1px")
-
-      }
-
-    } else {
-
-      features
-      .selectAll(".barText")
-      .data(datum)
-      .enter()
-      .append("text")
-      .attr("class", "barText")
-      .attr("x", function(d) {
-        let range = []
-        for (var i = 0; i < lollies.length; i++) {
-          range.push(d[lollies[i]])
-        }
-        return x(d3.min(range)) - 20
-      })
-      .attr("text-anchor",function(d) {
-        return (minMax.status) ? "start" : "end" ; 
-      })
-      .attr("y", function(d) { return y(d[groupBy]) + 3; })
-      .text((d) => d[groupBy])
-      //.call(wrap, 180);
-
-    }
-
-    for (const lolly of lollies) {
-
-      features.selectAll(".lolly")
-      .data(datum)
-      .enter()
-      .append("circle")
-      .attr("cx", function(d) { return x(+d[lolly]); })
-      .attr("cy", function(d) { return y(d[groupBy]); })
-      .attr("r", "7")
-      .style("fill", (d, i) => {
-        return (d.Color) ? d.Color : colors.get(lolly)
-      })
-      .style("stroke", (d, i) => {
-        return (d.Color) ? d.Color : colors.get(lolly)
-      })
-
-    }
- 
-    const xTicks = tickTok(isMobile, x.domain(), featuresWidth) // Set the number of ticks
-
-    const xAxis = g => g
-    .attr("transform", `translate(0,${margintop})`)
-    .attr("class", "axisgroup") 
-    .call(d3.axisTop(x).tickSizeOuter(0))
-    .call(d3.axisTop(x)
-    .tickSize(-svgHeight, 0, 0)
-    .ticks(xTicks)
-    .tickFormat((d) => {
-      return xFormat.date ? d3.timeFormat("%b %Y")(d) : numberFormat(d)
-    })
-    .tickPadding(10))
-
-    const yAxis = g => g
-    .call(d3.axisLeft(y)) 
-
-    features
-    .append("g")
-    .attr("class", "x")
-    .attr("transform", "translate(0," + svgHeight + ")")
-    .call(xAxis)
 
     // features
     //   .append("circle")
@@ -352,26 +349,33 @@ export default class Lollipop {
       svg
       .append("text")
       .attr("x", marginleft)
-      .attr("y", margintop)
+      .attr("y", margintop / 2)
       .attr("fill", "#767676")
-      .attr("text-anchor", "end")
+      .attr("text-anchor", "start")
       .text(xAxisLabel)
-      .call(wrap, marginleft); // Assuming `maxWidth` is defined
+      //.call(wrap, marginleft > 15 ? marginleft - 15 : marginleft); // Assuming `maxWidth` is defined
 
     }
 
+    for (const lolly of lollies) {
 
-    if (minMax.status || x(0) > marginleft) {
+      features.selectAll(".lolly")
+      .data(datum)
+      .enter()
+      .append("circle")
+      .attr("cx", function(d) { return x(+d[lolly]); })
+      .attr("cy", function(d) { return y(d[groupBy]); })
+      .attr("r", "7")
+      .style("fill", (d, i) => {
+        return (d.Color) ? d.Color : colors.get(lolly)
+      })
+      .style("stroke", (d, i) => {
+        return (d.Color) ? d.Color : colors.get(lolly)
+      })
 
-      features.append('line')
-          .style("stroke", "#767676")
-          .style("stroke-width", 1)
-          .attr("x1", x(0))
-          .attr("y1", 0)
-          .attr("x2", x(0))
-          .attr("y2", featuresHeight); 
-  
     }
+ 
+
 
     if (labels.length > 0) {
      
