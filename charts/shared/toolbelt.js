@@ -467,8 +467,11 @@ export function getMinMax(array) {
 
 }
 
+// Bufferize now takes a percetange as the third argument, and adds a buffer to the
+// Min and Max which is a % of the overall unit range
+
 export function bufferize(min, max, buff=5) {
-  const buffer = ((max - min) / 100) * buff
+  const buffer = (max - min) * (buff/100)
   return [min - buffer, max + buffer]
 }
 

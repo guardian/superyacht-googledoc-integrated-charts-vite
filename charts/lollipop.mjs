@@ -120,7 +120,9 @@ export default class Lollipop {
 
     let min = minMax.min
 
-    let buffer = bufferize(extent[0], extent[1], 15)
+    // Bufferize now takes a percetange as the third argument
+
+    let buffer = bufferize(extent[0], extent[1], 2)
 
     minX = (!isNaN(minX)) ? buffer[0] : +minX
 
@@ -146,10 +148,11 @@ export default class Lollipop {
       //.attr("transform", "translate(0," + svgHeight + ")")
       //.call(d3.axisBottom(x))
 
+    console.log("yScale", yScale)  
     var y = d3[yScale]()
     .range([ 0, featuresHeight])
     .domain(datum.map(function(d) { return d[groupBy]; }))
-    .padding(1);
+    .padding(0.9);
 
     (xFormat.date) ? x.domain(d3.extent(range)) : x.domain([minX, maxX]); //.nice() // 
 
