@@ -31,6 +31,7 @@ export function wrangle(data, chart) {
 
   settings.datum = []
 
+
   for (let key of keys) {
 
     if (key == "template" || key == "options" || key == "chartId" ) {
@@ -52,8 +53,6 @@ export function wrangle(data, chart) {
       }
 
       if (key == 'data') {
-
-        console.log(Object.keys(data[key][0]))
 
         let dataKeys = Object.keys(data[key][0])
 
@@ -102,6 +101,39 @@ export function wrangle(data, chart) {
     }
 
   }
+
+  if (keys.includes("columns") && keys.includes("data")) {
+
+    let columns = data["columns"]
+
+    if (columns.length == 0) {
+
+      let headers = Object.keys(data["data"][0])
+
+      for (var i = 0; i < headers.length; i++) {
+
+        let obj = {}
+        obj.column = headers[i]
+        obj.index = i
+        obj.label = headers[i]
+        // obj.type
+        // obj.format
+        /*
+        Planning to add data type detection at this point
+        */
+
+        columns.push(obj)
+
+      }
+
+      settings["columns"] = columns
+
+      settings["columnMap"] = new Map(columns.map(d => [ d.column, d]));
+
+    }
+
+  }
+
 
   let curated = Object.keys(settings)
 
