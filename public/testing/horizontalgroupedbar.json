@@ -6,8 +6,8 @@
                 "subtitle": "Showing the percentage of Australians aged 18+ that were members of social, community or civic groups in the year preceding the survey, by group type. Data from the respective General Social Surveys",
                 "footnote": "",
                 "source": "Australian Bureau of Statistics, General Social Survey",
-                "margin-left": "170",
-                "margin-top": "30",
+                "margin-left": "10",
+                "margin-top": "20",
                 "margin-bottom": "20",
                 "margin-right": "10"
             }
