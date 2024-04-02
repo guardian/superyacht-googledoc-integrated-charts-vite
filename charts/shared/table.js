@@ -10,8 +10,8 @@ export function propComparator(prop) {
 	var c, d;
 	currentSort = (currentSort !== prop) ? prop : null;
 	return function Comparator(a, b) {
-	  c = (typeof a[prop].sort === "string" && !isNaN(parseFloat(a[prop].sort))) ? parseFloat(a[prop].sort.replace(/,/g, '')) : a[prop].sort;
-	  d = (typeof b[prop].sort === "string" && !isNaN(parseFloat(b[prop].sort))) ? parseFloat(b[prop].sort.replace(/,/g, '')) : b[prop].sort;
+	  c = (typeof a[prop].sort === "string" && !cannotBeConvertedToNumber(a[prop].sort)) ? parseFloat(a[prop].sort.replace(/[,|$]/g, '')) : a[prop].sort;
+	  d = (typeof b[prop].sort === "string" && !cannotBeConvertedToNumber(b[prop].sort)) ? parseFloat(b[prop].sort.replace(/[,|$]/g, '')) : b[prop].sort;
 	  if (("" + c).substring(0, 5) == "<svg>") {
 	      if (c < d) return (currentSort !== prop) ? 1 : -1;
 	      if (c > d) return (currentSort !== prop) ? -1 : 1;
@@ -22,6 +22,15 @@ export function propComparator(prop) {
 	  return 0;
 	  }
 	}
+}
+
+function cannotBeConvertedToNumber(inputString) {
+
+    const cleanedString = inputString.replace(/[,|$]/g, '');
+
+    const num = Number(cleanedString);
+
+    return isNaN(num);
 }
 
 export function getMax(array) {
