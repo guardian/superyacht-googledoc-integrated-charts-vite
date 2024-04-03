@@ -137,7 +137,7 @@ export default class Groupedbar {
 
     const y1 = d3.scaleBand()
     .domain(columns)
-    .rangeRound([y0.bandwidth(), 0])
+    .rangeRound([y0.bandwidth(), 15])
     .padding(0.05)
 
     const x = d3.scaleLinear()
@@ -198,6 +198,7 @@ export default class Groupedbar {
     .append("g")
     .attr("transform", d => `translate(0,${y0(d[[groupBy]])})`)
 
+
     bars.selectAll("rect")
     .data(d => {
       return columns.filter(key => d[key] !== null).map(key => ({key, value: d[key], ...d}))
@@ -222,6 +223,27 @@ export default class Groupedbar {
     .attr("font-weight","600")
     .text((d) => numberFormat(d.value));
 
+    bars.each(function(d, i) {
+
+      const group = d3.select(this); 
+      
+      const totalWidth = columns
+        .filter(key => d[key] !== null)
+        .reduce((acc, key) => acc + x(d[key]) - x(0), 0);
+
+      group.append("text")
+        .attr("class", "group-label")
+        .attr("x", (d) => x(0))
+        .attr("y", (d) => {
+          const minY = Math.min(...columns.filter(key => d[key] !== null).map(key => y1(key)));
+          return minY - 10;
+        })
+        .attr("text-anchor", "start")
+        .attr("fill", "#767676")
+        .text((d) => groupKey[i]); 
+    });
+ 
+    /*
     bars.selectAll("line")
     .data(d => columns.map(key => ({key, value: d[key]})))
     .enter()
@@ -232,12 +254,14 @@ export default class Groupedbar {
     .attr("y1", y0(0))
     .attr("x2", d => x(0))
     .attr("y2", d => y1(d.key) + ( y1.bandwidth() + 2 ) )
+    \*/
+    
 
     svg.append("g")
     .call(xAxis);
 
-    svg.append("g")
-    .call(yAxis);
+    //svg.append("g")
+    //.call(yAxis);
 
     d3.selectAll('.axisgroup')
     .moveToBack()
