@@ -175,19 +175,20 @@ export default class Horizontalbar {
       datum = datum.sort((a, b) => d3.descending(+a.Total, +b.Total))
     }
     
-    width = document
-    .querySelector("#graphicContainer")
-    .getBoundingClientRect().width
+    //width = document.querySelector("#graphicContainer").getBoundingClientRect().width
 
-    height = (barheight) * 75 + margintop + marginbottom
+    width = document.querySelector("#graphicContainer").getBoundingClientRect().width - marginleft - marginright;
 
-    width = width - marginleft - marginright
+    height = (barheight) * 75 //+ margintop + marginbottom
+
+
+    //width = width - marginleft - marginright
 
     const svg = d3
     .select("#graphicContainer")
     .append("svg")
-    .attr("width", width)
-    .attr("height", height)
+    .attr("width", width + marginleft + marginright)
+    .attr("height", height + margintop + marginbottom)
     .attr("id", "svg")
     .attr("overflow", "hidden")
 

@@ -1,1 +1,64 @@
-{"sheets":{"template":[{"title":"An average home in 2021 cost nine times the median income of millennials","subtitle":"Showing median dwelling prices in each year as a multiple of the median income for a 25-39 year old that works full time","footnote":"","source":"Corelogic, Australian Bureau of Statistics, Guardian Australia"}],"data":[{"Year":1991,"Dwellings":5.04,"Color":"#4e79a7"},{"Year":2006,"Dwellings":7.15,"Color":"#f28e2c"},{"Year":2021,"Dwellings":9.23,"Color":"#e15759"}],"labels":[],"key":[],"lines":[],"periods":[],"chartId":[{"type":"horizontalbar"}],"options":[{"enableShowMore":"FALSE","aria":"FALSE","colorScheme":"guardian","autoSort":"FALSE","margin-left":20,"margin-top":30,"margin-bottom":20,"margin-right":10,"suffix":"","minX":"","yColumn":"","xColumn":"","xMin":"","xMax":"","xAxis":"","yAxis":"","stackedhorizontal":"","xAxisDateFormat":"","dateFormat":"%Y-%m-%d","maxXticks":3,"scaleByAllMax":"FALSE"}],"dropdown":[]}}
+{
+    "sheets": {
+        "template": [
+            {
+                "title": "An average home in 2021 cost nine times the median income of millennials",
+                "subtitle": "Showing median dwelling prices in each year as a multiple of the median income for a 25-39 year old that works full time",
+                "footnote": "",
+                "source": "Corelogic, Australian Bureau of Statistics, Guardian Australia"
+            }
+        ],
+        "data": [
+            {
+                "Year": 1991,
+                "Dwellings": 5.04,
+                "Color": "#4e79a7"
+            },
+            {
+                "Year": 2006,
+                "Dwellings": 7.15,
+                "Color": "#f28e2c"
+            },
+            {
+                "Year": 2021,
+                "Dwellings": 9.23,
+                "Color": "#e15759"
+            }
+        ],
+        "labels": [],
+        "key": [],
+        "lines": [],
+        "periods": [],
+        "chartId": [
+            {
+                "type": "horizontalbar"
+            }
+        ],
+        "options": [
+            {
+                "enableShowMore": "FALSE",
+                "aria": "FALSE",
+                "colorScheme": "guardian",
+                "autoSort": "FALSE",
+                "margin-left": 20,
+                "margin-top": 20,
+                "margin-bottom": 10,
+                "margin-right": 10,
+                "suffix": "",
+                "minX": "",
+                "yColumn": "",
+                "xColumn": "",
+                "xMin": "",
+                "xMax": "",
+                "xAxis": "",
+                "yAxis": "",
+                "stackedhorizontal": "",
+                "xAxisDateFormat": "",
+                "dateFormat": "%Y-%m-%d",
+                "maxXticks": 3,
+                "scaleByAllMax": "FALSE"
+            }
+        ],
+        "dropdown": []
+    }
+}
