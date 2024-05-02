@@ -1,172 +1,21 @@
-{
-    "sheets": {
-        "data": [
-            {
-                "Year": "2002-01-01",
-                "Government": "68.6",
-                "Non-Government": "31.4"
-            },
-            {
-                "Year": "2003-01-01",
-                "Government": "68.1",
-                "Non-Government": "31.9"
-            },
-            {
-                "Year": "2004-01-01",
-                "Government": "67.7",
-                "Non-Government": "32.3"
-            },
-            {
-                "Year": "2005-01-01",
-                "Government": "67.3",
-                "Non-Government": "32.7"
-            },
-            {
-                "Year": "2006-01-01",
-                "Government": "66.9",
-                "Non-Government": "33.1"
-            },
-            {
-                "Year": "2007-01-01",
-                "Government": "66.6",
-                "Non-Government": "33.4"
-            },
-            {
-                "Year": "2008-01-01",
-                "Government": "66.1",
-                "Non-Government": "33.9"
-            },
-            {
-                "Year": "2009-01-01",
-                "Government": "65.8",
-                "Non-Government": "34.2"
-            },
-            {
-                "Year": "2010-01-01",
-                "Government": "65.6",
-                "Non-Government": "34.4"
-            },
-            {
-                "Year": "2011-01-01",
-                "Government": "65.4",
-                "Non-Government": "34.6"
-            },
-            {
-                "Year": "2012-01-01",
-                "Government": "65.2",
-                "Non-Government": "34.8"
-            },
-            {
-                "Year": "2013-01-01",
-                "Government": "65.1",
-                "Non-Government": "34.9"
-            },
-            {
-                "Year": "2014-01-01",
-                "Government": "65.1",
-                "Non-Government": "34.9"
-            },
-            {
-                "Year": "2015-01-01",
-                "Government": "65.2",
-                "Non-Government": "34.8"
-            },
-            {
-                "Year": "2016-01-01",
-                "Government": "65.4",
-                "Non-Government": "34.6"
-            },
-            {
-                "Year": "2017-01-01",
-                "Government": "65.6",
-                "Non-Government": "34.4"
-            },
-            {
-                "Year": "2018-01-01",
-                "Government": "65.7",
-                "Non-Government": "34.3"
-            },
-            {
-                "Year": "2019-01-01",
-                "Government": "65.7",
-                "Non-Government": "34.3"
-            },
-            {
-                "Year": "2020-01-01",
-                "Government": "65.6",
-                "Non-Government": "34.4"
-            },
-            {
-                "Year": "2021-01-01",
-                "Government": "65.1",
-                "Non-Government": "34.9"
-            },
-            {
-                "Year": "2022-01-01",
-                "Government": "64.5",
-                "Non-Government": "35.5"
-            }
-        ],
-        "cols": [
-            {
-                "column": "Year",
-                "index": 0,
-                "type": "date",
-                "format": "%Y-%m-%d"
-            },
-            {
-                "column": "Government",
-                "index": 1,
-                "type": "number",
-                "format": ""
-            },
-            {
-                "column": "Non-Government",
-                "index": 2,
-                "type": "number",
-                "format": ""
-            }
-        ],
-        "chartId": [
-            {
-                "type": "linechart"
-            }
-        ],
-        "template": [
-            {
-                "title": "",
-                "subtitle": "",
-                "footnote": "",
-                "source": "",
-                "tooltip": ""
-            }
-        ],
-        "options": [
-            {
-                "lineLabelling": "FALSE",
-                "aria": "FALSE",
-                "colorScheme": "guardian",
-                "breaks": "",
-                "dateFormat": "%Y-%m-%d",
-                "parseTime": "",
-                "yScaleType": "",
-                "xAxisLabel": "",
-                "yAxisLabel": "",
-                "periodDateFormat": "",
-                "margin-left": 50,
-                "margin-top": 30,
-                "margin-bottom": 20,
-                "margin-right": 30,
-                "minX": "",
-                "minY": "",
-                "maxY": "",
-                "timeInterval": "",
-                "xAxisDateFormat": "%Y",
-                "xColumn": "Year",
-                "xFormat": "",
-                "invertY": "FALSE"
-            }
-        ],
-        "labels": []
-    }
-}
+{"sheets":{"data":[{"Year":"2002-01-01","Government":"68.6","Non-Government":"31.4"},{"Year":"2003-01-01","Government":"68.1","Non-Government":"31.9"},{"Year":"2004-01-01","Government":"67.7","Non-Government":"32.3"},{"Year":"2005-01-01","Government":"67.3","Non-Government":"32.7"},{"Year":"2006-01-01","Government":"66.9","Non-Government":"33.1"},{"Year":"2007-01-01","Government":"66.6","Non-Government":"33.4"},{"Year":"2008-01-01","Government":"66.1","Non-Government":"33.9"},{"Year":"2009-01-01","Government":"65.8","Non-Government":"34.2"},{"Year":"2010-01-01","Government":"65.6","Non-Government":"34.4"},{"Year":"2011-01-01","Government":"65.4","Non-Government":"34.6"},{"Year":"2012-01-01","Government":"65.2","Non-Government":"34.8"},{"Year":"2013-01-01","Government":"65.1","Non-Government":"34.9"},{"Year":"2014-01-01","Government":"65.1","Non-Government":"34.9"},{"Year":"2015-01-01","Government":"65.2","Non-Government":"34.8"},{"Year":"2016-01-01","Government":"65.4","Non-Government":"34.6"},{"Year":"2017-01-01","Government":"65.6","Non-Government":"34.4"},{"Year":"2018-01-01","Government":"65.7","Non-Government":"34.3"},{"Year":"2019-01-01","Government":"65.7","Non-Government":"34.3"},{"Year":"2020-01-01","Government":"65.6","Non-Government":"34.4"},{"Year":"2021-01-01","Government":"65.1","Non-Government":"34.9"},{"Year":"2022-01-01","Government":"64.5","Non-Government":"35.5"}],
+"template":[
+    {"title":"Public school enrolment has been declining over the past two decades",
+    "subtitle":"Showing the proportion of enrolments by school affiliation in Australia, 2002 to 2022\n",
+    "footnote":"",
+    "source":"ABS",
+    "dateFormat":"%Y-%m-%d",
+    "yScaleType":"",
+    "xAxisLabel":"",
+    "yAxisLabel":"",
+    "xAxisDateFormat":"%Y",
+    "baseline":"",
+    "tooltip":"",
+    "periodDateFormat":"",
+    "margin-left":"50",
+    "margin-top":"5",
+    "margin-bottom":"20",
+    "margin-right":"30",
+    "minX":"",
+    "minY":"0"}],
+    "options":[{"lineLabelling":"FALSE","colorScheme":"","aria":"FALSE","credit":""}],"chartId":[{"type":"linechart"}],"key":[],"periods":[],"labels":[{"id":"label1","coords":"{\"targetX\":0.9504290902361732,\"targetY\":0.2080634715025907,\"sourceX\":0.9963220836899447,\"sourceY\":0.07255131526504584,\"textX\":0.9415465753741528,\"textY\":0.206070645675568}","text":"4.1 percentage point \ndecline since 2002","coordType":"pct","sweepFlag":"1","radius":"200","arrow":"","align":"end"}]}}

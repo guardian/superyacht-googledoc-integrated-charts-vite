@@ -20,7 +20,7 @@ export class yachtCharter {
 
   async setUp(key, location) {
 
-    const myChart = "bubble" // Leave it blank or enter a chart type
+    const myChart = "linechart" // Leave it blank or enter a chart type
 
     /*
     horizontalbar -
