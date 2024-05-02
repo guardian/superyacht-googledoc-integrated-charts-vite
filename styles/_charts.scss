@@ -7,18 +7,18 @@
   max-width: 1280px;
 
   .tooltip {
-  position: absolute !important;
-  width: 150px;
-  pointer-events: none;
-  background-color: white;
-  border: 1px;
-  border-color: black;
-  border-style: solid;
-  padding: 10px;
-  font-family: "Guardian Text Sans Web", "Helvetica Neue", Helvetica, Arial,
+    position: absolute !important;
+    width: 150px;
+    pointer-events: none;
+    background-color: white;
+    border: 1px;
+    border-color: black;
+    border-style: solid;
+    padding: 10px;
+    font-family: "Guardian Text Sans Web", "Helvetica Neue", Helvetica, Arial,
     "Lucida Grande", sans-serif;
-  font-size: 12px;
-  line-height: 14px;
+    font-size: 12px;
+    line-height: 14px;
 }
 
 
@@ -66,6 +66,7 @@
     color: #333333;
     font-family: "Guardian Egyptian Web", Georgia, serif;
     margin-bottom:10px;
+    font-weight:normal;
   }
 
   .lineText {
@@ -163,7 +164,7 @@
   }
 
   .periodLabel {
-    fill: #cccccc;
+    fill: #767676;
     text-transform: uppercase;
     font-weight: bold;
   }

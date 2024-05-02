@@ -1,98 +1,129 @@
 {
     "sheets": {
-        "data": [
-            {
-                "State": "NSW",
-                "Fair Australia": "4.55",
-                "Not Enough": "8.31",
-                "Referendum News": "0.01",
-                "Senator Price": "1.02"
-            },
-            {
-                "State": "QLD",
-                "Fair Australia": "17.09",
-                "Not Enough": "14.91",
-                "Referendum News": "22.84",
-                "Senator Price": "18.74"
-            },
-            {
-                "State": "SA",
-                "Fair Australia": "14.16",
-                "Not Enough": "26.11",
-                "Referendum News": "14.74",
-                "Senator Price": "28.5"
-            },
-            {
-                "State": "TAS",
-                "Fair Australia": "10.68",
-                "Not Enough": "21.17",
-                "Referendum News": "37.44",
-                "Senator Price": "15.29"
-            },
-            {
-                "State": "VIC",
-                "Fair Australia": "3.65",
-                "Not Enough": "8.15",
-                "Referendum News": "0.02",
-                "Senator Price": "2.01"
-            },
-            {
-                "State": "WA",
-                "Fair Australia": "14.08",
-                "Not Enough": "21.35",
-                "Referendum News": "24.85",
-                "Senator Price": "34.45"
-            }
-        ],
         "template": [
             {
-                "title": "No campaign Facebook page targeting by state",
-                "subtitle": "Showing the percentage of population-adjusted ad impressions shown in each state, by each Facebook page. Excludes ACT and NT, so percentages will not total to 100",
-                "footnote": "",
-                "source": "Guardian Australia analysis of Facebook ad library data"
+                "title": "Yacht Charter test chart",
+                "subtitle": "Things",
+                "footnote": "Footnote",
+                "source": "The universe",
+                "margin-left": "20",
+                "margin-top": "30",
+                "margin-bottom": "20",
+                "margin-right": "10"
             }
         ],
-        "options": [
+        "data": [
             {
-                "format": "",
-                "enableSearch": "FALSE",
-                "enableSort": "TRUE"
+                "Yoghurt": "Barambah Organics All Natural Full Fat",
+                "$ per 100g": "1.15",
+                "Taste": "50",
+                "Texture": "21",
+                "Total": "71",
+                "Final rank": "5.5"
+            },
+            {
+                "Yoghurt": "Meredith Dairy Natural Goat Milk Probiotic",
+                "$ per 100g": "1.40",
+                "Taste": "46.5",
+                "Texture": "24.75",
+                "Total": "71.25",
+                "Final rank": "5.5"
+            },
+            {
+                "Yoghurt": "Bulla Australian Style",
+                "$ per 100g": "0.78",
+                "Taste": "57.5",
+                "Texture": "28.25",
+                "Total": "85.75",
+                "Final rank": "6.5"
+            },
+            {
+                "Yoghurt": "Five:AM Organic Natural ",
+                "$ per 100g": "0.95",
+                "Taste": "44",
+                "Texture": "20.25",
+                "Total": "64.25",
+                "Final rank": "5"
+            },
+            {
+                "Yoghurt": "Jalna Biodynamic Whole Milk",
+                "$ per 100g": "0.88",
+                "Taste": "59.5",
+                "Texture": "28",
+                "Total": "87.5",
+                "Final rank": "6.5"
+            },
+            {
+                "Yoghurt": "Farmers Union Greek Style",
+                "$ per 100g": "0.65",
+                "Taste": "73.5",
+                "Texture": "34.5",
+                "Total": "108",
+                "Final rank": "8"
+            },
+            {
+                "Yoghurt": "Lyttos Greek Style ",
+                "$ per 100g": "0.40",
+                "Taste": "67",
+                "Texture": "33.25",
+                "Total": "100.25",
+                "Final rank": "7.5"
+            },
+            {
+                "Yoghurt": "Yoguri High Protein Greek",
+                "$ per 100g": "0.61",
+                "Taste": "39.5",
+                "Texture": "28.5",
+                "Total": "68",
+                "Final rank": "5"
+            },
+            {
+                "Yoghurt": "Attiki Greek Style",
+                "$ per 100g": "1.00",
+                "Taste": "70",
+                "Texture": "32.75",
+                "Total": "102.75",
+                "Final rank": "7.5"
             }
         ],
+        "labels": [],
+        "trendline": [],
         "userkey": [
             {
-                "key": "Fair Australia",
-                "values": "0,40",
-                "colours": "#f1eef6,#0570b0",
-                "scale": "linear",
-                "format": "shading"
+                "key": "Taste",
+                "format": "rating",
+                "outta": "90"
             },
             {
-                "key": "Not Enough",
-                "values": "0,40",
-                "colours": "#f1eef6,#0570b0",
-                "scale": "linear",
-                "format": "shading"
+                "key": "Texture",
+                "format": "rating",
+                "outta": "45"
             },
             {
-                "key": "Referendum News",
-                "values": "0,40",
-                "colours": "#f1eef6,#0570b0",
-                "scale": "linear",
-                "format": "shading"
+                "key": "Total",
+                "format": "rating",
+                "outta": "135"
             },
             {
-                "key": "Senator Price",
-                "values": "0,40",
-                "colours": "#f1eef6,#0570b0",
-                "scale": "linear",
-                "format": "shading"
+                "key": "Final rank",
+                "format": "rating",
+                "outta": "10"
             }
         ],
+        "periods": [],
         "chartId": [
             {
                 "type": "table"
             }
-        ]
+        ],
+        "options": [
+            {
+                "colorScheme": "guardian",
+                "format": "scrolling",
+                "enableSearch": "FALSE",
+                "enableSort": "TRUE"
+            }
+        ],
+        "dropdown": []
     }
 }

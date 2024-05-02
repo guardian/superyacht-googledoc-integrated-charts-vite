@@ -1,5 +1,6 @@
 {
     "sheets": {
+        "columns": [],
         "template": [
             {
                 "title": "",
@@ -10,7 +11,7 @@
             }
         ],
         "data": [],
-        "labels": [],
+        "cols": [],
         "userkey": [],
         "chartId": [
             {
@@ -23,8 +24,7 @@
                 "enableSort": "TRUE",
                 "enableShowMore" : "FALSE",
                 "enableScroll" : "TRUE",
-                "aria": "FALSE",
-                "xAxisDateFormat" : ""
+                "aria": "FALSE"
             }
         ],
         "dropdown": []

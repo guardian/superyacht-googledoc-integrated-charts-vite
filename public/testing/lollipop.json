@@ -2,62 +2,192 @@
     "sheets": {
         "template": [
             {
-                "title": "More women are in the workforce",
-                "subtitle": "Showing the female labor force participation rate for ages 15-64 (percentage points)",
-                "source": "Source: Sources: Moody's and the OECD",
-                "tooltip" : ""
+                "title": "Beer and spirits taxes in the OECD",
+                "subtitle": "Showing excise on alcohol-content as a percentage of the most common brand of beer (330ml) and spirits (700ml). Excludes countries that don't have national excises on both beer and spirits",
+                "footnote": "",
+                "source": "World Health Organisation",
+                "tooltip": "",
+                "margin-left": "10",
+                "margin-top": "30",
+                "margin-bottom": "20",
+                "margin-right": "0"
             }
         ],
-        "data": [{
-            "2005": "68.1",
-            "2023": "76.6",
-            "Country": "Australia"
-        }, {
-            "2005": "73",
-            "2023": "77.4",
-            "Country": "Canada"
-        }, {
-            "2005": "61.7",
-            "2023": "69.9",
-            "Country": "Euro area"
-        }, {
-            "2005": "67.4",
-            "2023": "70.6",
-            "Country": "France"
-        }, {
-            "2005": "66.9",
-            "2023": "75.7",
-            "Country": "Germany"
-        }, {
-            "2005": "50.4",
-            "2023": "56.9",
-            "Country": "Italy"
-        }, {
-            "2005": "60.9",
-            "2023": "54.8",
-            "Country": "Japan"
-        }, {
-            "2005": "54.6",
-            "2023": "62.6",
-            "Country": "Korea"
-        }, {
-            "2005": "69.9",
-            "2023": "80.1",
-            "Country": "UK"
-        }, {
-            "2005": "69.1",
-            "2023": "69.5",
-            "Country": "US"
-        }],
-        "labels": [],
-        "userkey": [{
-            "key": "2005",
-            "colour": "red"
-        },
-        {
-            "key": "2023",
-            "colour": "purple"
-        }],
+        "data": [
+            {
+                "Country": "Norway",
+                "Beer": 0.0,
+                "Spirits": 68.51
+            },
+            {
+                "Country": "Finland",
+                "Beer": 28.82,
+                "Spirits": 66.82
+            },
+            {
+                "Country": "Sweden",
+                "Beer": 38.51,
+                "Spirits": 66.8
+            },
+            {
+                "Country": "Iceland",
+                "Beer": 30.91,
+                "Spirits": 66.47
+            },
+            {
+                "Country": "Estonia",
+                "Beer": 18.37,
+                "Spirits": 57.92
+            },
+            {
+                "Country": "T\u00fcrkiye",
+                "Beer": 36.14,
+                "Spirits": 57.81
+            },
+            {
+                "Country": "Australia",
+                "Beer": 17.73,
+                "Spirits": 56.5
+            },
+            {
+                "Country": "Lithuania",
+                "Beer": 16.67,
+                "Spirits": 52.06
+            },
+            {
+                "Country": "Ireland",
+                "Beer": 25.6,
+                "Spirits": 48.59
+            },
+            {
+                "Country": "Poland",
+                "Beer": 17.74,
+                "Spirits": 47.8
+            },
+            {
+                "Country": "United Kingdom",
+                "Beer": 27.45,
+                "Spirits": 47.15
+            },
+            {
+                "Country": "Latvia",
+                "Beer": 23.52,
+                "Spirits": 46.79
+            },
+            {
+                "Country": "Hungary",
+                "Beer": 13.46,
+                "Spirits": 45.02
+            },
+            {
+                "Country": "Germany",
+                "Beer": 5.56,
+                "Spirits": 40.29
+            },
+            {
+                "Country": "Belgium",
+                "Beer": 10.53,
+                "Spirits": 39.78
+            },
+            {
+                "Country": "Czech Republic",
+                "Beer": 11.28,
+                "Spirits": 37.82
+            },
+            {
+                "Country": "Greece",
+                "Beer": 21.05,
+                "Spirits": 36.41
+            },
+            {
+                "Country": "Spain",
+                "Beer": 0.0,
+                "Spirits": 35.96
+            },
+            {
+                "Country": "Slovak Republic",
+                "Beer": 5.07,
+                "Spirits": 30.27
+            },
+            {
+                "Country": "Portugal",
+                "Beer": 0.0,
+                "Spirits": 29.2
+            },
+            {
+                "Country": "Netherlands",
+                "Beer": 0.0,
+                "Spirits": 25.08
+            },
+            {
+                "Country": "Austria",
+                "Beer": 7.73,
+                "Spirits": 19.1
+            },
+            {
+                "Country": "Colombia",
+                "Beer": 0.0,
+                "Spirits": 19.0
+            },
+            {
+                "Country": "Slovenia",
+                "Beer": 19.76,
+                "Spirits": 17.41
+            },
+            {
+                "Country": "Switzerland",
+                "Beer": 0.0,
+                "Spirits": 17.3
+            },
+            {
+                "Country": "Costa Rica",
+                "Beer": 4.48,
+                "Spirits": 16.54
+            },
+            {
+                "Country": "Denmark",
+                "Beer": 11.46,
+                "Spirits": 13.23
+            },
+            {
+                "Country": "Canada",
+                "Beer": 0.0,
+                "Spirits": 11.87
+            },
+            {
+                "Country": "Italy",
+                "Beer": 12.32,
+                "Spirits": 8.87
+            },
+            {
+                "Country": "Japan",
+                "Beer": 0.0,
+                "Spirits": 8.1
+            }
+        ],
+        "labels": [
+            {
+                "id": "label-IGcJRCRB",
+                "coords": {
+                    "targetX": 0.19712793733681466,
+                    "targetY": 0.22393254950495048,
+                    "sourceX": 0.10182767624020889,
+                    "sourceY": 0.287463902640264,
+                    "centreX": 0.09530026109660575,
+                    "centreY": 0.22640779702970296,
+                    "textX": 0.10966057441253264,
+                    "textY": 0.3031404702970297
+                },
+                "text": "17.7% of the cost\n of beer",
+                "coordType": "pct",
+                "sweepFlag": "0",
+                "radius": "0",
+                "arrow": "",
+                "align": "middle",
+                "path": "true"
+            }
+        ],
+        "userkey": [],
         "lines": [],
         "periods": [],
         "chartId": [
@@ -68,14 +198,20 @@
         "options": [
             {
                 "enableShowMore": "FALSE",
-                "autoSort": "FALSE",
-                "aria":"FALSE",
-                "margin-left": "70",
-                "margin-top": "30",
-                "margin-bottom": "20",
-                "margin-right": "10",
-                "groupBy" : "Country",
-                "xColumn" : ""
+                "aria": "FALSE",
+                "colorScheme": "guardian",
+                "margin-left": 25,
+                "margin-top": 17,
+                "margin-bottom": 20,
+                "margin-right": 15,
+                "xAxisDateFormat": "",
+                "yAxisLabel": "",
+                "xAxisLabel": "Tax percentage",
+                "hideKey": "FALSE",
+                "opacity": "80",
+                "defaultRadius": 10,
+                "beeswarm": "FALSE",
+                "groupBy": "Country"
             }
         ],
         "dropdown": []

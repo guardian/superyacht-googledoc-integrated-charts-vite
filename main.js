@@ -3,12 +3,16 @@ import { yachtCharter } from "./yachtCharter.js"
 import './style.scss'
 
 const docsdata = "docsdata" // "yacht-charter-data" // "docsdata" 
-
-// long data 10EMTCsz3lOVDFImtDm_LxIufnDw0QMYLcqd6ceLNOdc
-// short data 1MVhSw-zT2XBl8gFzLhXBp1OBkkeWVyJ5x0owS3RKTJw"
-const keyloc = "1MVhSw-zT2XBl8gFzLhXBp1OBkkeWVyJ5x0owS3RKTJw"
+const keyloc = "1fyJWV4ncnyw8JG38NQIv8SvjrpSHFHwBoWDTLcsNHSM"
 const key = getURLParams("key") ? getURLParams("key") : keyloc ;
 const location = getURLParams("location") ? getURLParams("location") : docsdata ;
+const theme = getURLParams("theme") ? getURLParams("theme") : false ;
+
+if (theme == 'dark') {
+	document.querySelector("body").classList.add("dark-mode-on")
+}
+
+console.log(`theme: ${theme}`)
 
 console.log(`https://interactive.guim.co.uk/${location}/${key}.json`)
 

@@ -1,5 +1,6 @@
 {
     "sheets": {
+        "columns": [],
         "template": [
             {
                 "title": "",
@@ -21,14 +22,13 @@
         ],
         "options": [
             {
-                "autoSort": "FALSE",
                 "enableShowMore": "FALSE",
                 "aria": "FALSE",
                 "colorScheme": "guardian",
                 "xAxisDateFormat" : "",
-                "maxHeight" : 30,
+                "maxHeight" : "40",
                 "groupBy" : "",
-                "margin-left": "60",
+                "margin-left": "10",
                 "margin-top": "30",
                 "margin-bottom": "0",
                 "margin-right": "20"

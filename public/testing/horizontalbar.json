@@ -2,61 +2,31 @@
     "sheets": {
         "template": [
             {
-                "title": "NT and WA government funding to public schools has dropped since 2012",
-                "subtitle": "The % increase or decrease in funding in real terms between 2012 and 2021, by source of funding",
+                "title": "An average home in 2021 cost nine times the median income of millennials",
+                "subtitle": "Showing median dwelling prices in each year as a multiple of the median income for a 25-39 year old that works full time",
                 "footnote": "",
-                "source": "ACARA, Parliamentary Library",
-                "margin-left": "80",
-                "margin-top": "30",
-                "margin-bottom": "20",
-                "margin-right": "10"
+                "source": "Corelogic, Australian Bureau of Statistics, Guardian Australia"
             }
         ],
         "data": [
             {
-                "State": "Australian Capital Territory",
-                "Federal": 45.13,
-                "State/territory": 1.45
+                "Year": 1991,
+                "Dwellings": 5.04,
+                "Color": "#4e79a7"
             },
             {
-                "State": "New South Wales",
-                "Federal": 40.82,
-                "State/territory": 16.64
+                "Year": 2006,
+                "Dwellings": 7.15,
+                "Color": "#f28e2c"
             },
             {
-                "State": "Northern Territory",
-                "Federal": 62.02,
-                "State/territory": -7.75
-            },
-            {
-                "State": "Queensland",
-                "Federal": 83.71,
-                "State/territory": 1.06
-            },
-            {
-                "State": "South Australia",
-                "Federal": 76.76,
-                "State/territory": 10.7
-            },
-            {
-                "State": "Tasmania",
-                "Federal": 38.49,
-                "State/territory": 12.93
-            },
-            {
-                "State": "Victoria",
-                "Federal": 41.86,
-                "State/territory": 22.16
-            },
-            {
-                "State": "Western Australia",
-                "Federal": 57.85,
-                "State/territory": -5.6
+                "Year": 2021,
+                "Dwellings": 9.23,
+                "Color": "#e15759"
             }
         ],
         "labels": [],
-        "key": [
-        ],
+        "key": [],
         "lines": [],
         "periods": [],
         "chartId": [
@@ -67,8 +37,26 @@
         "options": [
             {
                 "enableShowMore": "FALSE",
+                "aria": "FALSE",
+                "colorScheme": "guardian",
                 "autoSort": "FALSE",
-                "xMin" : "-10"
+                "margin-left": 20,
+                "margin-top": 20,
+                "margin-bottom": 10,
+                "margin-right": 10,
+                "suffix": "",
+                "minX": "",
+                "yColumn": "",
+                "xColumn": "",
+                "xMin": "",
+                "xMax": "",
+                "xAxis": "",
+                "yAxis": "",
+                "stackedhorizontal": "",
+                "xAxisDateFormat": "",
+                "dateFormat": "%Y-%m-%d",
+                "maxXticks": 3,
+                "scaleByAllMax": "FALSE"
             }
         ],
         "dropdown": []

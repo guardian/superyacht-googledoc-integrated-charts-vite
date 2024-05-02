@@ -1,4 +1,4 @@
-import { contains, merge, xFormatting } from './toolbelt';
+import { contains, merge, xFormatting, capitalizeFirstLetter } from './toolbelt';
 import dataTools from "../dataTools"
 import ColorScale from "./colorscale"
 
@@ -21,11 +21,16 @@ export function wrangle(data, chart) {
 
   settings.width = 0
 
+  settings.svgWidth = 0
+  settings.svgHeight = 0
+  settings.featuresWidth = 0
+  settings.featuresHeight = 0
   settings.isMobile = null
 
   settings.colors = null
 
   settings.datum = []
+
 
   for (let key of keys) {
 
@@ -48,8 +53,6 @@ export function wrangle(data, chart) {
       }
 
       if (key == 'data') {
-
-        console.log(Object.keys(data[key][0]))
 
         let dataKeys = Object.keys(data[key][0])
 
@@ -99,13 +102,46 @@ export function wrangle(data, chart) {
 
   }
 
+  if (keys.includes("columns") && keys.includes("data")) {
+
+    let columns = data["columns"]
+
+    if (columns.length == 0) {
+
+      let headers = Object.keys(data["data"][0])
+
+      for (var i = 0; i < headers.length; i++) {
+
+        let obj = {}
+        obj.column = headers[i]
+        obj.index = i
+        obj.label = headers[i]
+        // obj.type
+        // obj.format
+        /*
+        Planning to add data type detection at this point
+        */
+
+        columns.push(obj)
+
+      }
+
+      settings["columns"] = columns
+
+      settings["columnMap"] = new Map(columns.map(d => [ d.column, d]));
+
+    }
+
+  }
+
+
   let curated = Object.keys(settings)
 
   for (const setting of curated) {
 
     // Convert strings to numbers
 
-    if (contains(['marginleft','marginright','margintop','marginbottom', 'numCols', 'height', 'maxHeight', 'opacity'], setting)) { //'x_axis_cross_y' 'baseline'
+    if (contains(['marginleft','marginright','margintop','marginbottom', 'numCols', 'height', 'maxHeight', 'opacity'], setting)) {
 
       settings[setting] = (isNaN(settings[setting])) ? settings[setting] : +settings[setting]
 
@@ -123,7 +159,7 @@ export function wrangle(data, chart) {
 
     // Convert booleans
 
-    if (contains(['enableShowMore','aria', 'enableSearch', 'enableSort', 'enableScroll', 'zero_line_x', 'zero_line_y', 'lineLabelling', "autoSort", "scaleByAllMax", "hideKey", "beeswarm", "invertY"], setting)) {
+    if (contains(['enableShowMore','aria', 'forceCentre','enableSearch', 'enableSort', 'enableScroll', 'zero_line_x', 'zero_line_y', 'lineLabelling', "autoSort", "scaleByAllMax", "hideKey", "beeswarm", "invertY"], setting)) {
 
       settings[setting] = (settings[setting].toLowerCase() == 'false') ? false : true
 
@@ -220,23 +256,12 @@ export function wrangle(data, chart) {
 
 
   /*
-  / Set x_axis_cross_y
-  */
-
-  if (settings["baseline"]) {
-
-    if (settings["baseline"] != "") {
-
-      settings["x_axis_cross_y"] = settings["baseline"]
-
-    }
-
-  }
-
-  /*
   / If this is a table with graphics
   / format the graphics data
   */
+
+
+
 
   if (settings["type"] == "table") {
 
@@ -252,7 +277,23 @@ export function wrangle(data, chart) {
 
           let max = d3.max(range)
 
-          key.graphics = { type : "bar", max : max }
+          let colours = (key.colours && key.colours != "" && key.colours.includes(",")) ? key.colours.split(',') :
+          (key.colours && key.colours != "") ? [ key.colours ] : ["red"]
+
+          let domain = (key.values && key.values.includes(",")) ? key.values.split(',') :
+          key.values != "" ? [ key.values ] : [];
+
+          let scale = (key.scale) ? key.scale :  'Linear' ;
+
+          // Need to check if scale type is valid... one for later
+
+          let colour  = new ColorScale({
+            type: capitalizeFirstLetter(scale),
+            domain: domain,
+            colors: colours
+          })
+
+          key.graphics = { type : "bar", max : max, colour : colour }
 
         }
 
@@ -267,7 +308,11 @@ export function wrangle(data, chart) {
   / check if it is a date, a string
   */
 
+<<<<<<< HEAD
   if (contains(['stackedbar', 'verticalbar', 'linechart', 'smallmultiples', 'stackedarea', 'bubble', 'scatterplot', 'lollipop', 'horizontalbar'], settings["type"])) {
+=======
+  if (contains(['stackedbar', 'linechart', 'smallmultiples', 'stackedarea', 'bubble', 'scatterplot', 'lollipop', 'verticalbar'], settings["type"])) {
+>>>>>>> main
 
     settings["xFormat"] = xFormatting(settings)
 

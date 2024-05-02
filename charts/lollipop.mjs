@@ -2,7 +2,9 @@
 import dataTools from "./shared/dataTools"
 import ColorScale from "./shared/colorscale"
 import colorPresets from "./constants/colors"
-import { numberFormat, mustache, mobileCheck, getMinMax, textPadding, textPaddingMobile, bufferize, tickTok, contains } from './shared/toolbelt';
+import { getURLParams, numberFormat, mustache, mobileCheck, getMinMax, textPadding, textPaddingMobile, bufferize, tickTok, contains, wrap } from './shared/toolbelt';
+import  { addLabel, clickLogging } from './shared/arrows'
+import { drawShowMore } from "./shared/showmore"
 
 export default class Lollipop {
 
@@ -15,7 +17,8 @@ export default class Lollipop {
   }
 
   init() {
-
+    console.log('enableshowmore',this.settings.enableShowMore)
+    drawShowMore(this.settings.enableShowMore)  
     this.render()
 
   }
@@ -26,7 +29,11 @@ export default class Lollipop {
           type,
           colors,
           height, 
-          width, 
+          width,
+          featuresWidth,
+          featuresHeight,
+          svgWidth,
+          svgHeight, 
           isMobile, 
           title, 
           subtitle, 
@@ -41,6 +48,7 @@ export default class Lollipop {
           labels, 
           userkey, 
           keys,
+          rowHeight,
           enableShowMore, 
           colorScheme, 
           dropdown,
@@ -51,10 +59,10 @@ export default class Lollipop {
           xScale,
           yScale,
           parseTime,
+          xAxisLabel,
           xColumn } = this.settings
 
-    let space = 40
-
+   
     d3.select("#graphicContainer svg").remove()
 
     const chartKey = d3.select("#chartKey")
@@ -67,23 +75,24 @@ export default class Lollipop {
 
     isMobile = mobileCheck()
 
+    let lollies = keys.filter(d => d != 'Color' && d != groupBy)
+
     const keyColor = dataTools.getKeysColors({
-      keys: keys,
+      keys: lollies,
       userKey: userkey,
       option: { colorScheme : colorScheme }
     })
 
     colors.set(keyColor.keys, keyColor.colors)
 
-    width = document
-    .querySelector("#graphicContainer")
-    .getBoundingClientRect().width
+    svgWidth = document
+      .querySelector("#graphicContainer")
+      .getBoundingClientRect().width
 
-    height = datum.length * space + margintop + marginbottom
+    svgHeight = datum.length * rowHeight + margintop + marginbottom
 
-    width = width - marginright
-
-    let lollies = keys.filter(d => d != 'Color' && d != groupBy)
+    featuresWidth = svgWidth - marginright - marginleft
+    featuresHeight = svgHeight - margintop - marginbottom
 
     let range = []
 
@@ -111,7 +120,9 @@ export default class Lollipop {
 
     let min = minMax.min
 
-    let buffer = bufferize(extent[0], extent[1], 15)
+    // Bufferize now takes a percetange as the third argument
+
+    let buffer = bufferize(extent[0], extent[1], 2)
 
     minX = (!isNaN(minX)) ? buffer[0] : +minX
 
@@ -120,8 +131,8 @@ export default class Lollipop {
     const svg = d3
     .select("#graphicContainer")
     .append("svg")
-    .attr("width", width)
-    .attr("height", height)
+    .attr("width", svgWidth)
+    .attr("height", svgHeight)
     .attr("id", "svg")
     .attr("overflow", "hidden")
 
@@ -131,18 +142,122 @@ export default class Lollipop {
 
     var x = d3[xScale]()
     
-    x.range([ 0, width - marginright - marginleft]);
+    x.range([ 0, featuresWidth]);
 
-    features.append("g")
-    .attr("transform", "translate(0," + height + ")")
-    .call(d3.axisBottom(x))
+    //features.append("g")
+      //.attr("transform", "translate(0," + svgHeight + ")")
+      //.call(d3.axisBottom(x))
 
+    console.log("yScale", yScale)  
     var y = d3[yScale]()
-    .range([ 0, height - margintop - marginbottom])
+    .range([ 0, featuresHeight])
     .domain(datum.map(function(d) { return d[groupBy]; }))
-    .padding(1);
+    .padding(0.9);
 
     (xFormat.date) ? x.domain(d3.extent(range)) : x.domain([minX, maxX]); //.nice() // 
+
+    if (minMax.status || x(0) > marginleft) {
+
+      features.append('line')
+          .style("stroke", "#767676")
+          .style("stroke-width", 1)
+          .attr("x1", x(0))
+          .attr("y1", margintop / 2)
+          .attr("x2", x(0))
+          .attr("y2", svgHeight)
+          .attr("opacity", 0.5); 
+  
+    }
+
+    if (lollies.length == 1) {
+
+      if (minX < 0 && maxX > 0) {
+
+        features.append("line")
+        .attr("x1", function(d) { return x(0); })
+        .attr("x2", function(d) { return x(0); })
+        .attr("y1", function(d) { return 0; })
+        .attr("y2", function(d) { return featuresHeight; })
+        .style("stroke", '#767676')
+        .style("stroke-width", "1px")
+
+      }
+
+      features.selectAll("lines")
+      .data(datum)
+      .enter()
+      .append("line")
+      .attr("x1", function(d) { return x(0); })
+      .attr("x2", function(d) { return x(+d[lollies[0]]); })
+      .attr("y1", function(d) { return y(d[groupBy]); })
+      .attr("y2", function(d) { return y(d[groupBy]); })
+      .style("stroke", (d, i) => {
+        return (d.Color) ? d.Color : colors.get(d[lollies[0]])
+      })
+      .style("stroke-width", "4px")
+
+      features
+      .selectAll(".barText")
+      .data(datum)
+      .enter()
+      .append("text")
+      .attr("class", "barText")
+      .attr("x", function(d) {
+        let gap = (d[lollies[0]] < 0 ) ? -6 : 6 ;
+        return x(0) + gap //(d[lollies[0]] > 0) ? x(d[lollies[0]]) + 20 : x(d[lollies[0]]) - 20; 
+      })
+      .attr("text-anchor",function(d) {
+        return (d[lollies[0]] > 0) ? "start" : "end" ; 
+      })
+      .attr("y", function(d) { return y(d[groupBy]) - (rowHeight / 3.5); })
+      .text((d) => d[groupBy])
+
+    } else {
+
+      features
+      .selectAll(".barText")
+      .data(datum)
+      .enter()
+      .append("text")
+      .attr("class", "barText")
+      .attr("x", function(d) {
+        let range = []
+        for (var i = 0; i < lollies.length; i++) {
+          range.push(d[lollies[i]])
+        }
+        return x(d3.min(range)) - 3
+      })
+      .attr("text-anchor",function(d) {
+        return "start" //(minMax.status) ? "start" : "end" ; 
+      })
+      .attr("y", function(d) { return y(d[groupBy]) - (rowHeight / 3); })
+      .text((d) => d[groupBy])
+
+    }
+
+
+    const xTicks = tickTok(isMobile, x.domain(), featuresWidth) // Set the number of ticks
+
+    const xAxis = g => g
+    .attr("transform", `translate(0,${margintop / 2})`)
+    .attr("class", "axisgroup") 
+    .call(d3.axisTop(x).tickSizeOuter(0))
+    .call(d3.axisTop(x)
+    .tickSize(-svgHeight, 0, 0)
+    .ticks(xTicks)
+    .tickFormat((d) => {
+      return xFormat.date ? d3.timeFormat("%b %Y")(d) : numberFormat(d)
+    })
+    .tickPadding(10))
+
+    const yAxis = g => g
+    .call(d3.axisLeft(y)) 
+
+    features
+    .append("g")
+    .attr("class", "x")
+    .attr("transform", "translate(0," + svgHeight + ")")
+    .call(xAxis)
 
     if (lollies.length == 2) {
 
@@ -201,112 +316,14 @@ export default class Lollipop {
 
     }
 
-    if (lollies.length == 1) {
 
-      features.selectAll("lines")
-      .data(datum)
-      .enter()
-      .append("line")
-      .attr("x1", function(d) { return x(0); })
-      .attr("x2", function(d) { return x(+d[lollies[0]]); })
-      .attr("y1", function(d) { return y(d[groupBy]); })
-      .attr("y2", function(d) { return y(d[groupBy]); })
-      .style("stroke", (d, i) => {
-        return (d.Color) ? d.Color : colors.get(d[lollies[0]])
-      })
-      .style("stroke-width", "4px")
 
-      features
-      .selectAll(".barText")
-      .data(datum)
-      .enter()
-      .append("text")
-      .attr("class", "barText")
-      .attr("x", function(d) {
-        let gap = (d[lollies[0]] < 0 ) ? -6 : 6 ;
-        return x(0) + gap //(d[lollies[0]] > 0) ? x(d[lollies[0]]) + 20 : x(d[lollies[0]]) - 20; 
-      })
-      .attr("text-anchor",function(d) {
-        return (d[lollies[0]] > 0) ? "start" : "end" ; 
-      })
-      .attr("y", function(d) { return y(d[groupBy]) - (space / 3.5); })
-      .text((d) => d[groupBy])
-
-      if (minX < 0 && maxX > 0) {
-
-        features.append("line")
-        .attr("x1", function(d) { return x(0); })
-        .attr("x2", function(d) { return x(0); })
-        .attr("y1", function(d) { return 0; })
-        .attr("y2", function(d) { return height; })
-        .style("stroke", '#767676')
-        .style("stroke-width", "1px")
-
-      }
-
-    } else {
-
-      features
-      .selectAll(".barText")
-      .data(datum)
-      .enter()
-      .append("text")
-      .attr("class", "barText")
-      .attr("x", function(d) {
-        let range = []
-        for (var i = 0; i < lollies.length; i++) {
-          range.push(d[lollies[i]])
-        }
-        return x(d3.min(range)) - 20
-      })
-      .attr("text-anchor",function(d) {
-        return (minMax.status) ? "start" : "end" ; 
-      })
-      .attr("y", function(d) { return y(d[groupBy]) + 3; })
-      .text((d) => d[groupBy])
-
-    }
-
-    for (const lolly of lollies) {
-
-      features.selectAll(".lolly")
-      .data(datum)
-      .enter()
-      .append("circle")
-      .attr("cx", function(d) { return x(+d[lolly]); })
-      .attr("cy", function(d) { return y(d[groupBy]); })
-      .attr("r", "7")
-      .style("fill", (d, i) => {
-        return (d.Color) ? d.Color : colors.get(lolly)
-      })
-      .style("stroke", (d, i) => {
-        return (d.Color) ? d.Color : colors.get(lolly)
-      })
-
-    }
- 
-    const xTicks = tickTok(isMobile, x.domain(), width) // Set the number of ticks
-
-    const xAxis = g => g
-    .attr("transform", `translate(0,${0})`)
-    .attr("class", "axisgroup") 
-    .call(d3.axisTop(x).tickSizeOuter(0))
-    .call(d3.axisTop(x)
-    .tickSize(-height, 0, 0)
-    .ticks(xTicks)
-    .tickFormat((d) => {
-      return xFormat.date ? d3.timeFormat("%b %Y")(d) : numberFormat(d)
-    })
-    .tickPadding(10))
-
-    const yAxis = g => g
-    .call(d3.axisLeft(y)) 
-
-    features
-    .append("g")
-    .attr("class", "x")
-    .attr("transform", "translate(0," + height + ")")
-    .call(xAxis)
+    // features
+    //   .append("circle")
+    //   .attr("cx", `${ (featuresWidth) /2}`)
+    //   .attr("cy", `${ (featuresHeight) /2}`)
+    //   .attr("fill", "red")
+    //   .attr("r", 5)
 
     if (lollies.length > 1) {
 
@@ -330,16 +347,65 @@ export default class Lollipop {
 
     }
 
-    if (minMax.status || x(0) > marginleft) {
+    if (xAxisLabel) {
 
-      features.append('line')
-          .style("stroke", "#767676")
-          .style("stroke-width", 1)
-          .attr("x1", x(0))
-          .attr("y1", 0)
-          .attr("x2", x(0))
-          .attr("y2", height); 
-  
+      svg
+      .append("text")
+      .attr("x", marginleft)
+      .attr("y", margintop / 2)
+      .attr("fill", "#767676")
+      .attr("text-anchor", "start")
+      .text(xAxisLabel)
+      //.call(wrap, marginleft > 15 ? marginleft - 15 : marginleft); // Assuming `maxWidth` is defined
+
+    }
+
+    for (const lolly of lollies) {
+
+      features.selectAll(".lolly")
+      .data(datum)
+      .enter()
+      .append("circle")
+      .attr("cx", function(d) { return x(+d[lolly]); })
+      .attr("cy", function(d) { return y(d[groupBy]); })
+      .attr("r", "7")
+      .style("fill", (d, i) => {
+        return (d.Color) ? d.Color : colors.get(lolly)
+      })
+      .style("stroke", (d, i) => {
+        return (d.Color) ? d.Color : colors.get(lolly)
+      })
+
+    }
+ 
+
+
+    if (labels.length > 0) {
+     
+      const clickLoggingOn = getURLParams("labelling") ? true : false ;
+      console.log("clickLoggingOn", clickLoggingOn);
+
+      // Move this to wrangle later once we re-factor the labelling stuff
+
+      if (typeof labels[0].coords  === 'string') {
+        labels.forEach(function(d) {
+          d.coords = JSON.parse(d.coords)
+          d.sweepFlag = +d.sweepFlag
+          d.largeArcFlag = +d.largeArcFlag
+          d.radius = +d.radius
+        })
+      }
+     
+      console.log("annotations", labels)
+      labels.forEach((config) => {
+    		addLabel(svg, config, svgWidth, svgHeight, {
+    			"left": marginleft,
+    			"right": marginright,
+    			"top": margintop,
+    			"bottom": marginbottom
+    		}, clickLoggingOn)
+    	})
+
     }
 
   }

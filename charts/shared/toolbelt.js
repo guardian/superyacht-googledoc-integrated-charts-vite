@@ -50,6 +50,26 @@ export async function premerge(data) {
 
 };
 
+export const checkAppForDarkMode = () => {
+
+    // eg AMP pages this is not present so just return. Dark mode can't work on iframed atoms in AMP
+    if(!window.parent) {
+      return; 
+    }
+  
+    // check the parent window to see if this atom is embedded in an app
+    const parentIsIos = window.parent.document.querySelector(".ios") // null if not present
+    const parentIsAndroid = window.parent.document.querySelector(".android")
+
+    // if it is in an app, add the 'in-app' class name to the body
+    if(parentIsIos || parentIsAndroid){ document.querySelector("body").classList.add("in-app") }
+    
+    // hack for android app - it also needs this for an annoying reason 
+    const parentIsInDarkMode = window.parent.document.querySelector(".dark-mode-on")
+    if(parentIsInDarkMode) { document.querySelector("body").classList.add("dark-mode-on") }
+  }
+
+/*
 export function wrap(text, width, padding=20) {
 
   let w = width - padding
@@ -76,6 +96,33 @@ export function wrap(text, width, padding=20) {
     }
   });
 }
+*/
+
+export function wrap(textSelection, maxWidth, padding=20) {
+  textSelection.each(function() {
+    let text = d3.select(this),
+        words = text.text().split(/\s+/).reverse(),
+        word,
+        line = [],
+        lineNumber = 0,
+        lineHeight = 1.1, // ems
+        y = text.attr("y"),
+        dy = parseFloat(text.attr("dy") || 0),
+        tspan = text.text(null).append("tspan").attr("x", text.attr("x")).attr("y", y).attr("dy", dy + "em");
+
+    while (word = words.pop()) {
+      line.push(word);
+      tspan.text(line.join(" "));
+      if (tspan.node().getComputedTextLength() > maxWidth) {
+        line.pop();
+        tspan.text(line.join(" "));
+        line = [word];
+        tspan = text.append("tspan").attr("x", text.attr("x")).attr("y", y).attr("dy", `${++lineNumber * lineHeight + dy}em`).text(word);
+      }
+    }
+  });
+}
+
 
 export function dodge(data, radius) {
   const radius2 = radius ** 2;
@@ -420,8 +467,11 @@ export function getMinMax(array) {
 
 }
 
+// Bufferize now takes a percetange as the third argument, and adds a buffer to the
+// Min and Max which is a % of the overall unit range
+
 export function bufferize(min, max, buff=5) {
-  const buffer = ((max - min) / 100) * buff
+  const buffer = (max - min) * (buff/100)
   return [min - buffer, max + buffer]
 }
 
@@ -791,3 +841,12 @@ export function getDateTextFormat(domain) {
   default: console.error("a new time format is required!");
   }
 }
+
+
+export function capitalizeFirstLetter(word) {
+  if (typeof word === 'string' && word.length > 0) {
+    return word.charAt(0).toUpperCase() + word.slice(1);
+  }
+  return word; // Return the original input if it's not a non-empty string
+}
+

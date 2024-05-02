@@ -1,6 +1,7 @@
 {
 	"sheets": {
 		"data": [],
+		"columns": [],
 		"calcs": [],
 		"template": [{
 			"title": "",
@@ -11,26 +12,23 @@
 		}],
 		"trendline": [],
 		"options": [{
-            "enableShowMore": "FALSE",
             "aria": "FALSE",
             "colorScheme": "guardian",
-            "baseline" : "",
             "stackedbars" : "",
 			"dateFormat": "%Y-%m-%d",
 			"timeInterval": "",
 			"xAxisLabel": "",
 			"yAxisLabel": "",
-			"baseline": "",
 			"periodDateFormat": "",
 			"xAxisDateFormat": "",
 			"margin-left": "35",
 			"margin-top": "20",
 			"margin-bottom": "20",
 			"margin-right": "20",
-			"x_axis_cross_y" : "",
 			"xColumn" : "",
 			"xFormat" : "",
-			"parseTime" : ""
+			"parseTime" : "",
+			"hideKey" : "FALSE"
 		}],
 		"chartId": [{
 			"type": "verticalbar"

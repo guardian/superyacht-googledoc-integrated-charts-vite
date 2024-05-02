@@ -1,5 +1,6 @@
 {
     "sheets": {
+        "columns": [],
         "template": [
             {
                 "title": "",
@@ -24,8 +25,6 @@
                 "enableShowMore": "FALSE",
                 "aria": "FALSE",
                 "colorScheme": "guardian",
-                "maxXticks" : 3,
-                "scaleByAllMax" : "FALSE",
                 "autoSort" : "FALSE",
                 "margin-left": "20",
                 "margin-top": "30",
@@ -41,7 +40,8 @@
                 "yAxis" : "",
                 "stackedhorizontal" : "",
                 "xAxisDateFormat" : "",
-                "dateFormat": "%Y-%m-%d"
+                "dateFormat": "%Y-%m-%d",
+                "forceCentre" : "TRUE"
             }
         ],
         "dropdown": []

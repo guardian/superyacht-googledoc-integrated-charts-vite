@@ -1,5 +1,6 @@
 {
     "sheets": {
+        "columns": [],
         "template": [
             {
                 "title": "",
@@ -21,7 +22,6 @@
         ],
         "options": [
             {
-                "enableShowMore": "FALSE",
                 "aria": "FALSE",
                 "colorScheme": "guardian",
                 "dateFormat": "%Y-%m-%d",
@@ -30,7 +30,6 @@
                 "yAxisLabel": "%",
                 "minY": "",
                 "maxY": "",
-                "x_axis_cross_y": 0,
                 "periodDateFormat": "",
                 "margin-left": "50",
                 "margin-top": "30",
@@ -39,7 +38,6 @@
                 "parseTime" : "",
                 "timeInterval" : "",
                 "xAxisDateFormat" : "",
-                "baseline" : "",
                 "xColumn" : "",
                 "xFormat" : "",
                 "stackedbars" : ""

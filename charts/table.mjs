@@ -23,7 +23,7 @@ export default class Table {
   }
 
   init() {
-    console.log("blah")
+
     drawShowMore(this.settings.enableShowMore)  
 
     addCustomCSS(this.settings.keys, this.settings.data.length, this.settings.enableScroll, this.settings.enableShowMore)
@@ -46,7 +46,7 @@ export default class Table {
           source, 
           data, 
           keys, 
-          labels, 
+          cols, 
           userkey, 
           type, 
           enableSearch, 

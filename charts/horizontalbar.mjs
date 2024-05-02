@@ -21,7 +21,7 @@ export default class Horizontalbar {
   }
 
   init() {
-
+    console.log('enableshowmore',this.settings.enableShowMore)
     drawShowMore(this.settings.enableShowMore)  
 
     if (this.settings.tooltip != "") {
@@ -95,13 +95,12 @@ export default class Horizontalbar {
           labels, 
           userkey, 
           keys,
+          forceCentre,
           lines, 
           periods, 
           enableShowMore, 
           aria, 
           colorScheme, 
-          maxXticks, 
-          scaleByAllMax, 
           autoSort, 
           dropdown,
           xMin,
@@ -193,21 +192,18 @@ export default class Horizontalbar {
 
     console.log("stack",stackedhorizontal, stackedhorizontal.length)
 
-    width = document
-    .querySelector("#graphicContainer")
-    .getBoundingClientRect().width
+    width = document.querySelector("#graphicContainer").getBoundingClientRect().width - marginleft - marginright;
 
-    // height = (barheight) * 75 + margintop + marginbottom
+    height = (barheight) * 75 //+ margintop + marginbottom
 
-    height = 550
 
-    width = width - marginleft - marginright
+    //width = width - marginleft - marginright
 
     const svg = d3
     .select("#graphicContainer")
     .append("svg")
-    .attr("width", width)
-    .attr("height", height)
+    .attr("width", width + marginleft + marginright)
+    .attr("height", height + margintop + marginbottom)
     .attr("id", "svg")
     .attr("overflow", "hidden")
 
@@ -247,12 +243,20 @@ export default class Horizontalbar {
     .paddingOuter(0.45)
 
     y.domain(datum.map((d) => d[yColumn]))
-
-    const minMax = getMinMax([...datum.map(d => d.Total), ...datum.map(d => d.extent)]) // (scaleByAllMax) ? getMinMax(allValues) : getMinMax(datum.map(d => d[1]))
-
-    xMax = (xMax == "") ? minMax.max : xMax
-
-    xMin = (xMin == "") ? minMax.min : xMin
+    console.log("forceCentre", forceCentre)
+    if (forceCentre) {
+      const minMax = getMinMax([...datum.map(d => d.Total), ...datum.map(d => d.extent)]) // (scaleByAllMax) ? getMinMax(allValues) : getMinMax(datum.map(d => d[1]))
+      xMax = (xMax == "") ? minMax.max : xMax
+      xMin = (xMin == "") ? minMax.min : xMin
+    }
+    
+    else {
+      const extent = d3.extent([...datum.map(d => d.Total), ...datum.map(d => d.extent)])  
+      console.log('extent',extent)
+      xMax = extent[1]
+      xMin = extent[0]
+    }
+    
 
     if (minX != null) {
       if (minX != "") {
@@ -314,8 +318,6 @@ export default class Horizontalbar {
       })
     })
 
-    console.log("layers",layers)
-
     const layer = features
     .selectAll("layer")
     .data(layers, (d) => d.key)
@@ -323,8 +325,6 @@ export default class Horizontalbar {
     .append("g")
     .attr("class", (d) => "layer " + d.key)
     .attr("id", "features")
-
-    let x_axis_cross_y = null
 
     layer
     .selectAll("rect")
@@ -351,12 +351,6 @@ export default class Horizontalbar {
     .attr("width", (d) => {
       return x(d[1]) - x(d[0]) //(d.data["Total"] >= 0) ? x(d.data["Total"]) - x(0) : x(0) - x(d.data["Total"]) // x(d[1])
     })
-
-    features
-    .append("g")
-    .attr("class", "x")
-    .attr("transform", () => (x_axis_cross_y != null) ? "translate(0," + y(x_axis_cross_y) + ")" : "translate(0," + height + ")")
-    .call(xAxis)
 
     features
     .selectAll(".barText")
@@ -556,7 +550,7 @@ export default class Horizontalbar {
     }
 
 
-    if (minMax.status) {
+    // Draws a solid line at zero
 
     features.append('line')
         .style("stroke", "#767676")
@@ -566,7 +560,7 @@ export default class Horizontalbar {
         .attr("x2", x(0))
         .attr("y2", height); 
 
-    }
+  
 
     if (this.settings.tooltip != "") {
 

@@ -1,6 +1,7 @@
 {
     "sheets": {
         "data": [],
+        "columns": [],
         "template": [
             {
                 "title": "",
@@ -12,8 +13,7 @@
         ],
         "options": [
             {
-                "enableShowMore": "FALSE",
-                "lineLabelling" : "FALSE",
+                "lineLabelling" : "TRUE",
                 "aria": "FALSE",
                 "colorScheme": "guardian",
                 "breaks" : "",
@@ -22,17 +22,15 @@
                 "yScaleType": "",
                 "xAxisLabel": "",
                 "yAxisLabel": "",
-                "baseline": "",
                 "periodDateFormat": "",
                 "margin-left": "50",
                 "margin-top": "30",
                 "margin-bottom": "20",
                 "margin-right": "30",
-                "minX": "0",
-                "minY": "0",
+                "minX": "",
+                "minY": "",
                 "maxY" : "",
                 "timeInterval" : "",
-                "x_axis_cross_y" : "",
                 "xAxisDateFormat" : "%b %y",
                 "xColumn" : "",
                 "xFormat" : "",

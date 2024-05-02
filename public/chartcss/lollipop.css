@@ -1,10 +1,1 @@
-.domain {
-  stroke: white;
-  stroke-width: 0px; }
-
-.tick line {
-  stroke: lightgrey;
-  stroke-width: 0.5px;
-  stroke-dasharray: 4 4; }
-
-/*# sourceMappingURL=data:application/json;base64,ewoJInZlcnNpb24iOiAzLAoJImZpbGUiOiAic3JjL3N0eWxlcy9jaGFydGNzcy9sb2xsaXBvcC5jc3MiLAoJInNvdXJjZXMiOiBbCgkJInNyYy9zdHlsZXMvY2hhcnRjc3MvbG9sbGlwb3Auc2NzcyIKCV0sCgkibmFtZXMiOiBbXSwKCSJtYXBwaW5ncyI6ICJBQUNBLEFBQUEsT0FBTyxDQUFDO0VBQ1AsTUFBTSxFQUFDLEtBQUs7RUFDWixZQUFZLEVBQUUsR0FBRyxHQUNqQjs7QUFFRCxBQUFBLEtBQUssQ0FBQyxJQUFJLENBQUM7RUFDUCxNQUFNLEVBQUUsU0FBUztFQUNqQixZQUFZLEVBQUUsS0FBSztFQUNuQixnQkFBZ0IsRUFBRyxHQUFHLEdBQ3pCIgp9 */
+.domain{stroke:#fff;stroke-width:0px}.tick line{stroke:#d3d3d3;stroke-width:.5px;stroke-dasharray:4 4}

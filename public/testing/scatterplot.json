@@ -1,43 +1,913 @@
 {
     "sheets": {
         "data": [
-            {
-                "Name": "Far West",
-                "median_household_income": "1103",
-                "persons": "2288",
-                "wfh_pct": "30.9",
-                "State": "New South Wales",
-                "Region": "Rest of NSW",
-                "label" : "TRUE"
-            },
-            {
-                "Name": "Bombala",
-                "median_household_income": "1253",
-                "persons": "2454",
-                "wfh_pct": "13.4",
-                "State": "New South Wales",
-                "Region": "Rest of NSW",
-                "label" : "TRUE"
-            },
-            {
-                "Name": "West Wimmera",
-                "median_household_income": "1176",
-                "persons": "2766",
-                "wfh_pct": "21.7",
-                "State": "Victoria",
-                "Region": "Rest of Victoria",
-                "label" : "TRUE"
-            },
-            {
-                "Name": "Moira",
-                "median_household_income": "1361",
-                "persons": "2843",
-                "wfh_pct": "18.3",
-                "State": "Victoria",
-                "Region": "Rest of Victoria",
-                "label" : "TRUE"
-            }
-        ],
+  {
+    "name": "Bean",
+    "state": "ACT",
+    "votesYesPercent": 55.93,
+    "coalition_pct": 37.05
+  },
+  {
+    "name": "Canberra",
+    "state": "ACT",
+    "votesYesPercent": 70.46,
+    "coalition_pct": 27.54
+  },
+  {
+    "name": "Fenner",
+    "state": "ACT",
+    "votesYesPercent": 57.13,
+    "coalition_pct": 34.31
+  },
+  {
+    "name": "Banks",
+    "state": "NSW",
+    "votesYesPercent": 38.45,
+    "coalition_pct": 53.2
+  },
+  {
+    "name": "Barton",
+    "state": "NSW",
+    "votesYesPercent": 44.39,
+    "coalition_pct": 34.46
+  },
+  {
+    "name": "Bennelong",
+    "state": "NSW",
+    "votesYesPercent": 48.24,
+    "coalition_pct": 49.02
+  },
+  {
+    "name": "Berowra",
+    "state": "NSW",
+    "votesYesPercent": 47.12,
+    "coalition_pct": 59.77
+  },
+  {
+    "name": "Blaxland",
+    "state": "NSW",
+    "votesYesPercent": 37.92,
+    "coalition_pct": 35.06
+  },
+  {
+    "name": "Bradfield",
+    "state": "NSW",
+    "votesYesPercent": 51.6,
+    "coalition_pct": 56.55
+  },
+  {
+    "name": "Calare",
+    "state": "NSW",
+    "votesYesPercent": 28.33,
+    "coalition_pct": 65.45
+  },
+  {
+    "name": "Chifley",
+    "state": "NSW",
+    "votesYesPercent": 40.23,
+    "coalition_pct": 36.53
+  },
+  {
+    "name": "Cook",
+    "state": "NSW",
+    "votesYesPercent": 36.37,
+    "coalition_pct": 62.44
+  },
+  {
+    "name": "Cowper",
+    "state": "NSW",
+    "votesYesPercent": 33.52,
+    "coalition_pct": 59.47
+  },
+  {
+    "name": "Cunningham",
+    "state": "NSW",
+    "votesYesPercent": 51.66,
+    "coalition_pct": 35.3
+  },
+  {
+    "name": "Dobell",
+    "state": "NSW",
+    "votesYesPercent": 35.05,
+    "coalition_pct": 43.48
+  },
+  {
+    "name": "Eden-Monaro",
+    "state": "NSW",
+    "votesYesPercent": 39.48,
+    "coalition_pct": 41.8
+  },
+  {
+    "name": "Farrer",
+    "state": "NSW",
+    "votesYesPercent": 25.21,
+    "coalition_pct": 66.35
+  },
+  {
+    "name": "Fowler",
+    "state": "NSW",
+    "votesYesPercent": 39.73,
+    "coalition_pct": 44.28
+  },
+  {
+    "name": "Gilmore",
+    "state": "NSW",
+    "votesYesPercent": 38.22,
+    "coalition_pct": 49.83
+  },
+  {
+    "name": "Grayndler",
+    "state": "NSW",
+    "votesYesPercent": 74.48,
+    "coalition_pct": 21.15
+  },
+  {
+    "name": "Greenway",
+    "state": "NSW",
+    "votesYesPercent": 43.22,
+    "coalition_pct": 38.47
+  },
+  {
+    "name": "Hughes",
+    "state": "NSW",
+    "votesYesPercent": 41.45,
+    "coalition_pct": 57.01
+  },
+  {
+    "name": "Hume",
+    "state": "NSW",
+    "votesYesPercent": 26.13,
+    "coalition_pct": 57.72
+  },
+  {
+    "name": "Hunter",
+    "state": "NSW",
+    "votesYesPercent": 28.58,
+    "coalition_pct": 45.97
+  },
+  {
+    "name": "Kingsford Smith",
+    "state": "NSW",
+    "votesYesPercent": 54.98,
+    "coalition_pct": 35.5
+  },
+  {
+    "name": "Lindsay",
+    "state": "NSW",
+    "votesYesPercent": 30.67,
+    "coalition_pct": 56.34
+  },
+  {
+    "name": "Lyne",
+    "state": "NSW",
+    "votesYesPercent": 32.47,
+    "coalition_pct": 63.8
+  },
+  {
+    "name": "Macarthur",
+    "state": "NSW",
+    "votesYesPercent": 35.09,
+    "coalition_pct": 41.47
+  },
+  {
+    "name": "Mackellar",
+    "state": "NSW",
+    "votesYesPercent": 50.47,
+    "coalition_pct": 58.6
+  },
+  {
+    "name": "Macquarie",
+    "state": "NSW",
+    "votesYesPercent": 43.07,
+    "coalition_pct": 42.23
+  },
+  {
+    "name": "McMahon",
+    "state": "NSW",
+    "votesYesPercent": 35.18,
+    "coalition_pct": 40.51
+  },
+  {
+    "name": "Mitchell",
+    "state": "NSW",
+    "votesYesPercent": 41.47,
+    "coalition_pct": 60.69
+  },
+  {
+    "name": "New England",
+    "state": "NSW",
+    "votesYesPercent": 24.75,
+    "coalition_pct": 66.43
+  },
+  {
+    "name": "Newcastle",
+    "state": "NSW",
+    "votesYesPercent": 53.48,
+    "coalition_pct": 32.02
+  },
+  {
+    "name": "North Sydney",
+    "state": "NSW",
+    "votesYesPercent": 59.64,
+    "coalition_pct": 51.26
+  },
+  {
+    "name": "Page",
+    "state": "NSW",
+    "votesYesPercent": 32.53,
+    "coalition_pct": 60.74
+  },
+  {
+    "name": "Parkes",
+    "state": "NSW",
+    "votesYesPercent": 21.22,
+    "coalition_pct": 67.84
+  },
+  {
+    "name": "Parramatta",
+    "state": "NSW",
+    "votesYesPercent": 45.5,
+    "coalition_pct": 45.43
+  },
+  {
+    "name": "Paterson",
+    "state": "NSW",
+    "votesYesPercent": 29.48,
+    "coalition_pct": 46.69
+  },
+  {
+    "name": "Reid",
+    "state": "NSW",
+    "votesYesPercent": 47.05,
+    "coalition_pct": 44.81
+  },
+  {
+    "name": "Richmond",
+    "state": "NSW",
+    "votesYesPercent": 43.31,
+    "coalition_pct": 41.77
+  },
+  {
+    "name": "Riverina",
+    "state": "NSW",
+    "votesYesPercent": 28.02,
+    "coalition_pct": 64.85
+  },
+  {
+    "name": "Robertson",
+    "state": "NSW",
+    "votesYesPercent": 42.68,
+    "coalition_pct": 47.74
+  },
+  {
+    "name": "Shortland",
+    "state": "NSW",
+    "votesYesPercent": 38.29,
+    "coalition_pct": 44.18
+  },
+  {
+    "name": "Sydney",
+    "state": "NSW",
+    "votesYesPercent": 71.04,
+    "coalition_pct": 24.43
+  },
+  {
+    "name": "Warringah",
+    "state": "NSW",
+    "votesYesPercent": 59.09,
+    "coalition_pct": 51.43
+  },
+  {
+    "name": "Watson",
+    "state": "NSW",
+    "votesYesPercent": 41.43,
+    "coalition_pct": 34.9
+  },
+  {
+    "name": "Wentworth",
+    "state": "NSW",
+    "votesYesPercent": 62.66,
+    "coalition_pct": 55.92
+  },
+  {
+    "name": "Werriwa",
+    "state": "NSW",
+    "votesYesPercent": 39.46,
+    "coalition_pct": 44.18
+  },
+  {
+    "name": "Whitlam",
+    "state": "NSW",
+    "votesYesPercent": 35.4,
+    "coalition_pct": 39.93
+  },
+  {
+    "name": "Lingiari",
+    "state": "NT",
+    "votesYesPercent": 44.15,
+    "coalition_pct": 49.05
+  },
+  {
+    "name": "Solomon",
+    "state": "NT",
+    "votesYesPercent": 35.09,
+    "coalition_pct": 40.63
+  },
+  {
+    "name": "Blair",
+    "state": "QLD",
+    "votesYesPercent": 30.17,
+    "coalition_pct": 44.77
+  },
+  {
+    "name": "Bonner",
+    "state": "QLD",
+    "votesYesPercent": 40.86,
+    "coalition_pct": 53.41
+  },
+  {
+    "name": "Bowman",
+    "state": "QLD",
+    "votesYesPercent": 27.92,
+    "coalition_pct": 55.51
+  },
+  {
+    "name": "Brisbane",
+    "state": "QLD",
+    "votesYesPercent": 56.68,
+    "coalition_pct": 45.6
+  },
+  {
+    "name": "Capricornia",
+    "state": "QLD",
+    "votesYesPercent": 19.19,
+    "coalition_pct": 56.59
+  },
+  {
+    "name": "Dawson",
+    "state": "QLD",
+    "votesYesPercent": 19.2,
+    "coalition_pct": 60.42
+  },
+  {
+    "name": "Dickson",
+    "state": "QLD",
+    "votesYesPercent": 34.98,
+    "coalition_pct": 51.7
+  },
+  {
+    "name": "Fadden",
+    "state": "QLD",
+    "votesYesPercent": 26.5,
+    "coalition_pct": 60.63
+  },
+  {
+    "name": "Fairfax",
+    "state": "QLD",
+    "votesYesPercent": 34.67,
+    "coalition_pct": 58.95
+  },
+  {
+    "name": "Fisher",
+    "state": "QLD",
+    "votesYesPercent": 31.69,
+    "coalition_pct": 58.67
+  },
+  {
+    "name": "Flynn",
+    "state": "QLD",
+    "votesYesPercent": 16.4,
+    "coalition_pct": 53.82
+  },
+  {
+    "name": "Forde",
+    "state": "QLD",
+    "votesYesPercent": 28.13,
+    "coalition_pct": 54.23
+  },
+  {
+    "name": "Griffith",
+    "state": "QLD",
+    "votesYesPercent": 56.59,
+    "coalition_pct": 38.93
+  },
+  {
+    "name": "Groom",
+    "state": "QLD",
+    "votesYesPercent": 24.21,
+    "coalition_pct": 64.17
+  },
+  {
+    "name": "Herbert",
+    "state": "QLD",
+    "votesYesPercent": 24.24,
+    "coalition_pct": 61.77
+  },
+  {
+    "name": "Hinkler",
+    "state": "QLD",
+    "votesYesPercent": 19.08,
+    "coalition_pct": 60.07
+  },
+  {
+    "name": "Kennedy",
+    "state": "QLD",
+    "votesYesPercent": 19.24,
+    "coalition_pct": 60.16
+  },
+  {
+    "name": "Leichhardt",
+    "state": "QLD",
+    "votesYesPercent": 33.48,
+    "coalition_pct": 53.44
+  },
+  {
+    "name": "Lilley",
+    "state": "QLD",
+    "votesYesPercent": 46.68,
+    "coalition_pct": 39.46
+  },
+  {
+    "name": "Longman",
+    "state": "QLD",
+    "votesYesPercent": 24.73,
+    "coalition_pct": 53.08
+  },
+  {
+    "name": "Maranoa",
+    "state": "QLD",
+    "votesYesPercent": 15.88,
+    "coalition_pct": 72.12
+  },
+  {
+    "name": "McPherson",
+    "state": "QLD",
+    "votesYesPercent": 34.35,
+    "coalition_pct": 59.34
+  },
+  {
+    "name": "Moncrieff",
+    "state": "QLD",
+    "votesYesPercent": 30.99,
+    "coalition_pct": 61.19
+  },
+  {
+    "name": "Moreton",
+    "state": "QLD",
+    "votesYesPercent": 49.16,
+    "coalition_pct": 40.91
+  },
+  {
+    "name": "Oxley",
+    "state": "QLD",
+    "votesYesPercent": 40.14,
+    "coalition_pct": 38.41
+  },
+  {
+    "name": "Petrie",
+    "state": "QLD",
+    "votesYesPercent": 33.43,
+    "coalition_pct": 54.44
+  },
+  {
+    "name": "Rankin",
+    "state": "QLD",
+    "votesYesPercent": 35.46,
+    "coalition_pct": 40.91
+  },
+  {
+    "name": "Ryan",
+    "state": "QLD",
+    "votesYesPercent": 52.69,
+    "coalition_pct": 47.58
+  },
+  {
+    "name": "Wide Bay",
+    "state": "QLD",
+    "votesYesPercent": 24.8,
+    "coalition_pct": 61.34
+  },
+  {
+    "name": "Wright",
+    "state": "QLD",
+    "votesYesPercent": 22.16,
+    "coalition_pct": 60.89
+  },
+  {
+    "name": "Adelaide",
+    "state": "SA",
+    "votesYesPercent": 49.57,
+    "coalition_pct": 38.09
+  },
+  {
+    "name": "Barker",
+    "state": "SA",
+    "votesYesPercent": 22.61,
+    "coalition_pct": 66.62
+  },
+  {
+    "name": "Boothby",
+    "state": "SA",
+    "votesYesPercent": 48.13,
+    "coalition_pct": 46.72
+  },
+  {
+    "name": "Grey",
+    "state": "SA",
+    "votesYesPercent": 20.33,
+    "coalition_pct": 60.07
+  },
+  {
+    "name": "Hindmarsh",
+    "state": "SA",
+    "votesYesPercent": 38.38,
+    "coalition_pct": 41.05
+  },
+  {
+    "name": "Kingston",
+    "state": "SA",
+    "votesYesPercent": 35.29,
+    "coalition_pct": 33.65
+  },
+  {
+    "name": "Makin",
+    "state": "SA",
+    "votesYesPercent": 31.89,
+    "coalition_pct": 39.2
+  },
+  {
+    "name": "Mayo",
+    "state": "SA",
+    "votesYesPercent": 40.02,
+    "coalition_pct": 48.41
+  },
+  {
+    "name": "Spence",
+    "state": "SA",
+    "votesYesPercent": 27.74,
+    "coalition_pct": 37.1
+  },
+  {
+    "name": "Sturt",
+    "state": "SA",
+    "votesYesPercent": 43.03,
+    "coalition_pct": 50.45
+  },
+  {
+    "name": "Bass",
+    "state": "TAS",
+    "votesYesPercent": 38.18,
+    "coalition_pct": 51.43
+  },
+  {
+    "name": "Braddon",
+    "state": "TAS",
+    "votesYesPercent": 27.39,
+    "coalition_pct": 58.03
+  },
+  {
+    "name": "Clark",
+    "state": "TAS",
+    "votesYesPercent": 58.01,
+    "coalition_pct": 32.76
+  },
+  {
+    "name": "Franklin",
+    "state": "TAS",
+    "votesYesPercent": 50.5,
+    "coalition_pct": 36.3
+  },
+  {
+    "name": "Lyons",
+    "state": "TAS",
+    "votesYesPercent": 32.05,
+    "coalition_pct": 49.08
+  },
+  {
+    "name": "Aston",
+    "state": "VIC",
+    "votesYesPercent": 42.71,
+    "coalition_pct": 52.81
+  },
+  {
+    "name": "Ballarat",
+    "state": "VIC",
+    "votesYesPercent": 41.5,
+    "coalition_pct": 37.03
+  },
+  {
+    "name": "Bendigo",
+    "state": "VIC",
+    "votesYesPercent": 39.97,
+    "coalition_pct": 37.89
+  },
+  {
+    "name": "Bruce",
+    "state": "VIC",
+    "votesYesPercent": 42.25,
+    "coalition_pct": 43.41
+  },
+  {
+    "name": "Calwell",
+    "state": "VIC",
+    "votesYesPercent": 44.38,
+    "coalition_pct": 37.61
+  },
+  {
+    "name": "Casey",
+    "state": "VIC",
+    "votesYesPercent": 42.53,
+    "coalition_pct": 51.48
+  },
+  {
+    "name": "Chisholm",
+    "state": "VIC",
+    "votesYesPercent": 50.1,
+    "coalition_pct": 43.59
+  },
+  {
+    "name": "Cooper",
+    "state": "VIC",
+    "votesYesPercent": 65.7,
+    "coalition_pct": 24.54
+  },
+  {
+    "name": "Corangamite",
+    "state": "VIC",
+    "votesYesPercent": 48.24,
+    "coalition_pct": 42.4
+  },
+  {
+    "name": "Corio",
+    "state": "VIC",
+    "votesYesPercent": 45.53,
+    "coalition_pct": 37.16
+  },
+  {
+    "name": "Deakin",
+    "state": "VIC",
+    "votesYesPercent": 49.21,
+    "coalition_pct": 50.19
+  },
+  {
+    "name": "Dunkley",
+    "state": "VIC",
+    "votesYesPercent": 44.13,
+    "coalition_pct": 43.73
+  },
+  {
+    "name": "Flinders",
+    "state": "VIC",
+    "votesYesPercent": 42.08,
+    "coalition_pct": 56.7
+  },
+  {
+    "name": "Fraser",
+    "state": "VIC",
+    "votesYesPercent": 56.63,
+    "coalition_pct": 33.5
+  },
+  {
+    "name": "Gellibrand",
+    "state": "VIC",
+    "votesYesPercent": 52.66,
+    "coalition_pct": 38.46
+  },
+  {
+    "name": "Gippsland",
+    "state": "VIC",
+    "votesYesPercent": 26.93,
+    "coalition_pct": 70.57
+  },
+  {
+    "name": "Goldstein",
+    "state": "VIC",
+    "votesYesPercent": 56.69,
+    "coalition_pct": 54.8
+  },
+  {
+    "name": "Gorton",
+    "state": "VIC",
+    "votesYesPercent": 38.72,
+    "coalition_pct": 40.03
+  },
+  {
+    "name": "Hawke",
+    "state": "VIC",
+    "votesYesPercent": 35.63,
+    "coalition_pct": 42.37
+  },
+  {
+    "name": "Higgins",
+    "state": "VIC",
+    "votesYesPercent": 60.63,
+    "coalition_pct": 47.94
+  },
+  {
+    "name": "Holt",
+    "state": "VIC",
+    "votesYesPercent": 44.42,
+    "coalition_pct": 42.88
+  },
+  {
+    "name": "Hotham",
+    "state": "VIC",
+    "votesYesPercent": 49.58,
+    "coalition_pct": 35.75
+  },
+  {
+    "name": "Indi",
+    "state": "VIC",
+    "votesYesPercent": 33.23,
+    "coalition_pct": 55.26
+  },
+  {
+    "name": "Isaacs",
+    "state": "VIC",
+    "votesYesPercent": 50.75,
+    "coalition_pct": 43.15
+  },
+  {
+    "name": "Jagajaga",
+    "state": "VIC",
+    "votesYesPercent": 54.4,
+    "coalition_pct": 37.65
+  },
+  {
+    "name": "Kooyong",
+    "state": "VIC",
+    "votesYesPercent": 59.86,
+    "coalition_pct": 54.18
+  },
+  {
+    "name": "La Trobe",
+    "state": "VIC",
+    "votesYesPercent": 38.52,
+    "coalition_pct": 58.69
+  },
+  {
+    "name": "Lalor",
+    "state": "VIC",
+    "votesYesPercent": 46.14,
+    "coalition_pct": 37.18
+  },
+  {
+    "name": "Macnamara",
+    "state": "VIC",
+    "votesYesPercent": 65.15,
+    "coalition_pct": 37.75
+  },
+  {
+    "name": "Mallee",
+    "state": "VIC",
+    "votesYesPercent": 21.47,
+    "coalition_pct": 68.99
+  },
+  {
+    "name": "Maribyrnong",
+    "state": "VIC",
+    "votesYesPercent": 52.89,
+    "coalition_pct": 37.55
+  },
+  {
+    "name": "McEwen",
+    "state": "VIC",
+    "votesYesPercent": 40.23,
+    "coalition_pct": 46.72
+  },
+  {
+    "name": "Melbourne",
+    "state": "VIC",
+    "votesYesPercent": 78.05,
+    "coalition_pct": 22.09
+  },
+  {
+    "name": "Menzies",
+    "state": "VIC",
+    "votesYesPercent": 44.95,
+    "coalition_pct": 50.68
+  },
+  {
+    "name": "Monash",
+    "state": "VIC",
+    "votesYesPercent": 34.55,
+    "coalition_pct": 52.9
+  },
+  {
+    "name": "Nicholls",
+    "state": "VIC",
+    "votesYesPercent": 23.81,
+    "coalition_pct": 67.15
+  },
+  {
+    "name": "Scullin",
+    "state": "VIC",
+    "votesYesPercent": 37.4,
+    "coalition_pct": 34.42
+  },
+  {
+    "name": "Wannon",
+    "state": "VIC",
+    "votesYesPercent": 31.18,
+    "coalition_pct": 59.07
+  },
+  {
+    "name": "Wills",
+    "state": "VIC",
+    "votesYesPercent": 64.58,
+    "coalition_pct": 24.23
+  },
+  {
+    "name": "Brand",
+    "state": "WA",
+    "votesYesPercent": 30.55,
+    "coalition_pct": 33.29
+  },
+  {
+    "name": "Burt",
+    "state": "WA",
+    "votesYesPercent": 33.06,
+    "coalition_pct": 34.79
+  },
+  {
+    "name": "Canning",
+    "state": "WA",
+    "votesYesPercent": 23.11,
+    "coalition_pct": 53.59
+  },
+  {
+    "name": "Cowan",
+    "state": "WA",
+    "votesYesPercent": 36.82,
+    "coalition_pct": 39.18
+  },
+  {
+    "name": "Curtin",
+    "state": "WA",
+    "votesYesPercent": 51.07,
+    "coalition_pct": 55.6
+  },
+  {
+    "name": "Durack",
+    "state": "WA",
+    "votesYesPercent": 27.03,
+    "coalition_pct": 54.27
+  },
+  {
+    "name": "Forrest",
+    "state": "WA",
+    "votesYesPercent": 31.71,
+    "coalition_pct": 54.29
+  },
+  {
+    "name": "Fremantle",
+    "state": "WA",
+    "votesYesPercent": 46.72,
+    "coalition_pct": 33.11
+  },
+  {
+    "name": "Hasluck",
+    "state": "WA",
+    "votesYesPercent": 33.98,
+    "coalition_pct": 44
+  },
+  {
+    "name": "Moore",
+    "state": "WA",
+    "votesYesPercent": 37.74,
+    "coalition_pct": 50.66
+  },
+  {
+    "name": "O'Connor",
+    "state": "WA",
+    "votesYesPercent": 24.06,
+    "coalition_pct": 56.97
+  },
+  {
+    "name": "Pearce",
+    "state": "WA",
+    "votesYesPercent": 30.87,
+    "coalition_pct": 40.96
+  },
+  {
+    "name": "Perth",
+    "state": "WA",
+    "votesYesPercent": 56.36,
+    "coalition_pct": 35.2
+  },
+  {
+    "name": "Swan",
+    "state": "WA",
+    "votesYesPercent": 43.62,
+    "coalition_pct": 41.23
+  },
+  {
+    "name": "Tangney",
+    "state": "WA",
+    "votesYesPercent": 40.95,
+    "coalition_pct": 47.62
+  }
+],
         "trendline": [
             {
                 "trendline": "default",
@@ -54,10 +924,10 @@
             "margin-top": "20",
             "margin-bottom": "20",
             "margin-right": "20",
-            "xColumn" : "median_household_income",
-            "yColumn" : "wfh_pct",
-            "groupBy" : "Region",
-            "zColumn" : "persons",
+            "xColumn" : "votesYesPercent",
+            "yColumn" : "coalition_pct",
+            "groupBy" : "state",
+            "zColumn" : "",
             "zMin" : "5",
             "zMax" : "10",
             "zScale" : "scaleLinear",

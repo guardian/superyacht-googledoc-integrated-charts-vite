@@ -90,8 +90,7 @@ export default class Linechart {
           dateFormat, 
           yScaleType, 
           xAxisLabel, 
-          yAxisLabel, 
-          baseline, 
+          yAxisLabel,
           tooltip, 
           periodDateFormat, 
           marginleft, 
@@ -102,7 +101,6 @@ export default class Linechart {
           minY, 
           maxY,
           footnote, 
-          enableShowMore, 
           aria, 
           colorScheme, 
           lineLabelling, 
@@ -111,7 +109,6 @@ export default class Linechart {
           periods, 
           labels, 
           dropdown, 
-          x_axis_cross_y,
           xAxisDateFormat,
           breaks,
           lines,
@@ -157,7 +154,7 @@ export default class Linechart {
     let y = d3.scaleLinear()
     .rangeRound(yRange)
 
-    console.log("invertY", invertY)
+    //console.log("invertY", invertY)
    
     if (yScaleType != "" && yScaleType != null) {
       y = d3[yScaleType]()
@@ -190,7 +187,7 @@ export default class Linechart {
     
     let buffer = (lineLabelling) ? getLongestKeyLength(svg, keyCopy, isMobile, lineLabelling) : 0 ;
 
-    console.log("xFormat",xFormat)
+    //console.log("xFormat",xFormat)
 
     // Set a default x scale
     let x = d3.scaleLinear()
@@ -299,7 +296,11 @@ export default class Linechart {
 
    let range = datum.map( d => d[xColumn])
 
+<<<<<<< HEAD
   //  console.log("renage",range) 
+=======
+   //console.log("renage",range) 
+>>>>>>> main
     x.domain(d3.extent(range))
 
     y.domain([min, max])
@@ -340,7 +341,7 @@ export default class Linechart {
     features
     .append("g")
     .attr("class", "x")
-    .attr("transform", () => (x_axis_cross_y != "") ? "translate(0," + y(x_axis_cross_y) + ")" : "translate(0," + height + ")")
+    .attr("transform", "translate(0," + height + ")")
     .call(xAxis)
 
     features
@@ -358,7 +359,9 @@ export default class Linechart {
 
     features
     .append("text")
-    .attr("x", width)
+    .attr("x", () => {
+      return lineLabelling ? width - buffer : width
+    })
     .attr("y", height - 6)
     .attr("fill", "#767676")
     .attr("text-anchor", "end")
@@ -399,7 +402,7 @@ export default class Linechart {
       .attr("stroke", (d) => colors.get(key))
       .attr("stroke-linejoin", "round")
       .attr("stroke-linecap", "round")
-      .attr("stroke-width", 2)
+      .attr("stroke-width", 3)
       .attr("d", lineGenerators[key])
 
       const tempLabelData = chartKeyData[key].filter((d) => d != null)
@@ -437,10 +440,10 @@ export default class Linechart {
 
     })
 
-
+    d3.select("#annotations").text("")
     if (periods.length > 0) {
 
-      addPeriods(periods, parseTime, features, x, height, xFormat)
+      addPeriods(periods, features, x, height, xFormat, isMobile)
 
     }
 

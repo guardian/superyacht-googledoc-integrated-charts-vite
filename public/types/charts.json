@@ -12,7 +12,9 @@
 		}],
 		"settings" : [{
 			"name" : "stackedbars"
-		}]
+		}],
+		"wide" : true,
+		"long" : false
 
 	}
 }, {
@@ -20,16 +22,9 @@
 	"admin" : false,
 	"names" : ["scatterplot"],
 	"config" : {
-		"axis" : [{
-			"name" : "xColumn",
-			"default" : 0
-		},{
-			"name" : "yColumn",
-			"default" : 1
-		},{
-			"name" : "groupBy",
-			"default" : 2
-		}]
+		"axis" : [],
+		"wide" : false,
+		"long" : true
 	}
 }, {
 	"type": "linechart",
@@ -42,7 +37,9 @@
 		}],
 		"settings" : [{
 			"name" : "chartlines"
-		}]
+		}],
+		"wide" : true,
+		"long" : true
 	}
 }, {
 	"type": "horizontalbar",
@@ -58,27 +55,25 @@
 		}],
 		"settings" : [{
 			"name" : "stackedhorizontal"
-		}]
+		}],
+		"wide" : true,
+		"long" : false
 	}
 }, {
 	"type": "smallmultiples",
 	"admin" : false,
 	"names" : ["smallmultiples"],
 	"config" : {
-		"axis" : [{
-			"name" : "xColumn",
-			"default" : 0
-		},{
-			"name" : "groupBy",
-			"default" : 1
-		}],
+		"axis" : [],
 		"settings" : [{
 			"name" : "smallmultiples"
-		}]
+		}],
+		"wide" : false,
+		"long" : true
 	}
 }, {
 	"type": "stackedarea",
-	"admin" : false,
+	"admin" : true,
 	"names" : ["stackedarea"],
 	"config" : {
 		"axis" : [{
@@ -87,44 +82,46 @@
 		}],
 		"settings" : [{
 			"name" : "stackedbars"
-		}]
+		}],
+		"wide" : true,
+		"long" : false
 	}
 }, {
 	"type": "table",
 	"admin" : true,
 	"names" : ["table"],
-	"config" : {}
+	"config" : {
+		"wide" : true,
+		"long" : true
+	}
 }, {
 	"type": "horizontalgroupedbar",
-	"admin" : false,
+	"admin" : true,
 	"names" : ["groupedbar","horizontalgroupedbar"],
 	"config" : {
 		"axis" : [{
 			"name" : "groupBy",
 			"default" : 0
-		}]
+		}],
+		"wide" : true,
+		"long" : false
 	}
 }, {
 	"type": "lollipop",
 	"admin" : false,
 	"names" : ["lollipop"],
 	"config" : {
-		"axis" : [{
-			"name" : "yColumn",
-			"default" : 0
-		}]
+		"axis" : [],
+		"wide" : true,
+		"long" : false
 	}
 },{
 	"type": "bubble",
 	"admin" : false,
 	"names" : ["bubble"],
 	"config" : {
-		"axis" : [{
-			"name" : "xColumn",
-			"default" : 0
-		},{
-			"name" : "yColumn",
-			"default" : 1
-		}]
+		"axis" : [],
+		"wide" : false,
+		"long" : true
 	}
 }]

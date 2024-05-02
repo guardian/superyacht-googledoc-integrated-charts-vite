@@ -1,5 +1,6 @@
 {
     "sheets": {
+        "columns": [],
         "template": [
             {
                 "title": "",
@@ -33,9 +34,11 @@
                 "minX" : "",
                 "maxX" : "",
                 "xFormat" : "",
+                "rowHeight":"40",
                 "xScale" : "scaleLinear",
                 "yScale" : "scaleBand",
-                "parseTime" : ""
+                "parseTime" : "",
+                "xAxisLabel" : ""
             }
         ],
         "dropdown": []

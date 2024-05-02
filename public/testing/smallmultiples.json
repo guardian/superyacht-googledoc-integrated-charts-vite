@@ -2,132 +2,144 @@
     "sheets": {
         "data": [
             {
-                "Year": "2010",
-                "Vehicle type": "SUV",
-                "Spending": "78616993"
+                "Country": "China",
+                "Day_of_week": "Monday",
+                "Years": "100"
             },
             {
-                "Year": "2011",
-                "Vehicle type": "SUV",
-                "Spending": "85344917"
+                "Country": "China",
+                "Day_of_week": "Tuesday",
+                "Years": "100"
             },
             {
-                "Year": "2021",
-                "Vehicle type": "SUV",
-                "Spending": "98567456"
+                "Country": "China",
+                "Day_of_week": "Wednesday",
+                "Years": "100"
             },
             {
-                "Year": "2022",
-                "Vehicle type": "SUV",
-                "Spending": "105798280"
+                "Country": "China",
+                "Day_of_week": "Thursday",
+                "Years": "100"
             },
             {
-                "Year": "2010",
-                "Vehicle type": "Light Commercial",
-                "Spending": "22036621"
+                "Country": "China",
+                "Day_of_week": "Friday",
+                "Years": "100"
             },
             {
-                "Year": "2011",
-                "Vehicle type": "Light Commercial",
-                "Spending": "41912150"
+                "Country": "China",
+                "Day_of_week": "Saturday",
+                "Years": "100"
             },
             {
-                "Year": "2021",
-                "Vehicle type": "Light Commercial",
-                "Spending": "79387217"
+                "Country": "China",
+                "Day_of_week": "Sunday",
+                "Years": "100"
             },
             {
-                "Year": "2022",
-                "Vehicle type": "Light Commercial",
-                "Spending": "91699859"
+                "Country": "France",
+                "Day_of_week": "Monday",
+                "Years": "57.41"
             },
             {
-                "Year": "2010",
-                "Vehicle type": "Medium or Large Cars",
-                "Spending": "92361895"
+                "Country": "France",
+                "Day_of_week": "Tuesday",
+                "Years": "54.95"
             },
             {
-                "Year": "2011",
-                "Vehicle type": "Medium or Large Cars",
-                "Spending": "60313679"
+                "Country": "France",
+                "Day_of_week": "Wednesday",
+                "Years": "51.61"
             },
             {
-                "Year": "2021",
-                "Vehicle type": "Medium or Large Cars",
-                "Spending": "10679575"
+                "Country": "France",
+                "Day_of_week": "Thursday",
+                "Years": "52.31"
             },
             {
-                "Year": "2022",
-                "Vehicle type": "Medium or Large Cars",
-                "Spending": "10742708"
+                "Country": "France",
+                "Day_of_week": "Friday",
+                "Years": "55.19"
             },
             {
-                "Year": "2010",
-                "Vehicle type": "Micro or Small Cars",
-                "Spending": "99214916"
+                "Country": "France",
+                "Day_of_week": "Saturday",
+                "Years": "71.31"
             },
             {
-                "Year": "2011",
-                "Vehicle type": "Micro or Small Cars",
-                "Spending": "99326698"
+                "Country": "France",
+                "Day_of_week": "Sunday",
+                "Years": "74.52"
             },
             {
-                "Year": "2021",
-                "Vehicle type": "Micro or Small Cars",
-                "Spending": "13394184"
+                "Country": "UK",
+                "Day_of_week": "Monday",
+                "Years": "46.47"
             },
             {
-                "Year": "2022",
-                "Vehicle type": "Micro or Small Cars",
-                "Spending": "8045922"
+                "Country": "UK",
+                "Day_of_week": "Tuesday",
+                "Years": "37.69"
             },
             {
-                "Year": "2010",
-                "Vehicle type": "Heavy Commercial",
-                "Spending": "4585905"
+                "Country": "UK",
+                "Day_of_week": "Wednesday",
+                "Years": "39.73"
             },
             {
-                "Year": "2011",
-                "Vehicle type": "Heavy Commercial",
-                "Spending": "5463986"
+                "Country": "UK",
+                "Day_of_week": "Thursday",
+                "Years": "39.24"
             },
             {
-                "Year": "2021",
-                "Vehicle type": "Heavy Commercial",
-                "Spending": "4778911"
+                "Country": "UK",
+                "Day_of_week": "Friday",
+                "Years": "41.99"
             },
             {
-                "Year": "2022",
-                "Vehicle type": "Heavy Commercial",
-                "Spending": "4830711"
-            }
-        ],
-        "template": [
+                "Country": "UK",
+                "Day_of_week": "Saturday",
+                "Years": "64.84"
+            },
             {
-                "title": "Advertising spending on different vehicle types",
-                "subtitle": "",
-                "footnote": "",
-                "source": "",
-                "xScale": "scaleBand",
-                "dateFormat": "",
-                "xAxisLabel": "",
-                "yAxisLabel": "",
-                "timeinterval": "",
-                "tooltip": "",
-                "baseline": "",
-                "periodDateFormat": "",
-                "margin-left": "50",
-                "margin-top": "",
-                "margin-bottom": "",
-                "margin-right": "",
-                "xAxisDateFormat": ""
-            }
-        ],
-        "key": [],
-        "options": [
+                "Country": "UK",
+                "Day_of_week": "Sunday",
+                "Years": "61.55"
+            },
             {
-                "scaleBy": "group",
-                "chartType": "bar"
+                "Country": "Spain",
+                "Day_of_week": "Monday",
+                "Years": "56.73"
+            },
+            {
+                "Country": "Spain",
+                "Day_of_week": "Tuesday",
+                "Years": "63.28"
+            },
+            {
+                "Country": "Spain",
+                "Day_of_week": "Wednesday",
+                "Years": "50.83"
+            },
+            {
+                "Country": "Spain",
+                "Day_of_week": "Thursday",
+                "Years": "56.67"
+            },
+            {
+                "Country": "Spain",
+                "Day_of_week": "Friday",
+                "Years": "55.47"
+            },
+            {
+                "Country": "Spain",
+                "Day_of_week": "Saturday",
+                "Years": "85.15"
+            },
+            {
+                "Country": "Spain",
+                "Day_of_week": "Sunday",
+                "Years": "83.38"
             }
         ],
         "chartId": [
@@ -135,7 +147,44 @@
                 "type": "smallmultiples"
             }
         ],
-        "periods": [],
+        "template": [
+            {
+                "title": "My first small multiples bar",
+                "subtitle": "",
+                "footnote": "",
+                "source": "",
+                "tooltip": ""
+            }
+        ],
+        "options": [
+            {
+                "numCols": 4,
+                "breaks": "",
+                "chartType": "bar",
+                "height": 150,
+                "scaleBy": "group",
+                "enableShowMore": "FALSE",
+                "aria": "FALSE",
+                "colorScheme": "guardian",
+                "smallmultiples": "",
+                "parseTime": "",
+                "dateFormat": "",
+                "xAxisLabel": "",
+                "yAxisLabel": "",
+                "timeInterval": "",
+                "periodDateFormat": "",
+                "margin-left": 38,
+                "margin-top": 25,
+                "margin-bottom": 22,
+                "margin-right": 22,
+                "xAxisDateFormat": "",
+                "groupBy": "Day_of_week",
+                "xColumn": "Country",
+                "xFormat": "",
+                "xScale": "scaleBand",
+                "yScale": "scaleLinear"
+            }
+        ],
         "labels": []
     }
 }
