@@ -183,6 +183,7 @@ export default class Linechart {
     .attr("width", containerwidth)
     .attr("height", containerheight)
     .attr("id", "svg")
+    // .attr("aria-hidden", "true")
     .attr("overflow", "hidden")
     
     let buffer = (lineLabelling) ? getLongestKeyLength(svg, keyCopy, isMobile, lineLabelling) : 0 ;
@@ -296,11 +297,7 @@ export default class Linechart {
 
    let range = datum.map( d => d[xColumn])
 
-<<<<<<< HEAD
-  //  console.log("renage",range) 
-=======
    //console.log("renage",range) 
->>>>>>> main
     x.domain(d3.extent(range))
 
     y.domain([min, max])

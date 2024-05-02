@@ -3,12 +3,19 @@
   <div class="row" id="furniture">
     <h1 class="chartTitle row" id="chartTitle">{{{title}}}</h1>
     <h2 class="subTitle row" id="subTitle">{{{subtitle}}}</h2>
-    <div class="audioControls sr-only">This chart has an audio option for accessibility. Press spacebar or the button to play and pause the chart, or use A and D to step through point-by-point, and use W and S to switch data series <button id="playChart">play chart</button></div>
     <div class="notes" id="chartKey" aria-hidden="true"></div>
   </div>
-  <figure class="row chartSans" id="graphicContainer" aria-hidden="true"></figure>
+  <figure role="img" class="row chartSans" id="graphicContainer" aria-label="This chart has an audio option for accessibility. Press space or the control buttons below to play and pause the chart, R to replay, A and D to step through a data series point-by-point, and W and S to switch data series"></figure>
 	<div class='footer offset'>
 		<div id="annotations"></div>
 		<span id="sourceText" role="note">Guardian Graphic {{#source}} | Source: {{{source}}}{{/source}} {{{footnote}}}</span>
 	</div>
+  <div class="audioControls sr-only">
+    <button id="playChart" tabindex="0" aria-keyshortcuts="Space">play/pause</button>
+    <button id="restart" tabindex="0" aria-keyshortcuts="R">restart</button>
+    <button id="forward" tabindex="0" aria-keyshortcuts="D">cursor forward</button>
+    <button id="back" tabindex="0" aria-keyshortcuts="A">cursor back</button>
+    <button id="dataNext" tabindex="0" aria-keyshortcuts="W">series forward</button>
+    <button id="dataBack" tabindex="0" aria-keyshortcuts="S">series back</button>
+  </div>
 </div>

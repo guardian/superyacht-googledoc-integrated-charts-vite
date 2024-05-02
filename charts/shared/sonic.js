@@ -935,10 +935,27 @@ export default class sonic {
     self.beep(self.scale(currentY))
   }
 
+  restart() {
+    console.log("restart")
+    let self = this
+    Tone.Transport.pause();
+    self.isPlaying = false
+    self.inProgress = false
+    self.runOnce = false
+    self.furniturePlaying = false
+    self.furniturePaused = false
+    self.usedCursor = false
+    self.currentKey = self.dataKeys[0]
+    self.currentIndex = 0
+
+    self.playPause();
+  }
+
   addInteraction() {
     let self = this
     let ele = document.getElementById("app");
     let btn = document.getElementById("playChart");
+    
     ele.addEventListener('keypress', (e) => {
       console.log(e.code)
       if (e.code === "Space") {
@@ -960,6 +977,10 @@ export default class sonic {
 
       if (e.code === "KeyS") {
         self.moveSeries(-1)
+      }
+
+      if (e.code === "KeyR") {
+        self.restart()
       }
     });
 

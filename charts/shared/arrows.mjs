@@ -139,12 +139,8 @@ function generateArc(el, config, margin, width, height) {
 			var group = el.select("g")
 			var svgWidth = width - margin.left - margin.right
 			var svgHeight = height - margin.top - margin.bottom
-<<<<<<< HEAD
 			// console.log("svgWidth", svgWidth, "svgHeight", svgHeight)
 
-=======
-			console.log("svgWidth", svgWidth, "svgHeight", svgHeight)
->>>>>>> main
 			newCoords.sourceX = (config.coords.sourceX * svgWidth) + margin.left
 			newCoords.targetX = (config.coords.targetX * svgWidth) + margin.left
 			newCoords.sourceY = (config.coords.sourceY * svgHeight) + margin.top
@@ -241,122 +237,4 @@ function clickLogging(el, width, height, margin, clickLoggingOn) {
 }
 
 
-<<<<<<< HEAD
-var insertLinebreaks = function () {
-		
-	    var el = d3.select(this);
-	    var words = el.text().split('\n');
-		// console.log(words)
-	    el.text('');
-	    for (var i = 0; i < words.length; i++) {
-	        var tspan = el.append('tspan').text(words[i]);
-	        if (i > 0)
-	        // tspan.attr('dy', '15');
-	        tspan.attr('x', el.attr("x")).attr('dy', '15');
-	    }
-	};
-
-
-function addLabel(el, config, width, height, margin, clickLoggingOn=false) {
-
-		// console.log("Drawing arrow label", config.id, "clickLoggingOn", clickLoggingOn)
-
-
-		el.select(`#${config.id}`).remove()
-
-		var labelWrapper = el.append("g")
-								.attr("id", config.id)
-								.attr("class", "labelWrapper")
-								.attr("data-config", JSON.stringify(config))
-								.style("opacity", 0)
-
-		var newStuff = generateArc(el, config, margin, width, height)
-		var curvePath = newStuff.curvePath
-		var newCoords = newStuff.newCoords				
-		// console.log("newCoords",newCoords)
-		el.append("svg:defs").append("svg:marker")
-			.attr("id", "arrow")
-			.attr("refX", 6)
-			.attr("refY", 6)
-			.attr("markerWidth", 30)
-			.attr("markerHeight", 30)
-			.attr("markerUnits","userSpaceOnUse")
-			.attr("orient", "auto")
-			.append("path")
-			.attr("d", "M 0 0 12 6 0 12 3 6")
-			.style("fill", "black")
-
-		labelWrapper.append("path")
-			.attr("class", "labelPath mobHide")
-			.attr("fill", "none")
-			.attr("stroke", "black")
-			.attr("stroke-width",2)
-			.attr("data-id", config.id)
-			.attr("marker-end", () => {
-				if (config.arrow) {
-					if (config.arrow == "true") {
-						return "url(#arrow)"
-					}
-					else {
-						return "none"
-					}
-				}
-
-				else {
-					return "none"
-				}
-
-			})
-			
-			.attr("d", curvePath)
-
-		if (clickLoggingOn) {	
-
-			var pathEl = el.select(`#${config.id} .labelPath`).node();
-			var midpoint = pathEl.getPointAtLength(pathEl.getTotalLength()/2);
-			// console.log("midpoint",midpoint)
-			labelWrapper.append("circle")
-				.attr("fill", "black")
-				.attr("stroke", "black")
-				.attr("class", "clickControl")
-				.attr("r",5)
-				.attr("data-id", config.id)
-				// .attr("marker-end", "url(#arrow)")
-				.attr("cx", midpoint.x)
-				.attr("cy", midpoint.y)	
-		}
-
-		labelWrapper.append("text")
-			.attr("class", "labelText mobHide")
-			.attr("text-anchor", () => {
-				if (config.align) {
-					return config.align
-				}
-				else {
-					return "start"
-				}
-			})
-			.attr("x", newCoords.textX)
-			.attr("y", newCoords.textY)
-			.attr("dy",15)
-			.attr("data-id", config.id)
-			.attr("dx",0)
-			.attr("fill","black")
-			.text(config.text)
-
-		el.selectAll(`#${config.id} text`).each(insertLinebreaks);		
-
-		if (clickLoggingOn) {
-			clickLogging(el, width, height, margin, clickLoggingOn)
-		}
-
-		labelWrapper.transition().style("opacity", 1)
-
-	// console.log("arrow config", "width", width, "height", height)
-	
-}
-
-export { addLabel , clickLogging }
-=======
 export { addLabel, clickLogging }
->>>>>>> main
