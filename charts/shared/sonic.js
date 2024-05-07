@@ -951,12 +951,26 @@ export default class sonic {
     self.playPause();
   }
 
-  addInteraction() {
+  addInteraction(el) {
     let self = this
-    let ele = document.getElementById("app");
-    let btn = document.getElementById("playChart");
-    
-    ele.addEventListener('keypress', (e) => {
+    let app = document.getElementById("app")
+
+    function test() {
+      console.log("yep")
+    }
+
+    let buttons = [
+      {id:'play', text:"play/pause", function:() => self.playPause()},
+      {id:'restart', text:"restart", function:() => self.restart()},
+      {id:'datumNext', text: "cursor forward", function:() => self.moveCursor(1)},
+      {id:'datumPrevious', text: "cursor back", function:() => self.moveCursor(-1)},
+      {id:'seriesNext', text: "series forward", function:() => self.moveSeries(1)},
+      {id:'seriesBack', text: "series back", function:() => self.moveSeries(1)}
+    ]
+
+    let container = document.getElementById(el);
+
+    app.addEventListener('keypress', (e) => {
       console.log(e.code)
       if (e.code === "Space") {
         this.playPause()
@@ -984,15 +998,25 @@ export default class sonic {
       }
     });
 
+    buttons.forEach((button) => {
+      let newButton = document.createElement('button');
+      newButton.textContent = button.text;
+      newButton.onclick = button.function;
+      newButton.id = button.id;
+      container.appendChild(newButton);
+  });
+    
+    let btn = document.getElementById("play");
     btn.addEventListener('keyup', (e) => {
 
       if (e.code === "Space") {
         e.preventDefault();
       }
 
-      
-
     })
+
+
+
   }
 
   animateCursor(key, i, len) {
