@@ -1003,6 +1003,7 @@ export default class sonic {
       newButton.textContent = button.text;
       newButton.onclick = button.function;
       newButton.id = button.id;
+      newButton.id = button.id;
       container.appendChild(newButton);
   });
     

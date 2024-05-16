@@ -3,12 +3,14 @@
 	<div class="row" id="furniture">
 		<h1 class='chartTitle' id="chartTitle">{{{title}}}</h1>
 		<h2 class='subTitle' id="subTitle">{{{subtitle}}}</h2>
-		<div class="audioControls sr-only">This chart has an audio option for accessibility. Press spacebar or the button to play and pause the chart, or use A and D to step through point-by-point, and use W and S to switch data series <button id="playChart">play chart</button></div>
-		<div class='notes' id='chartKey'></div>
+		<div class='notes' id='chartKey' aria-hidden="true"></div>
 	</div>
-	<figure class="row borderBottom chartSans" id="graphicContainer"></figure>
+	<figure role="img" class="row chartSans" id="graphicContainer" aria-label="This chart has an audio option for accessibility. Press space or the control buttons below to play and pause the chart, R to replay, A and D to step through a data series point-by-point, and W and S to switch data series"></figure>
 	<div class='footer offset'>
 		<div id="annotations"></div>
 		<span id="sourceText" row="note">Guardian Graphic {{#source}} | Source: {{{source}}}{{/source}} {{{footnote}}}</span>
+	</div>
+	<div class="audioControls sr-only" id="audioControls">
+
 	</div>
 </div>
