@@ -16,7 +16,7 @@
                 "lineLabelling" : "TRUE",
                 "aria": "FALSE",
                 "colorScheme": "guardian",
-                "breaks" : "",
+                "breaks" : "TRUE",
                 "dateFormat": "%Y-%m-%d",
                 "parseTime" : "",
                 "yScaleType": "",
