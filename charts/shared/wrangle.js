@@ -243,18 +243,6 @@ export function wrangle(data, chart) {
 
   }
 
-
-  /*
-  / Specify if you hide null values
-  */
-
-  if (settings["breaks"]) {
-
-    settings.hideNullValues = (settings["breaks"] != "") ? settings["breaks"] : "yes"
-
-  }
-
-
   /*
   / If this is a table with graphics
   / format the graphics data
