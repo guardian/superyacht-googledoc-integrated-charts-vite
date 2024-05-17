@@ -1,13 +1,13 @@
 <div id="outer-wrapper" class="showcase">
   <link href="{{pathway}}chartcss/linechart.css" rel="stylesheet" />
   <div class="row" id="furniture">
-    <div class="chartTitle row" id="chartTitle">{{{title}}}</div>
-    <div class="subTitle row" id="subTitle" tabindex="0" aria-label="{{subtitle}}">{{{subtitle}}}</div>
+    <h1 class="chartTitle row" id="chartTitle">{{{title}}}</h1>
+    <h2 class="subTitle row" id="subTitle" tabindex="0" aria-label="{{subtitle}}">{{{subtitle}}}</h2>
     <div class="notes" id="chartKey" aria-hidden="true"></div>
   </div>
-  <div class="row chartSans" id="graphicContainer" aria-hidden="true"></div>
+  <figure class="row chartSans" id="graphicContainer" aria-hidden="true"></figure>
 	<div class='footer offset'>
 		<div id="annotations"></div>
-		<span id="sourceText">Guardian Graphic {{#source}} | Source: {{{source}}}{{/source}} {{{footnote}}}</span>
+		<span id="sourceText" role="note">Guardian Graphic {{#source}} | Source: {{{source}}}{{/source}} {{{footnote}}}</span>
 	</div>
 </div>

@@ -159,7 +159,7 @@ export function wrangle(data, chart) {
 
     // Convert booleans
 
-    if (contains(['enableShowMore','aria', 'forceCentre','enableSearch', 'enableSort', 'enableScroll', 'zero_line_x', 'zero_line_y', 'lineLabelling', "autoSort", "scaleByAllMax", "hideKey", "beeswarm", "invertY"], setting)) {
+    if (contains(['enableShowMore','aria', 'forceCentre','enableSearch', 'enableSort', 'enableScroll', 'zero_line_x', 'zero_line_y', 'lineLabelling', "autoSort", "scaleByAllMax", "hideKey", "beeswarm", "invertY", "breaks"], setting)) {
 
       settings[setting] = (settings[setting].toLowerCase() == 'false') ? false : true
 
@@ -242,18 +242,6 @@ export function wrangle(data, chart) {
     }
 
   }
-
-
-  /*
-  / Specify if you hide null values
-  */
-
-  if (settings["breaks"]) {
-
-    settings.hideNullValues = (settings["breaks"] != "") ? settings["breaks"] : "yes"
-
-  }
-
 
   /*
   / If this is a table with graphics

@@ -2,16 +2,16 @@
   <link rel="stylesheet" href="{{pathway}}chartcss/smallmultiples.css">
   <div class="row" id="furniture">
 
-  <div class='chartTitle' id="chartTitle">{{{title}}}</div>
-	<div class='subTitle' id="subTitle">{{{subtitle}}}</div>
+  <h1 class='chartTitle' id="chartTitle">{{{title}}}</h1>
+	<h2 class='subTitle' id="subTitle">{{{subtitle}}}</h2>
   <div class='notes' id='chartKey'></div></div>
   <div class="row smallMultiples">
     <div id="switch" class="btn">Show max scale for each chart</div>
   </div>
-  <div class="row borderBottom chartSans smallMultiplesGridContainer" id="graphicContainer"></div>
+  <figure class="row borderBottom chartSans smallMultiplesGridContainer" id="graphicContainer"></figure>
 	<div class='footer offset'>
 		<div id="annotations"></div>
-		<span id="sourceText">Guardian Graphic {{#source}} | Source: {{{source}}}{{/source}} {{{footnote}}}</span>
+		<span id="sourceText" role="note">Guardian Graphic {{#source}} | Source: {{{source}}}{{/source}} {{{footnote}}}</span>
 	</div>
 
 </div>
