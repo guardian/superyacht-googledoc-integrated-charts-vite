@@ -8,7 +8,10 @@
   <figure role="img" class="row chartSans" id="graphicContainer" aria-label="This chart has an audio option for accessibility. Press space or the control buttons below to play and pause the chart, R to replay, A and D to step through a data series point-by-point, and W and S to switch data series"></figure>
 	<div class='footer offset'>
 		<div id="annotations"></div>
-		<span id="sourceText" role="note">Guardian Graphic {{#source}} | Source: {{{source}}}{{/source}} {{{footnote}}}</span>
+    <div class="sourceWrapper row">
+		  <span id="sourceText" role="note">Guardian Graphic {{#source}} | Source: {{{source}}}{{/source}} {{{footnote}}} The news has been met with gloom and doom, often framed as the start of China’s inexorable decline and, more broadly, the harbinger of a demographic and economic time bomb that will strain the world’s capacity to support aging populations.</span>
+      <span id="showAudioControls" class="btn">play</span>
+    </div>
 	</div>
   <div class="audioControls sr-only" id="audioControls">
     <!-- <button id="playChart" tabindex="0" aria-keyshortcuts="Space">play/pause</button>

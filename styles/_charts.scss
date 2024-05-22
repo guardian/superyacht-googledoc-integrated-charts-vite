@@ -22,6 +22,8 @@
 }
 
 
+
+
   .axis path,
   .axis line {
     fill: none;
@@ -41,6 +43,38 @@
     color: #333333;
     font-family: "Guardian Headline Full", Georgia, serif;
     margin-bottom: 10px;
+  }
+  
+  #showAudioControls {
+    text-align: right;
+    float: right;
+    margin-right: 10px;
+    background-image: url('https://interactive.guim.co.uk/embed/superyacht/assets/right-arrow.svg');
+    background-repeat: no-repeat;
+    background-position: center right 5px;
+    background-size: 12px;
+  }
+
+  #sourceText {
+    float: left;
+    max-width:92%;
+  }
+
+  .btn {
+    background-color: #eaeaea;
+    border-radius: 62.5em;
+    border: none;
+    display: inline-block;
+    outline: 0;
+    box-sizing: border-box;
+    font-size: 12px;
+    line-height: 12px;
+    font-family: 'Guardian Text Sans Web', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+    color: #767676;
+    padding: 4px 20px 4px 10px;
+    margin: 1px 1px;
+    text-align: right;
+    cursor:pointer;
   }
 
   a {
