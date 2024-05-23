@@ -82,6 +82,16 @@ export default [{
 		}
 	]
 },{
+	input: 'charts/textable.mjs',
+	output: [
+		{
+			file: 'public/charts/textable.js',
+			format: 'es',
+			name: 'table',
+			plugins: [terser()]
+		}
+	]
+},{
 	input: 'charts/verticalbar.mjs',
 	output: [
 		{
