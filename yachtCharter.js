@@ -31,6 +31,7 @@ export class yachtCharter {
     scatterplot
     smallmultiples -
     table
+    textable
     lollipop
     bubble
     */
