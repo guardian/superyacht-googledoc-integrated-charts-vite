@@ -66,7 +66,7 @@ export function addCustomCSS(headerRows, rows, enableScroll, enableShowMore) {
 		
 		css += `#yacht__table__wrapper {
 			height: 480px;
-			overflow: scroll!Important;
+			overflow: auto;
 			touch-action: auto;
 		}`
 
