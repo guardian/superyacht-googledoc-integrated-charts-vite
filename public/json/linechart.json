@@ -35,7 +35,7 @@
                 "xColumn" : "",
                 "xFormat" : "",
                 "invertY": "FALSE",
-                "zeroLineY":"TRUE",
+                "zeroLineY":"FALSE",
                 "zeroLineX":"FALSE"
             }
         ],
