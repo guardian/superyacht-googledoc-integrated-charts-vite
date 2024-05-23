@@ -124,4 +124,12 @@
 		"wide" : false,
 		"long" : true
 	}
+}, {
+	"type": "textable",
+	"admin" : true,
+	"names" : ["textable","texttable"],
+	"config" : {
+		"wide" : true,
+		"long" : true
+	}
 }]
