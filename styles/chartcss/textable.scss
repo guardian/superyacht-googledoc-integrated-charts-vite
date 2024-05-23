@@ -174,7 +174,7 @@ tr td {
     display: block;
     position: absolute;
     content: "";
-    width: calc(35% + 8px);
+    width: calc(25% + 8px);
     max-width: 188px;
     height: calc(100% - 8px);
     border-right: 1px dotted #bcbcbc;
@@ -194,11 +194,11 @@ tr td {
   .table .collapse-true td span {
     display: inline-block;
     vertical-align: top;
-    width: 55%;
+    width: 65%;
     padding-right: 0;
   }
   .table .collapse-true td span.header-prefix {
-    width: 35%;
+    width: 25%;
     max-width: 180px;
     padding-right: 20px;
   }
