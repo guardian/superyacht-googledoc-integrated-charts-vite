@@ -969,7 +969,7 @@ export default class sonic {
     ]
 
     let container = document.getElementById(el);
-
+    container.innerHTML = ""
     app.addEventListener('keypress', (e) => {
       console.log(e.code)
       if (e.code === "Space") {

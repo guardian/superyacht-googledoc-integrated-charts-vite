@@ -45,19 +45,37 @@
     margin-bottom: 10px;
   }
   
+  .row:after {
+    content: " "; /* Older browser do not support empty content */
+    visibility: hidden;
+    display: block;
+    height: 0;
+    clear: both;
+  }
+
+  #audioControls {
+    -webkit-transition: top .5s ease-out;
+    transition: top .5s ease-out;
+  }
+
   #showAudioControls {
     text-align: right;
     float: right;
-    margin-right: 10px;
-    background-image: url('https://interactive.guim.co.uk/embed/superyacht/assets/right-arrow.svg');
+    margin-right: 5px;
+    border-radius: 50%;
+    background-image: url('https://interactive.guim.co.uk/embed/superyacht/assets/speaker.svg');
     background-repeat: no-repeat;
-    background-position: center right 5px;
-    background-size: 12px;
+    background-position: center;
+    background-size: 90%;
+    width:20px;
+    height:20px;
+    background-color: #eaeaea;
+    cursor: pointer;
   }
 
   #sourceText {
     float: left;
-    max-width:92%;
+    max-width:96%;
   }
 
   .btn {
@@ -139,13 +157,20 @@
     position:static;
     width:auto;
     height:auto;
+
+  }
+
+  .sr-viewable {
+    position:static;
+    width:auto;
+    height:auto;
   }
 
   .notes {
     font-family: "Guardian Text Sans Web", Arial;
     font-size: 1rem;
     color: #767676;
-    width:calc(100% - 40px);
+    // width:calc(100% - 40px);
     // float:left;
     z-index:89;
   }
@@ -165,6 +190,15 @@
   .keyText {
     font-size: 0.8rem;
     margin-left: 5px;
+  }
+
+  .small {
+    font-size: 0.8rem;
+    line-height: 1rem;
+  }
+
+  #buttonContainer {
+    margin-bottom: 10px;
   }
 
   #chartKey div {

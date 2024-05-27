@@ -318,7 +318,7 @@ export default class Linechart {
 
     let sonic = new Sonic(this.settings, x, y, colors)
     sonic.setupSonicData(datum)
-    sonic.addInteraction('audioControls')
+    sonic.addInteraction('buttonContainer')
 
     let playButton = d3.select("#playChart")
     playButton

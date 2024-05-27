@@ -117,6 +117,17 @@ export class yachtCharter {
 
       window.addEventListener("resize", () => { clearTimeout(document.body.data), document.body.data = setTimeout( () => chart.render(), 800)});
       
+      const audioControlButton = document.getElementById("showAudioControls")
+      const audioControls = document.getElementById("audioControls")
+
+      if (audioControlButton) {
+        audioControlButton.addEventListener("click", function() {
+        audioControls.classList.toggle("sr-only");
+        audioControls.classList.toggle("sr-viewable");
+      }, false);
+      }
+
+
     })
 
   }
