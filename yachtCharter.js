@@ -21,7 +21,7 @@ export class yachtCharter {
   async setUp(key, location) {
 
 
-    const myChart = "bubble" // Leave it blank or enter a chart type
+    const myChart = "stackedarea" // Leave it blank or enter a chart type
 
     /*
     horizontalbar -
@@ -107,7 +107,7 @@ export class yachtCharter {
 
     document.querySelector("#app").innerHTML = mustache(templateHtml, this.data.sheets.template[0])
 
-    this.settings = wrangle(this.data.sheets, this.charts.find(chart => chart.type == this.type).config)
+    this.settings = await wrangle(this.data.sheets, this.charts.find(chart => chart.type == this.type).config)
 
     console.log("Import chart")
     

@@ -10,7 +10,7 @@ import ColorScale from "./colorscale"
 /
 */
 
-export function wrangle(data, chart) {
+export async function wrangle(data, chart) {
 
   let keys = Object.keys(data)
 
@@ -109,29 +109,17 @@ export function wrangle(data, chart) {
 
     if (columns.length == 0) {
 
-      let headers = Object.keys(data["data"][0])
-
-      for (var i = 0; i < headers.length; i++) {
-
-        let obj = {}
-        obj.column = headers[i]
-        obj.index = i
-        obj.label = headers[i]
-        // obj.type
-        // obj.format
-        /*
-        Planning to add data type detection at this point
-        */
-
-        columns.push(obj)
-
-      }
-
-      settings["columns"] = columns
-
-      settings["columnMap"] = new Map(columns.map(d => [ d.column, d]));
+      columns = await schema(data["data"])
 
     }
+
+    settings["columns"] = columns
+
+    settings["columnMap"] = new Map(columns.map(d => [ d.column, d]));
+    
+    console.log("---- New schema info ----")
+    console.log(columns)
+    console.log("---- Ends ----")
 
   }
 
@@ -301,7 +289,7 @@ export function wrangle(data, chart) {
 
     settings["xFormat"] = xFormatting(settings)
 
-    console.log(settings["xFormat"])
+    //console.log(settings["xFormat"])
 
   }
 

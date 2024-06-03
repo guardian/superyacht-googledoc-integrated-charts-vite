@@ -184,10 +184,10 @@ function testDateFormats(data, formats) {
   let dateParser;
   let dateFormat = formats.find(f => {
     dateParser = timeParse(f);
-    return dateParser(data[0]);
+    return dateParser(String(data[0])); // Convert to string for parsing
   });
 
-  return dateFormat && data.every(d => dateParser(d)) ? dateFormat : "";
+  return dateFormat && data.every(d => dateParser(String(d))) ? dateFormat : "";
 }
 
 /**
@@ -199,8 +199,8 @@ function testDateFormats(data, formats) {
 function testDateFormatSp1(data) {
   let format = testDateFormats(data, formatSp1);
   if (format) {
-    const isMonthFirst = data.every(d => d.split("/")[0] <= 12);
-    const isDaySecond = data.some(d => d.split("/")[1] > 12);
+    const isMonthFirst = data.every(d => typeof d === 'string' && d.split("/")[0] <= 12);
+    const isDaySecond = data.some(d => typeof d === 'string' && d.split("/")[1] > 12);
     format = isMonthFirst && isDaySecond ? format : "%d/%m/" + format.slice(-2);
 
     if (isMonthFirst && !isDaySecond) console.warn("Format unclear!!!");
@@ -217,7 +217,7 @@ function testDateFormatSp1(data) {
 function testDateFormatSp2(data) {
   const format = "%Y";
   const isYear = testDateFormats(data, [format]) === format;
-  const is4Digits = data.every(d => d.length === 4);
+  const is4Digits = data.every(d => typeof d === 'string' && d.length === 4);
   return isYear && is4Digits ? format : "";
 }
 
@@ -228,8 +228,8 @@ function testDateFormatSp2(data) {
  * @returns {string} - The matched date format.
  */
 function testDateFormatSp3(data) {
-  const isSp3 = data.every(d => (d[0] === "Q" || d[5] === "Q") && d.length === 7);
-  const dataYear = data.map(d => d.replace(/Q([1-4])/g, "").trim());
+  const isSp3 = data.every(d => typeof d === 'string' && (d[0] === "Q" || d[5] === "Q") && d.length === 7);
+  const dataYear = data.map(d => typeof d === 'string' ? d.replace(/Q([1-4])/g, "").trim() : d);
   const isYear = testDateFormats(dataYear, ["%Y"]) === "%Y";
   return isSp3 && isYear ? "Q*" : "";
 }
@@ -243,16 +243,11 @@ function testDateFormatSp3(data) {
 function testDateFormatSp4(data) {
   const format = "%Y%m%d";
   const isYmd = testDateFormats(data, [format]) === format;
-  const isMonth = data.every(ymd => {
-    const m = ymd.slice(4, 6);
-    return m >= 1 && m <= 12;
-  });
-  const isDay = data.every(ymd => {
-    const d = ymd.slice(6);
-    return d >= 1 && d <= 31;
-  });
+  const isMonth = data.every(ymd => typeof ymd === 'string' && parseInt(ymd.slice(4, 6), 10) >= 1 && parseInt(ymd.slice(4, 6), 10) <= 12);
+  const isDay = data.every(ymd => typeof ymd === 'string' && parseInt(ymd.slice(6), 10) >= 1 && parseInt(ymd.slice(6), 10) <= 31);
   return isYmd && isMonth && isDay ? format : "";
 }
+
 
 /**
  * Converts dates to scale values.
