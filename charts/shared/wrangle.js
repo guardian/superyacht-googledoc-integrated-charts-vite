@@ -1,4 +1,5 @@
 import { contains, merge, xFormatting, capitalizeFirstLetter } from './toolbelt';
+import { schema } from './schema';
 import dataTools from "../dataTools"
 import ColorScale from "./colorscale"
 
@@ -159,7 +160,7 @@ export function wrangle(data, chart) {
 
     // Convert booleans
 
-    if (contains(['enableShowMore','aria', 'forceCentre','enableSearch', 'enableSort', 'enableScroll', 'zero_line_x', 'zero_line_y', 'lineLabelling', "autoSort", "scaleByAllMax", "hideKey", "beeswarm", "invertY", "breaks"], setting)) {
+    if (contains(['enableShowMore','aria', 'forceCentre','enableSearch', 'enableSort', 'enableScroll', 'zero_line_x', 'zero_line_y', 'lineLabelling', "autoSort", "scaleByAllMax", "hideKey", "beeswarm", "invertY", "breaks", "zeroLineX", "zeroLineY"], setting)) {
 
       settings[setting] = (settings[setting].toLowerCase() == 'false') ? false : true
 

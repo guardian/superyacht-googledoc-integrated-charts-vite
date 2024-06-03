@@ -117,6 +117,8 @@ export default class Linechart {
           current,
           parseTime,
           invertY,
+          zeroLineX,
+          zeroLineY,
           tooltipModule } = this.settings
 
 
@@ -325,6 +327,17 @@ export default class Linechart {
     .attr("class", "y dashed")
     .call(yAxis)
     .style("stroke-dasharray", "2 2")  
+
+    console.log("zeroLineY", zeroLineY)
+    if (zeroLineY) {
+      features.append("line")
+        .attr("x1", 0)
+        .attr("x2", width - buffer)
+        .attr("y1", y(0))
+        .attr("y2", y(0))
+        .attr("stroke-width", 2)
+        .attr("class", "zeroLine")
+    }
 
     features
     .append("g")

@@ -34,7 +34,9 @@
                 "xAxisDateFormat" : "%b %y",
                 "xColumn" : "",
                 "xFormat" : "",
-                "invertY": "FALSE"
+                "invertY": "FALSE",
+                "zeroLineY":"FALSE",
+                "zeroLineX":"FALSE"
             }
         ],
         "chartId": [
