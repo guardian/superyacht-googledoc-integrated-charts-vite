@@ -115,7 +115,18 @@
 		"wide" : true,
 		"long" : false
 	}
-},{
+},
+{
+	"type": "rangechart",
+	"admin" : false,
+	"names" : ["rangechart"],
+	"config" : {
+		"axis" : [],
+		"wide" : true,
+		"long" : false
+	}
+},
+{
 	"type": "bubble",
 	"admin" : false,
 	"names" : ["bubble"],
