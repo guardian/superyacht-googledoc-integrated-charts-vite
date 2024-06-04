@@ -324,6 +324,7 @@ const timer = ms => new Promise(res => setTimeout(res, ms))
 export default class sonic {
   
   constructor(settings, x, y, colors) {
+      console.log("settings", settings)
       this.settings = settings
       this.x = x
       this.y = y
