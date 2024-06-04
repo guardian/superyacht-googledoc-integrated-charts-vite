@@ -11,7 +11,7 @@ const SPECIAL_KEYS = ["template", "options", "chartId"];
 const CONVERT_TO_NUMBER = ['marginleft','marginright','margintop','marginbottom', 'numCols', 'height', 'maxHeight', 'opacity'];
 const SCALE_KEYS = ['xScale', 'yScale', 'zScale'];
 const SCALE_TYPES = ['scaleLinear', 'scaleSqrt', 'scalePow', 'scaleLog', 'scaleTime', 'scaleSequential', 'scaleQuantize', 'scaleThreshold', 'scaleOrdinal', 'scaleBand'];
-const BOOLEAN_KEYS = ['enableShowMore','aria', 'forceCentre','enableSearch', 'enableSort', 'enableScroll', 'zero_line_x', 'zero_line_y', 'lineLabelling', "autoSort", "scaleByAllMax", "hideKey", "beeswarm", "invertY", "breaks", "zeroLineX", "zeroLineY"];
+const BOOLEAN_KEYS = ['enableShowMore','aria', 'forceCentre','enableSearch', 'enableSort', 'enableScroll', 'zero_line_x', 'zero_line_y', 'lineLabelling', "autoSort", "scaleByAllMax", "hideKey", "beeswarm", "invertY", "breaks", "zeroLineX", "zeroLineY", "rangeFormat"];
 const AXIS_TYPES = ['stackedbar', 'linechart', 'smallmultiples', 'stackedarea', 'bubble', 'scatterplot', 'lollipop', 'verticalbar'];
 
 /**
