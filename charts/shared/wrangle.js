@@ -1,5 +1,5 @@
-import { contains, merge, xFormatting, capitalizeFirstLetter } from './toolbelt';
-import { schema } from './schema';
+import { xFormatting, capitalizeFirstLetter } from './toolbelt';
+import { schema, contains, merge } from 'newsroom-dojo/dist/index.js'
 import dataTools from "../dataTools"
 import ColorScale from "./colorscale"
 
