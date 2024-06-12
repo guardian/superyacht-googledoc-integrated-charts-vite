@@ -323,9 +323,12 @@ const timer = ms => new Promise(res => setTimeout(res, ms))
 
 export default class sonic {
   
-  constructor(settings, x, y, colors) {
+  constructor(settings, data, x, y, colors, keys = []) {
+
       console.log("settings", settings)
       this.settings = settings
+      this.data = data
+      this.synthLoaded = false
       this.x = x
       this.y = y
       this.colors = colors
@@ -352,7 +355,7 @@ export default class sonic {
       this.usedCursor = false
       this.audioRendering = 'discrete'
       this.resolveExternal
-
+      this.keys = keys
 
 
       let xBand = checkNull(this.x, 'bandwidth')
@@ -455,7 +458,7 @@ export default class sonic {
   }
 
   setupSonicData(data, keys = [], exclude = []) {
-    
+    console.log("Setting up data and synth")
     let self = this
     self.note = getDuration(data.length)
     
@@ -578,6 +581,7 @@ export default class sonic {
       .domain(self.domainY)
       .range(range)
 
+    self.synthLoaded = true  
   }
   
 
@@ -973,6 +977,13 @@ export default class sonic {
     container.innerHTML = ""
     app.addEventListener('keypress', (e) => {
       console.log(e.code)
+
+      // Check if synth stuff has been setup yet, if not set it up once
+
+      if (!self.synthLoaded) {
+        self.setupSonicData(self.data, self.keys)
+      }
+
       if (e.code === "Space") {
         this.playPause()
       }
@@ -998,6 +1009,12 @@ export default class sonic {
         self.restart()
       }
     });
+
+    app.addEventListener('click', (e) => {
+      if (!self.synthLoaded) {
+        self.setupSonicData(self.data, self.keys)
+      }
+    })
 
     buttons.forEach((button) => {
       let newButton = document.createElement('button');

@@ -252,8 +252,8 @@ export default class Stackedbar {
 
     }
 
-    let sonic = new Sonic(this.settings, x, y, colors)
-    sonic.setupSonicData(datum, keys=stackedbars)
+    let sonic = new Sonic(this.settings, datum, x, y, colors, keys=stackedbars)
+    // sonic.setupSonicData(datum, keys=stackedbars)
     sonic.addInteraction('buttonContainer')
 
 
