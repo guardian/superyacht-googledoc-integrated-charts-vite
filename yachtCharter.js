@@ -21,7 +21,7 @@ export class yachtCharter {
   async setUp(key, location) {
 
 
-    const myChart = "" // Leave it blank or enter a chart type
+    const myChart = "rangechart" // Leave it blank or enter a chart type
 
     /*
     horizontalbar -
@@ -35,6 +35,7 @@ export class yachtCharter {
     textable
     lollipop
     bubble
+    rangechart
     */
 
     this.url = (import.meta.env.MODE == 'development') ? '/' : 'https://interactive.guim.co.uk/embed/superyacht/'

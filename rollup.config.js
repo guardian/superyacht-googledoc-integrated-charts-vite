@@ -133,4 +133,14 @@ export default [{
 			plugins: [terser()]
 		}
 	]
+},{
+	input: 'charts/rangechart.mjs',
+	output: [
+		{
+			file: 'public/charts/rangechart.js',
+			format: 'es',
+			name: 'verticalbar',
+			plugins: [terser()]
+		}
+	]
 }]

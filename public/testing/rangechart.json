@@ -1,0 +1,113 @@
+{
+    "sheets": {
+        "data": [
+            {
+                "Label": "Baseline",
+                "min": "57",
+                "median": "110",
+                "max": "123",
+                "Color": "#046DA1"
+            },
+            {
+                "Label": "Low 2030",
+                "min": "25",
+                "median": "82",
+                "max": "113",
+                "Color": "#fd8d3c"
+            },
+            {
+                "Label": "Mid 2030",
+                "min": "28",
+                "median": "88",
+                "max": "108",
+                "Color": "#e31a1c"
+            },
+            {
+                "Label": "High 2030",
+                "min": "27",
+                "median": "81",
+                "max": "110",
+                "Color": "#800026"
+            },
+            {
+                "Label": "Low 2050",
+                "min": "11",
+                "median": "75",
+                "max": "105",
+                "Color": "#fd8d3c"
+            },
+            {
+                "Label": "Mid 2050",
+                "min": "6",
+                "median": "62",
+                "max": "103",
+                "Color": "#e31a1c"
+            },
+            {
+                "Label": "High 2050",
+                "min": "3",
+                "median": "35",
+                "max": "97",
+                "Color": "#800026"
+            },
+            {
+                "Label": "Low 2080",
+                "min": "15",
+                "median": "78",
+                "max": "108",
+                "Color": "#fd8d3c"
+            },
+            {
+                "Label": "Mid 2080",
+                "min": "8",
+                "median": "37",
+                "max": "93",
+                "Color": "#e31a1c"
+            },
+            {
+                "Label": "High 2080",
+                "min": "0",
+                "median": "1",
+                "max": "10",
+                "Color": "#800026"
+            }
+        ],
+        "userkey": [],
+        "template": [
+            {
+                "title": "Global heating will shorten the snow season at Australian ski resorts",
+                "subtitle": "Showing the results from modelling of the snow season length by the years 2030, 2050 and 2080 under different climate change scenarios (low emissions, mid emissions and high emissions). Baseline is the average snow season length from 1981 to 2010. The circle is the median of the projection, and the bars go to the maximum and minimum results",
+                "source": "AMRF / ANU / POW. Data approximated from report figure using WebPlotDigitizer",
+                "xAxisLabel": "Days"
+            }
+        ],
+        "options": [
+            {
+                "margin-left": "10",
+                "margin-top": "25",
+                "margin-bottom": "10",
+                "margin-right": "10",
+                "groupBy": "Label",
+                "enableShowMore": "FALSE",
+                "hideKey": "TRUE"
+            }
+        ],
+        "labels": [
+            {
+                "id": "label1",
+                "coords": "{\"targetX\":0.13,\"targetY\":0.3419270833333333,\"sourceX\":0.19666666666666666,\"sourceY\":0.41859375,\"textX\":0.041666666666666664,\"textY\":0.2802604166666667}",
+                "text": "Season shortened dramatically\nby 2050 even with low emissions",
+                "coordType": "pct",
+                "sweepFlag": "1",
+                "radius": "200",
+                "arrow": "",
+                "align": "start"
+            }
+        ],
+        "chartId": [
+            {
+                "type": "rangechart"
+            }
+        ]
+    }
+}
