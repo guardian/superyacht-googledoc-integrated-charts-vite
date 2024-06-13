@@ -17,7 +17,8 @@ export default class Linechart {
   constructor(settings) {
 
     this.settings = settings
-
+    this.noisyChartsSetup = false
+    this.sonic = null
     this.init()
 
   }
@@ -316,9 +317,14 @@ export default class Linechart {
 
     }
 
-    let sonic = new Sonic(this.settings, datum, x, y, colors)
-    // sonic.setupSonicData(datum)
-    sonic.addInteraction('buttonContainer')
+    if (!chart.noisyChartsSetup) {
+      chart.sonic = new Sonic(this.settings, datum, x, y, colors)
+      chart.sonic.addInteraction('buttonContainer')
+      chart.noisyChartsSetup = true
+    }
+    
+    chart.sonic.updateData(datum, x, y, colors)
+    
 
     let playButton = d3.select("#playChart")
     playButton

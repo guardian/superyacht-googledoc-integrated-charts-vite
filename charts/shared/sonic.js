@@ -356,7 +356,7 @@ export default class sonic {
       this.audioRendering = 'discrete'
       this.resolveExternal
       this.keys = keys
-
+      this.interactionAdded = false
 
       let xBand = checkNull(this.x, 'bandwidth')
       if (xBand) {
@@ -407,6 +407,27 @@ export default class sonic {
   
   }
   
+  updateData(data, x, y, colors, keys = []) {
+    let self = this
+    // console.log("self",this,"self.synth",this.synth)
+    if (data) {
+      this.data = data
+    }
+    if (x) {
+      this.x = x
+    }
+    if (y) {
+      this.y = y 
+    }
+    if (colors) {
+      this.colors = colors
+    }
+    if (keys) {
+      this.keys = keys
+    }
+    
+  }
+
   speaker(text) {
   
     return new Promise( (resolve, reject) => {
@@ -876,7 +897,7 @@ export default class sonic {
     }
 
     let currentData = self.sonicData[self.currentKey][self.currentIndex]
-    console.log("currentData", currentData)
+    // console.log("currentData", currentData)
     let currentX = currentData[self.xVar]
     let currentY = currentData[self.currentKey]
 
@@ -929,7 +950,7 @@ export default class sonic {
 
     self.currentKey = self.dataKeys[currentKeyIndex]
     let currentData = self.sonicData[self.currentKey][self.currentIndex]
-    console.log("currentData", currentData)
+    // console.log("currentData", currentData)
     let currentX = currentData[self.xVar]
     let currentY = currentData[self.currentKey]
 
@@ -956,26 +977,9 @@ export default class sonic {
     self.playPause();
   }
 
-  addInteraction(el) {
-    let self = this
-    let app = document.getElementById("app")
-
-    function test() {
-      console.log("yep")
-    }
-
-    let buttons = [
-      {id:'play', text:"play/pause", function:() => self.playPause()},
-      {id:'restart', text:"restart", function:() => self.restart()},
-      {id:'datumNext', text: "cursor forward", function:() => self.moveCursor(1)},
-      {id:'datumPrevious', text: "cursor back", function:() => self.moveCursor(-1)},
-      {id:'seriesNext', text: "series forward", function:() => self.moveSeries(1)},
-      {id:'seriesBack', text: "series back", function:() => self.moveSeries(1)}
-    ]
-
-    let container = document.getElementById(el);
-    container.innerHTML = ""
-    app.addEventListener('keypress', (e) => {
+  handleKeyPress = (e) => {
+      let self = this
+      
       console.log(e.code)
 
       // Check if synth stuff has been setup yet, if not set it up once
@@ -1008,35 +1012,64 @@ export default class sonic {
       if (e.code === "KeyR") {
         self.restart()
       }
+    }
+
+
+  addInteraction(el) {
+
+    let self = this
+
+    let app = document.getElementById("app")
+
+    function test() {
+      console.log("yep")
+    }
+
+    let buttons = [
+      {id:'play', text:"play/pause", function:() => self.playPause()},
+      {id:'restart', text:"restart", function:() => self.restart()},
+      {id:'datumNext', text: "cursor forward", function:() => self.moveCursor(1)},
+      {id:'datumPrevious', text: "cursor back", function:() => self.moveCursor(-1)},
+      {id:'seriesNext', text: "series forward", function:() => self.moveSeries(1)},
+      {id:'seriesBack', text: "series back", function:() => self.moveSeries(1)}
+    ]
+
+    let container = document.getElementById(el);
+    container.innerHTML = ""
+
+    if (!self.interactionAdded) {
+      app.addEventListener('keypress', this.handleKeyPress)
+      app.addEventListener('click', (e) => {
+        if (!self.synthLoaded) {
+          self.setupSonicData(self.data, self.keys)
+        }
+      })
+  
+      buttons.forEach((button) => {
+        let newButton = document.createElement('button');
+        newButton.textContent = button.text;
+        newButton.onclick = button.function;
+        newButton.id = button.id;
+        newButton.id = button.id;
+        container.appendChild(newButton);
     });
-
-    app.addEventListener('click', (e) => {
-      if (!self.synthLoaded) {
-        self.setupSonicData(self.data, self.keys)
-      }
-    })
-
-    buttons.forEach((button) => {
-      let newButton = document.createElement('button');
-      newButton.textContent = button.text;
-      newButton.onclick = button.function;
-      newButton.id = button.id;
-      newButton.id = button.id;
-      container.appendChild(newButton);
-  });
+      
+      let btn = document.getElementById("play");
     
-    let btn = document.getElementById("play");
-    btn.addEventListener('keyup', (e) => {
+      btn.addEventListener('keyup', (e) => {
+  
+        if (e.code === "Space") {
+          e.preventDefault();
+        }
+  
+      })
+    }
 
-      if (e.code === "Space") {
-        e.preventDefault();
-      }
-
-    })
-
-
+    self.interactionAdded = true;
 
   }
+
+  // Probably don't need both animateCursor and animateCircle, the data querying part of animate cursor should go in its own function
 
   animateCursor(key, i, len) {
 
@@ -1047,6 +1080,10 @@ export default class sonic {
 
     let y = self.y(data[i][key])
     let x = self.x(data[i][self.xVar])
+
+    // Check if x or y are undefined
+    y = (!y) ? 0 : y
+    x = (!x) ? 0 : x
 
     if (chartType == 'horizontalbar') {
       y = self.y(data[i][self.xVar])

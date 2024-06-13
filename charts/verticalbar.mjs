@@ -15,7 +15,8 @@ export default class Stackedbar {
   constructor(settings) {
 
     this.settings = settings
-    
+    this.noisyChartsSetup = false
+    this.sonic = null  
     this.init()
 
   }
@@ -63,6 +64,8 @@ export default class Stackedbar {
   }
 
   render() {
+
+    let chart = this
 
     let { modules, 
           height, 
@@ -252,10 +255,13 @@ export default class Stackedbar {
 
     }
 
-    let sonic = new Sonic(this.settings, datum, x, y, colors, keys=stackedbars)
-    // sonic.setupSonicData(datum, keys=stackedbars)
-    sonic.addInteraction('buttonContainer')
+    if (!chart.noisyChartsSetup) {
+      chart.sonic = new Sonic(this.settings, datum, x, y, colors, keys=stackedbars)
+      chart.sonic.addInteraction('buttonContainer')
+      chart.noisyChartsSetup = true
+    }
 
+    chart.sonic.updateData(datum, x, y, colors, keys=stackedbars)
 
     features
     .append("g")
