@@ -3,8 +3,14 @@
   <div class="row" id="furniture">
     <h1 class="chartTitle" id="chartTitle">{{{title}}}</h1>
     <h2 class="subTitle" id="subTitle">{{{subtitle}}}</h2>
-    <div class="audioControls sr-only">This chart has an audio option for accessibility. Press spacebar or the button to play and pause the chart, or use A and D to step through point-by-point, and use W and S to switch data series <button id="playChart">play chart</button></div>
-    <div class="notes" id="chartKey"></div>
+    <div class="row">
+      <div class="notes" id="chartKey" aria-hidden="true"></div>
+      <span id="showAudioControls" aria-hidden="true">play</span>
+    </div>
+    <div class="audioControls sr-only" id="audioControls">
+      <div id="buttonContainer"></div>
+      <div class="notes small" tabindex="0">This chart has an audio option for accessibility. Press space or the control buttons to play and pause the chart, R to replay, A and D to step through a data series point-by-point, and W and S to switch data series. Contact <a href="mailto:nick.evershed@theguardian.com">nick.evershed@theguardian.com</a> about bugs or issues</div>
+    </div>
   </div>
   <figure class="row chartSans" id="graphicContainer"></figure>
 	<div class='footer offset'>

@@ -15,7 +15,8 @@ export default class Horizontalbar {
   constructor(settings) {
 
     this.settings = settings
-
+    this.noisyChartsSetup = false
+    this.sonic = null  
     this.init()
 
   }
@@ -70,7 +71,7 @@ export default class Horizontalbar {
 
   }
   render() {
-
+    let chart = this
     let { modules,
           type,
           colors,
@@ -146,6 +147,7 @@ export default class Horizontalbar {
       }
     })
 
+    console.log("data", data)
     datum = JSON.parse(JSON.stringify(data))
 
     let wrangle = []
@@ -177,18 +179,24 @@ export default class Horizontalbar {
       datum = datum.sort((a, b) => d3.descending(+a.Total, +b.Total))
     }
     
-    let sonicData = []
+    let sonicData = JSON.parse(JSON.stringify(data))
 
+    sonicData = sonicData.map(obj => {
+      delete obj.Color;
+      return obj;
+    });
+
+  
     datum.forEach((d) => {
       let newData = {}
       columns.forEach((key, i) => {
         newData[key] = d[key]
       })
-      sonicData.push(newData)
+      // sonicData.push(newData)
     })
 
-    console.log("sonicdata1", sonicData)
-    sonicData = sonicData.sort((a, b) => d3.ascending(+a[columns[1]], +b[columns[1]]))
+    // console.log("sonicdata1", sonicData)
+    // sonicData = sonicData.sort((a, b) => d3.ascending(+a[columns[1]], +b[columns[1]]))
 
     console.log("stack",stackedhorizontal, stackedhorizontal.length)
 
@@ -268,13 +276,14 @@ export default class Horizontalbar {
 
     const xTicks = Math.round(width / 100)
     this.settings.audioRendering = 'categorical'
-    let sonic = new Sonic(this.settings, x, y, colors)
-    let excludes = ['Color', 'color']
 
-  
-    sonic.setupSonicData(sonicData)
-    sonic.addInteraction()
 
+    if (!chart.noisyChartsSetup) {
+      chart.sonic = new Sonic(this.settings, sonicData, x, y, colors)
+      chart.sonic.addInteraction('buttonContainer')
+      chart.noisyChartsSetup = true
+    }  
+    
     let playButton = d3.select("#playChart")
     playButton
       .on("click", () => {sonic.playPause()})

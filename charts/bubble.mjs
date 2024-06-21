@@ -83,6 +83,8 @@ export default class Scatterplot {
 
     datum = JSON.parse(JSON.stringify(data));
 
+    console.log("groupby",groupBy)
+
     const $tooltip = (this.tooltip) ? this.tooltip : false
 
     d3.select("#graphicContainer svg").remove();
@@ -104,13 +106,26 @@ export default class Scatterplot {
     })
 
     const xRange = d3.extent(datum.map(d => d[xColumn]))
+    let yRange = d3.extent(datum.map(d => d[yColumn]))
+    if (yScale == "scaleBand") {
+      yRange = Array.from(new Set(datum.map(d => d[yColumn])))
+    }
+   
 
-    const yRange = d3.extent(datum.map(d => d[yColumn]))
-
+    console.log("yRange", yRange)
     const zRange = (zColumn in datum[0]) ? d3.extent(datum.map(d => d[zColumn])) : null
     
-    const keyData = Array.from(new Set(datum.map(d => d[groupBy])));
+    let keyData = []
 
+    if (groupBy) {
+      keyData = Array.from(new Set(datum.map(d => d[groupBy])));
+    }
+    
+    else {
+      keyData = [xColumn];
+    }
+
+    console.log("keyData", keyData)
     let cats = []
 
     if (beeswarm) {
@@ -176,6 +191,8 @@ export default class Scatterplot {
       }
     })
 
+    console.log("datum", datum)
+
     //yMin = (!isNaN(yMin) && yMin != "") ?  yMin : yRange[0]
     //yMax = (!isNaN(yMax) && yMax != "") ?  yMax : yRange[1]
     //xMin = (!isNaN(xMin) && xMin != "") ?  xMin : xRange[0]
@@ -214,8 +231,10 @@ export default class Scatterplot {
     .style("stroke-dasharray", "2 2")
 
     const y = d3[yScale]()
-    .range([ height - margintop - marginbottom, margintop])
+    .range([ margintop, height - margintop - marginbottom])
     .domain(datum.map(d => d[yColumn]))
+
+    // console.log(y("Brazil"))
 
     const z = (zRange != null) ? d3[zScale]()
     .domain(zRange)
@@ -239,6 +258,8 @@ export default class Scatterplot {
 
     }
 
+    console.log("datum", datum)
+
     svg.append('g')
     .selectAll("dot")
     .data(datum)
@@ -253,7 +274,15 @@ export default class Scatterplot {
     .attr("r", (d) => {
       return (zRange) ? z(d[zColumn]) : defaultRadius
     })
-    .style("fill", (d) => colors.get(d[groupBy]))
+    .style("fill", (d) => { 
+      if (groupBy) {
+        return colors.get(d[groupBy])
+      }
+      else {
+        return colors.get(xColumn)
+      }
+
+    })
     .style("opacity", opacity / 100)
 
     svg.append("g")
