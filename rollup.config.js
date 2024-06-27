@@ -41,7 +41,19 @@ export default [{
 			plugins: [terser()]
 		}
 	]
-},{
+},
+{
+	input: 'charts/rangechart.mjs',
+	output: [
+		{
+			file: 'public/charts/rangechart.js',
+			format: 'es',
+			name: 'rangechart',
+			plugins: [terser()]
+		}
+	]
+}
+,{
 	input: 'charts/scatterplot.mjs',
 	output: [
 		{
@@ -82,6 +94,16 @@ export default [{
 		}
 	]
 },{
+	input: 'charts/textable.mjs',
+	output: [
+		{
+			file: 'public/charts/textable.js',
+			format: 'es',
+			name: 'table',
+			plugins: [terser()]
+		}
+	]
+},{
 	input: 'charts/verticalbar.mjs',
 	output: [
 		{
@@ -106,6 +128,16 @@ export default [{
 	output: [
 		{
 			file: 'preview/preview.js',
+			format: 'es',
+			name: 'verticalbar',
+			plugins: [terser()]
+		}
+	]
+},{
+	input: 'charts/rangechart.mjs',
+	output: [
+		{
+			file: 'public/charts/rangechart.js',
 			format: 'es',
 			name: 'verticalbar',
 			plugins: [terser()]

@@ -283,6 +283,7 @@ export function getLongestKeyLength($svg, keys, isMobile, lineLabelling) {
 }
 
 export function numberFormat(num) {
+  
   if ( num > 0 ) {
       if ( num >= 1000000000 ) { 
 
@@ -321,10 +322,47 @@ export function numberFormat(num) {
   }
   if ( num < 0 ) {
       var posNum = num * -1;
-      if ( posNum >= 1000000000 ) return [ "-" + String(( posNum / 1000000000 ).toFixed(1)) + 'bn'];
-      if ( posNum >= 1000000 ) return ["-" + String(( posNum / 1000000 ).toFixed(1)) + 'm'];
-      if ( posNum >= 1000 ) return ["-" + String(( posNum / 1000 ).toFixed(1)) + 'k'];
-      else { return num }
+
+      // if ( posNum >= 1000000000 ) return [ "-" + String(( posNum / 1000000000 ).toFixed(1)) + 'bn'];
+      // if ( posNum >= 1000000 ) return ["-" + String(( posNum / 1000000 ).toFixed(1)) + 'm'];
+      // if ( posNum >= 1000 ) return ["-" + String(( posNum / 1000 ).toFixed(1)) + 'k'];
+      // else { return num }
+
+      if ( posNum >= 1000000000 ) { 
+
+        if ((posNum/ 1000000000) % 1 == 0) {
+            return "-" + ( posNum / 1000000000 ) + 'bn' 
+        }
+        else {
+            return "-" + ( posNum / 1000000000 ).toFixed(1) + 'bn' 
+        }
+        
+          }
+      if ( posNum >= 1000000 ) { 
+
+          if (( posNum / 1000000 ) % 1 == 0) {
+            return "-" + ( posNum / 1000000 ) + 'm' 
+          }  
+          else {
+            return "-" + ( posNum / 1000000 ).toFixed(1) + 'm' 
+          }
+          
+          }
+      if ( posNum >= 1000 ) {
+
+          if (( posNum / 1000 ) % 1 == 0) {
+            return "-" + ( posNum / 1000 ) + 'k' 
+          }
+
+          else {
+            return "-" + ( posNum / 1000 ).toFixed(1) + 'k' 
+          }
+        }
+      if (posNum % 1 != 0) { 
+          return "-" + posNum
+      } else { 
+        return "-" + posNum }
+
   }
   return num;
 }
@@ -469,10 +507,16 @@ export function getMinMax(array) {
 
 // Bufferize now takes a percetange as the third argument, and adds a buffer to the
 // Min and Max which is a % of the overall unit range
+// If either the default min or max is zero, then return zero instead of the buffered value
 
 export function bufferize(min, max, buff=5) {
+
   const buffer = (max - min) * (buff/100)
-  return [min - buffer, max + buffer]
+  
+  let newMin = (min == 0) ? min : min - buff
+  let newMax = (max == 0) ? max : max + buff
+
+  return [newMin, newMax]
 }
 
 export function textPadding(d) {

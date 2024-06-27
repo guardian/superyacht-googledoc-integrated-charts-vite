@@ -31,8 +31,10 @@ export class yachtCharter {
     scatterplot
     smallmultiples -
     table
+    textable
     lollipop
     bubble
+    rangechart
     */
 
     this.url = (import.meta.env.MODE == 'development') ? '/' : 'https://interactive.guim.co.uk/embed/superyacht-testing/'
@@ -42,7 +44,7 @@ export class yachtCharter {
     this.chartTypes = this.charts.flatMap(item => item.names)
 
     const testing = (window.location.hostname === "localhost") ? preflight(this.charts, myChart) : false ;
-
+    console.log("testing", testing)
     if (key != null && !testing) {
 
       this.getData(location, key)
@@ -105,7 +107,7 @@ export class yachtCharter {
 
     document.querySelector("#app").innerHTML = mustache(templateHtml, this.data.sheets.template[0])
 
-    this.settings = wrangle(this.data.sheets, this.charts.find(chart => chart.type == this.type).config)
+    this.settings = await wrangle(this.data.sheets, this.charts.find(chart => chart.type == this.type).config)
 
     console.log("Import chart")
     

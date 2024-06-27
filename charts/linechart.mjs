@@ -119,9 +119,13 @@ export default class Linechart {
           current,
           parseTime,
           invertY,
-          hideNullValues,
+          zeroLineX,
+          zeroLineY,
           tooltipModule } = this.settings
 
+
+    console.log("breaks", breaks)
+  
     d3.select("#graphicContainer svg").remove() 
 
     const chartKey = d3.select("#chartKey")
@@ -211,6 +215,7 @@ export default class Linechart {
     .attr("id", "features")
 
     //console.log("chartlines", chartlines)
+    console.log("linebreaks", breaks)
     chartlines.forEach((key) => {
 
       lineGenerators[key] = d3
@@ -218,7 +223,7 @@ export default class Linechart {
       .x((d) => x(d[xColumn]))
       .y((d) => y(d[key]))
 
-      if (hideNullValues === "yes") {
+      if (breaks) {
 
         lineGenerators[key].defined( (d) => d)
 
@@ -280,7 +285,7 @@ export default class Linechart {
           newData[xColumn] = d[xColumn]
           newData[key] = d[key]
           chartKeyData[key].push(newData)
-        } else if (hideNullValues === "yes") {
+        } else if (breaks) {
           chartKeyData[key].push(null)
         }
       })
@@ -340,6 +345,17 @@ export default class Linechart {
     .attr("class", "y dashed")
     .call(yAxis)
     .style("stroke-dasharray", "2 2")  
+
+    console.log("zeroLineY", zeroLineY)
+    if (zeroLineY) {
+      features.append("line")
+        .attr("x1", 0)
+        .attr("x2", width - buffer)
+        .attr("y1", y(0))
+        .attr("y2", y(0))
+        .attr("stroke-width", 2)
+        .attr("class", "zeroLine")
+    }
 
     features
     .append("g")

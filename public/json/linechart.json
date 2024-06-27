@@ -16,7 +16,7 @@
                 "lineLabelling" : "TRUE",
                 "aria": "FALSE",
                 "colorScheme": "guardian",
-                "breaks" : "",
+                "breaks" : "TRUE",
                 "dateFormat": "%Y-%m-%d",
                 "parseTime" : "",
                 "yScaleType": "",
@@ -34,7 +34,9 @@
                 "xAxisDateFormat" : "%b %y",
                 "xColumn" : "",
                 "xFormat" : "",
-                "invertY": "FALSE"
+                "invertY": "FALSE",
+                "zeroLineY":"FALSE",
+                "zeroLineX":"FALSE"
             }
         ],
         "chartId": [

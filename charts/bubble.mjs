@@ -35,7 +35,8 @@ export default class Scatterplot {
 
     let { modules, 
           height, 
-          width, 
+          width,
+          rowHeight, 
           isMobile, 
           colors, 
           datum, 
@@ -98,6 +99,11 @@ export default class Scatterplot {
     width = document.querySelector("#graphicContainer").getBoundingClientRect().width
 
     height = isMobile ? width * 1.7 : width * 0.5;
+    if (!groupBy) {
+      height = datum.length * rowHeight + margintop + marginbottom
+    }
+   
+    // svgHeight = datum.length * rowHeight + margintop + marginbottom
 
     datum.forEach(function(d) {
       if (xFormat.date) {
@@ -379,7 +385,7 @@ export default class Scatterplot {
      
       console.log("annotations", labels)
       labels.forEach((config) => {
-    		addLabel(svg2, config, width + marginleft + marginright, height + margintop + marginbottom, {
+    		addLabel(svg2, config, width, height, {
     			"left": marginleft,
     			"right": marginright,
     			"top": margintop,

@@ -42,6 +42,7 @@
             "opacity" : "80",
             "parseTime" : "",
             "dateFormat": "",
+            "rowHeight":"40",
             "defaultRadius" : 5,
             "beeswarm" : "FALSE"
         }],

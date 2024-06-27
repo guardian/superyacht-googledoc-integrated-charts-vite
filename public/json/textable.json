@@ -1,0 +1,32 @@
+{
+    "sheets": {
+        "columns": [],
+        "template": [
+            {
+                "title": "",
+                "subtitle": "",
+                "footnote": "",
+                "source": "",
+                "tooltip" : ""
+            }
+        ],
+        "data": [],
+        "cols": [],
+        "userkey": [],
+        "chartId": [
+            {
+                "type": "table"
+            }
+        ],
+        "options": [
+            {
+                "enableSearch": "TRUE",
+                "enableSort": "TRUE",
+                "enableShowMore" : "FALSE",
+                "enableScroll" : "TRUE",
+                "aria": "FALSE"
+            }
+        ],
+        "dropdown": []
+    }
+}

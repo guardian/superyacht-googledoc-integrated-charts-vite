@@ -1,7 +1,7 @@
 
 import dataTools from "./shared/dataTools"
 import ColorScale from "./shared/colorscale"
-import { numberFormat,getURLParams, mustache, mobileCheck, textPadding, textPaddingMobile, stackMin, stackMax, timeCheck } from './shared/toolbelt';
+import { numberFormat,getURLParams, mustache, mobileCheck, textPadding, textPaddingMobile, stackMin, stackMax, timeCheck,  bufferize } from './shared/toolbelt';
 import Dropdown from "./shared/dropdown";
 import { addDrops } from "./shared/drops"
 import Tooltip from "./shared/tooltip"
@@ -95,6 +95,7 @@ export default class Stackedbar {
           marginright, 
           footnote, 
           minY,
+          maxY,
           trendline, 
           aria, 
           colorScheme, 
@@ -210,7 +211,17 @@ export default class Stackedbar {
     const y = d3.scaleLinear()
     .range([height, 0])
 
-    y.domain([d3.min(layers, stackMin), d3.max(layers, stackMax)])
+    let extent = [d3.min(layers, stackMin), d3.max(layers, stackMax)]
+    console.log("extent", extent)
+    let buffered = bufferize(extent[0], extent[1], 2)
+    console.log("buffered", buffered)
+    console.log(minY, !isNaN(minY))
+    
+    minY = (isNaN(minY)) ? buffered[0] : +minY
+    maxY = (isNaN(maxY)) ? buffered[1] : +maxY
+    
+    console.log(minY, maxY)
+    y.domain([minY, maxY])
 
     let xAxis
 

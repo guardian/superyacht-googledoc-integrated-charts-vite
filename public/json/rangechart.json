@@ -1,0 +1,46 @@
+{
+    "sheets": {
+        "columns": [],
+        "template": [
+            {
+                "title": "",
+                "subtitle": "",
+                "footnote" : "",
+                "source": "",
+                "tooltip" : ""
+            }
+        ],
+        "data": [],
+        "labels": [],
+        "userkey": [],
+        "lines": [],
+        "periods": [],
+        "chartId": [
+            {
+                "type": "lollipop"
+            }
+        ],
+        "options": [
+            {
+                "enableShowMore": "FALSE",
+                "autoSort": "FALSE",
+                "aria":"FALSE",
+                "margin-left": "10",
+                "margin-top": "30",
+                "margin-bottom": "20",
+                "margin-right": "10",
+                "xAxisDateFormat" : "",
+                "groupBy" : "",
+                "minX" : "",
+                "maxX" : "",
+                "xFormat" : "",
+                "rowHeight":"60",
+                "xScale" : "scaleLinear",
+                "yScale" : "scaleBand",
+                "parseTime" : "",
+                "xAxisLabel" : ""
+            }
+        ],
+        "dropdown": []
+    }
+}

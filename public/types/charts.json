@@ -115,13 +115,32 @@
 		"wide" : true,
 		"long" : false
 	}
-},{
+},
+{
+	"type": "rangechart",
+	"admin" : false,
+	"names" : ["rangechart"],
+	"config" : {
+		"axis" : [],
+		"wide" : true,
+		"long" : false
+	}
+},
+{
 	"type": "bubble",
 	"admin" : false,
 	"names" : ["bubble"],
 	"config" : {
 		"axis" : [],
 		"wide" : false,
+		"long" : true
+	}
+}, {
+	"type": "textable",
+	"admin" : true,
+	"names" : ["textable","texttable"],
+	"config" : {
+		"wide" : true,
 		"long" : true
 	}
 }]
