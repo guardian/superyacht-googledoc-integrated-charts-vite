@@ -324,7 +324,7 @@ export default class Linechart {
 
     if (!chart.noisyChartsSetup) {
       chart.sonic = new Sonic(this.settings, datum, x, y, colors)
-      chart.sonic.addInteraction('buttonContainer')
+      chart.sonic.addInteraction('buttonContainer', 'showAudioControls')
       chart.noisyChartsSetup = true
     }
     

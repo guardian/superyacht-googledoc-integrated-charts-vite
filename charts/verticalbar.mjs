@@ -268,7 +268,7 @@ export default class Stackedbar {
 
     if (!chart.noisyChartsSetup) {
       chart.sonic = new Sonic(this.settings, datum, x, y, colors, keys=stackedbars)
-      chart.sonic.addInteraction('buttonContainer')
+      chart.sonic.addInteraction('buttonContainer', 'showAudioControls')
       chart.noisyChartsSetup = true
     }
 
