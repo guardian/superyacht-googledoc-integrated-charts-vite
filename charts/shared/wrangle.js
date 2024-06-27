@@ -1,7 +1,10 @@
 import { xFormatting, capitalizeFirstLetter } from './toolbelt';
 import { schema, contains, merge } from 'newsroom-dojo/dist/index.js'
-import dataTools from "../dataTools"
-import ColorScale from "./colorscale"
+//import dataTools from "../dataTools"
+//import ColorScale from "./colorscale"
+
+import dataTools from "./dt.js";
+import { ColorScale } from "./colorscale.js";
 
 import { max as d3Max } from 'd3-array';
 import { timeParse as d3TimeParse, timeFormat as d3TimeFormat } from 'd3-time-format';
