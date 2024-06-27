@@ -280,7 +280,7 @@ export default class Horizontalbar {
 
     if (!chart.noisyChartsSetup) {
       chart.sonic = new Sonic(this.settings, sonicData, x, y, colors)
-      chart.sonic.addInteraction('buttonContainer')
+      chart.sonic.addInteraction('buttonContainer', 'showAudioControls')
       chart.noisyChartsSetup = true
     }  
     

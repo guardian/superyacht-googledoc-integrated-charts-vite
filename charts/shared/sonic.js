@@ -511,7 +511,7 @@ export default class sonic {
     let dataKeys = Object.keys(data[0])
 
     self.xVar = dataKeys[0]
-    
+
     if (xFormat.date) {
       self.timeSettings = analyseTime(data, self.settings)
     }
@@ -1016,7 +1016,7 @@ export default class sonic {
     }
 
 
-  addInteraction(el) {
+  addInteraction(container_id, button_id=null) {
 
     let self = this
 
@@ -1035,7 +1035,7 @@ export default class sonic {
       {id:'seriesBack', text: "series back", function:() => self.moveSeries(1)}
     ]
 
-    let container = document.getElementById(el);
+    let container = document.getElementById(container_id);
     container.innerHTML = ""
 
     if (!self.interactionAdded) {
@@ -1064,7 +1064,35 @@ export default class sonic {
         }
   
       })
+    
+      if (button_id) {
+
+        if (!self.synthLoaded) {
+          self.setupSonicData(self.data, self.keys)
+        }
+
+        let playButton = document.getElementById(button_id)
+        
+        playButton.addEventListener('click', () => {
+          self.playPause();
+        })
+  
+        playButton.addEventListener('keyup', (e) => {
+    
+          if (e.code === "Space") {
+            e.preventDefault();
+          }
+    
+        })
+      
+      }
+    
     }
+
+  
+    
+
+
 
     self.interactionAdded = true;
 
