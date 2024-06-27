@@ -12,3 +12,4 @@ Yacht supports making responsive charts in the following ways:
 * By using a Google sheet converted to JSON and synced to S3 (manually via [visuals/docs](https://visuals.gutools.co.uk/docs/)) or in the [admin](https://pollarama.herokuapp.com/)
 * By using a JSON file written directly to S3 from Python or Node.js. We have a Python library to help with this, which you can install like so: ```pip install yachtcharter```
 
+To change the deploy path, edit: uploader.js yachtCharter.js and package.json
