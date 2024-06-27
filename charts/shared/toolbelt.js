@@ -507,10 +507,16 @@ export function getMinMax(array) {
 
 // Bufferize now takes a percetange as the third argument, and adds a buffer to the
 // Min and Max which is a % of the overall unit range
+// If either the default min or max is zero, then return zero instead of the buffered value
 
 export function bufferize(min, max, buff=5) {
+
   const buffer = (max - min) * (buff/100)
-  return [min - buffer, max + buffer]
+  
+  let newMin = (min == 0) ? min : min - buff
+  let newMax = (max == 0) ? max : max + buff
+
+  return [newMin, newMax]
 }
 
 export function textPadding(d) {
