@@ -511,6 +511,7 @@ export default class sonic {
     let dataKeys = Object.keys(data[0])
 
     self.xVar = dataKeys[0]
+    
     if (xFormat.date) {
       self.timeSettings = analyseTime(data, self.settings)
     }
