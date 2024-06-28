@@ -2,7 +2,7 @@
 // import notes from './notes.json';
 
 // No idea why Tone needs to be uppercase T when importing like this
-import * as tone from './Tone'
+import * as Tone from './Tone'
 // console.log(Tone)
 function numberFormatSpeech(num) {
   if ( num > 0 ) {
