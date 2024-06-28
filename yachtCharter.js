@@ -37,7 +37,7 @@ export class yachtCharter {
     rangechart
     */
 
-    this.url = (import.meta.env.MODE == 'development') ? '/' : 'https://interactive.guim.co.uk/embed/superyacht-testing/'
+    this.url = (import.meta.env.MODE == 'development') ? '/' : 'https://interactive.guim.co.uk/embed/superyacht/'
 
     this.charts  = await this.setChartType()
 
