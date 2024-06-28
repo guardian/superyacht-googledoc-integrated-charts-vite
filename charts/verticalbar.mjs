@@ -1,4 +1,3 @@
-
 import dataTools from "./shared/dataTools"
 import ColorScale from "./shared/colorscale"
 import { numberFormat,getURLParams, mustache, mobileCheck, textPadding, textPaddingMobile, stackMin, stackMax, timeCheck,  bufferize } from './shared/toolbelt';
@@ -9,6 +8,7 @@ import { addPeriods } from "./shared/periods"
 import { addLabel } from './shared/arrows'
 import { addTrendline } from "./shared/trendline"
 import Sonic from "./shared/sonic"
+import { checkApp } from 'newsroom-dojo';
 
 export default class Stackedbar {
 
@@ -266,13 +266,27 @@ export default class Stackedbar {
 
     }
 
-    if (!chart.noisyChartsSetup) {
-      chart.sonic = new Sonic(this.settings, datum, x, y, colors, keys=stackedbars)
-      chart.sonic.addInteraction('buttonContainer', 'showAudioControls')
-      chart.noisyChartsSetup = true
-    }
+     // Don't run noisycharts in the apps until we can build a workaround
+    
+    let isApp = checkApp();
 
-    chart.sonic.updateData(datum, x, y, colors, keys=stackedbars)
+    if (!isApp) {
+
+      if (!chart.noisyChartsSetup) {
+        chart.sonic = new Sonic(this.settings, datum, x, y, colors, keys=stackedbars)
+        chart.sonic.addInteraction('buttonContainer', 'showAudioControls')
+        chart.noisyChartsSetup = true
+      }
+
+      chart.sonic.updateData(datum, x, y, colors, keys=stackedbars)
+
+   } 
+  
+   if (isApp) {
+    d3.select("#showAudioControls").remove();
+    d3.select("#audioControl").remove();
+  }
+
 
     features
     .append("g")

@@ -36,7 +36,7 @@ const filePaths = [];
 
     let prefix = filename.substring(0, filename.indexOf("."));
 
-    uploadToS3("embed/superyacht/", filepath, mimeType)
+    uploadToS3("embed/superyacht-testing/", filepath, mimeType)
 
   }
   

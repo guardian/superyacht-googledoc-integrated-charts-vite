@@ -11,6 +11,7 @@ import { addDrops } from "./shared/drops"
 import { getURLParams, getLongestKeyLength, numberFormat, mustache, mobileCheck, sorter, relax} from './shared/toolbelt';
 import Dropdown from "./shared/dropdown";
 import Sonic from "./shared/sonic"
+import { checkApp } from 'newsroom-dojo';
 
 export default class Linechart {
 
@@ -322,18 +323,26 @@ export default class Linechart {
 
     }
 
-    if (!chart.noisyChartsSetup) {
-      chart.sonic = new Sonic(this.settings, datum, x, y, colors)
-      chart.sonic.addInteraction('buttonContainer', 'showAudioControls')
-      chart.noisyChartsSetup = true
-    }
+    // Don't run noisycharts in the apps until we can build a workaround
     
-    chart.sonic.updateData(datum, x, y, colors)
-    
+    let isApp = checkApp();
 
-    let playButton = d3.select("#playChart")
-    playButton
-      .on("click", () => {sonic.playPause()})
+    if (!isApp) {
+
+      if (!chart.noisyChartsSetup) {
+        chart.sonic = new Sonic(this.settings, datum, x, y, colors)
+        chart.sonic.addInteraction('buttonContainer', 'showAudioControls')
+        chart.noisyChartsSetup = true
+      }
+      
+      chart.sonic.updateData(datum, x, y, colors)
+    
+    }
+
+    if (isApp) {
+      d3.select("#showAudioControls").remove();
+      d3.select("#audioControl").remove();
+    }
 
     const yAxis = d3
     .axisLeft(y)

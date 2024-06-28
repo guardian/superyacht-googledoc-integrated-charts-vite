@@ -1,14 +1,15 @@
 
-import dataTools from "./shared/dataTools"
-import ColorScale from "./shared/colorscale"
-import colorPresets from "./constants/colors"
+import dataTools from "./shared/dataTools";
+import ColorScale from "./shared/colorscale";
+import colorPresets from "./constants/colors";
 import { numberFormat, mustache, mobileCheck, getMinMax, textPadding, textPaddingMobile, stackMin, stackMax, contains, getURLParams } from './shared/toolbelt';
 import { addDrops } from "./shared/drops"
 import Dropdown from "./shared/dropdown";
-import Tooltip from "./shared/tooltip"
-import { drawShowMore } from "./shared/showmore"
-import  { addLabel, clickLogging } from './shared/arrows'
-import Sonic from "./shared/sonic"
+import Tooltip from "./shared/tooltip";
+import { drawShowMore } from "./shared/showmore";
+import  { addLabel, clickLogging } from './shared/arrows';
+import Sonic from "./shared/sonic";
+import { checkApp } from 'newsroom-dojo';
 
 export default class Horizontalbar {
 
@@ -277,19 +278,27 @@ export default class Horizontalbar {
     const xTicks = Math.round(width / 100)
     this.settings.audioRendering = 'categorical'
 
-
-    if (!chart.noisyChartsSetup) {
-      chart.sonic = new Sonic(this.settings, sonicData, x, y, colors)
-      chart.sonic.addInteraction('buttonContainer', 'showAudioControls')
-      chart.noisyChartsSetup = true
-    }  
+    // Don't run noisycharts in the apps until we can build a workaround
     
-    let playButton = d3.select("#playChart")
-    playButton
-      .on("click", () => {sonic.playPause()})
+    let isApp = checkApp();
 
+    if (!isApp) {
+      if (!chart.noisyChartsSetup) {
+        chart.sonic = new Sonic(this.settings, sonicData, x, y, colors)
+        chart.sonic.addInteraction('buttonContainer', 'showAudioControls')
+        chart.noisyChartsSetup = true
+      }  
+      
+      let playButton = d3.select("#playChart")
+      playButton
+        .on("click", () => {sonic.playPause()})
+    }
 
-
+    if (isApp) {
+      d3.select("#showAudioControls").remove();
+      d3.select("#audioControl").remove();
+    }
+  
     xAxis = g => g
     .attr("transform", `translate(0,${0})`)
     .attr("class", "axisgroup") 

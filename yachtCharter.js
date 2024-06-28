@@ -20,7 +20,7 @@ export class yachtCharter {
 
   async setUp(key, location) {
 
-    const myChart = "" // Leave it blank or enter a chart type
+    const myChart = "verticalbar"; // Leave it blank or enter a chart type
 
     /*
     horizontalbar -
@@ -37,7 +37,7 @@ export class yachtCharter {
     rangechart
     */
 
-    this.url = (import.meta.env.MODE == 'development') ? '/' : 'https://interactive.guim.co.uk/embed/superyacht/'
+    this.url = (import.meta.env.MODE == 'development') ? '/' : 'https://interactive.guim.co.uk/embed/superyacht-testing/'
 
     this.charts  = await this.setChartType()
 
