@@ -159,7 +159,7 @@ export default class Rangechart {
 
     // Bufferize now takes a percetange as the third argument
 
-    let buffer = bufferize(extent[0], extent[1], 2)
+    let buffer = bufferize(extent[0], extent[1])
 
     minX = (!isNaN(minX)) ? buffer[0] : +minX
 

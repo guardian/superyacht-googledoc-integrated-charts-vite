@@ -213,7 +213,7 @@ export default class Stackedbar {
 
     let extent = [d3.min(layers, stackMin), d3.max(layers, stackMax)]
     console.log("extent", extent)
-    let buffered = bufferize(extent[0], extent[1], 2)
+    let buffered = bufferize(extent[0], extent[1])
     console.log("buffered", buffered)
     console.log(minY, !isNaN(minY))
     

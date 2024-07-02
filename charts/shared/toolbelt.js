@@ -509,12 +509,28 @@ export function getMinMax(array) {
 // Min and Max which is a % of the overall unit range
 // If either the default min or max is zero, then return zero instead of the buffered value
 
-export function bufferize(min, max, buff=5) {
+export function bufferize(min, max, buff=0.05) {
 
-  const buffer = (max - min) * (buff/100)
+  let newMin = min
+  let newMax = max
   
-  let newMin = (min == 0) ? min : min - buff
-  let newMax = (max == 0) ? max : max + buff
+  if (min > 0 && max > 0 || min == 0 && max > 0) {
+    newMax = max + (max * buff)
+  }
+  
+  else if (min < 0 && max > 0) {
+    newMax = max + (max * buff)
+    newMin = min + (min * buff)
+  }
+
+  else if (min < 0 && max < 0) {
+    newMax = max + (max * buff)
+    newMin = min + (min * buff)
+  }
+
+  else if (min < 0 && max == 0) {
+    newMin = min + (min * buff)
+  }
 
   return [newMin, newMax]
 }

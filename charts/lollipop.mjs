@@ -122,10 +122,11 @@ export default class Lollipop {
 
     // Bufferize now takes a percetange as the third argument
 
-    let buffer = bufferize(extent[0], extent[1], 2)
-
+    let buffer = bufferize(extent[0], extent[1])
+    
+    console.log("extent", extent, "buffer",buffer)
+    
     minX = (!isNaN(minX)) ? buffer[0] : +minX
-
     maxX = (!isNaN(maxX)) ? buffer[1] : +maxX
 
     const svg = d3
