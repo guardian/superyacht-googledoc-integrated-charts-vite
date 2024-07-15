@@ -28,15 +28,27 @@ export function addLines(lines, x, y, features, parseTime) {
     .attr("stroke-width", 1)  
 
     features
-    .selectAll(".lineText")
+    .selectAll(".lineTextOutline")
     .data(lines)
     .enter()
     .append("text")
     .attr("x", (d) => x(d.x1))
     .attr("y", (d) => y(d.y1) - 5)
-    .attr("class", "lineText")
+    .attr("class", "lineTextOutline")
     .attr("opacity", 1)
-    .text((d) => d.text)  
+    .text((d) => d.text)     
+
+    features
+      .selectAll(".lineText")
+      .data(lines)
+      .enter()
+      .append("text")
+      .attr("x", (d) => x(d.x1))
+      .attr("y", (d) => y(d.y1) - 5)
+      .attr("class", "lineText")
+      .attr("opacity", 1)
+      .text((d) => d.text)  
+
 
 	
 }
