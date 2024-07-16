@@ -117,7 +117,6 @@ export default class Lollipop {
     const minMax = getMinMax(range.map(d => d))
 
     let max = minMax.max
-
     let min = minMax.min
 
     // Bufferize now takes a percetange as the third argument

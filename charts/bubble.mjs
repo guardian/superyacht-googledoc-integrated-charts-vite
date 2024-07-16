@@ -2,9 +2,10 @@
 import dataTools from "./shared/dataTools"
 import Tooltip from "./shared/tooltip"
 import ColorScale from "./shared/colorscale"
-import { numberFormat, mustache, mobileCheck, bufferize, validateString, dodge, wrap, getMaxDuplicate, getURLParams } from './shared/toolbelt';
+import { numberFormat, mustache, mobileCheck, bufferize, validateString, dodge, wrap, getMaxDuplicate, getURLParams, isNumber } from './shared/toolbelt';
 // import { addLabels } from "./shared/labels"
 import  { addLabel, clickLogging } from './shared/arrows'
+import { makeTopLinedAxis } from './shared/makeAxis'
 
 // https://svelte.dev/repl/e4cd6985a78a4d169fe5c54977a4336c?version=4.0.5
 // // https://www.chartfleau.com/tutorials/d3swarm
@@ -63,11 +64,12 @@ export default class Scatterplot {
           zColumn,
           xAxisLabel,
           yAxisLabel,
-          yMin,
-          xMin,
-          xMax,
-          yMax,
+          minY,
+          minX,
+          maxX,
+          maxY,
           hideKey,
+          dataLabels,
           zMin,
           zMax,
           xScale,
@@ -84,7 +86,7 @@ export default class Scatterplot {
 
     datum = JSON.parse(JSON.stringify(data));
 
-    console.log("groupby",groupBy)
+    console.log("settings",this.settings)
 
     const $tooltip = (this.tooltip) ? this.tooltip : false
 
@@ -111,13 +113,26 @@ export default class Scatterplot {
       }
     })
 
-    const xRange = d3.extent(datum.map(d => d[xColumn]))
+    // Bufferize now takes a percetange as the third argument
+
+
+    let extent = d3.extent(datum.map(d => d[xColumn]))
+
+    let buffer = bufferize(extent[0], extent[1])
+
+    console.log("extent", extent, "buffer",buffer, "minX", minX, isNaN(minX))
+    
+    minX = (isNumber(minX)) ? minX : buffer[0]
+    maxX = (isNumber(maxX)) ? maxX : buffer[1]
+
+    const xRange = [minX, maxX]
+
+    console.log("xRange", xRange)
     let yRange = d3.extent(datum.map(d => d[yColumn]))
     if (yScale == "scaleBand") {
       yRange = Array.from(new Set(datum.map(d => d[yColumn])))
     }
    
-
     console.log("yRange", yRange)
     const zRange = (zColumn in datum[0]) ? d3.extent(datum.map(d => d[zColumn])) : null
     
@@ -206,28 +221,34 @@ export default class Scatterplot {
 
     const x = d3[xScale]()
     .range([ zMax, width - marginright - marginleft - zMax ]) // .domain(bufferize(xMin,xMax))
-    .domain(d3.extent(datum.map(d => d[xColumn])))
+    .domain(xRange)
 
     const xLabel = d3[xScale]()
     .range([ zMax, width - marginright - marginleft - zMax ]) // .domain(bufferize(xMin,xMax))
     .domain(datum.map(d => d[xColumn]))
 
-    const tickMod = Math.round(datum.map(d => d[xColumn]).length / 6)
+    // const tickMod = Math.round(datum.map(d => d[xColumn]).length / 6)
+   
+    // let ticks = xLabel.domain().filter((d, i) => !(i % tickMod) || i === xLabel.domain().length - 1)
+    
+    // console.log("tickMod", tickMod, "ticks", ticks)
+    
+    // var xAxis = (xFormat.date) ? d3.axisTop(x)
+    // .ticks(ticks)
+    // .tickSize(-(  height - margintop - marginbottom), 0, 0) :
 
-    let ticks = xLabel.domain().filter((d, i) => !(i % tickMod) || i === xLabel.domain().length - 1)
 
-    var xAxis = (xFormat.date) ? d3.axisTop(x)
-    .ticks(ticks)
-    .tickSize(-(  height - margintop - marginbottom), 0, 0) :
+    // d3.axisTop(x)
+    // .ticks(4)
+    // .tickSize(-(  height - margintop - marginbottom), 0, 0) 
 
-    d3.axisTop(x)
-    .tickSize(-(  height - margintop - marginbottom), 0, 0) 
+    // if (xFormat.date) {
 
-    if (xFormat.date) {
+    //   xAxis.tickValues(ticks).tickFormat(d3.timeFormat("%b %Y"))
 
-      xAxis.tickValues(ticks).tickFormat(d3.timeFormat("%b %Y"))
+    // }
 
-    }
+    let xAxis = makeTopLinedAxis(width - marginright - marginleft - zMax, height, margintop, marginbottom, xFormat, x)
 
     svg
     .append("g")
@@ -290,6 +311,22 @@ export default class Scatterplot {
 
     })
     .style("opacity", opacity / 100)
+
+    if (dataLabels) {
+      svg.append('g')
+      .selectAll("dotLabels")
+      .data(datum)
+      .enter()
+      .append("text")
+      .attr("x", (d) => {
+        let radius = (zRange)? z(d[zColumn]) : defaultRadius
+        return (d.x + radius * 2)
+      })
+      .attr("y", (d) => {
+        return d.y + (y.bandwidth() / 2) + 4
+      })
+      .text((d) => d[xColumn])
+    }
 
     svg.append("g")
     .attr("class","axis y")

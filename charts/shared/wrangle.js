@@ -14,7 +14,7 @@ const SPECIAL_KEYS = ["template", "options", "chartId"];
 const CONVERT_TO_NUMBER = ['marginleft','marginright','margintop','marginbottom', 'numCols', 'height', 'maxHeight', 'opacity'];
 const SCALE_KEYS = ['xScale', 'yScale', 'zScale'];
 const SCALE_TYPES = ['scaleLinear', 'scaleSqrt', 'scalePow', 'scaleLog', 'scaleTime', 'scaleSequential', 'scaleQuantize', 'scaleThreshold', 'scaleOrdinal', 'scaleBand'];
-const BOOLEAN_KEYS = ['enableShowMore','aria', 'forceCentre','enableSearch', 'enableSort', 'enableScroll', 'zero_line_x', 'zero_line_y', 'lineLabelling', "autoSort", "scaleByAllMax", "hideKey", "beeswarm", "invertY", "breaks", "zeroLineX", "zeroLineY", "rangeFormat"];
+const BOOLEAN_KEYS = ['enableShowMore','aria', 'forceCentre','enableSearch', 'enableSort', 'enableScroll', 'zero_line_x', 'zero_line_y', 'lineLabelling', "autoSort", "scaleByAllMax", "hideKey", "beeswarm", "invertY", "breaks", "zeroLineX", "zeroLineY", "rangeFormat", "dataLabels"];
 const AXIS_TYPES = ['stackedbar', 'linechart', 'smallmultiples', 'stackedarea', 'bubble', 'scatterplot', 'lollipop', 'verticalbar', 'horizontalbar', 'horizontalgroupedbar'];
 
 /**
@@ -135,7 +135,7 @@ function processSettings(settings) {
       settings[setting] = isNaN(settings[setting]) ? settings[setting] : +settings[setting];
     }
 
-    if (contains(['xMin', 'xMax', 'yMin', 'yMax', 'zMin', 'zMax'], setting) && settings[setting] !== "") {
+    if (contains(['minY', 'maxY', 'minX', 'maxX','minZ', 'maxZ'], setting) && settings[setting] !== "") {
       settings[setting] = isNaN(settings[setting]) ? settings[setting] : +settings[setting];
     }
 

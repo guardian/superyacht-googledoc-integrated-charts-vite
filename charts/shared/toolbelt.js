@@ -480,9 +480,21 @@ export function preflight(array, chart) {
 
 }
 
+export function isNumber(n) {
+  // Needs to be === to ensure zero doesn't get caught as a number
+  if (n === "") {
+    return false
+  }
+
+  else {
+    return !isNaN(n)
+  }
+
+}
+
 export function getMinMax(array) {
 
-  let range =  d3.extent(array)
+  let range = d3.extent(array)
   let min = 0
   let max = range[1]
   let status = false

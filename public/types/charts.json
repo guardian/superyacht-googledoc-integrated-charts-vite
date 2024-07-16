@@ -131,7 +131,16 @@
 	"admin" : false,
 	"names" : ["bubble"],
 	"config" : {
-		"axis" : [],
+		"axis" : [{
+			"name" : "yColumn",
+			"default" : 0
+		},{
+			"name" : "xColumn",
+			"default" : 1
+		}],
+		"settings" : [{
+			"name" : "stackedhorizontal"
+		}],
 		"wide" : false,
 		"long" : true
 	}
