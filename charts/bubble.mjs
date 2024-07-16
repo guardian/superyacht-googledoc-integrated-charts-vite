@@ -212,13 +212,6 @@ export default class Scatterplot {
       }
     })
 
-    console.log("datum", datum)
-
-    //yMin = (!isNaN(yMin) && yMin != "") ?  yMin : yRange[0]
-    //yMax = (!isNaN(yMax) && yMax != "") ?  yMax : yRange[1]
-    //xMin = (!isNaN(xMin) && xMin != "") ?  xMin : xRange[0]
-    //xMax = (!isNaN(xMax) && xMax != "") ?  xMax : xRange[1]
-
     const x = d3[xScale]()
     .range([ zMax, width - marginright - marginleft - zMax ]) // .domain(bufferize(xMin,xMax))
     .domain(xRange)
@@ -226,27 +219,6 @@ export default class Scatterplot {
     const xLabel = d3[xScale]()
     .range([ zMax, width - marginright - marginleft - zMax ]) // .domain(bufferize(xMin,xMax))
     .domain(datum.map(d => d[xColumn]))
-
-    // const tickMod = Math.round(datum.map(d => d[xColumn]).length / 6)
-   
-    // let ticks = xLabel.domain().filter((d, i) => !(i % tickMod) || i === xLabel.domain().length - 1)
-    
-    // console.log("tickMod", tickMod, "ticks", ticks)
-    
-    // var xAxis = (xFormat.date) ? d3.axisTop(x)
-    // .ticks(ticks)
-    // .tickSize(-(  height - margintop - marginbottom), 0, 0) :
-
-
-    // d3.axisTop(x)
-    // .ticks(4)
-    // .tickSize(-(  height - margintop - marginbottom), 0, 0) 
-
-    // if (xFormat.date) {
-
-    //   xAxis.tickValues(ticks).tickFormat(d3.timeFormat("%b %Y"))
-
-    // }
 
     let xAxis = makeTopLinedAxis(width - marginright - marginleft - zMax, height, margintop, marginbottom, xFormat, x)
 

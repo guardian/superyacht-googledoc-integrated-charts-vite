@@ -2,8 +2,10 @@
 
 export function makeTopLinedAxis(width, height, margintop, marginbottom, xFormat, x, xAxisDateFormat=null) {
 
-    const xTicks = Math.round(width / 100)
-
+    let xTicks = Math.round(width / 60)
+    if (xTicks < 2) {
+        xTicks = 2
+    }
     let xAxis
 
     // It's a date axis, so do some special stuff
