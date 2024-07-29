@@ -350,7 +350,9 @@ export default class Linechart {
     
     let isApp = checkApp();
 
-    if (!isApp) {
+    console.log("aria", aria)
+
+    if (!isApp && aria != false) {
 
       if (!chart.noisyChartsSetup) {
         chart.sonic = new Sonic(this.settings, datum, x, y, colors)
@@ -362,7 +364,7 @@ export default class Linechart {
     
     }
 
-    if (isApp) {
+    else if (isApp || aria == false) {
       d3.select("#showAudioControls").remove();
       d3.select("#audioControl").remove();
     }
