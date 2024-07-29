@@ -2,7 +2,7 @@
 import dataTools from "./shared/dataTools";
 import ColorScale from "./shared/colorscale";
 import colorPresets from "./constants/colors";
-import { numberFormat, mustache, mobileCheck, getMinMax, textPadding, textPaddingMobile, stackMin, stackMax, contains, getURLParams } from './shared/toolbelt';
+import { numberFormat, mustache, mobileCheck, setMinToMax, textPadding, textPaddingMobile, stackMin, stackMax, contains, getURLParams } from './shared/toolbelt';
 import { addDrops } from "./shared/drops"
 import Dropdown from "./shared/dropdown";
 import Tooltip from "./shared/tooltip";
@@ -254,7 +254,7 @@ export default class Horizontalbar {
     y.domain(datum.map((d) => d[yColumn]))
     console.log("forceCentre", forceCentre)
     if (forceCentre) {
-      const minMax = getMinMax([...datum.map(d => d.Total), ...datum.map(d => d.extent)]) // (scaleByAllMax) ? getMinMax(allValues) : getMinMax(datum.map(d => d[1]))
+      const minMax = setMinToMax([...datum.map(d => d.Total), ...datum.map(d => d.extent)]) // (scaleByAllMax) ? getMinMax(allValues) : getMinMax(datum.map(d => d[1]))
       xMax = (xMax == "") ? minMax.max : xMax
       xMin = (xMin == "") ? minMax.min : xMin
     }

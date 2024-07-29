@@ -494,6 +494,13 @@ export function isNumber(n) {
 
 export function getMinMax(array) {
 
+
+
+}
+
+
+export function setMinToMax(array) {
+
   let range = d3.extent(array)
   let min = 0
   let max = range[1]
@@ -526,8 +533,13 @@ export function bufferize(min, max, buff=0.05) {
   let newMin = min
   let newMax = max
   
-  if (min > 0 && max > 0 || min == 0 && max > 0) {
+  if (min == 0 && max > 0) {
     newMax = max + (max * buff)
+  }
+
+  if (min > 0 && max > 0) {
+    newMax = max + (max * buff)
+    newMin = min - (min * buff)
   }
   
   else if (min < 0 && max > 0) {

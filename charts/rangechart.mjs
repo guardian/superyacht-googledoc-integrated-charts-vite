@@ -2,7 +2,7 @@
 import dataTools from "./shared/dataTools"
 import ColorScale from "./shared/colorscale"
 import colorPresets from "./constants/colors"
-import { getURLParams, numberFormat, mustache, mobileCheck, getMinMax, textPadding, textPaddingMobile, bufferize, tickTok, contains, wrap } from './shared/toolbelt';
+import { getURLParams, numberFormat, mustache, mobileCheck, setMinToMax, textPadding, textPaddingMobile, bufferize, tickTok, contains, wrap } from './shared/toolbelt';
 import  { addLabel, clickLogging } from './shared/arrows'
 import { drawShowMore } from "./shared/showmore"
 
@@ -151,11 +151,14 @@ export default class Rangechart {
     
     let extent = d3.extent(range)
 
-    const minMax = getMinMax(range.map(d => d))
+    // Removed temporarily as getMinMax is only needed for charts where we want to use the same min and max on the positive and negative x axis, getMinMax
+    // has been renamed to setMinToMa
 
-    let max = minMax.max
+    // const minMax = getMinMax(range.map(d => d))
 
-    let min = minMax.min
+    // let max = minMax.max
+
+    // let min = minMax.min
 
     // Bufferize now takes a percetange as the third argument
 

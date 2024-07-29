@@ -8,7 +8,7 @@ import { addLines } from "./shared/lines"
 //import { addLabels } from "./shared/labels"
 import  { addLabel, clickLogging } from './shared/arrows'
 import { addDrops } from "./shared/drops"
-import { getURLParams, getLongestKeyLength, numberFormat, mustache, mobileCheck, sorter, relax} from './shared/toolbelt';
+import { getURLParams, getLongestKeyLength, numberFormat, mustache, mobileCheck, sorter, relax, bufferize, isNumber} from './shared/toolbelt';
 import Dropdown from "./shared/dropdown";
 import Sonic from "./shared/sonic"
 import { checkApp } from 'newsroom-dojo';
@@ -120,12 +120,13 @@ export default class Linechart {
           current,
           parseTime,
           invertY,
+          curve,
           zeroLineX,
           zeroLineY,
           tooltipModule } = this.settings
 
 
-    console.log("breaks", breaks)
+    console.log("curve", curve)
   
     d3.select("#graphicContainer svg").remove() 
 
@@ -219,10 +220,22 @@ export default class Linechart {
     console.log("linebreaks", breaks)
     chartlines.forEach((key) => {
 
-      lineGenerators[key] = d3
-      .line()
-      .x((d) => x(d[xColumn]))
-      .y((d) => y(d[key]))
+      if (curve) {
+        lineGenerators[key] = d3
+        .line()
+        .x((d) => x(d[xColumn]))
+        .y((d) => y(d[key]))
+        .curve(d3[curve])
+      }
+      else {
+        lineGenerators[key] = d3
+        .line()
+        .x((d) => x(d[xColumn]))
+        .y((d) => y(d[key]))
+      }
+      
+
+
 
       if (breaks) {
 
@@ -292,22 +305,32 @@ export default class Linechart {
       })
     })
 
-   
 
-    const max = (maxY && maxY !== "")
-        ? parseInt(maxY)
-        : d3.max(chartValues)
+    // const max = (maxY && maxY !== "")
+    //     ? parseInt(maxY)
+    //     : d3.max(chartValues)
 
-    const min = (minY && minY !== "")
-        ? parseInt(minY)
-        : d3.min(chartValues)
+    // const min = (minY && minY !== "")
+    //     ? parseInt(minY)
+    //     : d3.min(chartValues)
 
-   let range = datum.map( d => d[xColumn])
+  let extentY = d3.extent(chartValues)
+  console.log("extentY",extentY)
+
+  let bufferY = bufferize(extentY[0], extentY[1])
+  console.log("bufferY",bufferY)
+  
+  console.log("minY", minY)
+  minY = (isNumber(minY)) ?  +minY : bufferY[0]
+  maxY = (isNumber(maxY)) ?  +maxY : bufferY[1] 
+
+  console.log(minY, maxY)
+  let range = datum.map( d => d[xColumn])
 
    //console.log("renage",range) 
     x.domain(d3.extent(range))
 
-    y.domain([min, max])
+    y.domain([minY, maxY])
 
     const xTicks = Math.round(width / 110)
 
