@@ -38,7 +38,8 @@
                 "xScale" : "scaleLinear",
                 "yScale" : "scaleBand",
                 "parseTime" : "",
-                "xAxisLabel" : ""
+                "xAxisLabel" : "",
+                "minMax" : ""
             }
         ],
         "dropdown": []

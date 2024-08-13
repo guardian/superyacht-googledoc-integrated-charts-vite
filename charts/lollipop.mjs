@@ -60,6 +60,7 @@ export default class Lollipop {
           yScale,
           parseTime,
           xAxisLabel,
+          minMax,
           xColumn } = this.settings
 
    
