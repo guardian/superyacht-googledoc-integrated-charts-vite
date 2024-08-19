@@ -36,7 +36,8 @@
                 "xFormat" : "",
                 "invertY": "FALSE",
                 "zeroLineY":"FALSE",
-                "zeroLineX":"FALSE"
+                "zeroLineX":"FALSE",
+                "curve":""
             }
         ],
         "chartId": [
