@@ -54,7 +54,8 @@ export default class Table {
           enableShowMore, 
           enableScroll, 
           aria, 
-          dropdown } = this.settings
+          dropdown,
+          columns } = this.settings
 
     const table = document.querySelector(`#yacht__table`)
 
@@ -62,9 +63,11 @@ export default class Table {
 
     table.innerHTML = ""
 
-    createTable(table, keys, enableSort)
+    const tableHeadings = columns.map(d => d.label)
 
-    colourize(keys, userkey, data).then(d => init(d))
+    createTable(table, tableHeadings, enableSort)
+
+    colourize(keys, userkey, data, columns).then(d => init(d))
 
     function init(d) {
 

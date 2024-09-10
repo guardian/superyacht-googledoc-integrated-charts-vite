@@ -1,129 +1,200 @@
 {
     "sheets": {
-        "template": [
-            {
-                "title": "Yacht Charter test chart",
-                "subtitle": "Things",
-                "footnote": "Footnote",
-                "source": "The universe",
-                "margin-left": "20",
-                "margin-top": "30",
-                "margin-bottom": "20",
-                "margin-right": "10"
-            }
-        ],
         "data": [
             {
-                "Yoghurt": "Barambah Organics All Natural Full Fat",
-                "$ per 100g": "1.15",
-                "Taste": "50",
-                "Texture": "21",
-                "Total": "71",
-                "Final rank": "5.5"
+                "2022": "68.1",
+                "2023": "76.6",
+                "2024": "68.1",
+                "2025": "76.6",
+                "Country": "NZ"
             },
             {
-                "Yoghurt": "Meredith Dairy Natural Goat Milk Probiotic",
-                "$ per 100g": "1.40",
-                "Taste": "46.5",
-                "Texture": "24.75",
-                "Total": "71.25",
-                "Final rank": "5.5"
+                "2022": "73",
+                "2023": "77.4",
+                "2024": "73",
+                "2025": "77.4",
+                "Country": "Canada"
             },
             {
-                "Yoghurt": "Bulla Australian Style",
-                "$ per 100g": "0.78",
-                "Taste": "57.5",
-                "Texture": "28.25",
-                "Total": "85.75",
-                "Final rank": "6.5"
+                "2022": "61.7",
+                "2023": "69.9",
+                "2024": "61.7",
+                "2025": "69.9",
+                "Country": "Euro area"
             },
             {
-                "Yoghurt": "Five:AM Organic Natural ",
-                "$ per 100g": "0.95",
-                "Taste": "44",
-                "Texture": "20.25",
-                "Total": "64.25",
-                "Final rank": "5"
+                "2022": "67.4",
+                "2023": "70.6",
+                "2024": "67.4",
+                "2025": "70.6",
+                "Country": "France"
             },
             {
-                "Yoghurt": "Jalna Biodynamic Whole Milk",
-                "$ per 100g": "0.88",
-                "Taste": "59.5",
-                "Texture": "28",
-                "Total": "87.5",
-                "Final rank": "6.5"
+                "2022": "66.9",
+                "2023": "75.7",
+                "2024": "66.9",
+                "2025": "75.7",
+                "Country": "Germany"
             },
             {
-                "Yoghurt": "Farmers Union Greek Style",
-                "$ per 100g": "0.65",
-                "Taste": "73.5",
-                "Texture": "34.5",
-                "Total": "108",
-                "Final rank": "8"
+                "2022": "50.4",
+                "2023": "56.9",
+                "2024": "50.4",
+                "2025": "56.9",
+                "Country": "Italy"
             },
             {
-                "Yoghurt": "Lyttos Greek Style ",
-                "$ per 100g": "0.40",
-                "Taste": "67",
-                "Texture": "33.25",
-                "Total": "100.25",
-                "Final rank": "7.5"
+                "2022": "60.9",
+                "2023": "74.8",
+                "2024": "60.9",
+                "2025": "74.8",
+                "Country": "Japan"
             },
             {
-                "Yoghurt": "Yoguri High Protein Greek",
-                "$ per 100g": "0.61",
-                "Taste": "39.5",
-                "Texture": "28.5",
-                "Total": "68",
-                "Final rank": "5"
+                "2022": "54.6",
+                "2023": "62.6",
+                "2024": "54.6",
+                "2025": "62.6",
+                "Country": "Korea"
             },
             {
-                "Yoghurt": "Attiki Greek Style",
-                "$ per 100g": "1.00",
-                "Taste": "70",
-                "Texture": "32.75",
-                "Total": "102.75",
-                "Final rank": "7.5"
+                "2022": "69.9",
+                "2023": "75.1",
+                "2024": "69.9",
+                "2025": "75.1",
+                "Country": "UK"
+            },
+            {
+                "2022": "69.1",
+                "2023": "69.5",
+                "2024": "69.1",
+                "2025": "69.5",
+                "Country": "US"
             }
         ],
-        "labels": [],
-        "trendline": [],
-        "userkey": [
+        "columns": [
             {
-                "key": "Taste",
-                "format": "rating",
-                "outta": "90"
+                "column": "Country",
+                "index": 0,
+                "label": "Place you with commas",
+                "dataTypes": [
+                    "string"
+                ],
+                "formats": [
+                    {
+                        "type": "string",
+                        "format": {
+                            "hasRepeat": false,
+                            "longest": 9,
+                            "scale": "scaleOrdinal"
+                        }
+                    }
+                ]
             },
             {
-                "key": "Texture",
-                "format": "rating",
-                "outta": "45"
+                "column": "2022",
+                "index": 1,
+                "label": "2022",
+                "dataTypes": [
+                    "number"
+                ],
+                "formats": [
+                    {
+                        "type": "number",
+                        "format": {
+                            "min": 50.4,
+                            "max": 73,
+                            "scale": "scaleLinear",
+                            "hasEmptyValues": false,
+                            "sequential": false
+                        }
+                    }
+                ]
             },
             {
-                "key": "Total",
-                "format": "rating",
-                "outta": "135"
+                "column": "2023",
+                "index": 2,
+                "label": "2023",
+                "dataTypes": [
+                    "number"
+                ],
+                "formats": [
+                    {
+                        "type": "number",
+                        "format": {
+                            "min": 56.9,
+                            "max": 77.4,
+                            "scale": "scaleLinear",
+                            "hasEmptyValues": false,
+                            "sequential": false
+                        }
+                    }
+                ]
             },
             {
-                "key": "Final rank",
-                "format": "rating",
-                "outta": "10"
+                "column": "2024",
+                "index": 3,
+                "label": "2024",
+                "dataTypes": [
+                    "number"
+                ],
+                "formats": [
+                    {
+                        "type": "number",
+                        "format": {
+                            "min": 50.4,
+                            "max": 73,
+                            "scale": "scaleLinear",
+                            "hasEmptyValues": false,
+                            "sequential": false
+                        }
+                    }
+                ]
+            },
+            {
+                "column": "2025",
+                "index": 4,
+                "label": "2025",
+                "dataTypes": [
+                    "number"
+                ],
+                "formats": [
+                    {
+                        "type": "number",
+                        "format": {
+                            "min": 56.9,
+                            "max": 77.4,
+                            "scale": "scaleLinear",
+                            "hasEmptyValues": false,
+                            "sequential": false
+                        }
+                    }
+                ]
             }
         ],
-        "periods": [],
         "chartId": [
             {
                 "type": "table"
             }
         ],
-        "options": [
+        "template": [
             {
-                "colorScheme": "guardian",
-                "format": "scrolling",
-                "enableSearch": "FALSE",
-                "enableSort": "TRUE"
+                "title": "",
+                "subtitle": "",
+                "footnote": "",
+                "source": "",
+                "tooltip": ""
             }
         ],
-        "dropdown": []
+        "options": [
+            {
+                "enableSearch": "TRUE",
+                "enableSort": "TRUE",
+                "enableShowMore": "FALSE",
+                "enableScroll": "TRUE",
+                "aria": "FALSE"
+            }
+        ],
+        "labels": []
     }
 }
