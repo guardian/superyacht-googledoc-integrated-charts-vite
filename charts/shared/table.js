@@ -383,7 +383,7 @@ export function formatedNumber() {
 
 			let background = (this.color) ? this.color : this.graphics.colour.get(value) 
 
-			let contrast = (percentage < 20) ? 'black' : 'white'
+			let contrast = (percentage < 30) ? 'black' : 'white'
 
 			value = `<div class="table-bar-chart"><div class="table-bar" style="background-color: ${background}; margin-left: 0%; width: ${percentage}%;"></div><div class="table-bar-label" style="left:${position}%;color:${contrast}">${value}</div></div>`
 

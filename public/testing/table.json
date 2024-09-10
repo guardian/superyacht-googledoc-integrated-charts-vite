@@ -2,81 +2,203 @@
     "sheets": {
         "data": [
             {
-                "2022": "68.1",
-                "2023": "76.6",
-                "2024": "68.1",
-                "2025": "76.6",
-                "Country": "NZ"
+                "Year": "2024",
+                "MCG games": "3",
+                "Finals attendance (000s)": "550",
+                "Notes": "Estimated (max)"
             },
             {
-                "2022": "73",
-                "2023": "77.4",
-                "2024": "73",
-                "2025": "77.4",
-                "Country": "Canada"
+                "Year": "2023",
+                "MCG games": "6",
+                "Finals attendance (000s)": "665",
+                "Notes": ""
             },
             {
-                "2022": "61.7",
-                "2023": "69.9",
-                "2024": "61.7",
-                "2025": "69.9",
-                "Country": "Euro area"
+                "Year": "2022",
+                "MCG games": "6",
+                "Finals attendance (000s)": "640",
+                "Notes": ""
             },
             {
-                "2022": "67.4",
-                "2023": "70.6",
-                "2024": "67.4",
-                "2025": "70.6",
-                "Country": "France"
+                "Year": "2021",
+                "MCG games": "0",
+                "Finals attendance (000s)": "273",
+                "Notes": "Pandemic"
             },
             {
-                "2022": "66.9",
-                "2023": "75.7",
-                "2024": "66.9",
-                "2025": "75.7",
-                "Country": "Germany"
+                "Year": "2020",
+                "MCG games": "0",
+                "Finals attendance (000s)": "207",
+                "Notes": "Pandemic"
             },
             {
-                "2022": "50.4",
-                "2023": "56.9",
-                "2024": "50.4",
-                "2025": "56.9",
-                "Country": "Italy"
+                "Year": "2019",
+                "MCG games": "5",
+                "Finals attendance (000s)": "564",
+                "Notes": ""
             },
             {
-                "2022": "60.9",
-                "2023": "74.8",
-                "2024": "60.9",
-                "2025": "74.8",
-                "Country": "Japan"
+                "Year": "2018",
+                "MCG games": "6",
+                "Finals attendance (000s)": "700",
+                "Notes": ""
             },
             {
-                "2022": "54.6",
-                "2023": "62.6",
-                "2024": "54.6",
-                "2025": "62.6",
-                "Country": "Korea"
+                "Year": "2017",
+                "MCG games": "4",
+                "Finals attendance (000s)": "554",
+                "Notes": ""
             },
             {
-                "2022": "69.9",
-                "2023": "75.1",
-                "2024": "69.9",
-                "2025": "75.1",
-                "Country": "UK"
+                "Year": "2016",
+                "MCG games": "4",
+                "Finals attendance (000s)": "558",
+                "Notes": ""
             },
             {
-                "2022": "69.1",
-                "2023": "69.5",
-                "2024": "69.1",
-                "2025": "69.5",
-                "Country": "US"
+                "Year": "2015",
+                "MCG games": "4",
+                "Finals attendance (000s)": "519",
+                "Notes": "Subiaco prelims"
+            },
+            {
+                "Year": "2014",
+                "MCG games": "5",
+                "Finals attendance (000s)": "570",
+                "Notes": ""
+            },
+            {
+                "Year": "2013",
+                "MCG games": "6",
+                "Finals attendance (000s)": "558",
+                "Notes": ""
+            },
+            {
+                "Year": "2012",
+                "MCG games": "5",
+                "Finals attendance (000s)": "540",
+                "Notes": ""
+            },
+            {
+                "Year": "2011",
+                "MCG games": "7",
+                "Finals attendance (000s)": "615",
+                "Notes": ""
+            },
+            {
+                "Year": "2010",
+                "MCG games": "7",
+                "Finals attendance (000s)": "651",
+                "Notes": ""
+            },
+            {
+                "Year": "2009",
+                "MCG games": "7",
+                "Finals attendance (000s)": "615",
+                "Notes": ""
+            },
+            {
+                "Year": "2008",
+                "MCG games": "7",
+                "Finals attendance (000s)": "572",
+                "Notes": ""
+            },
+            {
+                "Year": "2007",
+                "MCG games": "5",
+                "Finals attendance (000s)": "574",
+                "Notes": ""
+            },
+            {
+                "Year": "2006",
+                "MCG games": "3",
+                "Finals attendance (000s)": "532",
+                "Notes": "Weeks 2 and 3 outside Vic"
             }
         ],
         "columns": [
             {
-                "column": "Country",
+                "column": "Year",
                 "index": 0,
-                "label": "Place you with commas",
+                "label": "Year",
+                "dataTypes": [
+                    "date",
+                    "number",
+                    "string"
+                ],
+                "formats": [
+                    {
+                        "type": "date",
+                        "format": {
+                            "dateFormat": "%Y",
+                            "hasDay": false,
+                            "scale": "scaleOrdinal"
+                        }
+                    },
+                    {
+                        "type": "number",
+                        "format": {
+                            "min": 2006,
+                            "max": 2024,
+                            "scale": "scaleLinear",
+                            "hasEmptyValues": false,
+                            "sequential": true
+                        }
+                    },
+                    {
+                        "type": "string",
+                        "format": {
+                            "hasRepeat": false,
+                            "longest": 4,
+                            "scale": "scaleOrdinal"
+                        }
+                    }
+                ]
+            },
+            {
+                "column": "MCG games",
+                "index": 1,
+                "label": "MCG games",
+                "dataTypes": [
+                    "number"
+                ],
+                "formats": [
+                    {
+                        "type": "number",
+                        "format": {
+                            "min": 0,
+                            "max": 7,
+                            "scale": "scaleLog",
+                            "hasEmptyValues": false,
+                            "sequential": false
+                        }
+                    }
+                ]
+            },
+            {
+                "column": "Finals attendance (000s)",
+                "index": 2,
+                "label": "Finals attendance (000s)",
+                "dataTypes": [
+                    "number"
+                ],
+                "formats": [
+                    {
+                        "type": "number",
+                        "format": {
+                            "min": 207,
+                            "max": 700,
+                            "scale": "scaleLinear",
+                            "hasEmptyValues": false,
+                            "sequential": false
+                        }
+                    }
+                ]
+            },
+            {
+                "column": "Notes",
+                "index": 3,
+                "label": "Notes",
                 "dataTypes": [
                     "string"
                 ],
@@ -84,89 +206,9 @@
                     {
                         "type": "string",
                         "format": {
-                            "hasRepeat": false,
-                            "longest": 9,
-                            "scale": "scaleOrdinal"
-                        }
-                    }
-                ]
-            },
-            {
-                "column": "2022",
-                "index": 1,
-                "label": "2022",
-                "dataTypes": [
-                    "number"
-                ],
-                "formats": [
-                    {
-                        "type": "number",
-                        "format": {
-                            "min": 50.4,
-                            "max": 73,
-                            "scale": "scaleLinear",
-                            "hasEmptyValues": false,
-                            "sequential": false
-                        }
-                    }
-                ]
-            },
-            {
-                "column": "2023",
-                "index": 2,
-                "label": "2023",
-                "dataTypes": [
-                    "number"
-                ],
-                "formats": [
-                    {
-                        "type": "number",
-                        "format": {
-                            "min": 56.9,
-                            "max": 77.4,
-                            "scale": "scaleLinear",
-                            "hasEmptyValues": false,
-                            "sequential": false
-                        }
-                    }
-                ]
-            },
-            {
-                "column": "2024",
-                "index": 3,
-                "label": "2024",
-                "dataTypes": [
-                    "number"
-                ],
-                "formats": [
-                    {
-                        "type": "number",
-                        "format": {
-                            "min": 50.4,
-                            "max": 73,
-                            "scale": "scaleLinear",
-                            "hasEmptyValues": false,
-                            "sequential": false
-                        }
-                    }
-                ]
-            },
-            {
-                "column": "2025",
-                "index": 4,
-                "label": "2025",
-                "dataTypes": [
-                    "number"
-                ],
-                "formats": [
-                    {
-                        "type": "number",
-                        "format": {
-                            "min": 56.9,
-                            "max": 77.4,
-                            "scale": "scaleLinear",
-                            "hasEmptyValues": false,
-                            "sequential": false
+                            "hasRepeat": true,
+                            "longest": 29,
+                            "scale": "scaleBand"
                         }
                     }
                 ]
@@ -179,22 +221,31 @@
         ],
         "template": [
             {
-                "title": "",
-                "subtitle": "",
+                "title": "AFL finals attendance",
+                "subtitle": "Fewer MCG matches mean 2024's aggregate is down",
                 "footnote": "",
-                "source": "",
+                "source": "AFL annual reports",
                 "tooltip": ""
             }
         ],
         "options": [
             {
-                "enableSearch": "TRUE",
-                "enableSort": "TRUE",
+                "enableSearch": "FALSE",
+                "enableSort": "FALSE",
                 "enableShowMore": "FALSE",
-                "enableScroll": "TRUE",
+                "enableScroll": "FALSE",
                 "aria": "FALSE"
             }
         ],
-        "labels": []
+        "labels": [],
+        "userkey": [
+            {
+                "key": "Finals attendance (000s)",
+                "format": "bar",
+                "value": "207,700",
+                "colours": "red",
+                "scale": "Linear"
+            }
+        ]
     }
 }
