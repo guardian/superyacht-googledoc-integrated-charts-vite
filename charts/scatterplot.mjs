@@ -2,7 +2,7 @@
 import dataTools from "./shared/dataTools"
 import Tooltip from "./shared/tooltip"
 import ColorScale from "./shared/colorscale"
-import { numberFormat, mustache, mobileCheck, bufferize, validateString } from './shared/toolbelt';
+import { numberFormat, mustache, mobileCheck, bufferize, validateString, getLabelFromColumn } from './shared/toolbelt';
 import { addLabels } from "./shared/labels"
 
 export default class Scatterplot {
@@ -69,7 +69,8 @@ export default class Scatterplot {
           zScale,
           zLabel,
           opacity,
-          xFormat
+          xFormat,
+          columns
          } = this.settings
 
           console.log(`Opacity: ${opacity / 100}`)

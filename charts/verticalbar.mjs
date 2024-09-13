@@ -1,6 +1,6 @@
 import dataTools from "./shared/dataTools"
 import ColorScale from "./shared/colorscale"
-import { numberFormat,getURLParams, mustache, mobileCheck, textPadding, textPaddingMobile, stackMin, stackMax, timeCheck,  bufferize } from './shared/toolbelt';
+import { numberFormat,getURLParams, mustache, mobileCheck, textPadding, textPaddingMobile, stackMin, stackMax, timeCheck,  bufferize, getLabelFromColumn } from './shared/toolbelt';
 import Dropdown from "./shared/dropdown";
 import { addDrops } from "./shared/drops"
 import Tooltip from "./shared/tooltip"
@@ -106,7 +106,8 @@ export default class Stackedbar {
           periods,
           parseTime,
           stackedbars,
-          hideKey
+          hideKey,
+          columns
           } = this.settings
 
 
@@ -154,7 +155,7 @@ export default class Stackedbar {
 
         keyDiv.append("span")
         .attr("class", "keyText")
-        .text(key)
+        .text(getLabelFromColumn(columns, key))
       })
 
     }
