@@ -2,7 +2,7 @@
 import dataTools from "./shared/dataTools"
 import Tooltip from "./shared/tooltip"
 import ColorScale from "./shared/colorscale"
-import { numberFormat, mustache, mobileCheck, bufferize, validateString, dodge, wrap, getMaxDuplicate, getURLParams, isNumber } from './shared/toolbelt';
+import { numberFormat, mustache, mobileCheck, bufferize, validateString, dodge, wrap, getMaxDuplicate, getURLParams, isNumber, getLabelFromColumn } from './shared/toolbelt';
 // import { addLabels } from "./shared/labels"
 import  { addLabel, clickLogging } from './shared/arrows'
 import { makeTopLinedAxis } from './shared/makeAxis'
@@ -81,7 +81,8 @@ export default class Scatterplot {
           parseTime,
           groupBy, 
           defaultRadius,
-          beeswarm
+          beeswarm,
+          columns
       } = this.settings
 
     datum = JSON.parse(JSON.stringify(data));
@@ -196,7 +197,7 @@ export default class Scatterplot {
         keyDiv
         .append("span")
         .attr("class", "keyText")
-        .text(key)
+        .text(key) // getLabelFromColumn(columns, key)
   
       })
 

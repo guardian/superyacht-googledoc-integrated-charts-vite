@@ -20,7 +20,7 @@ export class yachtCharter {
 
   async setUp(key, location) {
 
-    const myChart = "verticalbar"; // Leave it blank or enter a chart type
+    const myChart = "rangechart"; // Leave it blank or enter a chart type
 
     /*
     horizontalbar -
@@ -44,7 +44,7 @@ export class yachtCharter {
     this.chartTypes = this.charts.flatMap(item => item.names)
 
     const testing = (window.location.hostname === "localhost") ? preflight(this.charts, myChart) : false ;
-    console.log("testing", testing)
+
     if (key != null && !testing) {
 
       this.getData(location, key)

@@ -22,7 +22,7 @@ export default class Rangechart {
   }
 
   init() {
-    console.log('enableshowmore',this.settings.enableShowMore)
+    // console.log('enableshowmore',this.settings.enableShowMore)
     drawShowMore(this.settings.enableShowMore)  
     this.render()
 
@@ -66,7 +66,9 @@ export default class Rangechart {
           parseTime,
           xAxisLabel,
           hideKey,
-          xColumn } = this.settings
+          xColumn,
+          minMax,
+          columns } = this.settings
 
    
     d3.select("#graphicContainer svg").remove()
@@ -98,7 +100,7 @@ export default class Rangechart {
 
     keysInOrder.sort((a, b) => d3.ascending(a.value, b.value))
 
-    console.log("keysInOrder", keysInOrder)
+    // console.log("keysInOrder", keysInOrder)
 
     //Reset to get the new keys in order
 
@@ -110,7 +112,7 @@ export default class Rangechart {
       keysToChart.push(d.key)
     })
 
-    console.log("keysToChart", keysToChart)
+    //// console.log("keysToChart", keysToChart)
   
     const keyColor = dataTools.getKeysColors({
       keys: keysToChart,
@@ -188,7 +190,7 @@ export default class Rangechart {
       //.attr("transform", "translate(0," + svgHeight + ")")
       //.call(d3.axisBottom(x))
 
-    console.log("yScale", yScale)  
+    // console.log("yScale", yScale)  
     var y = d3[yScale]()
     .range([ 0, featuresHeight])
     .domain(datum.map(function(d) { return d[groupBy]; }))
@@ -311,7 +313,7 @@ export default class Rangechart {
       .attr("y", function(d) { return y(d[groupBy]) - (circleRadius/2) })
       .attr("height", circleRadius)
       .attr("fill", function(d,i) {
-        console.log(d)
+
         let defs = svg.append("defs");
 
         let gradient = defs.append("linearGradient")
@@ -420,7 +422,7 @@ export default class Rangechart {
     if (labels.length > 0) {
      
       const clickLoggingOn = getURLParams("labelling") ? true : false ;
-      console.log("clickLoggingOn", clickLoggingOn);
+      // console.log("clickLoggingOn", clickLoggingOn);
 
       // Move this to wrangle later once we re-factor the labelling stuff
 
@@ -433,7 +435,7 @@ export default class Rangechart {
         })
       }
      
-      console.log("annotations", labels)
+      // console.log("annotations", labels)
       labels.forEach((config) => {
     		addLabel(svg, config, svgWidth, svgHeight, {
     			"left": marginleft,

@@ -2,7 +2,7 @@
 import dataTools from "./shared/dataTools";
 import ColorScale from "./shared/colorscale";
 import colorPresets from "./constants/colors";
-import { numberFormat, mustache, mobileCheck, setMinToMax, textPadding, textPaddingMobile, stackMin, stackMax, contains, getURLParams } from './shared/toolbelt';
+import { numberFormat, mustache, mobileCheck, setMinToMax, textPadding, textPaddingMobile, stackMin, stackMax, contains, getURLParams, getLabelFromColumn } from './shared/toolbelt';
 import { addDrops } from "./shared/drops"
 import Dropdown from "./shared/dropdown";
 import Tooltip from "./shared/tooltip";
@@ -111,7 +111,8 @@ export default class Horizontalbar {
           xAxis,
           yAxis,
           stackedhorizontal,
-          parseTime } = this.settings
+          parseTime,
+          columns } = this.settings
      
 
     d3.select("#graphicContainer svg").remove()
@@ -138,7 +139,7 @@ export default class Horizontalbar {
 
     let showTotals = (contains(keys,'Color')) ? true : false 
 
-    const columns = keys.filter(d => d != "Color" && d != "keyCategory")
+    const columnsKey = keys.filter(d => d != "Color" && d != "keyCategory")
 
     let allValues = []
 
@@ -190,14 +191,14 @@ export default class Horizontalbar {
   
     datum.forEach((d) => {
       let newData = {}
-      columns.forEach((key, i) => {
+      columnsKey.forEach((key, i) => {
         newData[key] = d[key]
       })
       // sonicData.push(newData)
     })
 
     // console.log("sonicdata1", sonicData)
-    // sonicData = sonicData.sort((a, b) => d3.ascending(+a[columns[1]], +b[columns[1]]))
+    // sonicData = sonicData.sort((a, b) => d3.ascending(+a[columnsKey[1]], +b[columnsKey[1]]))
 
     console.log("stack",stackedhorizontal, stackedhorizontal.length)
 
@@ -236,7 +237,7 @@ export default class Horizontalbar {
         keyDiv
         .append("span")
         .attr("class", "keyText")
-        .text(k)
+        .text(getLabelFromColumn(columns, k))
 
       })
 

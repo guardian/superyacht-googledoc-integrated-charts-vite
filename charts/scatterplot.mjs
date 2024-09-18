@@ -119,6 +119,8 @@ export default class Scatterplot {
 
     colors.set(keyColor.keys, keyColor.colors)
 
+    console.log(columns)
+
     if (!hideKey) (
 
       keyData.forEach((key, i) => {
@@ -136,7 +138,7 @@ export default class Scatterplot {
         keyDiv
         .append("span")
         .attr("class", "keyText")
-        .text(key)
+        .text(key) //getLabelFromColumn(columns, key)
   
       })
 

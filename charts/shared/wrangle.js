@@ -61,7 +61,7 @@ export async function wrangle(data, chart) {
 
   processDateSettings(settings);
 
-  console.log(Object.keys(settings), settings);
+  //console.log(Object.keys(settings), settings);
   return settings;
 }
 
