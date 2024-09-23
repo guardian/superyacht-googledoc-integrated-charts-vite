@@ -1,21 +1,184 @@
-{"sheets":{"data":[{"Year":"2002-01-01","Government":"68.6","Non-Government":"31.4"},{"Year":"2003-01-01","Government":"68.1","Non-Government":"31.9"},{"Year":"2004-01-01","Government":"67.7","Non-Government":"32.3"},{"Year":"2005-01-01","Government":"67.3","Non-Government":"32.7"},{"Year":"2006-01-01","Government":"66.9","Non-Government":"33.1"},{"Year":"2007-01-01","Government":"66.6","Non-Government":"33.4"},{"Year":"2008-01-01","Government":"66.1","Non-Government":"33.9"},{"Year":"2009-01-01","Government":"65.8","Non-Government":"34.2"},{"Year":"2010-01-01","Government":"65.6","Non-Government":"34.4"},{"Year":"2011-01-01","Government":"65.4","Non-Government":"34.6"},{"Year":"2012-01-01","Government":"65.2","Non-Government":"34.8"},{"Year":"2013-01-01","Government":"65.1","Non-Government":"34.9"},{"Year":"2014-01-01","Government":"65.1","Non-Government":"34.9"},{"Year":"2015-01-01","Government":"65.2","Non-Government":"34.8"},{"Year":"2016-01-01","Government":"65.4","Non-Government":"34.6"},{"Year":"2017-01-01","Government":"65.6","Non-Government":"34.4"},{"Year":"2018-01-01","Government":"65.7","Non-Government":"34.3"},{"Year":"2019-01-01","Government":"65.7","Non-Government":"34.3"},{"Year":"2020-01-01","Government":"65.6","Non-Government":"34.4"},{"Year":"2021-01-01","Government":"65.1","Non-Government":"34.9"},{"Year":"2022-01-01","Government":"64.5","Non-Government":"35.5"}],
-"template":[
-    {"title":"Public school enrolment has been declining over the past two decades",
-    "subtitle":"Showing the proportion of enrolments by school affiliation in Australia, 2002 to 2022\n",
-    "footnote":"",
-    "source":"ABS",
-    "dateFormat":"%Y-%m-%d",
-    "yScaleType":"",
-    "xAxisLabel":"",
-    "yAxisLabel":"",
-    "xAxisDateFormat":"%Y",
-    "baseline":"",
-    "tooltip":"",
-    "periodDateFormat":"",
-    "margin-left":"50",
-    "margin-top":"5",
-    "margin-bottom":"20",
-    "margin-right":"30",
-    "minX":"",
-    "minY":"0"}],
-    "options":[{"lineLabelling":"FALSE","colorScheme":"","aria":"FALSE","credit":""}],"chartId":[{"type":"linechart"}],"key":[],"periods":[],"labels":[{"id":"label1","coords":"{\"targetX\":0.9504290902361732,\"targetY\":0.2080634715025907,\"sourceX\":0.9963220836899447,\"sourceY\":0.07255131526504584,\"textX\":0.9415465753741528,\"textY\":0.206070645675568}","text":"4.1 percentage point \ndecline since 2002","coordType":"pct","sweepFlag":"1","radius":"200","arrow":"","align":"end"}]}}
+{
+    "sheets": {
+        "data": [
+            {
+                "Date": "1 January 2021",
+                "Price ($)": "3.5"
+            },
+            {
+                "Date": "27 November 2022",
+                "Price ($)": "3.5"
+            },
+            {
+                "Date": "28 November 2022",
+                "Price ($)": "5"
+            },
+            {
+                "Date": "19 December 2022",
+                "Price ($)": "5"
+            },
+            {
+                "Date": "20 December 2022",
+                "Price ($)": "4.5"
+            },
+            {
+                "Date": "1 April 2023",
+                "Price ($)": "4.5"
+            }
+        ],
+        "columns": [
+            {
+                "column": "Date",
+                "index": 0,
+                "label": "Date",
+                "dataTypes": [
+                    "date",
+                    "string"
+                ],
+                "formats": [
+                    {
+                        "type": "date",
+                        "format": {
+                            "dateFormat": "%d %B %Y",
+                            "hasDay": true,
+                            "scale": "scaleOrdinal"
+                        }
+                    },
+                    {
+                        "type": "string",
+                        "format": {
+                            "hasRepeat": false,
+                            "longest": 16,
+                            "scale": "scaleOrdinal"
+                        }
+                    }
+                ]
+            },
+            {
+                "column": "Price ($)",
+                "index": 1,
+                "label": "Price ($)",
+                "dataTypes": [
+                    "number"
+                ],
+                "formats": [
+                    {
+                        "type": "number",
+                        "format": {
+                            "min": 3.5,
+                            "max": 5,
+                            "scale": "scaleLinear",
+                            "hasEmptyValues": false,
+                            "sequential": false
+                        }
+                    }
+                ]
+            }
+        ],
+        "chartId": [
+            {
+                "type": "linechart"
+            }
+        ],
+        "template": [
+            {
+                "title": "How Woolworths allegedly spikes the price of products to raise the base 'discounted' price",
+                "subtitle": "Showing the price of a family pack of Oreos",
+                "footnote": "",
+                "source": "ACCC",
+                "tooltip": ""
+            }
+        ],
+        "options": [
+            {
+                "lineLabelling": "TRUE",
+                "aria": "TRUE",
+                "colorScheme": "guardian",
+                "breaks": "TRUE",
+                "dateFormat": "%d %B %Y",
+                "parseTime": "",
+                "yScaleType": "",
+                "xAxisLabel": "",
+                "yAxisLabel": "",
+                "periodDateFormat": "",
+                "margin-left": 50,
+                "margin-top": 30,
+                "margin-bottom": 20,
+                "margin-right": 30,
+                "minX": "",
+                "minY": 0,
+                "maxY": 6,
+                "timeInterval": "",
+                "xAxisDateFormat": "%b %y",
+                "xColumn": "Date",
+                "xFormat": "",
+                "invertY": "FALSE",
+                "zeroLineY": "FALSE",
+                "zeroLineX": "FALSE",
+                "curve": ""
+            }
+        ],
+        "labels": [
+            {
+                "id": "label-Zi7dtBbX",
+                "coords": {
+                    "targetX": 0.37348423605497166,
+                    "targetY": 0.3891570981210856,
+                    "sourceX": 0.3306386418755053,
+                    "sourceY": 0.25345772442588727,
+                    "centreX": 0.3548908649959579,
+                    "centreY": 0.2701591858037578,
+                    "textX": 0.31689571544058204,
+                    "textY": 0.22214248434237993
+                },
+                "text": "Oreo for sale at a regular price\nof $3.50 on a pre-existing \n‘Prices Dropped’ promotion",
+                "coordType": "pct",
+                "sweepFlag": "0",
+                "radius": "0",
+                "arrow": "",
+                "align": "end",
+                "path": "true"
+            },
+            {
+                "id": "label-3PgyhQCU",
+                "coords": {
+                    "targetX": 0.8164915117219078,
+                    "targetY": 0.15324895615866388,
+                    "sourceX": 0.7728375101050929,
+                    "sourceY": 0.048864822546972865,
+                    "centreX": 0.8035569927243331,
+                    "centreY": 0.07600469728601253,
+                    "textX": 0.7599029911075182,
+                    "textY": 0.05721555323590814
+                },
+                "text": "Price increased to $5.00 for 22 days",
+                "coordType": "pct",
+                "sweepFlag": "0",
+                "radius": "0",
+                "arrow": "",
+                "align": "end",
+                "path": "true"
+            },
+            {
+                "id": "label-yVA3KT1e",
+                "coords": {
+                    "targetX": 0.8375101050929669,
+                    "targetY": 0.25972077244258873,
+                    "sourceX": 0.8059822150363783,
+                    "sourceY": 0.5624347599164927,
+                    "centreX": 0.8383185125303153,
+                    "centreY": 0.4329984342379958,
+                    "textX": 0.7898140662894099,
+                    "textY": 0.5645224425887265
+                },
+                "text": "The product placed on a ‘Prices Dropped’\npromotion showing a ‘Prices Dropped’ \nprice of $4.50 and a ‘was’ price of $5.00",
+                "coordType": "pct",
+                "sweepFlag": "0",
+                "radius": "0",
+                "arrow": "",
+                "align": "end",
+                "path": "true"
+            }
+        ]
+    }
+}
