@@ -524,21 +524,26 @@ export default class Linechart {
       }
      
       console.log("annotations", labels)
-      /*
-      labels.forEach((config) => {
-        addLabel(svg, config, width + marginleft + marginright - buffer, height + margintop + marginbottom, {"left":marginleft, "right":marginright, "top":margintop, "bottom":marginbottom}, clickLoggingOn)
-      })
-      */
+
+      const margins = {
+        "left": marginleft,
+        "right": marginright,
+        "top": margintop,
+        "bottom": marginbottom
+      };
+
+      const baseWidth = width + marginleft + marginright;
+      const baseHeight = height + margintop + marginbottom;
+
 
       labels.forEach((config) => {
-        addLabel(svg, config, width + marginleft + marginright, height + margintop + marginbottom, {
-          "left": marginleft,
-          "right": marginright,
-          "top": margintop,
-          "bottom": marginbottom
-        }, clickLoggingOn)
-      })
-      
+
+        const adjustedWidth = lineLabelling ? baseWidth : baseWidth - buffer;
+
+        addLabel(svg, config, adjustedWidth, baseHeight, margins, clickLoggingOn);
+
+      });
+
 
     }
 
