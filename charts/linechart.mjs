@@ -527,6 +527,15 @@ export default class Linechart {
      
       console.log("annotations", labels)
       labels.forEach((config) => {
+        /*
+          console.log(`Width: ${width},
+          marginleft: ${marginleft},
+          marginright: ${marginright},
+          height: ${height},
+          margintop: ${margintop},
+          marginbottom: ${marginbottom}
+          buffer: ${buffer}`)
+          */
         addLabel(svg, config, width + marginleft + marginright - buffer, height + margintop + marginbottom, {"left":marginleft, "right":marginright, "top":margintop, "bottom":marginbottom}, clickLoggingOn)
       })
 
