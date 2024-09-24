@@ -511,7 +511,7 @@ export default class Linechart {
 
     if (labels.length > 0) {
      
-      const clickLoggingOn = getURLParams("labelling") ? true : false ;
+      const clickLoggingOn = true //getURLParams("labelling") ? true : false ;
       console.log("clickLoggingOn", clickLoggingOn);
 
       // Move this to wrangle later once we re-factor the labelling stuff
