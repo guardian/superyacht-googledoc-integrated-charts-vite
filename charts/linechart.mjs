@@ -8,7 +8,7 @@ import { addLines } from "./shared/lines"
 //import { addLabels } from "./shared/labels"
 import  { addLabel, clickLogging } from './shared/arrows'
 import { addDrops } from "./shared/drops"
-import { getURLParams, getLongestKeyLength, numberFormat, mustache, mobileCheck, sorter, relax, bufferize, isNumber} from './shared/toolbelt';
+import { getURLParams, getLongestKeyLength, numberFormat, mustache, mobileCheck, sorter, relax, bufferize, isNumber, getLabelFromColumn} from './shared/toolbelt';
 import Dropdown from "./shared/dropdown";
 import Sonic from "./shared/sonic"
 import { checkApp } from 'newsroom-dojo';
@@ -123,7 +123,8 @@ export default class Linechart {
           curve,
           zeroLineX,
           zeroLineY,
-          tooltipModule } = this.settings
+          tooltipModule,
+          columns } = this.settings
 
 
     console.log("curve", curve)
@@ -278,7 +279,7 @@ export default class Linechart {
           $keyDiv
           .append("span")
           .attr("class", "keyText")
-          .text(key)
+          .text(getLabelFromColumn(columns, key))
 
           })
        }
