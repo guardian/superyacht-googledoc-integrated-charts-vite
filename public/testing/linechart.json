@@ -91,8 +91,8 @@
         ],
         "options": [
             {
-                "lineLabelling": "TRUE",
-                "aria": "TRUE",
+                "lineLabelling": "",
+                "aria": "FALSE",
                 "colorScheme": "guardian",
                 "breaks": "TRUE",
                 "dateFormat": "%d %B %Y",
@@ -121,63 +121,33 @@
         "labels": [
             {
                 "id": "label-Zi7dtBbX",
-                "coords": {
-                    "targetX": 0.37348423605497166,
-                    "targetY": 0.3891570981210856,
-                    "sourceX": 0.3306386418755053,
-                    "sourceY": 0.25345772442588727,
-                    "centreX": 0.3548908649959579,
-                    "centreY": 0.2701591858037578,
-                    "textX": 0.31689571544058204,
-                    "textY": 0.22214248434237993
-                },
+                "coords": {"targetX":0.37152586346683963,"targetY":0.2981665826612903,"sourceX":0.40473487919571915,"sourceY":0.39897303427419356,"centreX":0.3548908649959579,"centreY":0.2701591858037578,"textX":0.35492135560239985,"textY":0.14695690524193547},
                 "text": "Oreo for sale at a regular price\nof $3.50 on a pre-existing \n‘Prices Dropped’ promotion",
                 "coordType": "pct",
                 "sweepFlag": "0",
-                "radius": "0",
+                "radius": "200",
                 "arrow": "",
-                "align": "end",
-                "path": "true"
+                "align": "end"
             },
             {
                 "id": "label-3PgyhQCU",
-                "coords": {
-                    "targetX": 0.8164915117219078,
-                    "targetY": 0.15324895615866388,
-                    "sourceX": 0.7728375101050929,
-                    "sourceY": 0.048864822546972865,
-                    "centreX": 0.8035569927243331,
-                    "centreY": 0.07600469728601253,
-                    "textX": 0.7599029911075182,
-                    "textY": 0.05721555323590814
-                },
+                "coords": {"targetX":0.8402672487045769,"targetY":0.0623686974789916,"sourceX":0.8541295256502107,"sourceY":0.15165441176470587,"centreX":0.8035569927243331,"centreY":0.07600469728601253,"textX":0.830225393221988,"textY":0.005827872983870968},
                 "text": "Price increased to $5.00 for 22 days",
                 "coordType": "pct",
                 "sweepFlag": "0",
-                "radius": "0",
+                "radius": "200",
                 "arrow": "",
-                "align": "end",
-                "path": "true"
+                "align": "end"
             },
             {
                 "id": "label-yVA3KT1e",
-                "coords": {
-                    "targetX": 0.8375101050929669,
-                    "targetY": 0.25972077244258873,
-                    "sourceX": 0.8059822150363783,
-                    "sourceY": 0.5624347599164927,
-                    "centreX": 0.8383185125303153,
-                    "centreY": 0.4329984342379958,
-                    "textX": 0.7898140662894099,
-                    "textY": 0.5645224425887265
-                },
+                "coords": {"targetX":0.8785503918534419,"targetY":0.2645745798319328,"sourceX":0.8508627431404848,"sourceY":0.5586922268907563,"centreX":0.8383185125303153,"centreY":0.4329984342379958,"textX":0.8412785570475382,"textY":0.548188025210084},
                 "text": "The product placed on a ‘Prices Dropped’\npromotion showing a ‘Prices Dropped’ \nprice of $4.50 and a ‘was’ price of $5.00",
                 "coordType": "pct",
                 "sweepFlag": "0",
-                "radius": "0",
+                "radius": "200",
                 "arrow": "",
-                "align": "end",
-                "path": "true"
+                "align": "end"
             }
         ]
     }

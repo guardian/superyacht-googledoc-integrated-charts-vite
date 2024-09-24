@@ -8,7 +8,7 @@ import { addLines } from "./shared/lines"
 //import { addLabels } from "./shared/labels"
 import  { addLabel, clickLogging } from './shared/arrows'
 import { addDrops } from "./shared/drops"
-import { getURLParams, getLongestKeyLength, numberFormat, mustache, mobileCheck, sorter, relax, bufferize, isNumber, getLabelFromColumn} from './shared/toolbelt';
+import { getURLParams, getLongestKeyLength, numberFormat, mustache, mobileCheck, sorter, relax, bufferize, isNumber} from './shared/toolbelt';
 import Dropdown from "./shared/dropdown";
 import Sonic from "./shared/sonic"
 import { checkApp } from 'newsroom-dojo';
@@ -123,8 +123,7 @@ export default class Linechart {
           curve,
           zeroLineX,
           zeroLineY,
-          tooltipModule,
-          columns } = this.settings
+          tooltipModule } = this.settings
 
 
     console.log("curve", curve)
@@ -279,7 +278,7 @@ export default class Linechart {
           $keyDiv
           .append("span")
           .attr("class", "keyText")
-          .text(getLabelFromColumn(columns, key))
+          .text(key)
 
           })
        }
@@ -354,6 +353,8 @@ export default class Linechart {
     console.log("aria", aria)
 
     if (!isApp && aria != false) {
+
+      console.log("Setting up noisycharts...")
 
       if (!chart.noisyChartsSetup) {
         chart.sonic = new Sonic(this.settings, datum, x, y, colors)
@@ -524,26 +525,9 @@ export default class Linechart {
       }
      
       console.log("annotations", labels)
-
-      const margins = {
-        "left": marginleft,
-        "right": marginright,
-        "top": margintop,
-        "bottom": marginbottom
-      };
-
-      const baseWidth = width + marginleft + marginright;
-      const baseHeight = height + margintop + marginbottom;
-
-
       labels.forEach((config) => {
-
-        const adjustedWidth = lineLabelling ? baseWidth : baseWidth - buffer;
-
-        addLabel(svg, config, adjustedWidth, baseHeight, margins, clickLoggingOn);
-
-      });
-
+        addLabel(svg, config, width + marginleft + marginright - buffer, height + margintop + marginbottom, {"left":marginleft, "right":marginright, "top":margintop, "bottom":marginbottom}, clickLoggingOn)
+      })
 
     }
 
