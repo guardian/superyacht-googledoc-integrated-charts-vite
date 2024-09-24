@@ -14,7 +14,7 @@ const SPECIAL_KEYS = ["template", "options", "chartId"];
 const CONVERT_TO_NUMBER = ['marginleft','marginright','margintop','marginbottom', 'numCols', 'height', 'maxHeight', 'opacity'];
 const SCALE_KEYS = ['xScale', 'yScale', 'zScale'];
 const SCALE_TYPES = ['scaleLinear', 'scaleSqrt', 'scalePow', 'scaleLog', 'scaleTime', 'scaleSequential', 'scaleQuantize', 'scaleThreshold', 'scaleOrdinal', 'scaleBand'];
-const BOOLEAN_KEYS = ['enableShowMore','aria', 'forceCentre','enableSearch', 'enableSort', 'enableScroll', 'zero_line_x', 'zero_line_y', 'lineLabelling', "autoSort", "scaleByAllMax", "hideKey", "beeswarm", "invertY", "breaks", "zeroLineX", "zeroLineY", "rangeFormat", "dataLabels"];
+const BOOLEAN_KEYS = ['enableShowMore','aria','forceCentre','enableSearch', 'enableSort', 'enableScroll', 'zero_line_x', 'zero_line_y', 'lineLabelling', "autoSort", "scaleByAllMax", "hideKey", "beeswarm", "invertY", "breaks", "zeroLineX", "zeroLineY", "rangeFormat", "dataLabels"];
 const AXIS_TYPES = ['stackedbar', 'linechart', 'smallmultiples', 'stackedarea', 'bubble', 'scatterplot', 'lollipop', 'verticalbar', 'horizontalbar', 'horizontalgroupedbar'];
 
 /**
@@ -140,7 +140,10 @@ function processSettings(settings) {
     }
 
     if (contains(BOOLEAN_KEYS, setting)) {
+      // console.log(setting)
+      // console.log(settings[setting].toLowerCase())
       settings[setting] = settings[setting].toLowerCase() !== 'false';
+      // console.log(settings[setting])
     }
 
     if (contains(SCALE_KEYS, setting)) {

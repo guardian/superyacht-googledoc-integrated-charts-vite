@@ -354,6 +354,8 @@ export default class Linechart {
 
     if (!isApp && aria != false) {
 
+      console.log("Setting up noisycharts...")
+
       if (!chart.noisyChartsSetup) {
         chart.sonic = new Sonic(this.settings, datum, x, y, colors)
         chart.sonic.addInteraction('buttonContainer', 'showAudioControls')
