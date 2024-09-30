@@ -30,6 +30,7 @@
                 "margin-top": "30",
                 "margin-bottom": "20",
                 "margin-right": "10",
+                "prefix" : "",
                 "suffix" : "",
                 "minX" : "",
                 "yColumn" : "",
@@ -41,7 +42,8 @@
                 "stackedhorizontal" : "",
                 "xAxisDateFormat" : "",
                 "dateFormat": "%Y-%m-%d",
-                "forceCentre" : "TRUE"
+                "forceCentre" : "TRUE",
+                "xAxisLabel" : ""
             }
         ],
         "dropdown": []
