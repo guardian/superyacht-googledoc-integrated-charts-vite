@@ -2,7 +2,7 @@
 import dataTools from "./shared/dataTools";
 import ColorScale from "./shared/colorscale";
 import colorPresets from "./constants/colors";
-import { numberFormat, mustache, mobileCheck, setMinToMax, textPadding, textPaddingMobile, stackMin, stackMax, contains, getURLParams } from './shared/toolbelt';
+import { numberFormat, mustache, mobileCheck, setMinToMax, textPadding, textPaddingMobile, stackMin, stackMax, contains, getURLParams, getLabelFromColumn } from './shared/toolbelt';
 import { addDrops } from "./shared/drops"
 import Dropdown from "./shared/dropdown";
 import Tooltip from "./shared/tooltip";
@@ -88,6 +88,7 @@ export default class Horizontalbar {
           marginright, 
           tooltip, 
           xAxisLabel,
+          prefix,
           suffix, 
           minX, 
           yColumn, 
@@ -111,7 +112,11 @@ export default class Horizontalbar {
           xAxis,
           yAxis,
           stackedhorizontal,
-          parseTime } = this.settings
+          parseTime,
+          columns } = this.settings
+
+
+          console.log( `xAxisLabel: ${xAxisLabel}`)
      
 
     d3.select("#graphicContainer svg").remove()
@@ -138,7 +143,7 @@ export default class Horizontalbar {
 
     let showTotals = (contains(keys,'Color')) ? true : false 
 
-    const columns = keys.filter(d => d != "Color" && d != "keyCategory")
+    const columnsKey = keys.filter(d => d != "Color" && d != "keyCategory")
 
     let allValues = []
 
@@ -190,14 +195,14 @@ export default class Horizontalbar {
   
     datum.forEach((d) => {
       let newData = {}
-      columns.forEach((key, i) => {
+      columnsKey.forEach((key, i) => {
         newData[key] = d[key]
       })
       // sonicData.push(newData)
     })
 
     // console.log("sonicdata1", sonicData)
-    // sonicData = sonicData.sort((a, b) => d3.ascending(+a[columns[1]], +b[columns[1]]))
+    // sonicData = sonicData.sort((a, b) => d3.ascending(+a[columnsKey[1]], +b[columnsKey[1]]))
 
     console.log("stack",stackedhorizontal, stackedhorizontal.length)
 
@@ -236,7 +241,7 @@ export default class Horizontalbar {
         keyDiv
         .append("span")
         .attr("class", "keyText")
-        .text(k)
+        .text(getLabelFromColumn(columns, k))
 
       })
 
@@ -394,178 +399,174 @@ export default class Horizontalbar {
 
     // Show totals
     // console.log("showTotals", showTotals)
-    if (showTotals) {
 
-      layer
-      .selectAll(".barNumber")
-      .data(datum)
-      .enter()
-      .append("text")
-      .attr("class", "barNumber")
-      .style("font-weight", "bold")
-      .attr("x", (d) => {
-        let pos = x(d.Total) + 10
-        
-        if (d.Total > 0) {
-          if (x(d.Total) > x(0) + 100) {
-            pos = x(d.Total) - 50
-          }
+// Show totals
+if (showTotals) {
 
-        } else if (d.Total < 0) {
+  layer
+    .selectAll(".barNumber")
+    .data(datum)
+    .enter()
+    .append("text")
+    .attr("class", "barNumber")
+    .style("font-weight", "bold")
+    .attr("x", (d) => {
+      let pos = x(d.Total) + 10;
+      let label = (`${prefix} ${numberFormat(d.Total)} ${suffix}`).trim();
+      let buffer = 10;
+      let labelLength = (label.length * 6) + buffer;
 
-          if (x(d.Total) > x(0) - 100) {
-            pos = x(d.Total) - 50
-          }
+      if (d.Total > 0) {
+        const distance = x(d.Total) - x(0);
 
+        if (labelLength < x(d.Total)) {
+          pos = x(d.Total) - 10;
         } else {
-          pos = x(0)
+          pos = x(d.Total) + 10;
         }
-        return pos
-      })
-      .style("fill", (d) => {
-
-        let colour = "black"
-
-        if (d.Total > 0) {
-
-          if (x(d.Total) > x(0) + 100) {
-            colour = "white"
-          }
-
-        } else if (d.Total < 0) {
-
-          if (x(d.Total) > x(0) - 100) {
-            colour = "black"
-          } else {
-            colour = "white"
-          }
-
+      } else if (d.Total < 0) {
+        if (x(0) - x(d.Total) > labelLength) {
+          pos = x(d.Total) - 10;
         } else {
-          colour = "black"
+          pos = x(0) - 5;
         }
+      } else {
+        pos = x(0);
+      }
 
-        return colour
-      })
-      .attr("y", (d) => y(d[yColumn]) + (y.bandwidth() / 2 + 5))
-      .text((d) => numberFormat(d.Total) + suffix)
+      return pos;
+    })
+    .attr("text-anchor", (d) => {
+      let label = (`${prefix} ${numberFormat(d.Total)} ${suffix}`).trim();
+      let buffer = 10;
+      let labelLength = label.length * 6 + buffer;
+      const distance = x(d.Total) - x(0);
 
-    } else {
+      if (d.Total > 0) {
+        const distance = x(d.Total) - x(0);
 
-      layer
-      .selectAll(".barNumber")
-      .data((d) => d)
-      .enter()
-      .append("text")
-      .attr("class", "barNumber")
-      .style("font-weight", "bold")
-      .attr("x", (d, i) => {
-    
-        let barWidth = x(d[1]) - x(d[0])
-        let label = numberFormat(d.data[d.group]) + suffix
-        let buffer = 10
-        let labelLength = label.length * 12 + buffer
-
-        if (d.groupValue < 0) {
-            // room for label in bar
-            if (barWidth > labelLength) {
-              return x(d[0]) + buffer
-            }
-
-            // no room for you!!! 
-            else {
-              return x(d[0]) - buffer 
-            }
-
-        }
-
-        else if (d.groupValue > 0) {
-          // room for label in bar
-            if (barWidth > labelLength) {
-              return x(d[1]) - buffer
-            }
-
-            // no room for you!!!
-            else {
-              return x(d[1]) + buffer 
-            }
-        }
-
-        else {
-          return x(d.groupValue) + buffer 
-        }
-
-
-      })
-      .style("fill",(d) => {
-
-        let pos = "white"
-
-        let label = numberFormat(d.data[d.group]) + suffix
-
-        if (stackedhorizontal.length == 1) {
-
-          if (x(d[1]) - x(d[0]) > (label.length * 12 + 10)) {
-            pos = "white"
-          } else {
-            pos = "black"
-          }
-
-        }
-        return pos
-      })
-      .attr("y", (d) => y(d.data[yColumn]) + (y.bandwidth() / 2 + 5))
-      .attr("text-anchor",(d) => {
-        let barWidth = x(d[1]) - x(d[0])
-        let label = numberFormat(d.data[d.group]) + suffix
-        let buffer = 10
-        let labelLength = label.length * 12 + buffer
-        
-        if (d.groupValue < 0) {
-            // room for label in bar
-            if (barWidth > labelLength) {
-              return "start"
-            }
-
-            // no room for you!!! 
-            else {
-              return "end"
-            }
-
-        }
-
-        else if (d.groupValue > 0) {
-          // room for label in bar
-            if (barWidth > labelLength) {
-              return "end"
-            }
-
-            // no room for you!!!
-            else {
-              return "start"
-            }
-        }
-
-        else {
+        if (labelLength < x(d.Total)) {
+          return "end"
+        } else {
           return "start"
         }
-      })
-      .text((d) => {
-
-        if (stackedhorizontal.length > 1) {
-          let label = numberFormat(d.data[d.group]) + suffix
-          if (x(d[1]) - x(d[0]) > (label.length * 9 + 10)) {
-            return numberFormat(d.data[d.group]) + suffix
-          } else {
-            return " " //numberFormat(d.data[d.group]) + suffix
-          }
+      } else if (d.Total < 0) {
+        if (x(0) - x(d.Total) > labelLength) {
+          return "end"
         } else {
-
-          return numberFormat(d.data[d.group]) + suffix
-
+          return "start"
         }
-      })
+      } else {
+        return "start"
+      }
+      return "start"
+    })
+    .style("fill", (d) => {
+      let colour = "black";
+      let label = (`${prefix} ${numberFormat(d.Total)} ${suffix}`).trim();
+      let buffer = 10;
+      let labelLength = label.length * 12 + buffer;
 
-    }
+      if (d.Total > 0) {
+        if (x(d.Total) - x(0) > labelLength) {
+          colour = "white";
+        } else {
+          colour = "black";
+        }
+      } else if (d.Total < 0) {
+        if (x(0) - x(d.Total) > labelLength) {
+          colour = "white";
+        } else {
+          colour = "black";
+        }
+      } else {
+        colour = "black";
+      }
+
+      return colour;
+    })
+    .attr("y", (d) => y(d[yColumn]) + (y.bandwidth() / 2 + 5))
+    .text((d) => (`${prefix} ${numberFormat(d.Total)} ${suffix}`).trim());
+} else {
+  layer
+    .selectAll(".barNumber")
+    .data((d) => d)
+    .enter()
+    .append("text")
+    .attr("class", "barNumber")
+    .style("font-weight", "bold")
+    .attr("x", (d, i) => {
+      let barWidth = x(d[1]) - x(d[0]);
+      let label = (`${prefix} ${numberFormat(d.data[d.group])} ${suffix}`).trim();
+      let buffer = 10;
+      let labelLength = label.length * 12 + buffer;
+
+      if (d.groupValue < 0) {
+        if (barWidth > labelLength) {
+          return x(d[0]) + buffer;
+        } else {
+          return x(d[0]) - buffer;
+        }
+      } else if (d.groupValue > 0) {
+        if (barWidth > labelLength) {
+          return x(d[1]) - buffer;
+        } else {
+          return x(d[1]) + buffer;
+        }
+      } else {
+        return x(d.groupValue) + buffer;
+      }
+    })
+    .style("fill", (d) => {
+      let pos = "white";
+      let label = (`${prefix} ${numberFormat(d.data[d.group])} ${suffix}`).trim();
+
+      if (stackedhorizontal.length == 1) {
+        if (x(d[1]) - x(d[0]) > (label.length * 6 + 10)) {
+          pos = "white";
+        } else {
+          pos = "black";
+        }
+      }
+      return pos;
+    })
+    .attr("y", (d) => y(d.data[yColumn]) + (y.bandwidth() / 2 + 5))
+    .attr("text-anchor", (d) => {
+      let barWidth = x(d[1]) - x(d[0]);
+      let label = (`${prefix} ${numberFormat(d.data[d.group])} ${suffix}`).trim();
+      let buffer = 10;
+      let labelLength = label.length * 12 + buffer;
+
+      if (d.groupValue < 0) {
+        if (barWidth > labelLength) {
+          return "start";
+        } else {
+          return "end";
+        }
+      } else if (d.groupValue > 0) {
+        if (barWidth > labelLength) {
+          return "end";
+        } else {
+          return "start";
+        }
+      } else {
+        return "start";
+      }
+    })
+    .text((d) => {
+      let label = (`${prefix} ${numberFormat(d.data[d.group])} ${suffix}`).trim();
+      if (stackedhorizontal.length > 1) {
+        if (x(d[1]) - x(d[0]) > (label.length * 9 + 10)) {
+          return label;
+        } else {
+          return " ";
+        }
+      } else {
+        return label;
+      }
+    });
+}
+
 
 
     // Draws a solid line at zero
@@ -590,16 +591,20 @@ export default class Horizontalbar {
 
     }
 
-    if (xAxisLabel) {
+    if (xAxisLabel != "") {
 
       features
         .append("text")
         .attr("x", width - marginright)
-        .attr("y", -25)
+        .attr("y", setXLabelPosition(margintop))
         .attr("fill", "#767676")
         .attr("text-anchor", "end")
         .text(xAxisLabel)
 
+    }
+
+    function setXLabelPosition(mt) {
+      return  mt < 34 ? 6 : - (mt - 10)
     }
 
     if (labels.length > 0) {

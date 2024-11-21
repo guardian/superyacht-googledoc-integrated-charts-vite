@@ -8,7 +8,7 @@ import { addLines } from "./shared/lines"
 //import { addLabels } from "./shared/labels"
 import  { addLabel, clickLogging } from './shared/arrows'
 import { addDrops } from "./shared/drops"
-import { getURLParams, getLongestKeyLength, numberFormat, mustache, mobileCheck, sorter, relax, bufferize, isNumber} from './shared/toolbelt';
+import { getURLParams, getLongestKeyLength, numberFormat, mustache, mobileCheck, sorter, relax, bufferize, isNumber, getLabelFromColumn} from './shared/toolbelt';
 import Dropdown from "./shared/dropdown";
 import Sonic from "./shared/sonic"
 import { checkApp } from 'newsroom-dojo';
@@ -123,7 +123,8 @@ export default class Linechart {
           curve,
           zeroLineX,
           zeroLineY,
-          tooltipModule } = this.settings
+          tooltipModule,
+          columns } = this.settings
 
 
     console.log("curve", curve)
@@ -278,7 +279,7 @@ export default class Linechart {
           $keyDiv
           .append("span")
           .attr("class", "keyText")
-          .text(key)
+          .text(getLabelFromColumn(columns, key))
 
           })
        }
@@ -353,6 +354,8 @@ export default class Linechart {
     console.log("aria", aria)
 
     if (!isApp && aria != false) {
+
+      console.log("Setting up noisycharts...")
 
       if (!chart.noisyChartsSetup) {
         chart.sonic = new Sonic(this.settings, datum, x, y, colors)
@@ -508,7 +511,7 @@ export default class Linechart {
 
     if (labels.length > 0) {
      
-      const clickLoggingOn = getURLParams("labelling") ? true : false ;
+      const clickLoggingOn = true //getURLParams("labelling") ? true : false ;
       console.log("clickLoggingOn", clickLoggingOn);
 
       // Move this to wrangle later once we re-factor the labelling stuff
@@ -524,6 +527,15 @@ export default class Linechart {
      
       console.log("annotations", labels)
       labels.forEach((config) => {
+        /*
+          console.log(`Width: ${width},
+          marginleft: ${marginleft},
+          marginright: ${marginright},
+          height: ${height},
+          margintop: ${margintop},
+          marginbottom: ${marginbottom}
+          buffer: ${buffer}`)
+          */
         addLabel(svg, config, width + marginleft + marginright - buffer, height + margintop + marginbottom, {"left":marginleft, "right":marginright, "top":margintop, "bottom":marginbottom}, clickLoggingOn)
       })
 

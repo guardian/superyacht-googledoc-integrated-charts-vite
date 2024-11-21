@@ -1,7 +1,7 @@
 
 import dataTools from "./shared/dataTools"
 import ColorScale from "./shared/colorscale"
-import { getMargins, numberFormat, mustache, mobileCheck, stackMin, stackMax, textPadding, textPaddingMobile } from './shared/toolbelt';
+import { getMargins, numberFormat, mustache, mobileCheck, stackMin, stackMax, textPadding, textPaddingMobile, getLabelFromColumn } from './shared/toolbelt';
 import { addLabel, clickLogging } from './shared/arrows'
 import Dropdown from "./shared/dropdown";
 import { addDrops } from "./shared/drops"
@@ -98,7 +98,8 @@ export default class Stackedarea {
           timeInterval,
           xAxisDateFormat,
           xColumn,
-          stackedbars } = this.settings
+          stackedbars,
+          columns } = this.settings
 
     d3.select("#graphicContainer svg").remove()
 
@@ -136,7 +137,7 @@ export default class Stackedarea {
       keyDiv
       .append("span")
       .attr("class", "keyText")
-      .text(key)
+      .text(getLabelFromColumn(columns, key))
 
     })
 

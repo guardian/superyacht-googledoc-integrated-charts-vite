@@ -1,7 +1,7 @@
 
 import dataTools from "./shared/dataTools"
 import ColorScale from "./shared/colorscale"
-import { numberFormat, mustache, mobileCheck, getURLParams } from './shared/toolbelt';
+import { numberFormat, mustache, mobileCheck, getURLParams, getLabelFromColumn } from './shared/toolbelt';
 import Dropdown from "./shared/dropdown";
 import { addDrops } from "./shared/drops"
 import Tooltip from "./shared/tooltip"
@@ -96,7 +96,8 @@ export default class Groupedbar {
           aria, 
           colorScheme, 
           dropdown,
-          groupBy } = this.settings
+          groupBy,
+          columns } = this.settings
 
     d3.select("#graphicContainer svg").remove();
 
@@ -108,17 +109,17 @@ export default class Groupedbar {
 
     datum = []
 
-    let columns = JSON.parse(JSON.stringify(keys))
+    let columnsKey = JSON.parse(JSON.stringify(keys))
 
-    columns = columns.filter(d => d != groupBy)
+    columnsKey = columnsKey.filter(d => d != groupBy)
 
-    data.map(d => columns.map(key => (+d[key]))).forEach(ob => datum.push(...ob))
+    data.map(d => columnsKey.map(key => (+d[key]))).forEach(ob => datum.push(...ob))
 
     isMobile = mobileCheck()
 
     width = document.querySelector("#graphicContainer").getBoundingClientRect().width
 
-    height = (columns.length * maxHeight) * groupKey.length   
+    height = (columnsKey.length * maxHeight) * groupKey.length   
 
     width = width - marginleft - marginright
 
@@ -136,7 +137,7 @@ export default class Groupedbar {
     .paddingInner(0.1)
 
     const y1 = d3.scaleBand()
-    .domain(columns)
+    .domain(columnsKey)
     .rangeRound([y0.bandwidth(), 15])
     .padding(0.05)
 
@@ -147,12 +148,12 @@ export default class Groupedbar {
     colors = new ColorScale()
 
     const keyColor = dataTools.getKeysColors({
-      keys: columns,
+      keys: columnsKey,
       userKey: userkey,
       option: { colorScheme : colorScheme }
     })
 
-    columns.forEach((key, i) => {
+    columnsKey.forEach((key, i) => {
 
       if (key != groupBy) {
 
@@ -168,7 +169,7 @@ export default class Groupedbar {
         keyDiv
         .append("span")
         .attr("class", "keyText")
-        .text(key)
+        .text(getLabelFromColumn(columns, key))
 
       }
 
@@ -201,7 +202,7 @@ export default class Groupedbar {
 
     bars.selectAll("rect")
     .data(d => {
-      return columns.filter(key => d[key] !== null).map(key => ({key, value: d[key], ...d}))
+      return columnsKey.filter(key => d[key] !== null).map(key => ({key, value: d[key], ...d}))
     })
     .enter()
     .append("rect")
@@ -213,7 +214,7 @@ export default class Groupedbar {
     .attr("fill", d => colors.get(d.key))
 
     bars.selectAll("text")
-    .data(d => columns.filter(key => d[key] !== null).map(key => ({key, value: d[key]})))
+    .data(d => columnsKey.filter(key => d[key] !== null).map(key => ({key, value: d[key]})))
     .enter()
     .append("text")
     .attr("text-anchor", d => (x(d.value) - x(0) < 100) ? "start" : "end" )
@@ -227,7 +228,7 @@ export default class Groupedbar {
 
       const group = d3.select(this); 
       
-      const totalWidth = columns
+      const totalWidth = columnsKey
         .filter(key => d[key] !== null)
         .reduce((acc, key) => acc + x(d[key]) - x(0), 0);
 
@@ -235,7 +236,7 @@ export default class Groupedbar {
         .attr("class", "group-label")
         .attr("x", (d) => x(0))
         .attr("y", (d) => {
-          const minY = Math.min(...columns.filter(key => d[key] !== null).map(key => y1(key)));
+          const minY = Math.min(...columnsKey.filter(key => d[key] !== null).map(key => y1(key)));
           return minY - 10;
         })
         .attr("text-anchor", "start")
@@ -245,7 +246,7 @@ export default class Groupedbar {
  
     /*
     bars.selectAll("line")
-    .data(d => columns.map(key => ({key, value: d[key]})))
+    .data(d => columnsKey.map(key => ({key, value: d[key]})))
     .enter()
     .append("line")
     .style("stroke", "#767676")

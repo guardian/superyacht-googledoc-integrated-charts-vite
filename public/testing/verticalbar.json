@@ -2,129 +2,124 @@
     "sheets": {
         "data": [
             {
-                "Year": "2002-01-01",
-                "Government": "68.6",
-                "Non-Government": "31.4"
+                "Year": "2017",
+                "Clubs": "1,933,209,033",
+                "Hotels": "1,088,038,194"
             },
             {
-                "Year": "2003-01-01",
-                "Government": "68.1",
-                "Non-Government": "31.9"
+                "Year": "2018",
+                "Clubs": "1,945,161,625",
+                "Hotels": "1,169,040,731"
             },
             {
-                "Year": "2004-01-01",
-                "Government": "67.7",
-                "Non-Government": "32.3"
+                "Year": "2019",
+                "Clubs": "1,944,612,893",
+                "Hotels": "1,241,653,442"
             },
             {
-                "Year": "2005-01-01",
-                "Government": "67.3",
-                "Non-Government": "32.7"
+                "Year": "2020",
+                "Clubs": "1,213,030,572",
+                "Hotels": "829,633,332"
             },
             {
-                "Year": "2006-01-01",
-                "Government": "66.9",
-                "Non-Government": "33.1"
+                "Year": "2021",
+                "Clubs": "2,089,484,743",
+                "Hotels": "1,367,582,712"
             },
             {
-                "Year": "2007-01-01",
-                "Government": "66.6",
-                "Non-Government": "33.4"
+                "Year": "2022",
+                "Clubs": "2,217,206,512",
+                "Hotels": "1,632,089,387"
             },
             {
-                "Year": "2008-01-01",
-                "Government": "66.1",
-                "Non-Government": "33.9"
+                "Year": "2023",
+                "Clubs": "2,251,206,480",
+                "Hotels": "1,669,746,720"
             },
             {
-                "Year": "2009-01-01",
-                "Government": "65.8",
-                "Non-Government": "34.2"
-            },
-            {
-                "Year": "2010-01-01",
-                "Government": "65.6",
-                "Non-Government": "34.4"
-            },
-            {
-                "Year": "2011-01-01",
-                "Government": "65.4",
-                "Non-Government": "34.6"
-            },
-            {
-                "Year": "2012-01-01",
-                "Government": "65.2",
-                "Non-Government": "34.8"
-            },
-            {
-                "Year": "2013-01-01",
-                "Government": "65.1",
-                "Non-Government": "34.9"
-            },
-            {
-                "Year": "2014-01-01",
-                "Government": "65.1",
-                "Non-Government": "34.9"
-            },
-            {
-                "Year": "2015-01-01",
-                "Government": "65.2",
-                "Non-Government": "34.8"
-            },
-            {
-                "Year": "2016-01-01",
-                "Government": "65.4",
-                "Non-Government": "34.6"
-            },
-            {
-                "Year": "2017-01-01",
-                "Government": "65.6",
-                "Non-Government": "34.4"
-            },
-            {
-                "Year": "2018-01-01",
-                "Government": "65.7",
-                "Non-Government": "34.3"
-            },
-            {
-                "Year": "2019-01-01",
-                "Government": "65.7",
-                "Non-Government": "34.3"
-            },
-            {
-                "Year": "2020-01-01",
-                "Government": "65.6",
-                "Non-Government": "34.4"
-            },
-            {
-                "Year": "2021-01-01",
-                "Government": "65.1",
-                "Non-Government": "34.9"
-            },
-            {
-                "Year": "2022-01-01",
-                "Government": "64.5",
-                "Non-Government": "35.5"
+                "Year": "2024",
+                "Clubs": "2,356,615,028",
+                "Hotels": "1,781,763,976"
             }
         ],
-        "cols": [
+        "columns": [
             {
                 "column": "Year",
                 "index": 0,
-                "type": "date",
-                "format": "%Y-%m-%d"
+                "label": "Year",
+                "dataTypes": [
+                    "date",
+                    "number",
+                    "string"
+                ],
+                "formats": [
+                    {
+                        "type": "date",
+                        "format": {
+                            "dateFormat": "%Y",
+                            "hasDay": false,
+                            "scale": "scaleOrdinal"
+                        }
+                    },
+                    {
+                        "type": "number",
+                        "format": {
+                            "min": 2017,
+                            "max": 2024,
+                            "scale": "scaleLinear",
+                            "hasEmptyValues": false,
+                            "sequential": true
+                        }
+                    },
+                    {
+                        "type": "string",
+                        "format": {
+                            "hasRepeat": false,
+                            "longest": 4,
+                            "scale": "scaleOrdinal"
+                        }
+                    }
+                ]
             },
             {
-                "column": "Government",
+                "column": "Clubs",
                 "index": 1,
-                "type": "number",
-                "format": ""
+                "label": "Clubs ($)",
+                "dataTypes": [
+                    "number"
+                ],
+                "formats": [
+                    {
+                        "type": "number",
+                        "format": {
+                            "min": 1213030572,
+                            "max": 2356615028,
+                            "scale": "scaleLinear",
+                            "hasEmptyValues": false,
+                            "sequential": false
+                        }
+                    }
+                ]
             },
             {
-                "column": "Non-Government",
+                "column": "Hotels",
                 "index": 2,
-                "type": "number",
-                "format": ""
+                "label": "Hotels ($)",
+                "dataTypes": [
+                    "number"
+                ],
+                "formats": [
+                    {
+                        "type": "number",
+                        "format": {
+                            "min": 829633332,
+                            "max": 1781763976,
+                            "scale": "scaleLinear",
+                            "hasEmptyValues": false,
+                            "sequential": false
+                        }
+                    }
+                ]
             }
         ],
         "chartId": [
@@ -134,7 +129,7 @@
         ],
         "template": [
             {
-                "title": "",
+                "title": "Pokie machine net profits since 2017",
                 "subtitle": "",
                 "footnote": "",
                 "source": "",
@@ -146,13 +141,13 @@
                 "aria": "FALSE",
                 "colorScheme": "guardian",
                 "stackedbars": "",
-                "dateFormat": "%Y-%m-%d",
+                "dateFormat": "%Y",
                 "timeInterval": "",
                 "xAxisLabel": "",
                 "yAxisLabel": "",
                 "periodDateFormat": "",
                 "xAxisDateFormat": "%Y",
-                "margin-left": 35,
+                "margin-left": 45,
                 "margin-top": 20,
                 "margin-bottom": 20,
                 "margin-right": 20,
@@ -160,7 +155,7 @@
                 "xFormat": "",
                 "parseTime": "",
                 "hideKey": "FALSE",
-                "yColumn": "Government"
+                "yColumn": "Clubs"
             }
         ],
         "labels": []

@@ -2,7 +2,7 @@
 import dataTools from "./shared/dataTools"
 import ColorScale from "./shared/colorscale"
 import colorPresets from "./constants/colors"
-import { getURLParams, numberFormat, mustache, mobileCheck, setMinToMax, textPadding, textPaddingMobile, bufferize, tickTok, contains, wrap } from './shared/toolbelt';
+import { getURLParams, numberFormat, mustache, mobileCheck, setMinToMax, textPadding, textPaddingMobile, bufferize, tickTok, contains, wrap, getLabelFromColumn } from './shared/toolbelt';
 import  { addLabel, clickLogging } from './shared/arrows'
 import { drawShowMore } from "./shared/showmore"
 
@@ -60,7 +60,9 @@ export default class Lollipop {
           yScale,
           parseTime,
           xAxisLabel,
-          xColumn } = this.settings
+          minMax,
+          xColumn,
+          columns } = this.settings
 
    
     d3.select("#graphicContainer svg").remove()
@@ -344,7 +346,7 @@ export default class Lollipop {
         keyDiv
         .append("span")
         .attr("class", "keyText")
-        .text(k)
+        .text(getLabelFromColumn(columns, k))
 
       })
 

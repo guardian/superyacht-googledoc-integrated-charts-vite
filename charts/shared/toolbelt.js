@@ -936,3 +936,14 @@ export function capitalizeFirstLetter(word) {
   return word; // Return the original input if it's not a non-empty string
 }
 
+export function getLabelFromColumn(jsonData, columnName) {
+  // Iterate through each object in the JSON array
+  for (const item of jsonData) {
+    // Check if the column name matches
+    if (item.column === columnName) {
+      return item.label; // Return the corresponding label
+    }
+  }
+  return ""; // Return an empty string if no match is found
+}
+

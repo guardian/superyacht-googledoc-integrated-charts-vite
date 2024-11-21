@@ -84,7 +84,16 @@ export function addCustomCSS(headerRows, rows, enableScroll, enableShowMore) {
 
 }
 
-export async function colourize(headings, userKey, data) {
+const reorderValues = (data, order) => {
+  return data.map(row => {
+    return order.map(key => row[key]);
+  });
+};
+
+
+export async function colourize(headings, userKey, data, columnOrder) {
+
+	const desiredOrder = columnOrder.sort((a, b) => a.index - b.index).map(col => col.column);
 
 	const pantone = swatches(data, userKey)
 
@@ -129,7 +138,9 @@ export async function colourize(headings, userKey, data) {
 
 	const colourizer = (value, index) => (!contains(headings[index], highlighted)) ? false : pantone.find(item => item.name === headings[index]).profile.get(value) ;
 
-	const values = data.map((row) => Object.values(row))
+	//const values = data.map((row) => Object.values(row))
+
+	const values = reorderValues(data, desiredOrder);
 
     const getFormat = (index) => {
         return (highlighted.indexOf(headings[index]) > -1) ? formating[highlighted.indexOf(headings[index])] : [""]
@@ -149,7 +160,6 @@ export async function colourize(headings, userKey, data) {
 
 
 	return await values.map((row, i) => {
-		//console.log(row)
 		return row.map((value, index) => { return { value : value, sort : checkDate(value, index), format: getFormat(index), color : colourizer(value, index), contrast : setContrast(colourizer(value, index)), graphics: getGraphics(index), outta : getOutta(index) }})
 	})
 }
@@ -375,7 +385,7 @@ export function formatedNumber() {
 
 			let background = (this.color) ? this.color : this.graphics.colour.get(value) 
 
-			let contrast = (percentage < 20) ? 'black' : 'white'
+			let contrast = (percentage < 30) ? 'black' : 'white'
 
 			value = `<div class="table-bar-chart"><div class="table-bar" style="background-color: ${background}; margin-left: 0%; width: ${percentage}%;"></div><div class="table-bar-label" style="left:${position}%;color:${contrast}">${value}</div></div>`
 
