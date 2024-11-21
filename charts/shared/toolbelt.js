@@ -725,6 +725,7 @@ export function xFormatting(settings) {
     testDateFormatSp3(data) ||
     testDateFormatSp4(data);
 
+    console.log("dateFormat", dateFormat)
     if (dateFormat && settings["dateFormat"]) {
       xData.date = true;
       xData.type = 'date';
@@ -809,6 +810,7 @@ function testDateFormatSp2(data) {
   // format
   const format = "%Y";
   const isYear = testDateFormats(data, [format], 2) === format;
+  console.log("isYear", isYear)
   // filter, strict
   const is4Digits = data.every(d => d.length === 4);
   return isYear && is4Digits ? format : "";

@@ -41,7 +41,7 @@
                 "stackedhorizontal" : "",
                 "xAxisDateFormat" : "",
                 "dateFormat": "%Y-%m-%d",
-                "forceCentre" : "TRUE"
+                "forceCentre" : "FALSE"
             }
         ],
         "dropdown": []
