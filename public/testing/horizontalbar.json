@@ -2,27 +2,66 @@
     "sheets": {
         "template": [
             {
-                "title": "An average home in 2021 cost nine times the median income of millennials",
-                "subtitle": "Showing median dwelling prices in each year as a multiple of the median income for a 25-39 year old that works full time",
+                "title": "Beauty brands and Cadbury dominate specials",
+                "subtitle": "Showing the top 5 brands that go on special in <span style='color:#507892;font-weight: bold;'>Coles</span> and <span style='color:#e6711b;font-weight: bold;'>Woolworths</span>. The number is the share of all products scraped between the 1st of June 2023 and 1st of July 2024.",
                 "footnote": "",
-                "source": "Corelogic, Australian Bureau of Statistics, Guardian Australia"
+                "source": "Shppngtrlly.com.au, Guardian Australia",
+                "margin-left": "10",
+                "margin-top": "30",
+                "margin-bottom": "20",
+                "margin-right": "10"
             }
         ],
         "data": [
             {
-                "Year": 1991,
-                "Dwellings": 5.04,
-                "Color": "#4e79a7"
+                "Brand": "L'Oreal",
+                "Share": 2.95,
+                "Color": "#507892"
             },
             {
-                "Year": 2006,
-                "Dwellings": 7.15,
-                "Color": "#f28e2c"
+                "Brand": "Cadbury",
+                "Share": 2.62,
+                "Color": "#507892"
             },
             {
-                "Year": 2021,
-                "Dwellings": 9.23,
-                "Color": "#e15759"
+                "Brand": "Olay",
+                "Share": 2.11,
+                "Color": "#507892"
+            },
+            {
+                "Brand": "Nature's Way",
+                "Share": 2.11,
+                "Color": "#507892"
+            },
+            {
+                "Brand": "Swisse",
+                "Share": 2.03,
+                "Color": "#507892"
+            },
+            {
+                "Brand": "Bonds ",
+                "Share": 2.92,
+                "Color": "#e6711b"
+            },
+            {
+                "Brand": "Cadbury ",
+                "Share": 2.73,
+                "Color": "#e6711b"
+            },
+            {
+                "Brand": "Nivea ",
+                "Share": 2.36,
+                "Color": "#e6711b"
+            },
+            {
+                "Brand": "Maybelline ",
+                "Share": 2.21,
+                "Color": "#e6711b"
+            },
+            {
+                "Brand": "Schwarzkopf ",
+                "Share": 2.05,
+                "Color": "#e6711b"
             }
         ],
         "labels": [],
@@ -37,28 +76,7 @@
         "options": [
             {
                 "enableShowMore": "FALSE",
-                "aria": "FALSE",
-                "colorScheme": "guardian",
-                "autoSort": "FALSE",
-                "margin-left": 20,
-                "margin-top": 30,
-                "margin-bottom": 10,
-                "margin-right": 10,
-                "prefix" : "",
-                "suffix": "",
-                "minX": "",
-                "yColumn": "",
-                "xColumn": "",
-                "xMin": "",
-                "xMax": "",
-                "xAxis": "",
-                "yAxis": "",
-                "stackedhorizontal": "",
-                "xAxisDateFormat": "",
-                "dateFormat": "%Y-%m-%d",
-                "maxXticks": 3,
-                "scaleByAllMax": "FALSE",
-                "xAxisLabel" : "Years"
+                "autoSort": "FALSE"
             }
         ],
         "dropdown": []
