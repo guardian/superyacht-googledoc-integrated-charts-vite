@@ -64,14 +64,21 @@
 	"admin" : false,
 	"names" : ["smallmultiples"],
 	"config" : {
-		"axis" : [],
+		"axis" : [{
+			"name" : "xColumn",
+			"default" : 0
+		},{
+			"name" : "groupBy",
+			"default" : 1
+		}],
 		"settings" : [{
 			"name" : "smallmultiples"
 		}],
 		"wide" : false,
 		"long" : true
 	}
-}, {
+}, 
+{
 	"type": "stackedarea",
 	"admin" : true,
 	"names" : ["stackedarea"],

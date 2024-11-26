@@ -45,8 +45,8 @@
                 "groupBy" : "",
                 "xColumn" : "",
                 "xFormat" : "",
-                "xScale" : "scaleLinear",
-                "yScale" : "scaleLinear"
+                "xScale" : "",
+                "yScale" : ""
             }
         ],
         "dropdown": []

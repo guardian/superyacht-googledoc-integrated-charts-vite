@@ -13,7 +13,7 @@ export default class Smallmultiples {
   constructor(settings) {
 
     this.settings = settings
-    
+    console.log("settings",settings)
     this.init()
 
   }
@@ -131,13 +131,25 @@ export default class Smallmultiples {
 
     d3.select("#switch").html(label)
 
-    const multiples = [...new Set(datum.map((d) => d[groupBy]))]
-
+   
     let hideNullValues = (chartType === "bar") ? "no" : "yes"
 
     let dataKeys = JSON.parse(JSON.stringify(smallmultiples));
+    // console.log(dataKeys)
+
+    // User has not set groupBy, so guess second column
+
+    if (groupBy == '') {
+      console.log("yeah")
+      groupBy = dataKeys[1];
+    }
+
     dataKeys.splice(dataKeys.indexOf(xColumn), 1)
     dataKeys.splice(dataKeys.indexOf(groupBy), 1)
+
+    const multiples = [...new Set(datum.map((d) => d[groupBy]))]
+
+    console.log("multiples",multiples)
 
     const windowWidth = Math.max(
       document.documentElement.clientWidth,
@@ -153,7 +165,7 @@ export default class Smallmultiples {
         d.Total = d3.sum(dataKeys, (k) => +d[k])
       }
     })
-
+    // console.log("datum", datum)
     /*
     if (periods.length > 0) {
       periods.forEach((d) => {
@@ -256,6 +268,7 @@ export default class Smallmultiples {
       hasTooltip,
       index
     }) {
+      console.log("key", key)
       const id = dataTools.getId(key),
         chartId = `#${id}`,
         isBar = chartType === "bar",
@@ -294,11 +307,13 @@ export default class Smallmultiples {
       const features = svg.append("g")
       .attr("transform", "translate(" + marginleft + "," + margintop + ")")
 
+      console.log("scales", xScale, yScale)
+
       var x = d3[xScale]()
       .range([0, width])
       //.padding(0)
 
-      /*
+   
       if (parseTime) {
         if (!isBar) {
           x = d3.scaleTime()
@@ -310,10 +325,11 @@ export default class Smallmultiples {
           .range([0, width])
         }
       }
-      */
-
+    
       const y = d3[yScale]()
       .range([height,0])
+
+
 
       const duration = 1000
 
@@ -505,7 +521,7 @@ export default class Smallmultiples {
     function drawLineChart({ features, data, duration, x, y }) {
 
       features.selectAll(`.line-path`).remove()
-
+      // console.log("data", data)
       smallmultiples.forEach((key, i) => {          
           
         const line = d3

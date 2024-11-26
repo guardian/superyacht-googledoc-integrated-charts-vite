@@ -57,6 +57,7 @@ export async function wrangle(data, chart) {
 
   if (contains(AXIS_TYPES, settings.type)) {
     settings.xFormat = xFormatting(settings);
+    console.log("xFormat", settings.xFormat)
   }
 
   processDateSettings(settings);

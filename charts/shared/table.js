@@ -102,7 +102,7 @@ export async function colourize(headings, userKey, data, columnOrder) {
     const formating = userKey.map(item => { 
 
 		if (item.format) {
-
+			console.log(item.format)
 			if (item.format.includes(",")) {
 
 				return item.format.split(",")
@@ -346,8 +346,8 @@ function hasClass(el, cls) {
 }
 
 export function styleCheck() {
-	return (this.color && this.format[0] ==  "shading") ? `style="background-color:${this.color};text-align:center;color:${this.contrast};"` :
-	(!isNaN(this.value)) ? `style="text-align:center;"` : '' ;
+	return (this.color && this.format[0] ==  "shading") ? `style="background-color:${this.color};color:${this.contrast};font-weight:bold;"` :
+	(!isNaN(this.value)) ? `style=""` : '' ;
 }
 
 function removeZero(value) {
@@ -370,6 +370,8 @@ export function formatedNumber() {
 		let val = this.value
 
 		value += (contains(arr,'$')) ? '$' : '' ;
+
+		// value += (contains(arr,'commas')) ? commas(val) : val ;
 
 		value += (contains(arr,'numberFormat')) ? numberFormat(val) : (contains(arr,'commas')) ? commas(val) : val ;
 

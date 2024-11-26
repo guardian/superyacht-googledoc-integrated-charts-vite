@@ -1,251 +1,245 @@
 {
     "sheets": {
-        "data": [
-            {
-                "Year": "2024",
-                "MCG games": "3",
-                "Finals attendance (000s)": "550",
-                "Notes": "Estimated (max)"
-            },
-            {
-                "Year": "2023",
-                "MCG games": "6",
-                "Finals attendance (000s)": "665",
-                "Notes": ""
-            },
-            {
-                "Year": "2022",
-                "MCG games": "6",
-                "Finals attendance (000s)": "640",
-                "Notes": ""
-            },
-            {
-                "Year": "2021",
-                "MCG games": "0",
-                "Finals attendance (000s)": "273",
-                "Notes": "Pandemic"
-            },
-            {
-                "Year": "2020",
-                "MCG games": "0",
-                "Finals attendance (000s)": "207",
-                "Notes": "Pandemic"
-            },
-            {
-                "Year": "2019",
-                "MCG games": "5",
-                "Finals attendance (000s)": "564",
-                "Notes": ""
-            },
-            {
-                "Year": "2018",
-                "MCG games": "6",
-                "Finals attendance (000s)": "700",
-                "Notes": ""
-            },
-            {
-                "Year": "2017",
-                "MCG games": "4",
-                "Finals attendance (000s)": "554",
-                "Notes": ""
-            },
-            {
-                "Year": "2016",
-                "MCG games": "4",
-                "Finals attendance (000s)": "558",
-                "Notes": ""
-            },
-            {
-                "Year": "2015",
-                "MCG games": "4",
-                "Finals attendance (000s)": "519",
-                "Notes": "Subiaco prelims"
-            },
-            {
-                "Year": "2014",
-                "MCG games": "5",
-                "Finals attendance (000s)": "570",
-                "Notes": ""
-            },
-            {
-                "Year": "2013",
-                "MCG games": "6",
-                "Finals attendance (000s)": "558",
-                "Notes": ""
-            },
-            {
-                "Year": "2012",
-                "MCG games": "5",
-                "Finals attendance (000s)": "540",
-                "Notes": ""
-            },
-            {
-                "Year": "2011",
-                "MCG games": "7",
-                "Finals attendance (000s)": "615",
-                "Notes": ""
-            },
-            {
-                "Year": "2010",
-                "MCG games": "7",
-                "Finals attendance (000s)": "651",
-                "Notes": ""
-            },
-            {
-                "Year": "2009",
-                "MCG games": "7",
-                "Finals attendance (000s)": "615",
-                "Notes": ""
-            },
-            {
-                "Year": "2008",
-                "MCG games": "7",
-                "Finals attendance (000s)": "572",
-                "Notes": ""
-            },
-            {
-                "Year": "2007",
-                "MCG games": "5",
-                "Finals attendance (000s)": "574",
-                "Notes": ""
-            },
-            {
-                "Year": "2006",
-                "MCG games": "3",
-                "Finals attendance (000s)": "532",
-                "Notes": "Weeks 2 and 3 outside Vic"
-            }
-        ],
-        "columns": [
-            {
-                "column": "Year",
-                "index": 0,
-                "label": "Year",
-                "dataTypes": [
-                    "date",
-                    "number",
-                    "string"
-                ],
-                "formats": [
-                    {
-                        "type": "date",
-                        "format": {
-                            "dateFormat": "%Y",
-                            "hasDay": false,
-                            "scale": "scaleOrdinal"
-                        }
-                    },
-                    {
-                        "type": "number",
-                        "format": {
-                            "min": 2006,
-                            "max": 2024,
-                            "scale": "scaleLinear",
-                            "hasEmptyValues": false,
-                            "sequential": true
-                        }
-                    },
-                    {
-                        "type": "string",
-                        "format": {
-                            "hasRepeat": false,
-                            "longest": 4,
-                            "scale": "scaleOrdinal"
-                        }
-                    }
-                ]
-            },
-            {
-                "column": "MCG games",
-                "index": 1,
-                "label": "MCG games",
-                "dataTypes": [
-                    "number"
-                ],
-                "formats": [
-                    {
-                        "type": "number",
-                        "format": {
-                            "min": 0,
-                            "max": 7,
-                            "scale": "scaleLog",
-                            "hasEmptyValues": false,
-                            "sequential": false
-                        }
-                    }
-                ]
-            },
-            {
-                "column": "Finals attendance (000s)",
-                "index": 2,
-                "label": "Finals attendance (000s)",
-                "dataTypes": [
-                    "number"
-                ],
-                "formats": [
-                    {
-                        "type": "number",
-                        "format": {
-                            "min": 207,
-                            "max": 700,
-                            "scale": "scaleLinear",
-                            "hasEmptyValues": false,
-                            "sequential": false
-                        }
-                    }
-                ]
-            },
-            {
-                "column": "Notes",
-                "index": 3,
-                "label": "Notes",
-                "dataTypes": [
-                    "string"
-                ],
-                "formats": [
-                    {
-                        "type": "string",
-                        "format": {
-                            "hasRepeat": true,
-                            "longest": 29,
-                            "scale": "scaleBand"
-                        }
-                    }
-                ]
-            }
-        ],
-        "chartId": [
-            {
-                "type": "table"
-            }
-        ],
-        "template": [
-            {
-                "title": "AFL finals attendance",
-                "subtitle": "Fewer MCG matches mean 2024's aggregate is down",
-                "footnote": "",
-                "source": "AFL annual reports",
-                "tooltip": ""
-            }
-        ],
-        "options": [
-            {
-                "enableSearch": "FALSE",
-                "enableSort": "FALSE",
-                "enableShowMore": "FALSE",
-                "enableScroll": "FALSE",
-                "aria": "FALSE"
-            }
-        ],
-        "labels": [],
-        "userkey": [
-            {
-                "key": "Finals attendance (000s)",
-                "format": "bar",
-                "value": "207,700",
-                "colours": "red",
-                "scale": "Linear"
-            }
-        ]
+      "data": [
+        {
+          "Item": "Outside tuition",
+          "Numbers": "1671",
+          "Linear shading": "1671",
+          "Ordinal shading": "Yes",
+          "Thresholds": "10",
+          "Bars": "1671",
+          "Date": "2021-01-02",
+          "Rating": "3",
+          "Text colour": "Text"
+        },
+        {
+          "Item": "Musical instrument",
+          "Numbers": "912",
+          "Linear shading": "912",
+          "Ordinal shading": "No",
+          "Thresholds": "-1",
+          "Bars": "912",
+          "Date": "2021-01-03",
+          "Rating": "4",
+          "Text colour": "Text"
+        },
+        {
+          "Item": "Electronic devices",
+          "Numbers": "771",
+          "Linear shading": "625",
+          "Ordinal shading": "Yes",
+          "Thresholds": "3",
+          "Bars": "625",
+          "Date": "2021-01-04",
+          "Rating": "5",
+          "Text colour": "Text"
+        },
+        {
+          "Item": "Electives",
+          "Numbers": "595",
+          "Linear shading": "595",
+          "Ordinal shading": "No",
+          "Thresholds": "2",
+          "Bars": "595",
+          "Date": "2021-01-05",
+          "Rating": "1",
+          "Text colour": "Text"
+        },
+        {
+          "Item": "Transport",
+          "Numbers": "496",
+          "Linear shading": "216",
+          "Ordinal shading": "Yes",
+          "Thresholds": "0",
+          "Bars": "216",
+          "Date": "2021-01-06",
+          "Rating": "2",
+          "Text colour": "Text"
+        },
+        {
+          "Item": "School camps",
+          "Numbers": "339",
+          "Linear shading": "306",
+          "Ordinal shading": "Yes",
+          "Thresholds": "-2",
+          "Bars": "306",
+          "Date": "2021-01-07",
+          "Rating": "3",
+          "Text colour": "Text"
+        },
+        {
+          "Item": "Tuition Fees",
+          "Numbers": "274",
+          "Linear shading": "241",
+          "Ordinal shading": "Yes",
+          "Thresholds": "8",
+          "Bars": "241",
+          "Date": "2021-01-08",
+          "Rating": "1",
+          "Text colour": "Text"
+        },
+        {
+          "Item": "Textbooks",
+          "Numbers": "269",
+          "Linear shading": "90",
+          "Ordinal shading": "No",
+          "Thresholds": "6",
+          "Bars": "90",
+          "Date": "2021-01-09",
+          "Rating": "4",
+          "Text colour": "Text"
+        },
+        {
+          "Item": "Vocational",
+          "Numbers": "250",
+          "Linear shading": "250",
+          "Ordinal shading": "Yes",
+          "Thresholds": "2",
+          "Bars": "250",
+          "Date": "2021-01-10",
+          "Rating": "2",
+          "Text colour": "Text"
+        },
+        {
+          "Item": "School uniforms",
+          "Numbers": "239",
+          "Linear shading": "265",
+          "Ordinal shading": "No",
+          "Thresholds": "3",
+          "Bars": "265",
+          "Date": "2021-01-11",
+          "Rating": "1",
+          "Text colour": "Text"
+        },
+        {
+          "Item": "Sports uniform",
+          "Numbers": "159",
+          "Linear shading": "123",
+          "Ordinal shading": "No",
+          "Thresholds": "-1",
+          "Bars": "123",
+          "Date": "2021-01-12",
+          "Rating": "0",
+          "Text colour": "Text"
+        },
+        {
+          "Item": "School excursions",
+          "Numbers": "149",
+          "Linear shading": "177",
+          "Ordinal shading": "No",
+          "Thresholds": "6",
+          "Bars": "177",
+          "Date": "2021-01-13",
+          "Rating": "5",
+          "Text colour": "Text"
+        },
+        {
+          "Item": "Stationery",
+          "Numbers": "130",
+          "Linear shading": "125",
+          "Ordinal shading": "No",
+          "Thresholds": "2",
+          "Bars": "125",
+          "Date": "2021-01-14",
+          "Rating": "4.5",
+          "Text colour": "Text"
+        },
+        {
+          "Item": "Library fees",
+          "Numbers": "67",
+          "Linear shading": "69",
+          "Ordinal shading": "No",
+          "Thresholds": "3",
+          "Bars": "69",
+          "Date": "2021-01-15",
+          "Rating": "1",
+          "Text colour": "Text"
+        }
+      ],
+      "template": [
+        {
+          "title": "Cost of government education – auxiliary breakdowns",
+          "subtitle": "",
+          "footnote": "",
+          "source": "Futurity"
+        }
+      ],
+      "options": [
+        {
+          "format": "",
+          "enableSearch": "FALSE",
+          "enableSort": "TRUE"
+        }
+      ],
+      "userkey": [
+        {
+          "key": "Numbers",
+          "format": "numberFormat,$",
+          "scale": "",
+          "outta": "",
+          "values": "",
+          "colours": ""
+        },
+        {
+          "key": "Linear shading",
+          "format": "shading",
+          "scale": "linear",
+          "outta": "",
+          "values": "69,1691",
+          "colours": "#f1eef6,#0570b0"
+        },
+        {
+          "key": "Ordinal shading",
+          "format": "shading",
+          "scale": "ordinal",
+          "outta": "",
+          "values": "No,Yes",
+          "colours": "#35978f,#bf812d"
+        },
+        {
+          "key": "Thresholds",
+          "format": "",
+          "scale": "threshold",
+          "outta": "",
+          "values": "-2,0,2,4,6,8,10,12",
+          "colours": "#abd9e9,#ffffbf,#fee090,#fdae61,#f46d43,#d73027,#a50026"
+        },
+        {
+          "key": "Bars",
+          "format": "bar",
+          "scale": "",
+          "outta": "",
+          "values": "",
+          "colours": ""
+        },
+        {
+          "key": "Date",
+          "format": "date",
+          "scale": "",
+          "outta": "",
+          "values": "",
+          "colours": ""
+        },
+        {
+          "key": "Rating",
+          "format": "rating",
+          "scale": "",
+          "outta": "5",
+          "values": "",
+          "colours": ""
+        },
+        {
+          "key": "Text colour",
+          "format": "textColor",
+          "scale": "",
+          "outta": "",
+          "values": "",
+          "colours": ""
+        }
+      ],
+      "chartId": [
+        {
+          "type": "table"
+        }
+      ]
     }
-}
