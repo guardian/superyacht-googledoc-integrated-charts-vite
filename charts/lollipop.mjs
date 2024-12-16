@@ -279,44 +279,7 @@ export default class Lollipop {
       .attr("x2", function(d) { return x(+d[lollies[1]]); })
       .attr("y1", function(d) { return y(d[groupBy]); })
       .attr("y2", function(d) { return y(d[groupBy]); + 10})
-      .attr("stroke", function(d,i) {
-
-        let x1 = x(+d[lollies[0]])
-
-        let x2 = x(+d[lollies[1]])
-
-        let minBall = (x1 < x2) ? col1 : col2
-
-        let maxBall = (x2 > x1) ? col2 : col1
-
-        let start = (x1 < x2) ? x1 : x2
-
-        let finish = (x2 > x1) ? x2 : x1
-
-        let defs = svg.append("defs");
-
-        let gradient = defs.append("linearGradient")
-        .attr("id", `svgGradient_${i}`)
-        .attr("gradientUnits", "userSpaceOnUse")
-        .attr("x1", start)
-        .attr("x2", finish)
-        .attr("y1", y(d[groupBy]))
-        .attr("y2",y(d[groupBy]) + 10)
-
-        gradient.append("stop")
-        .attr("class", "start")
-        .attr("offset", "0%")
-        .attr("stop-color", minBall)
-        .attr("stop-opacity", );
-
-        gradient.append("stop")
-        .attr("class", "end")
-        .attr("offset", "100%")
-        .attr("stop-color", maxBall)
-        .attr("stop-opacity", 1);
-
-        return `url(#svgGradient_${i})`
-      })
+      .attr("stroke", "#bdbdbd")
       .style("stroke-width", "6px")
 
     }
