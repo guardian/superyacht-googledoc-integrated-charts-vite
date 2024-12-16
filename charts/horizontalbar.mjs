@@ -400,174 +400,96 @@ export default class Horizontalbar {
     // Show totals
     // console.log("showTotals", showTotals)
 
-// Show totals
-if (showTotals) {
-
-  layer
-    .selectAll(".barNumber")
-    .data(datum)
-    .enter()
-    .append("text")
-    .attr("class", "barNumber")
-    .style("font-weight", "bold")
-    .attr("x", (d) => {
-      let pos = x(d.Total) + 10;
-      let label = (`${prefix} ${numberFormat(d.Total)} ${suffix}`).trim();
-      let buffer = 10;
-      let labelLength = (label.length * 6) + buffer;
-
-      if (d.Total > 0) {
-        const distance = x(d.Total) - x(0);
-
-        if (labelLength < x(d.Total)) {
-          pos = x(d.Total) - 10;
-        } else {
-          pos = x(d.Total) + 10;
-        }
-      } else if (d.Total < 0) {
-        if (x(0) - x(d.Total) > labelLength) {
-          pos = x(d.Total) - 10;
-        } else {
-          pos = x(0) - 5;
-        }
-      } else {
-        pos = x(0);
+    function calculateXPosition(d, x, labelLength, buffer = 10) {
+      if (d.Total > 0 || d.groupValue > 0) {
+        return labelLength < x(d.Total || d[1]) ? x(d.Total || d[1]) - buffer : x(d.Total || d[1]) + buffer;
+      } else if (d.Total < 0 || d.groupValue < 0) {
+        return x(0) - x(d.Total || d[0]) > labelLength ? x(d.Total || d[0]) - buffer : x(0) - buffer;
       }
+      return x(0);
+    }
 
-      return pos;
-    })
-    .attr("text-anchor", (d) => {
-      let label = (`${prefix} ${numberFormat(d.Total)} ${suffix}`).trim();
-      let buffer = 10;
-      let labelLength = label.length * 6 + buffer;
-      const distance = x(d.Total) - x(0);
-
-      if (d.Total > 0) {
-        const distance = x(d.Total) - x(0);
-
-        if (labelLength < x(d.Total)) {
-          return "end"
-        } else {
-          return "start"
-        }
-      } else if (d.Total < 0) {
-        if (x(0) - x(d.Total) > labelLength) {
-          return "end"
-        } else {
-          return "start"
-        }
-      } else {
-        return "start"
+    function calculateTextAnchor(d, x, labelLength) {
+      if (d.Total > 0 || d.groupValue > 0) {
+        return labelLength < x(d.Total || d[1]) ? "end" : "start";
+      } else if (d.Total < 0 || d.groupValue < 0) {
+        return x(0) - x(d.Total || d[0]) > labelLength ? "end" : "start";
       }
-      return "start"
-    })
-    .style("fill", (d) => {
-      let colour = "black";
-      let label = (`${prefix} ${numberFormat(d.Total)} ${suffix}`).trim();
-      let buffer = 10;
-      let labelLength = label.length * 12 + buffer;
+      return "start";
+    }
 
-      if (d.Total > 0) {
-        if (x(d.Total) - x(0) > labelLength) {
-          colour = "white";
-        } else {
-          colour = "black";
-        }
-      } else if (d.Total < 0) {
-        if (x(0) - x(d.Total) > labelLength) {
-          colour = "white";
-        } else {
-          colour = "black";
-        }
-      } else {
-        colour = "black";
+    function calculateTextColor(d, x, labelLength) {
+      if ((d.Total > 0 || d.groupValue > 0) && x(d.Total || d[1]) - x(0) > labelLength) {
+        return "white";
+      } else if ((d.Total < 0 || d.groupValue < 0) && x(0) - x(d.Total || d[0]) > labelLength) {
+        return "white";
       }
+      return "black";
+    }
 
-      return colour;
-    })
-    .attr("y", (d) => y(d[yColumn]) + (y.bandwidth() / 2 + 5))
-    .text((d) => (`${prefix} ${numberFormat(d.Total)} ${suffix}`).trim());
-} else {
-  layer
-    .selectAll(".barNumber")
-    .data((d) => d)
-    .enter()
-    .append("text")
-    .attr("class", "barNumber")
-    .style("font-weight", "bold")
-    .attr("x", (d, i) => {
-      let barWidth = x(d[1]) - x(d[0]);
-      let label = (`${prefix} ${numberFormat(d.data[d.group])} ${suffix}`).trim();
-      let buffer = 10;
-      let labelLength = label.length * 12 + buffer;
+    function calculateLabel(d, prefix, numberFormat, suffix) {
+      return `${prefix} ${numberFormat(d.Total || d.data[d.group])} ${suffix}`.trim();
+    }
 
-      if (d.groupValue < 0) {
-        if (barWidth > labelLength) {
-          return x(d[0]) + buffer;
-        } else {
-          return x(d[0]) - buffer;
-        }
-      } else if (d.groupValue > 0) {
-        if (barWidth > labelLength) {
-          return x(d[1]) - buffer;
-        } else {
-          return x(d[1]) + buffer;
-        }
-      } else {
-        return x(d.groupValue) + buffer;
-      }
-    })
-    .style("fill", (d) => {
-      let pos = "white";
-      let label = (`${prefix} ${numberFormat(d.data[d.group])} ${suffix}`).trim();
-
-      if (stackedhorizontal.length == 1) {
-        if (x(d[1]) - x(d[0]) > (label.length * 6 + 10)) {
-          pos = "white";
-        } else {
-          pos = "black";
-        }
-      }
-      return pos;
-    })
-    .attr("y", (d) => y(d.data[yColumn]) + (y.bandwidth() / 2 + 5))
-    .attr("text-anchor", (d) => {
-      let barWidth = x(d[1]) - x(d[0]);
-      let label = (`${prefix} ${numberFormat(d.data[d.group])} ${suffix}`).trim();
-      let buffer = 10;
-      let labelLength = label.length * 12 + buffer;
-
-      if (d.groupValue < 0) {
-        if (barWidth > labelLength) {
-          return "start";
-        } else {
-          return "end";
-        }
-      } else if (d.groupValue > 0) {
-        if (barWidth > labelLength) {
-          return "end";
-        } else {
-          return "start";
-        }
-      } else {
-        return "start";
-      }
-    })
-    .text((d) => {
-      let label = (`${prefix} ${numberFormat(d.data[d.group])} ${suffix}`).trim();
-      if (stackedhorizontal.length > 1) {
-        if (x(d[1]) - x(d[0]) > (label.length * 9 + 10)) {
+    if (showTotals) {
+      layer
+        .selectAll(".barNumber")
+        .data(datum)
+        .enter()
+        .append("text")
+        .attr("class", "barNumber")
+        .style("font-weight", "bold")
+        .attr("x", (d) => {
+          const label = calculateLabel(d, prefix, numberFormat, suffix);
+          const labelLength = label.length * 6 + 10;
+          return calculateXPosition(d, x, labelLength);
+        })
+        .attr("text-anchor", (d) => {
+          const label = calculateLabel(d, prefix, numberFormat, suffix);
+          const labelLength = label.length * 6 + 10;
+          return calculateTextAnchor(d, x, labelLength);
+        })
+        .style("fill", (d) => {
+          const label = calculateLabel(d, prefix, numberFormat, suffix);
+          const labelLength = label.length * 6 + 10;
+          return calculateTextColor(d, x, labelLength);
+        })
+        .attr("y", (d) => y(d[yColumn]) + (y.bandwidth() / 2 + 5))
+        .text((d) => calculateLabel(d, prefix, numberFormat, suffix));
+    } else {
+      layer
+        .selectAll(".barNumber")
+        .data((d) => d)
+        .enter()
+        .append("text")
+        .attr("class", "barNumber")
+        .style("font-weight", "bold")
+        .attr("x", (d) => {
+          const label = calculateLabel(d, prefix, numberFormat, suffix);
+          const labelLength = label.length * 12 + 10;
+          return calculateXPosition(d, x, labelLength);
+        })
+        .style("fill", (d) => {
+          const label = calculateLabel(d, prefix, numberFormat, suffix);
+          const barWidth = x(d[1]) - x(d[0]);
+          return barWidth > label.length * 6 + 10 ? "white" : "black";
+        })
+        .attr("y", (d) => y(d.data[yColumn]) + (y.bandwidth() / 2 + 5))
+        .attr("text-anchor", (d) => {
+          const label = calculateLabel(d, prefix, numberFormat, suffix);
+          const labelLength = label.length * 12 + 10;
+          const barWidth = x(d[1]) - x(d[0]);
+          return barWidth > labelLength ? "end" : "start";
+        })
+        .text((d) => {
+          const label = calculateLabel(d, prefix, numberFormat, suffix);
+          const barWidth = x(d[1]) - x(d[0]);
+          if (stackedhorizontal.length > 1 && barWidth < label.length * 9 + 10) {
+            return " ";
+          }
           return label;
-        } else {
-          return " ";
-        }
-      } else {
-        return label;
-      }
-    });
-}
-
-
+        });
+    }
 
     // Draws a solid line at zero
 
