@@ -2,66 +2,47 @@
     "sheets": {
         "template": [
             {
-                "title": "What goes on special most?",
-                "subtitle": "Showing the top 5 categories that go on special for <span style='color:#507892;font-weight: bold;'>Coles</span> and <span style='color:#e6711b;font-weight: bold;'>Woolworths</span>. The number is the share of all products checked between the 1st of June 2023 and 1st of July 2024.",
+                "title": "The vast majority of victims are not injured",
+                "subtitle": "Showing the share of women aged 18+ who experienced a sexual assault in last ten years, by injury at the most recent incident",
                 "footnote": "",
-                "source": "Shppngtrlly.com.au, Guardian Australia",
-                "margin-left": "10",
+                "source": "Australian Bureau of Statistics",
+                "margin-left": "20",
                 "margin-top": "30",
-                "margin-bottom": "10",
-                "margin-right": "10"
+                "margin-bottom": "20",
+                "margin-right": "10",
+                "forceCentre": "true"
             }
         ],
         "data": [
             {
-                "Main cat": "Health & Beauty",
-                "Share": 45.21,
-                "Color": "#507892"
+                "Var": "Not physically injured",
+                "Share": 77.5,
+                "Color": "#f28e2c"
             },
             {
-                "Main cat": "Pantry",
-                "Share": 24.0,
-                "Color": "#507892"
+                "Var": "Physically injured",
+                "Share": 22.5,
+                "Color": "#76b7b2"
             },
             {
-                "Main cat": "Household",
-                "Share": 14.39,
-                "Color": "#507892"
+                "Var": "Bruises",
+                "Share": 20.7,
+                "Color": "#76b7b2"
             },
             {
-                "Main cat": "Drinks",
-                "Share": 4.89,
-                "Color": "#507892"
+                "Var": "Scratches",
+                "Share": 7.8,
+                "Color": "#76b7b2"
             },
             {
-                "Main cat": "Frozen",
-                "Share": 3.74,
-                "Color": "#507892"
+                "Var": "Other",
+                "Share": 5.6,
+                "Color": "#76b7b2"
             },
             {
-                "Main cat": "Health & Beauty ",
-                "Share": 48.33,
-                "Color": "#e6711b"
-            },
-            {
-                "Main cat": "Household ",
-                "Share": 16.85,
-                "Color": "#e6711b"
-            },
-            {
-                "Main cat": "Snacks & Confectionery ",
-                "Share": 11.74,
-                "Color": "#e6711b"
-            },
-            {
-                "Main cat": "Drinks ",
-                "Share": 6.41,
-                "Color": "#e6711b"
-            },
-            {
-                "Main cat": "Frozen Food ",
-                "Share": 2.47,
-                "Color": "#e6711b"
+                "Var": "Cuts",
+                "Share": 4.3,
+                "Color": "#76b7b2"
             }
         ],
         "labels": [],
