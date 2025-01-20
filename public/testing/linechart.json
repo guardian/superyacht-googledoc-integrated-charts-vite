@@ -1,116 +1,87 @@
 {
     "sheets": {
-        "data": [
-            {
-                "Date": "2021-01-01",
-                "Price ($)": "5.5"
-            },
-            {
-                "Date": "2022-07-22",
-                "Price ($)": "5.5"
-            },
-            {
-                "Date": "2022-07-23",
-                "Price ($)": "3.8"
-            },
-            {
-                "Date": "2022-07-30",
-                "Price ($)": "3.8"
-            },
-            {
-                "Date": "2022-07-31",
-                "Price ($)": "5.5"
-            },
-            {
-                "Date": "2022-10-11",
-                "Price ($)": "5.5"
-            },
-            {
-                "Date": "2022-10-12",
-                "Price ($)": "7.0"
-            },
-            {
-                "Date": "2022-11-08",
-                "Price ($)": "7.0"
-            },
-            {
-                "Date": "2022-11-09",
-                "Price ($)": "6.0"
-            },
-            {
-                "Date": "2023-03-01",
-                "Price ($)": "6.0"
-            }
-        ],
         "template": [
             {
-                "title": "How Coles allegedly spikes the price of products to raise the base 'discounted' price",
-                "subtitle": "Showing the price of a packet of Strepsil lozenges",
+                "title": "The PhD stipend compared with Australia's median wage over the past decade",
+                "subtitle": "",
                 "footnote": "",
-                "source": "ACCC",
                 "dateFormat": "%Y-%m-%d",
-                "yScaleType": "",
-                "xAxisLabel": "",
-                "yAxisLabel": "",
-                "xAxisDateFormat": "%b %y",
-                "baseline": "",
-                "tooltip": "",
-                "periodDateFormat": "",
-                "margin-left": "50",
-                "margin-top": "5",
+                "source": "Australian Bureau of Statistics, Department of Education",
+                "margin-left": "35",
+                "margin-top": "30",
                 "margin-bottom": "20",
-                "margin-right": "30",
-                "minX": "",
-                "minY": "0",
-                "maxY": "7"
+                "margin-right": "10",
+                "xAxisDateFormat": "%Y",
+                "minY": 20000
             }
         ],
-        "options": [
+        "data": [
             {
-                "lineLabelling": "",
-                "colorScheme": "",
-                "aria": "FALSE",
-                "credit": ""
+                "Year": "2016-01-01",
+                "Annual PhD stipend": "26288",
+                "Median wage": 52624.0
+            },
+            {
+                "Year": "2017-01-01",
+                "Annual PhD stipend": "26682",
+                "Median wage": 52988.0
+            },
+            {
+                "Year": "2018-01-01",
+                "Annual PhD stipend": "27082",
+                "Median wage": 55432.0
+            },
+            {
+                "Year": "2019-01-01",
+                "Annual PhD stipend": "27596",
+                "Median wage": 57200.0
+            },
+            {
+                "Year": "2020-01-01",
+                "Annual PhD stipend": "28092",
+                "Median wage": 59800.0
+            },
+            {
+                "Year": "2021-01-01",
+                "Annual PhD stipend": "28597",
+                "Median wage": 62400.0
+            },
+            {
+                "Year": "2022-01-01",
+                "Annual PhD stipend": "28854",
+                "Median wage": 65000.0
+            },
+            {
+                "Year": "2023-01-01",
+                "Annual PhD stipend": "29863",
+                "Median wage": 67600.0
+            },
+            {
+                "Year": "2024-01-01",
+                "Annual PhD stipend": "32192",
+                "Median wage": 72592.0
+            },
+            {
+                "Year": "2025-01-01",
+                "Annual PhD stipend": "33511",
+                "Median wage": ""
             }
         ],
+        "labels": [],
+        "key": [],
+        "lines": [],
+        "periods": [],
         "chartId": [
             {
                 "type": "linechart"
             }
         ],
-        "key": [],
-        "periods": [],
-        "labels": [
+        "options": [
             {
-                "id": "label1",
-                "coords": "{\"targetX\":0.024855173306579503,\"targetY\":0.21517537980339588,\"sourceX\":0.049710346613159005,\"sourceY\":0.3224139857015192,\"textX\":0.049710346613159005,\"textY\":0.3179457104557641}",
-                "text": "Regular price of $5.50 on a\npre-existing 'Down Down' promotion",
-                "coordType": "pct",
-                "sweepFlag": "1",
-                "radius": "200",
-                "arrow": "",
-                "align": "start"
-            },
-            {
-                "id": "label2",
-                "coords": "{\"targetX\":0.8185176998136862,\"targetY\":0.005057961504811898,\"sourceX\":0.7740550099472637,\"sourceY\":0.01818132108486439,\"textX\":0.7740550099472637,\"textY\":-0.021188757655293086}",
-                "text": "Price increased to $7 for 28 days",
-                "coordType": "pct",
-                "sweepFlag": "1",
-                "radius": "200",
-                "arrow": "",
-                "align": "end"
-            },
-            {
-                "id": "label3",
-                "coords": "{\"targetX\":0.8367069820317681,\"targetY\":0.5562390638670166,\"sourceX\":0.8629803896801086,\"sourceY\":0.1625382764654418,\"textX\":0.8266018252439448,\"textY\":0.5387412510936133}",
-                "text": "Product placed on a ‘Down Down’ promotion\nshowing a ‘Down Down’ price of $6.00\nand a ‘was’ price of $7.00.",
-                "coordType": "pct",
-                "sweepFlag": "1",
-                "radius": "200",
-                "arrow": "",
-                "align": "end"
+                "colorScheme": "guardian",
+                "lineLabelling": "TRUE"
             }
-        ]
+        ],
+        "dropdown": []
     }
 }
