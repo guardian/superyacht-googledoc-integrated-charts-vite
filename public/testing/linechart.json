@@ -1,87 +1,251 @@
 {
     "sheets": {
-        "template": [
-            {
-                "title": "The PhD stipend compared with Australia's median wage over the past decade",
-                "subtitle": "",
-                "footnote": "",
-                "dateFormat": "%Y-%m-%d",
-                "source": "Australian Bureau of Statistics, Department of Education",
-                "margin-left": "35",
-                "margin-top": "30",
-                "margin-bottom": "20",
-                "margin-right": "10",
-                "xAxisDateFormat": "%Y",
-                "minY": 20000
-            }
-        ],
         "data": [
             {
-                "Year": "2016-01-01",
-                "Annual PhD stipend": "26288",
-                "Median wage": 52624.0
+                "FY ending": "1999",
+                "Labor": "62379189.0",
+                "Greens": "1318060.0",
+                "Liberal": "51173227.0",
+                "National": "10535332.0"
             },
             {
-                "Year": "2017-01-01",
-                "Annual PhD stipend": "26682",
-                "Median wage": 52988.0
+                "FY ending": "2000",
+                "Labor": "31452219.0",
+                "Greens": "935647.0",
+                "Liberal": "19825353.0",
+                "National": "5018758.0"
             },
             {
-                "Year": "2018-01-01",
-                "Annual PhD stipend": "27082",
-                "Median wage": 55432.0
+                "FY ending": "2001",
+                "Labor": "32321138.0",
+                "Greens": "1394988.0",
+                "Liberal": "23130962.0",
+                "National": "6649815.0"
             },
             {
-                "Year": "2019-01-01",
-                "Annual PhD stipend": "27596",
-                "Median wage": 57200.0
+                "FY ending": "2002",
+                "Labor": "60918838.0",
+                "Greens": "4266527.0",
+                "Liberal": "62024300.0",
+                "National": "9632731.0"
             },
             {
-                "Year": "2020-01-01",
-                "Annual PhD stipend": "28092",
-                "Median wage": 59800.0
+                "FY ending": "2003",
+                "Labor": "41391397.0",
+                "Greens": "2045707.0",
+                "Liberal": "35196401.0",
+                "National": "9137595.0"
             },
             {
-                "Year": "2021-01-01",
-                "Annual PhD stipend": "28597",
-                "Median wage": 62400.0
+                "FY ending": "2004",
+                "Labor": "47114665.0",
+                "Greens": "3033045.0",
+                "Liberal": "29844570.0",
+                "National": "7769449.0"
             },
             {
-                "Year": "2022-01-01",
-                "Annual PhD stipend": "28854",
-                "Median wage": 65000.0
+                "FY ending": "2005",
+                "Labor": "65442291.0",
+                "Greens": "7056129.0",
+                "Liberal": "70027573.0",
+                "National": "11564656.0"
             },
             {
-                "Year": "2023-01-01",
-                "Annual PhD stipend": "29863",
-                "Median wage": 67600.0
+                "FY ending": "2006",
+                "Labor": "36059535.0",
+                "Greens": "1918778.0",
+                "Liberal": "29462241.0",
+                "National": "6292277.0"
             },
             {
-                "Year": "2024-01-01",
-                "Annual PhD stipend": "32192",
-                "Median wage": 72592.0
+                "FY ending": "2007",
+                "Labor": "71299427.0",
+                "Greens": "5123865.0",
+                "Liberal": "47861788.0",
+                "National": "10048565.0"
             },
             {
-                "Year": "2025-01-01",
-                "Annual PhD stipend": "33511",
-                "Median wage": ""
+                "FY ending": "2008",
+                "Labor": "110467208.0",
+                "Greens": "10719400.0",
+                "Liberal": "73874506.0",
+                "National": "14573116.0"
+            },
+            {
+                "FY ending": "2009",
+                "Labor": "46405132.0",
+                "Greens": "3818871.0",
+                "Liberal": "39617076.0",
+                "National": "5734864.0"
+            },
+            {
+                "FY ending": "2010",
+                "Labor": "36426857.0",
+                "Greens": "4456975.0",
+                "Liberal": "41387770.0",
+                "National": "5675019.0"
+            },
+            {
+                "FY ending": "2011",
+                "Labor": "83271496.0",
+                "Greens": "20005150.0",
+                "Liberal": "104753551.0",
+                "National": "13839980.0"
+            },
+            {
+                "FY ending": "2012",
+                "Labor": "54452445.0",
+                "Greens": "5417321.0",
+                "Liberal": "55717885.0",
+                "National": "8181710.0"
+            },
+            {
+                "FY ending": "2013",
+                "Labor": "55847792.0",
+                "Greens": "8132270.0",
+                "Liberal": "75005773.0",
+                "National": "8276188.0"
+            },
+            {
+                "FY ending": "2014",
+                "Labor": "76399050.0",
+                "Greens": "21567857.0",
+                "Liberal": "126684072.0",
+                "National": "12360048.0"
+            },
+            {
+                "FY ending": "2015",
+                "Labor": "64380536.0",
+                "Greens": "10984477.0",
+                "Liberal": "79989342.0",
+                "National": "11093210.0"
+            },
+            {
+                "FY ending": "2016",
+                "Labor": "61291609.0",
+                "Greens": "16834717.0",
+                "Liberal": "81355528.0",
+                "National": "14470832.0"
+            },
+            {
+                "FY ending": "2017",
+                "Labor": "71817305.0",
+                "Greens": "16269836.0",
+                "Liberal": "96823282.0",
+                "National": "12220298.0"
+            },
+            {
+                "FY ending": "2018",
+                "Labor": "60059623.0",
+                "Greens": "12883005.0",
+                "Liberal": "63024759.0",
+                "National": "8183113.0"
+            },
+            {
+                "FY ending": "2019",
+                "Labor": "126259524.0",
+                "Greens": "20427001.0",
+                "Liberal": "165556576.0",
+                "National": "16114060.0"
+            },
+            {
+                "FY ending": "2020",
+                "Labor": "54961571.0",
+                "Greens": "19170808.0",
+                "Liberal": "57431037.0",
+                "National": "12427565.0"
+            },
+            {
+                "FY ending": "2021",
+                "Labor": "67317461.0",
+                "Greens": "15553753.0",
+                "Liberal": "75848277.0",
+                "National": "8973527.0"
+            },
+            {
+                "FY ending": "2022",
+                "Labor": "124300318.0",
+                "Greens": "22250099.0",
+                "Liberal": "104233356.0",
+                "National": "11436848.0"
+            },
+            {
+                "FY ending": "2023",
+                "Labor": "84475794.0",
+                "Greens": "25596101.0",
+                "Liberal": "112680872.0",
+                "National": "16322083.0"
+            },
+            {
+                "FY ending": "2024",
+                "Labor": "67513260.0",
+                "Greens": "17138061.0",
+                "Liberal": "64687452.0",
+                "National": "8839779.0"
             }
         ],
-        "labels": [],
-        "key": [],
-        "lines": [],
-        "periods": [],
+        "template": [
+            {
+                "title": "Total political funding to major party groups",
+                "subtitle": "Showing the total amount declared (includes both donations and other receipts, such as investment returns and public funding) by each party group over time",
+                "footnote": "",
+                "source": "AEC",
+                "dateFormat": "%Y",
+                "yScaleType": "",
+                "xAxisLabel": "",
+                "yAxisLabel": "",
+                "xAxisDateFormat": "%Y",
+                "baseline": "",
+                "tooltip": "",
+                "periodDateFormat": "",
+                "margin-left": "30",
+                "margin-top": "5",
+                "margin-bottom": "20",
+                "margin-right": "10",
+                "minX": "",
+                "minY": "0"
+            }
+        ],
+        "options": [
+            {
+                "lineLabelling": "FALSE",
+                "colorScheme": "",
+                "aria": "FALSE",
+                "credit": ""
+            }
+        ],
         "chartId": [
             {
                 "type": "linechart"
             }
         ],
-        "options": [
+        "key": [
             {
-                "colorScheme": "guardian",
-                "lineLabelling": "TRUE"
+                "keyName": "Labor",
+                "colour": "rgb(204, 10, 17)",
+                "labelOffsetX": "",
+                "labelOffsetY": ""
+            },
+            {
+                "keyName": "Liberal",
+                "colour": "rgb(0, 86, 137)",
+                "labelOffsetX": "",
+                "labelOffsetY": ""
+            },
+            {
+                "keyName": "National",
+                "colour": "rgb(170, 216, 241)",
+                "labelOffsetX": "",
+                "labelOffsetY": ""
+            },
+            {
+                "keyName": "Greens",
+                "colour": "rgb(41, 132, 34)",
+                "labelOffsetX": "",
+                "labelOffsetY": ""
             }
         ],
-        "dropdown": []
+        "periods": [],
+        "labels": []
     }
 }

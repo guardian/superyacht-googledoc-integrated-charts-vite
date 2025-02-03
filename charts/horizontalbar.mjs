@@ -402,27 +402,27 @@ export default class Horizontalbar {
 
     function calculateXPosition(d, x, labelLength, buffer = 10) {
       if (d.Total > 0 || d.groupValue > 0) {
-        return labelLength < x(d.Total || d[1]) ? x(d.Total || d[1]) - buffer : x(d.Total || d[1]) + buffer;
+        return labelLength < x(d.Total || d.groupValue) ? x(d.Total || d.groupValue) - buffer : x(d.Total || d.groupValue) + buffer;
       } else if (d.Total < 0 || d.groupValue < 0) {
-        return x(0) - x(d.Total || d[0]) > labelLength ? x(d.Total || d[0]) - buffer : x(0) - buffer;
+        return x(0) - x(d.Total || d.groupValue) > labelLength ? x(d.Total || d.groupValue) + (buffer) : x(0) + (buffer);
       }
       return x(0);
     }
 
     function calculateTextAnchor(d, x, labelLength) {
       if (d.Total > 0 || d.groupValue > 0) {
-        return labelLength < x(d.Total || d[1]) ? "end" : "start";
+        return labelLength < x(d.Total || d.groupValue) ? "end" : "start";
       } else if (d.Total < 0 || d.groupValue < 0) {
-        return x(0) - x(d.Total || d[0]) > labelLength ? "end" : "start";
+        return x(0) - x(d.Total || d[0]) > labelLength ? "start" : "end";
       }
       return "start";
     }
 
     function calculateTextColor(d, x, labelLength) {
-      if ((d.Total > 0 || d.groupValue > 0) && x(d.Total || d[1]) - x(0) > labelLength) {
+      if ((d.Total > 0 || d.groupValue > 0) && x(d.Total || d.groupValue) - x(0) > labelLength) {
         return "white";
       } else if ((d.Total < 0 || d.groupValue < 0) && x(0) - x(d.Total || d[0]) > labelLength) {
-        return "white";
+        return "white ";
       }
       return "black";
     }
@@ -457,6 +457,7 @@ export default class Horizontalbar {
         .attr("y", (d) => y(d[yColumn]) + (y.bandwidth() / 2 + 5))
         .text((d) => calculateLabel(d, prefix, numberFormat, suffix));
     } else {
+
       layer
         .selectAll(".barNumber")
         .data((d) => d)
@@ -470,16 +471,28 @@ export default class Horizontalbar {
           return calculateXPosition(d, x, labelLength);
         })
         .style("fill", (d) => {
+          /*
           const label = calculateLabel(d, prefix, numberFormat, suffix);
           const barWidth = x(d[1]) - x(d[0]);
           return barWidth > label.length * 6 + 10 ? "white" : "black";
+          */
+          const label = calculateLabel(d, prefix, numberFormat, suffix);
+          const labelLength = label.length * 6 + 10;
+          return calculateTextColor(d, x, labelLength);
+
         })
         .attr("y", (d) => y(d.data[yColumn]) + (y.bandwidth() / 2 + 5))
         .attr("text-anchor", (d) => {
+          /*
           const label = calculateLabel(d, prefix, numberFormat, suffix);
           const labelLength = label.length * 12 + 10;
           const barWidth = x(d[1]) - x(d[0]);
           return barWidth > labelLength ? "end" : "start";
+          */
+          const label = calculateLabel(d, prefix, numberFormat, suffix);
+          const labelLength = label.length * 6 + 10;
+          return calculateTextAnchor(d, x, labelLength);
+
         })
         .text((d) => {
           const label = calculateLabel(d, prefix, numberFormat, suffix);

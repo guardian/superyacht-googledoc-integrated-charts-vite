@@ -2,8 +2,8 @@ import { getURLParams, contains } from './charts/shared/toolbelt';
 import { yachtCharter } from "./yachtCharter.js"
 import './style.scss'
 
-const docsdata = "yacht-charter-data" // "yacht-charter-data" // "docsdata" 
-const keyloc = "woolworths-prices-2024-1" // https://interactive.guim.co.uk/embed/superyacht/index.html?location=yacht-charter-data&key=woolworths-prices-2024-1
+const docsdata = "docsdata" // "yacht-charter-data" // "docsdata" 
+const keyloc = "1Mj8LtKyD55fwoEzE_WQHSG1jV7JN6rwg8Uyy7RTTHxI" // https://interactive.guim.co.uk/embed/superyacht/index.html?location=yacht-charter-data&key=woolworths-prices-2024-1
 const key = getURLParams("key") ? getURLParams("key") : keyloc ;
 const location = getURLParams("location") ? getURLParams("location") : docsdata ;
 const theme = getURLParams("theme") ? getURLParams("theme") : false ;

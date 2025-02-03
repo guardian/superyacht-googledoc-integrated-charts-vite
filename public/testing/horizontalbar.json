@@ -2,66 +2,103 @@
     "sheets": {
         "data": [
             {
-                "Name": "Keldoulis Investments Pty Ltd",
-                "Donations ($)": "1009352"
+                "Entity": "United Australia Party",
+                "Net change as % of total receipts": "-99.1"
             },
             {
-                "Name": "Pratt Holdings Pty Ltd",
-                "Donations ($)": "1000000"
+                "Entity": "Climate 200 Pty Limited",
+                "Net change as % of total receipts": "-59.0"
             },
             {
-                "Name": "Catsaras, Marcus",
-                "Donations ($)": "999978"
+                "Entity": "Sophie Scamps",
+                "Net change as % of total receipts": "-55.4"
             },
             {
-                "Name": "LB Conservation Pty Ltd",
-                "Donations ($)": "660000"
+                "Entity": "Katherine Chaney",
+                "Net change as % of total receipts": "-54.9"
             },
             {
-                "Name": "Meriton Properties Pty Ltd",
-                "Donations ($)": "590000"
+                "Entity": "Kylea Tink",
+                "Net change as % of total receipts": "-53.1"
             },
             {
-                "Name": "Turpie, Duncan",
-                "Donations ($)": "575135"
+                "Entity": "Allegra Spender",
+                "Net change as % of total receipts": "-52.8"
             },
             {
-                "Name": "William Taylor Nominees Pty Ltd",
-                "Donations ($)": "533333"
+                "Entity": "Monique Ryan",
+                "Net change as % of total receipts": "-43.6"
             },
             {
-                "Name": "First Australians Capital Ltd",
-                "Donations ($)": "500000"
+                "Entity": "Zoe Daniel",
+                "Net change as % of total receipts": "-41.2"
             },
             {
-                "Name": "Hancock Prospecting Pty Ltd",
-                "Donations ($)": "500000"
+                "Entity": "Advance Australia",
+                "Net change as % of total receipts": "-6.8"
             },
             {
-                "Name": "Climate 200 Pty Limited",
-                "Donations ($)": "473222"
+                "Entity": "ALP",
+                "Net change as % of total receipts": "-2.0"
+            },
+            {
+                "Entity": "Zali Steggall",
+                "Net change as % of total receipts": "-2.0"
+            },
+            {
+                "Entity": "The Coalition",
+                "Net change as % of total receipts": "-1.6"
+            },
+            {
+                "Entity": "Aus. Youth Climate Coalition",
+                "Net change as % of total receipts": "-0.7"
+            },
+            {
+                "Entity": "GetUp Limited",
+                "Net change as % of total receipts": "-0.2"
+            },
+            {
+                "Entity": "Australian Christian Lobby",
+                "Net change as % of total receipts": "0.0"
+            },
+            {
+                "Entity": "The Greens",
+                "Net change as % of total receipts": "13.6"
+            },
+            {
+                "Entity": "Helen Haines",
+                "Net change as % of total receipts": "15.2"
+            },
+            {
+                "Entity": "Dai Le",
+                "Net change as % of total receipts": "47.0"
+            },
+            {
+                "Entity": "Andrew Wilkie",
+                "Net change as % of total receipts": "85.0"
             }
         ],
         "template": [
             {
-                "title": "Top 10 largest political donation totals ",
-                "subtitle": "Showing the sum of donations declared by each donor for the 2023-24 financial year",
+                "title": "Electoral funding reforms may be neutral for major parties, and disadvantage Clive Palmer and teals",
+                "subtitle": "Showing an estimate of how donation caps and increased public funding could potentially change the income of political parties, politicians and other political entities. The value shown is the estimated loss from capping donations in the election period of 2021-22 at $18,462 (adjusted from $20,000 to take inflation into account) the addition of an increased rate for public funding ($4.42 per vote at the 2022 election, deflated from the $5 value to be legislated), and additional administrative funding for incumbents in the year leading up to the 2022 election",
                 "footnote": "",
-                "source": "AEC",
+                "source": "Guardian Australia analysis of AEC data, see article for methods",
                 "dateFormat": "",
-                "xAxisLabel": "",
+                "xAxisLabel": "Net change as a % of total receipts",
                 "yAxisLabel": "",
                 "baseline": "",
                 "periodDateFormat": "",
                 "margin-left": "10",
-                "margin-top": "20",
+                "margin-top": "40",
                 "margin-bottom": "0",
-                "margin-right": "15"
+                "margin-right": "10"
             }
         ],
         "options": [
             {
-                "enableShowMore": "FALSE"
+                "enableShowMore": "TRUE",
+                "forceCentre": "FALSE"
             }
         ],
         "labels": [],
