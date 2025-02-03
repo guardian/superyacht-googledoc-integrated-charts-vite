@@ -42,7 +42,7 @@
                 "stackedhorizontal" : "",
                 "xAxisDateFormat" : "",
                 "dateFormat": "%Y-%m-%d",
-                "forceCentre" : "FALSE",
+                "forceCentre" : "TRUE",
                 "xAxisLabel" : ""
             }
         ],
