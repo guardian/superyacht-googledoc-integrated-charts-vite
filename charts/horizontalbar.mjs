@@ -388,7 +388,7 @@ export default class Horizontalbar {
       return (!d.negative) ? "start" : "end"
     })
     .attr("y", (d) => y(d[yColumn]) - 5)
-    .text((d) => d[yColumn])
+    .text((d) => `${d[yColumn]}`)
 
 
     // Testing for label positions

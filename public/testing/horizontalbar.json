@@ -1,65 +1,75 @@
 {
     "sheets": {
-        "template": [
-            {
-                "title": "The vast majority of victims are not injured",
-                "subtitle": "Showing the share of women aged 18+ who experienced a sexual assault in last ten years, by injury at the most recent incident",
-                "footnote": "",
-                "source": "Australian Bureau of Statistics",
-                "margin-left": "20",
-                "margin-top": "30",
-                "margin-bottom": "20",
-                "margin-right": "10",
-                "forceCentre": "true"
-            }
-        ],
         "data": [
             {
-                "Var": "Not physically injured",
-                "Share": 77.5,
-                "Color": "#f28e2c"
+                "Name": "Keldoulis Investments Pty Ltd",
+                "Donations ($)": "1009352"
             },
             {
-                "Var": "Physically injured",
-                "Share": 22.5,
-                "Color": "#76b7b2"
+                "Name": "Pratt Holdings Pty Ltd",
+                "Donations ($)": "1000000"
             },
             {
-                "Var": "Bruises",
-                "Share": 20.7,
-                "Color": "#76b7b2"
+                "Name": "Catsaras, Marcus",
+                "Donations ($)": "999978"
             },
             {
-                "Var": "Scratches",
-                "Share": 7.8,
-                "Color": "#76b7b2"
+                "Name": "LB Conservation Pty Ltd",
+                "Donations ($)": "660000"
             },
             {
-                "Var": "Other",
-                "Share": 5.6,
-                "Color": "#76b7b2"
+                "Name": "Meriton Properties Pty Ltd",
+                "Donations ($)": "590000"
             },
             {
-                "Var": "Cuts",
-                "Share": 4.3,
-                "Color": "#76b7b2"
+                "Name": "Turpie, Duncan",
+                "Donations ($)": "575135"
+            },
+            {
+                "Name": "William Taylor Nominees Pty Ltd",
+                "Donations ($)": "533333"
+            },
+            {
+                "Name": "First Australians Capital Ltd",
+                "Donations ($)": "500000"
+            },
+            {
+                "Name": "Hancock Prospecting Pty Ltd",
+                "Donations ($)": "500000"
+            },
+            {
+                "Name": "Climate 200 Pty Limited",
+                "Donations ($)": "473222"
             }
         ],
-        "labels": [],
-        "key": [],
-        "lines": [],
-        "periods": [],
-        "chartId": [
+        "template": [
             {
-                "type": "horizontalbar"
+                "title": "Top 10 largest political donation totals ",
+                "subtitle": "Showing the sum of donations declared by each donor for the 2023-24 financial year",
+                "footnote": "",
+                "source": "AEC",
+                "dateFormat": "",
+                "xAxisLabel": "",
+                "yAxisLabel": "",
+                "baseline": "",
+                "periodDateFormat": "",
+                "margin-left": "10",
+                "margin-top": "20",
+                "margin-bottom": "0",
+                "margin-right": "15"
             }
         ],
         "options": [
             {
-                "enableShowMore": "FALSE",
-                "autoSort": "FALSE"
+                "enableShowMore": "FALSE"
             }
         ],
-        "dropdown": []
+        "labels": [],
+        "key": [],
+        "chartId": [
+            {
+                "type": "horizontalbar"
+            }
+        ]
     }
 }
