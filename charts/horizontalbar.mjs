@@ -397,41 +397,197 @@ export default class Horizontalbar {
     // ?key=2023-education-school-quartiles&location=yacht-charter-data
     // ?key=1DL9_rNNg3XVKodTmVHWO1DdABBRrOKVXQ5wshSK7pGw&location=docsdata
 
-    // Show totals
-    // console.log("showTotals", showTotals)
+    // ===============================
+    // Constants for Label Sizing
+    // ===============================
+    const LABEL_BUFFER = 10;       // Buffer in pixels (formerly hardcoded as 10)
+    const LABEL_CHAR_WIDTH = 6;    // Approximate pixel width per character
 
-    function calculateXPosition(d, x, labelLength, buffer = 10) {
+    /**
+     * Estimate the total width of a label in pixels.
+     *
+     * @param {string} label - The label text.
+     * @param {number} [charWidth=LABEL_CHAR_WIDTH] - The multiplier for each character.
+     * @returns {number} - Estimated label width (including buffer on both sides).
+     */
+    function estimateLabelWidth(label, charWidth = LABEL_CHAR_WIDTH) {
+      return label.length * charWidth + LABEL_BUFFER;
+    }
+
+    // *****************************************
+    // Helper Functions for Bar Label Placement
+    // *****************************************
+
+    /**
+     * Determine the “value” used to compute a bar’s width.
+     * For stacked bars we expect d.Total or d.groupValue,
+     * otherwise d.value is used.
+     *
+     * @param {Object} d - The data object for the bar.
+     * @returns {number} - The value used to calculate the bar’s width.
+     */
+    function getBarValue(d) {
+      console.log(d);
+      return d.Total != null ? d.Total : (d.groupValue != null ? d.groupValue : d.value);
+    }
+
+    /**
+     * Calculate the x-coordinate for a non-stacked bar’s label.
+     *
+     * The label is placed inside the bar if it fits (with a left/right buffer)
+     * and outside otherwise.
+     *
+     * @param {Object} d          - The data object for the bar.
+     * @param {Function} x        - A scale function mapping data values to pixels.
+     * @param {number} labelWidth - The estimated width of the label in pixels.
+     * @param {number} [buffer=LABEL_BUFFER] - The buffer space (in pixels).
+     * @returns {number} - The x position for the label.
+     */
+    function calculateXPosition(d, x, labelWidth, buffer = LABEL_BUFFER) {
+      const val = getBarValue(d);
+      if (val === 0) return x(0);
+
+      // Calculate the bar’s width in pixels (always a positive value).
+      const barWidth = Math.abs(x(val) - x(0));
+      const fitsInside = (labelWidth) <= barWidth;
+
+      if (val > 0) {
+        // For positive bars, if the label fits, align it inside (flush with the right edge).
+        return fitsInside ? x(val) - buffer : x(val) + buffer;
+      } else {
+        // For negative bars, if the label fits, align it inside (flush with the left edge).
+        return fitsInside ? x(val) + buffer : x(val) - buffer;
+      }
+    }
+
+    /**
+     * Calculate the text-anchor for a non-stacked bar’s label.
+     *
+     * If the label fits within the bar:
+     *   - "end" for positive bars (right-aligned)
+     *   - "start" for negative bars (left-aligned)
+     * Otherwise, the anchor is reversed so that the label is drawn outside.
+     *
+     * @param {Object} d          - The data object for the bar.
+     * @param {Function} x        - Scale function mapping data values to pixels.
+     * @param {number} labelWidth - The estimated label width.
+     * @param {number} [buffer=LABEL_BUFFER] - The buffer in pixels.
+     * @returns {string} - "start", "end", or "middle".
+     */
+    function calculateTextAnchor(d, x, labelWidth, buffer = LABEL_BUFFER) {
+      const val = getBarValue(d);
+      if (val === 0) return "middle";
+
+      const barWidth = Math.abs(x(val) - x(0));
+      const fitsInside = (labelWidth) <= barWidth;
+
+      if (val > 0) {
+        return fitsInside ? "end" : "start";
+      } else {
+        return fitsInside ? "start" : "end";
+      }
+    }
+
+    /**
+     * Decide the text color for a non-stacked bar’s label.
+     *
+     * The assumption is that if the label fits inside the bar, it should contrast
+     * with the bar’s color (e.g. white text on a dark bar).
+     *
+     * @param {Object} d          - The data object for the bar.
+     * @param {Function} x        - Scale function mapping data values to pixels.
+     * @param {number} labelWidth - The estimated label width.
+     * @param {number} [buffer=LABEL_BUFFER] - Buffer in pixels.
+     * @returns {string} - "white" or "black"
+     */
+    function calculateTextColor(d, x, labelWidth, buffer = LABEL_BUFFER) {
+      const val = getBarValue(d);
+      if (val === 0) return "black";
+
+      const barWidth = Math.abs(x(val) - x(0));
+      const fitsInside = (labelWidth) <= barWidth;
+      return fitsInside ? "white" : "black";
+    }
+
+    // --------------------------------------------------
+    // Stacked Bar Label Functions
+    // --------------------------------------------------
+
+    /**
+     * Calculate the x-coordinate for a stacked bar’s label.
+     *
+     * Uses d.Total (or d.groupValue) for the cumulative value.
+     *
+     * @param {Object} d          - The data object for the stacked bar.
+     * @param {Function} x        - Scale function mapping data values to pixels.
+     * @param {number} labelWidth - The estimated label width.
+     * @param {number} [buffer=LABEL_BUFFER] - Buffer in pixels.
+     * @returns {number} - The computed x position for the label.
+     */
+    function calculateXPositionStacked(d, x, labelWidth, buffer = LABEL_BUFFER) {
       if (d.Total > 0 || d.groupValue > 0) {
-        return labelLength < x(d.Total || d.groupValue) ? x(d.Total || d.groupValue) - buffer : x(d.Total || d.groupValue) + buffer;
+        const barEnd = x(d.Total || d[1]);
+        return (labelWidth < barEnd) ? barEnd - buffer : barEnd + buffer;
       } else if (d.Total < 0 || d.groupValue < 0) {
-        return x(0) - x(d.Total || d.groupValue) > labelLength ? x(d.Total || d.groupValue) + (buffer) : x(0) + (buffer);
+        const barStart = x(d.Total || d[0]);
+        return (x(0) - barStart > labelWidth) ? barStart - buffer : x(0) - buffer;
       }
       return x(0);
     }
 
-    function calculateTextAnchor(d, x, labelLength) {
+    /**
+     * Calculate the text-anchor for a stacked bar’s label.
+     *
+     * @param {Object} d          - The data object for the stacked bar.
+     * @param {Function} x        - Scale function mapping data values to pixels.
+     * @param {number} labelWidth - The estimated label width.
+     * @returns {string} - "start" or "end".
+     */
+    function calculateTextAnchorStacked(d, x, labelWidth) {
       if (d.Total > 0 || d.groupValue > 0) {
-        return labelLength < x(d.Total || d.groupValue) ? "end" : "start";
+        return (labelWidth < x(d.Total || d[1])) ? "end" : "start";
       } else if (d.Total < 0 || d.groupValue < 0) {
-        return x(0) - x(d.Total || d[0]) > labelLength ? "start" : "end";
+        return (x(0) - x(d.Total || d[0]) > labelWidth) ? "end" : "start";
       }
       return "start";
     }
 
-    function calculateTextColor(d, x, labelLength) {
-      if ((d.Total > 0 || d.groupValue > 0) && x(d.Total || d.groupValue) - x(0) > labelLength) {
+    /**
+     * Decide the text color for a stacked bar’s label.
+     *
+     * @param {Object} d          - The data object for the stacked bar.
+     * @param {Function} x        - Scale function mapping data values to pixels.
+     * @param {number} labelWidth - The estimated label width.
+     * @returns {string} - "white" if the label fits, otherwise "black".
+     */
+    function calculateTextColorStacked(d, x, labelWidth) {
+      if ((d.Total > 0 || d.groupValue > 0) && (x(d.Total || d[1]) - x(0) > labelWidth)) {
         return "white";
-      } else if ((d.Total < 0 || d.groupValue < 0) && x(0) - x(d.Total || d[0]) > labelLength) {
-        return "white ";
+      } else if ((d.Total < 0 || d.groupValue < 0) && (x(0) - x(d.Total || d[0]) > labelWidth)) {
+        return "white";
       }
       return "black";
     }
 
+    /**
+     * Build the label text using an optional prefix, a formatted number, and a suffix.
+     *
+     * @param {Object} d           - The data object for the bar.
+     * @param {string} prefix      - A prefix to display before the number.
+     * @param {Function} numberFormat - A function to format the number.
+     * @param {string} suffix      - A suffix to display after the number.
+     * @returns {string} - The formatted label.
+     */
     function calculateLabel(d, prefix, numberFormat, suffix) {
       return `${prefix} ${numberFormat(d.Total || d.data[d.group])} ${suffix}`.trim();
     }
 
+    // *****************************************
+    // Main Rendering Logic
+    // *****************************************
+
     if (showTotals) {
+      // When each datum represents one bar.
       layer
         .selectAll(".barNumber")
         .data(datum)
@@ -441,23 +597,30 @@ export default class Horizontalbar {
         .style("font-weight", "bold")
         .attr("x", (d) => {
           const label = calculateLabel(d, prefix, numberFormat, suffix);
-          const labelLength = label.length * 6 + 10;
-          return calculateXPosition(d, x, labelLength);
+          // Use the helper to estimate label width.
+          const labelWidth = estimateLabelWidth(label);
+          return (d.total == d.groupValue)
+            ? calculateXPosition(d, x, labelWidth)
+            : calculateXPositionStacked(d, x, labelWidth);
         })
         .attr("text-anchor", (d) => {
           const label = calculateLabel(d, prefix, numberFormat, suffix);
-          const labelLength = label.length * 6 + 10;
-          return calculateTextAnchor(d, x, labelLength);
+          const labelWidth = estimateLabelWidth(label);
+          return (d.total == d.groupValue)
+            ? calculateTextAnchor(d, x, labelWidth)
+            : calculateTextAnchorStacked(d, x, labelWidth);
         })
         .style("fill", (d) => {
           const label = calculateLabel(d, prefix, numberFormat, suffix);
-          const labelLength = label.length * 6 + 10;
-          return calculateTextColor(d, x, labelLength);
+          const labelWidth = estimateLabelWidth(label);
+          return (d.total == d.groupValue)
+            ? calculateTextColor(d, x, labelWidth)
+            : calculateTextColorStacked(d, x, labelWidth);
         })
         .attr("y", (d) => y(d[yColumn]) + (y.bandwidth() / 2 + 5))
         .text((d) => calculateLabel(d, prefix, numberFormat, suffix));
     } else {
-
+      // When the data is in an array format (typically for stacked bars).
       layer
         .selectAll(".barNumber")
         .data((d) => d)
@@ -467,42 +630,38 @@ export default class Horizontalbar {
         .style("font-weight", "bold")
         .attr("x", (d) => {
           const label = calculateLabel(d, prefix, numberFormat, suffix);
-          const labelLength = label.length * 12 + 10;
-          return calculateXPosition(d, x, labelLength);
+          // Consistently estimate the label width.
+          const labelWidth = estimateLabelWidth(label);
+          return (d.total == d.groupValue)
+            ? calculateXPosition(d, x, labelWidth)
+            : calculateXPositionStacked(d, x, labelWidth);
         })
         .style("fill", (d) => {
-          /*
           const label = calculateLabel(d, prefix, numberFormat, suffix);
-          const barWidth = x(d[1]) - x(d[0]);
-          return barWidth > label.length * 6 + 10 ? "white" : "black";
-          */
-          const label = calculateLabel(d, prefix, numberFormat, suffix);
-          const labelLength = label.length * 6 + 10;
-          return calculateTextColor(d, x, labelLength);
-
+          const labelWidth = estimateLabelWidth(label);
+          return (d.total == d.groupValue)
+            ? calculateTextColor(d, x, labelWidth)
+            : calculateTextColorStacked(d, x, labelWidth);
         })
         .attr("y", (d) => y(d.data[yColumn]) + (y.bandwidth() / 2 + 5))
         .attr("text-anchor", (d) => {
-          /*
           const label = calculateLabel(d, prefix, numberFormat, suffix);
-          const labelLength = label.length * 12 + 10;
-          const barWidth = x(d[1]) - x(d[0]);
-          return barWidth > labelLength ? "end" : "start";
-          */
-          const label = calculateLabel(d, prefix, numberFormat, suffix);
-          const labelLength = label.length * 6 + 10;
-          return calculateTextAnchor(d, x, labelLength);
-
+          const labelWidth = estimateLabelWidth(label);
+          return (d.total == d.groupValue)
+            ? calculateTextAnchor(d, x, labelWidth)
+            : calculateTextAnchorStacked(d, x, labelWidth);
         })
         .text((d) => {
           const label = calculateLabel(d, prefix, numberFormat, suffix);
           const barWidth = x(d[1]) - x(d[0]);
-          if (stackedhorizontal.length > 1 && barWidth < label.length * 9 + 10) {
+          // Only display the label if the bar is wide enough.
+          if (stackedhorizontal.length > 1 && barWidth < estimateLabelWidth(label)) {
             return " ";
           }
           return label;
         });
     }
+
 
     // Draws a solid line at zero
 
