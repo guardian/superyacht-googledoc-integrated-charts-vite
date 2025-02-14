@@ -117,7 +117,7 @@ export default class Smallmultiples {
 
     const $tooltip = (this.tooltip) ? this.tooltip : false
 
-    console.log(`xAxisDateFormat: ${xAxisDateFormat}`)
+    console.log(`xFormat: ${xFormat}`)
 
     datum = data.map(d => Object.keys(d).filter((key) => contains(key, smallmultiples)).reduce((cur, key) => { return Object.assign(cur, { [key]: d[key] })}, {}))
 
@@ -234,7 +234,11 @@ export default class Smallmultiples {
 
     width = width - marginleft - marginright
 
+    console.log(`Height 1: ${height}`)
+
     height = height - margintop - marginbottom
+
+    console.log(`Height 2: ${height}`)
 
     d3.select("#graphicContainer")
     .selectAll(".chart-grid")
@@ -316,7 +320,7 @@ export default class Smallmultiples {
       .append("svg")
       .attr("width", width + marginleft + marginright)
       .attr("height", height + margintop + marginbottom)
-      .attr("overflow", "hidden")
+      .style("overflow", "visible")
 
       const features = svg.append("g")
       .attr("transform", "translate(" + marginleft + "," + margintop + ")")
@@ -365,7 +369,7 @@ export default class Smallmultiples {
       let ticks = x.domain().filter((d, i) => !(i % tickMod) || i === x.domain().length - 1)
 
       var xAxis = d3.axisBottom(x)
-      .ticks(ticks)
+      .tickValues(ticks)
 
      if (isBar) {
 
@@ -394,6 +398,11 @@ export default class Smallmultiples {
         .axisBottom(x)
         .tickValues(blahTicks)
         .tickFormat(d3.timeFormat("%-d %b"))
+     }
+
+     if (numCols == 1 && !isBar && xFormat.date) {
+      xAxis = d3.axisBottom(x)
+        .ticks(6)
      }
 
       const yAxis = d3.axisLeft(y)
