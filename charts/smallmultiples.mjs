@@ -260,6 +260,19 @@ export default class Smallmultiples {
       })
     }
 
+    function sanitizeCSSIdentifier(identifier) {
+      // Remove any characters that are not letters, digits, underscores, or hyphens.
+      let sanitized = identifier.replace(/[^a-zA-Z0-9_-]/g, '');
+      
+      // CSS identifiers cannot start with a digit.
+      if (/^\d/.test(sanitized)) {
+        sanitized = '_' + sanitized;
+      }
+      
+      return sanitized;
+    }
+
+
     function drawChart({
       data,
       key,
@@ -269,7 +282,8 @@ export default class Smallmultiples {
       index
     }) {
       console.log("key", key)
-      const id = dataTools.getId(key),
+
+      const id = sanitizeCSSIdentifier(dataTools.getId(key)),
         chartId = `#${id}`,
         isBar = chartType === "bar",
         isLine = chartType === "line",
