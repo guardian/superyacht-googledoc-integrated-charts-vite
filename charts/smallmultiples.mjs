@@ -117,8 +117,8 @@ export default class Smallmultiples {
 
     const $tooltip = (this.tooltip) ? this.tooltip : false
 
-    console.log(`xAxisDateFormat: ${xAxisDateFormat}`)
-
+    // console.log(`xAxisDateFormat: ${xAxisDateFormat}`)
+    // console.log("xFormat", xFormat)  
     datum = data.map(d => Object.keys(d).filter((key) => contains(key, smallmultiples)).reduce((cur, key) => { return Object.assign(cur, { [key]: d[key] })}, {}))
 
     const chartKey = d3.select("#chartKey")
@@ -140,10 +140,13 @@ export default class Smallmultiples {
     // User has not set groupBy, so guess second column
 
     if (groupBy == '') {
-      console.log("yeah")
+      // console.log("yeah")
       groupBy = dataKeys[1];
     }
 
+    if (parseTime) {
+      xFormat.date = true
+    }
     dataKeys.splice(dataKeys.indexOf(xColumn), 1)
     dataKeys.splice(dataKeys.indexOf(groupBy), 1)
 
@@ -157,7 +160,8 @@ export default class Smallmultiples {
     )
 
     datum.forEach(function(d) {
-      if (xFormat.date) {
+      if (parseTime) {
+        console.log("yeh")
         d[xColumn] = parseTime(d[xColumn])
       }
 
@@ -193,6 +197,15 @@ export default class Smallmultiples {
     */
  
     colors = new ColorScale()
+
+    const keyColor = dataTools.getKeysColors({
+      keys: dataKeys,
+      userKey: userkey,
+      option: { colorScheme : colorScheme }
+    })
+    //console.log("keyColor",keyColor)
+    colors.set(keyColor.keys, keyColor.colors)
+
 
     let showGroupMax = (scaleBy == "group") ? true : false ;
 
@@ -307,7 +320,7 @@ export default class Smallmultiples {
       const features = svg.append("g")
       .attr("transform", "translate(" + marginleft + "," + margintop + ")")
 
-      console.log("scales", xScale, yScale)
+      // console.log("scales", xScale, yScale)
 
       var x = d3[xScale]()
       .range([0, width])
@@ -348,10 +361,11 @@ export default class Smallmultiples {
 
       const tickMod = Math.round(x.domain().length / 3)
 
-      let ticks = x.domain().filter((d, i) => !(i % tickMod) || i === x.domain().length - 1)
-
+      let ticks = width / 200
+      console.log("ticks",ticks)
+      console.log("yehhhhhhhh", xFormat.date)
       var xAxis = d3.axisBottom(x)
-      .ticks(ticks)
+        .ticks(4)
 
      if (isBar) {
 
@@ -360,17 +374,16 @@ export default class Smallmultiples {
        ticks = [ x.domain()[3] , x.domain()[x.domain().length - 4]]
 
       }
-
+ 
       if (xFormat.date) {
-
+        console.log("blah")
         xAxis.tickValues(ticks).tickFormat(d3.timeFormat("%b %Y"))
 
       }
 
      } 
 
-     if (numCols > 3 && !isBar && xFormat.date) {
-    
+     if (numCols > 3 && !isBar && xFormat.date) {    
       var blahTicks = [x.domain()[0],
                       new Date((x.domain()[0].getTime() + x.domain()[1].getTime())/2),
                       x.domain()[1]
@@ -379,7 +392,7 @@ export default class Smallmultiples {
       xAxis = d3
         .axisBottom(x)
         .tickValues(blahTicks)
-        .tickFormat(d3.timeFormat("%-d %b"))
+        .tickFormat(d3.timeFormat("%-d"))
      }
 
       const yAxis = d3.axisLeft(y)

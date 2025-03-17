@@ -74,7 +74,7 @@ export class yachtCharter {
       this.type = chart.type
 
       this.defaults = await getJson(`${this.url}json/${this.type}.json`)
-
+      console.log("defaults", this.defaults)
       this.data = merge(this.defaults, this.googledoc)
 
       if (this.data.sheets.template[0].title != "") {

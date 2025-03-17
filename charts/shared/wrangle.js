@@ -62,7 +62,7 @@ export async function wrangle(data, chart) {
 
   processDateSettings(settings);
 
-  //console.log(Object.keys(settings), settings);
+  
   return settings;
 }
 
@@ -137,11 +137,14 @@ function processSettings(settings) {
     }
 
     if (contains(['minY', 'maxY', 'minX', 'maxX','minZ', 'maxZ'], setting) && settings[setting] !== "") {
+      // console.log("wrangle",setting, settings[setting])
       settings[setting] = isNaN(settings[setting]) ? settings[setting] : +settings[setting];
     }
 
     if (contains(BOOLEAN_KEYS, setting)) {
+      console.log(setting)
       settings[setting] = settings[setting].toLowerCase() !== 'false';
+      console.log(settings[setting])
     }
 
     if (contains(SCALE_KEYS, setting)) {

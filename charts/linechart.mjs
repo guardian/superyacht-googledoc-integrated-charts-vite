@@ -16,7 +16,7 @@ import { checkApp } from 'newsroom-dojo';
 export default class Linechart {
 
   constructor(settings) {
-
+    console.log("Settings", settings)
     this.settings = settings
     this.noisyChartsSetup = false
     this.sonic = null
@@ -511,7 +511,7 @@ export default class Linechart {
 
     if (labels.length > 0) {
      
-      const clickLoggingOn = true //getURLParams("labelling") ? true : false ;
+      const clickLoggingOn = getURLParams("labelling") ? true : false ;
       console.log("clickLoggingOn", clickLoggingOn);
 
       // Move this to wrangle later once we re-factor the labelling stuff
