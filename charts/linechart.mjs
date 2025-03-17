@@ -436,6 +436,7 @@ export default class Linechart {
 
     let labelPos = []
 
+    /*
     if (lineLabelling) { 
       
       chartlines.forEach((key) => {
@@ -448,7 +449,35 @@ export default class Linechart {
       relax(labelPos);
 
     }
-    
+    */
+
+    if (lineLabelling) {
+      chartlines.forEach((key) => {
+        if (key != xColumn) {
+          let lastValueIndex = chartKeyData[key].length - 1;
+
+          // Find the last value that is not null, an empty string, or undefined
+          while (
+            lastValueIndex >= 0 &&
+            (
+              chartKeyData[key][lastValueIndex] === null || // Check if the data point itself is null
+              chartKeyData[key][lastValueIndex][key] === "" || // Check for an empty string
+              chartKeyData[key][lastValueIndex][key] === null // Check if the property value is null
+            )
+          ) {
+            lastValueIndex--;
+          }
+
+          if (lastValueIndex >= 0 && chartKeyData[key][lastValueIndex] !== null) {
+            let value = y(chartKeyData[key][lastValueIndex][key]) + 4;
+            labelPos.push({ key: key, value: value, labelY: value });
+          }
+        }
+      });
+
+      relax(labelPos);
+    }
+
     chartlines.forEach((key) => {
       //console.log("key",key)
       features

@@ -2,144 +2,307 @@
     "sheets": {
         "data": [
             {
-                "Country": "China",
-                "Day_of_week": "Monday",
-                "Years": "100"
+                "Year": "2010",
+                "Category": "Consultancy value (AU$)",
+                "Value": "356820758"
             },
             {
-                "Country": "China",
-                "Day_of_week": "Tuesday",
-                "Years": "100"
+                "Year": "2011",
+                "Category": "Consultancy value (AU$)",
+                "Value": "333131614"
             },
             {
-                "Country": "China",
-                "Day_of_week": "Wednesday",
-                "Years": "100"
+                "Year": "2012",
+                "Category": "Consultancy value (AU$)",
+                "Value": "312198171"
             },
             {
-                "Country": "China",
-                "Day_of_week": "Thursday",
-                "Years": "100"
+                "Year": "2013",
+                "Category": "Consultancy value (AU$)",
+                "Value": "286494336"
             },
             {
-                "Country": "China",
-                "Day_of_week": "Friday",
-                "Years": "100"
+                "Year": "2014",
+                "Category": "Consultancy value (AU$)",
+                "Value": "418362336"
             },
             {
-                "Country": "China",
-                "Day_of_week": "Saturday",
-                "Years": "100"
+                "Year": "2015",
+                "Category": "Consultancy value (AU$)",
+                "Value": "521991810"
             },
             {
-                "Country": "China",
-                "Day_of_week": "Sunday",
-                "Years": "100"
+                "Year": "2016",
+                "Category": "Consultancy value (AU$)",
+                "Value": "523524100"
             },
             {
-                "Country": "France",
-                "Day_of_week": "Monday",
-                "Years": "57.41"
+                "Year": "2017",
+                "Category": "Consultancy value (AU$)",
+                "Value": "571555577"
             },
             {
-                "Country": "France",
-                "Day_of_week": "Tuesday",
-                "Years": "54.95"
+                "Year": "2018",
+                "Category": "Consultancy value (AU$)",
+                "Value": "501458261"
             },
             {
-                "Country": "France",
-                "Day_of_week": "Wednesday",
-                "Years": "51.61"
+                "Year": "2019",
+                "Category": "Consultancy value (AU$)",
+                "Value": "662760815"
             },
             {
-                "Country": "France",
-                "Day_of_week": "Thursday",
-                "Years": "52.31"
+                "Year": "2020",
+                "Category": "Consultancy value (AU$)",
+                "Value": "578509985"
             },
             {
-                "Country": "France",
-                "Day_of_week": "Friday",
-                "Years": "55.19"
+                "Year": "2021",
+                "Category": "Consultancy value (AU$)",
+                "Value": "751142430"
             },
             {
-                "Country": "France",
-                "Day_of_week": "Saturday",
-                "Years": "71.31"
+                "Year": "2022",
+                "Category": "Consultancy value (AU$)",
+                "Value": "567885080"
             },
             {
-                "Country": "France",
-                "Day_of_week": "Sunday",
-                "Years": "74.52"
+                "Year": "2023",
+                "Category": "Consultancy value (AU$)",
+                "Value": "596052397"
             },
             {
-                "Country": "UK",
-                "Day_of_week": "Monday",
-                "Years": "46.47"
+                "Year": "2024",
+                "Category": "Consultancy value (AU$)",
+                "Value": "605160713"
             },
             {
-                "Country": "UK",
-                "Day_of_week": "Tuesday",
-                "Years": "37.69"
+                "Year": "2010",
+                "Category": "Labour hire value (AU$)",
+                "Value": "4410417521"
             },
             {
-                "Country": "UK",
-                "Day_of_week": "Wednesday",
-                "Years": "39.73"
+                "Year": "2011",
+                "Category": "Labour hire value (AU$)",
+                "Value": "9337902474"
             },
             {
-                "Country": "UK",
-                "Day_of_week": "Thursday",
-                "Years": "39.24"
+                "Year": "2012",
+                "Category": "Labour hire value (AU$)",
+                "Value": "10124753864"
             },
             {
-                "Country": "UK",
-                "Day_of_week": "Friday",
-                "Years": "41.99"
+                "Year": "2013",
+                "Category": "Labour hire value (AU$)",
+                "Value": "9944113613"
             },
             {
-                "Country": "UK",
-                "Day_of_week": "Saturday",
-                "Years": "64.84"
+                "Year": "2014",
+                "Category": "Labour hire value (AU$)",
+                "Value": "21690060754"
             },
             {
-                "Country": "UK",
-                "Day_of_week": "Sunday",
-                "Years": "61.55"
+                "Year": "2015",
+                "Category": "Labour hire value (AU$)",
+                "Value": "11047621743"
             },
             {
-                "Country": "Spain",
-                "Day_of_week": "Monday",
-                "Years": "56.73"
+                "Year": "2016",
+                "Category": "Labour hire value (AU$)",
+                "Value": "15318609550"
             },
             {
-                "Country": "Spain",
-                "Day_of_week": "Tuesday",
-                "Years": "63.28"
+                "Year": "2017",
+                "Category": "Labour hire value (AU$)",
+                "Value": "12739024984"
             },
             {
-                "Country": "Spain",
-                "Day_of_week": "Wednesday",
-                "Years": "50.83"
+                "Year": "2018",
+                "Category": "Labour hire value (AU$)",
+                "Value": "25779954299"
             },
             {
-                "Country": "Spain",
-                "Day_of_week": "Thursday",
-                "Years": "56.67"
+                "Year": "2019",
+                "Category": "Labour hire value (AU$)",
+                "Value": "31626563623"
             },
             {
-                "Country": "Spain",
-                "Day_of_week": "Friday",
-                "Years": "55.47"
+                "Year": "2020",
+                "Category": "Labour hire value (AU$)",
+                "Value": "14150606225"
             },
             {
-                "Country": "Spain",
-                "Day_of_week": "Saturday",
-                "Years": "85.15"
+                "Year": "2021",
+                "Category": "Labour hire value (AU$)",
+                "Value": "27036567695"
             },
             {
-                "Country": "Spain",
-                "Day_of_week": "Sunday",
-                "Years": "83.38"
+                "Year": "2022",
+                "Category": "Labour hire value (AU$)",
+                "Value": "34926679858"
+            },
+            {
+                "Year": "2023",
+                "Category": "Labour hire value (AU$)",
+                "Value": "44954725980"
+            },
+            {
+                "Year": "2024",
+                "Category": "Labour hire value (AU$)",
+                "Value": "47503958661"
+            },
+            {
+                "Year": "2010",
+                "Category": "APS ASL (count)",
+                "Value": "178970"
+            },
+            {
+                "Year": "2011",
+                "Category": "APS ASL (count)",
+                "Value": "181018"
+            },
+            {
+                "Year": "2012",
+                "Category": "APS ASL (count)",
+                "Value": "182505"
+            },
+            {
+                "Year": "2013",
+                "Category": "APS ASL (count)",
+                "Value": "179953"
+            },
+            {
+                "Year": "2014",
+                "Category": "APS ASL (count)",
+                "Value": "177258"
+            },
+            {
+                "Year": "2015",
+                "Category": "APS ASL (count)",
+                "Value": "166261"
+            },
+            {
+                "Year": "2016",
+                "Category": "APS ASL (count)",
+                "Value": "165648"
+            },
+            {
+                "Year": "2017",
+                "Category": "APS ASL (count)",
+                "Value": "166181"
+            },
+            {
+                "Year": "2018",
+                "Category": "APS ASL (count)",
+                "Value": "165276"
+            },
+            {
+                "Year": "2019",
+                "Category": "APS ASL (count)",
+                "Value": "165491"
+            },
+            {
+                "Year": "2020",
+                "Category": "APS ASL (count)",
+                "Value": "166762"
+            },
+            {
+                "Year": "2021",
+                "Category": "APS ASL (count)",
+                "Value": "168912"
+            },
+            {
+                "Year": "2022",
+                "Category": "APS ASL (count)",
+                "Value": "173142"
+            },
+            {
+                "Year": "2023",
+                "Category": "APS ASL (count)",
+                "Value": "181122"
+            },
+            {
+                "Year": "2024",
+                "Category": "APS ASL (count)",
+                "Value": "191861"
+            }
+        ],
+        "columns": [
+            {
+                "column": "Year",
+                "index": 0,
+                "label": "Year",
+                "dataTypes": [
+                    "date",
+                    "number",
+                    "string"
+                ],
+                "formats": [
+                    {
+                        "type": "date",
+                        "format": {
+                            "dateFormat": "%Y",
+                            "hasDay": false,
+                            "scale": "scaleBand"
+                        }
+                    },
+                    {
+                        "type": "number",
+                        "format": {
+                            "min": 2010,
+                            "max": 2024,
+                            "scale": "scaleLinear",
+                            "hasEmptyValues": false,
+                            "sequential": false
+                        }
+                    },
+                    {
+                        "type": "string",
+                        "format": {
+                            "hasRepeat": true,
+                            "longest": 4,
+                            "scale": "scaleBand"
+                        }
+                    }
+                ]
+            },
+            {
+                "column": "Category",
+                "index": 1,
+                "label": "Category",
+                "dataTypes": [
+                    "string"
+                ],
+                "formats": [
+                    {
+                        "type": "string",
+                        "format": {
+                            "hasRepeat": true,
+                            "longest": 23,
+                            "scale": "scaleBand"
+                        }
+                    }
+                ]
+            },
+            {
+                "column": "Value",
+                "index": 2,
+                "label": "Value",
+                "dataTypes": [
+                    "number"
+                ],
+                "formats": [
+                    {
+                        "type": "number",
+                        "format": {
+                            "min": 165276,
+                            "max": 47503958661,
+                            "scale": "scaleLog",
+                            "hasEmptyValues": false,
+                            "sequential": false
+                        }
+                    }
+                ]
             }
         ],
         "chartId": [
@@ -149,7 +312,7 @@
         ],
         "template": [
             {
-                "title": "My first small multiples bar",
+                "title": "",
                 "subtitle": "",
                 "footnote": "",
                 "source": "",
@@ -158,9 +321,9 @@
         ],
         "options": [
             {
-                "numCols": 4,
+                "numCols": 1,
                 "breaks": "",
-                "chartType": "bar",
+                "chartType": "line",
                 "height": 150,
                 "scaleBy": "group",
                 "enableShowMore": "FALSE",
@@ -168,21 +331,21 @@
                 "colorScheme": "guardian",
                 "smallmultiples": "",
                 "parseTime": "",
-                "dateFormat": "",
+                "dateFormat": "%Y",
                 "xAxisLabel": "",
                 "yAxisLabel": "",
                 "timeInterval": "",
                 "periodDateFormat": "",
-                "margin-left": 38,
-                "margin-top": 25,
-                "margin-bottom": 22,
+                "margin-left": 60,
+                "margin-top": 0,
+                "margin-bottom": 40,
                 "margin-right": 22,
-                "xAxisDateFormat": "",
-                "groupBy": "Day_of_week",
-                "xColumn": "Country",
+                "xAxisDateFormat": "%Y",
+                "groupBy": "Category",
+                "xColumn": "Year",
                 "xFormat": "",
-                "xScale": "scaleBand",
-                "yScale": "scaleLinear"
+                "xScale": "",
+                "yScale": ""
             }
         ],
         "labels": []

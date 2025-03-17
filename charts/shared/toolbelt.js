@@ -282,6 +282,7 @@ export function getLongestKeyLength($svg, keys, isMobile, lineLabelling) {
   return 0
 }
 
+/*
 export function numberFormat(num) {
   
   if ( num > 0 ) {
@@ -364,8 +365,48 @@ export function numberFormat(num) {
         return "-" + posNum }
 
   }
-  return num;
+  return num
 }
+*/
+
+export function numberFormat(num) {
+  const absNum = Math.abs(num);
+  const sign = num < 0 ? '-' : '';
+
+  // If the number is less than 1000, just return it.
+  if (absNum < 1000) {
+    return sign + absNum;
+  }
+
+  // Define thresholds in ascending order.
+  const thresholds = [
+    { value: 1e3, suffix: 'k' },
+    { value: 1e6, suffix: 'm' },
+    { value: 1e9, suffix: 'bn' },
+  ];
+
+  let formattedNumber, suffix;
+
+  // Loop through each threshold.
+  for (let i = 0; i < thresholds.length; i++) {
+    const { value, suffix: currentSuffix } = thresholds[i];
+    const divided = absNum / value;
+    // Round to one decimal and drop trailing zeros.
+    const rounded = parseFloat(divided.toFixed(1));
+    
+    // If rounding bumps the value to 1000 or more and there's a higher threshold, skip to the next one.
+    if (rounded >= 1000 && i < thresholds.length - 1) {
+      continue;
+    } else {
+      formattedNumber = rounded;
+      suffix = currentSuffix;
+      break;
+    }
+  }
+
+  return sign + formattedNumber + suffix;
+}
+
 
 export function mustache(template, self, parent, invert) {
   var render = mustache

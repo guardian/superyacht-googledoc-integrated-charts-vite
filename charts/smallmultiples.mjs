@@ -247,7 +247,11 @@ export default class Smallmultiples {
 
     width = width - marginleft - marginright
 
+    console.log(`Height 1: ${height}`)
+
     height = height - margintop - marginbottom
+
+    console.log(`Height 2: ${height}`)
 
     d3.select("#graphicContainer")
     .selectAll(".chart-grid")
@@ -273,6 +277,19 @@ export default class Smallmultiples {
       })
     }
 
+    function sanitizeCSSIdentifier(identifier) {
+      // Remove any characters that are not letters, digits, underscores, or hyphens.
+      let sanitized = identifier.replace(/[^a-zA-Z0-9_-]/g, '');
+      
+      // CSS identifiers cannot start with a digit.
+      if (/^\d/.test(sanitized)) {
+        sanitized = '_' + sanitized;
+      }
+      
+      return sanitized;
+    }
+
+
     function drawChart({
       data,
       key,
@@ -282,7 +299,8 @@ export default class Smallmultiples {
       index
     }) {
       console.log("key", key)
-      const id = dataTools.getId(key),
+
+      const id = sanitizeCSSIdentifier(dataTools.getId(key)),
         chartId = `#${id}`,
         isBar = chartType === "bar",
         isLine = chartType === "line",
@@ -315,7 +333,7 @@ export default class Smallmultiples {
       .append("svg")
       .attr("width", width + marginleft + marginright)
       .attr("height", height + margintop + marginbottom)
-      .attr("overflow", "hidden")
+      .style("overflow", "visible")
 
       const features = svg.append("g")
       .attr("transform", "translate(" + marginleft + "," + margintop + ")")
@@ -365,7 +383,7 @@ export default class Smallmultiples {
       console.log("ticks",ticks)
       console.log("yehhhhhhhh", xFormat.date)
       var xAxis = d3.axisBottom(x)
-        .ticks(4)
+      .tickValues(ticks)
 
      if (isBar) {
 
@@ -393,6 +411,11 @@ export default class Smallmultiples {
         .axisBottom(x)
         .tickValues(blahTicks)
         .tickFormat(d3.timeFormat("%-d"))
+     }
+
+     if (numCols == 1 && !isBar && xFormat.date) {
+      xAxis = d3.axisBottom(x)
+        .ticks(6)
      }
 
       const yAxis = d3.axisLeft(y)

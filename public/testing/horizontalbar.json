@@ -1,84 +1,112 @@
 {
     "sheets": {
-        "template": [
-            {
-                "title": "What goes on special most?",
-                "subtitle": "Showing the top 5 categories that go on special for <span style='color:#507892;font-weight: bold;'>Coles</span> and <span style='color:#e6711b;font-weight: bold;'>Woolworths</span>. The number is the share of all products checked between the 1st of June 2023 and 1st of July 2024.",
-                "footnote": "",
-                "source": "Shppngtrlly.com.au, Guardian Australia",
-                "margin-left": "10",
-                "margin-top": "30",
-                "margin-bottom": "10",
-                "margin-right": "10"
-            }
-        ],
         "data": [
             {
-                "Main cat": "Health & Beauty",
-                "Share": 45.21,
-                "Color": "#507892"
+                "Entity": "United Australia Party",
+                "Net change as % of total receipts": "-99.1"
             },
             {
-                "Main cat": "Pantry",
-                "Share": 24.0,
-                "Color": "#507892"
+                "Entity": "Climate 200 Pty Limited",
+                "Net change as % of total receipts": "-59.0"
             },
             {
-                "Main cat": "Household",
-                "Share": 14.39,
-                "Color": "#507892"
+                "Entity": "Sophie Scamps",
+                "Net change as % of total receipts": "-55.4"
             },
             {
-                "Main cat": "Drinks",
-                "Share": 4.89,
-                "Color": "#507892"
+                "Entity": "Katherine Chaney",
+                "Net change as % of total receipts": "-54.9"
             },
             {
-                "Main cat": "Frozen",
-                "Share": 3.74,
-                "Color": "#507892"
+                "Entity": "Kylea Tink",
+                "Net change as % of total receipts": "-53.1"
             },
             {
-                "Main cat": "Health & Beauty ",
-                "Share": 48.33,
-                "Color": "#e6711b"
+                "Entity": "Allegra Spender",
+                "Net change as % of total receipts": "-52.8"
             },
             {
-                "Main cat": "Household ",
-                "Share": 16.85,
-                "Color": "#e6711b"
+                "Entity": "Monique Ryan",
+                "Net change as % of total receipts": "-43.6"
             },
             {
-                "Main cat": "Snacks & Confectionery ",
-                "Share": 11.74,
-                "Color": "#e6711b"
+                "Entity": "Zoe Daniel",
+                "Net change as % of total receipts": "-41.2"
             },
             {
-                "Main cat": "Drinks ",
-                "Share": 6.41,
-                "Color": "#e6711b"
+                "Entity": "Advance Australia",
+                "Net change as % of total receipts": "-6.8"
             },
             {
-                "Main cat": "Frozen Food ",
-                "Share": 2.47,
-                "Color": "#e6711b"
+                "Entity": "ALP",
+                "Net change as % of total receipts": "-2.0"
+            },
+            {
+                "Entity": "Zali Steggall",
+                "Net change as % of total receipts": "-2.0"
+            },
+            {
+                "Entity": "The Coalition",
+                "Net change as % of total receipts": "-1.6"
+            },
+            {
+                "Entity": "Aus. Youth Climate Coalition",
+                "Net change as % of total receipts": "-0.7"
+            },
+            {
+                "Entity": "GetUp Limited",
+                "Net change as % of total receipts": "-0.2"
+            },
+            {
+                "Entity": "Australian Christian Lobby",
+                "Net change as % of total receipts": "0.0"
+            },
+            {
+                "Entity": "The Greens",
+                "Net change as % of total receipts": "13.6"
+            },
+            {
+                "Entity": "Helen Haines",
+                "Net change as % of total receipts": "15.2"
+            },
+            {
+                "Entity": "Dai Le",
+                "Net change as % of total receipts": "47.0"
+            },
+            {
+                "Entity": "Andrew Wilkie",
+                "Net change as % of total receipts": "85.0"
             }
         ],
-        "labels": [],
-        "key": [],
-        "lines": [],
-        "periods": [],
-        "chartId": [
+        "template": [
             {
-                "type": "horizontalbar"
+                "title": "Electoral funding reforms may be neutral for major parties, and disadvantage Clive Palmer and teals",
+                "subtitle": "Showing an estimate of how donation caps and increased public funding could potentially change the income of political parties, politicians and other political entities. The value shown is the estimated loss from capping donations in the election period of 2021-22 at $18,462 (adjusted from $20,000 to take inflation into account) the addition of an increased rate for public funding ($4.42 per vote at the 2022 election, deflated from the $5 value to be legislated), and additional administrative funding for incumbents in the year leading up to the 2022 election",
+                "footnote": "",
+                "source": "Guardian Australia analysis of AEC data, see article for methods",
+                "dateFormat": "",
+                "xAxisLabel": "Net change as a % of total receipts",
+                "yAxisLabel": "",
+                "baseline": "",
+                "periodDateFormat": "",
+                "margin-left": "10",
+                "margin-top": "40",
+                "margin-bottom": "0",
+                "margin-right": "10"
             }
         ],
         "options": [
             {
-                "enableShowMore": "FALSE",
-                "autoSort": "FALSE"
+                "enableShowMore": "TRUE",
+                "forceCentre": "FALSE"
             }
         ],
-        "dropdown": []
+        "labels": [],
+        "key": [],
+        "chartId": [
+            {
+                "type": "horizontalbar"
+            }
+        ]
     }
 }
